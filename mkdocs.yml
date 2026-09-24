@@ -2,3 +2,16 @@ site_name: Mes notes
 theme:
   name: material
   language: fr
+  features:
+    - content.code.copy      # bouton "copier" sur les blocs de code
+
+markdown_extensions:
+  - tables
+  - attr_list
+  - md_in_html
+  - pymdownx.highlight      # coloration syntaxique du PowerShell
+  - pymdownx.superfences:   # affichage des schémas Mermaid
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
