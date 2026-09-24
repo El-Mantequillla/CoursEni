@@ -6,6 +6,10 @@ theme:
     - content.code.copy      # bouton "copier" sur les blocs de code
 
 markdown_extensions:
+  - toc:                    # ancres des titres identiques à GitHub (liens du sommaire)
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
   - tables
   - attr_list
   - md_in_html
