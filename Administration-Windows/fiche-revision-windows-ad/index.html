@@ -1,0 +1,3753 @@
+
+<!doctype html>
+<html lang="fr" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../..">
+      
+      
+        <link rel="next" href="../raccourcis-claviers/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Fiche de révision — Administration Windows et Active Directory - Mes notes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#fiche-de-révision--administration-windows-et-active-directory" class="md-skip">
+          Aller au contenu
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="En-tête">
+    <a href="../.." title="Mes notes" class="md-header__button md-logo" aria-label="Mes notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Mes notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Fiche de révision — Administration Windows et Active Directory
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Rechercher" placeholder="Rechercher" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Recherche">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Effacer" aria-label="Effacer" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initialisation de la recherche
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Mes notes" class="md-nav__button md-logo" aria-label="Mes notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Mes notes
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cours et TP ENI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Administration Windows
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Administration Windows
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fiche de révision — Administration Windows et Active Directory
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fiche de révision — Administration Windows et Active Directory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#sommaire" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sommaire
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-les-contextes-de-travail" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Les contextes de travail
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-windows-server--éditions-installation-outils" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Windows Server : éditions, installation, outils
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Windows Server : éditions, installation, outils">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-les-éditions-de-windows-server-2022" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Les éditions de Windows Server 2022
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-les-modes-dinstallation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Les modes d'installation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-les-outils-de-gestion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 Les outils de gestion
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-surveiller-létat-du-système" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 Surveiller l'état du système
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-checklist-avant-de-déployer-un-serveur" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5 Checklist avant de déployer un serveur
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-active-directory--les-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Active Directory : les concepts
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Active Directory : les concepts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-groupe-de-travail-ou-domaine-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Groupe de travail ou domaine ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-la-structure-logique" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 La structure logique
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-où-sont-stockées-les-données-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 Où sont stockées les données ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-le-contrôleur-de-domaine-dc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 Le contrôleur de domaine (DC)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-le-catalogue-global-gc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5 Le catalogue global (GC)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#36-les-rôles-fsmo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.6 Les rôles FSMO
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#37-promouvoir-un-contrôleur-de-domaine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.7 Promouvoir un contrôleur de domaine
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#38-les-niveaux-fonctionnels" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.8 Les niveaux fonctionnels
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-active-directory--gérer-les-objets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Active Directory : gérer les objets
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Active Directory : gérer les objets">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-les-utilisateurs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Les utilisateurs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-les-ordinateurs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Les ordinateurs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-les-groupes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 Les groupes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-conteneurs-et-unités-dorganisation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 Conteneurs et unités d'organisation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-les-sites-active-directory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Les sites Active Directory
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-laccès-aux-ressources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. L'accès aux ressources
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. L&#39;accès aux ressources">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-les-autorisations-ntfs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Les autorisations NTFS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-les-partages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Les partages
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-les-droits-effectifs--partage--ntfs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 Les droits effectifs : partage + NTFS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64-la-méthode-agdlp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4 La méthode AGDLP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#65-les-imprimantes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.5 Les imprimantes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#66-la-délégation-administrative" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.6 La délégation administrative
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-les-stratégies-de-groupe-gpo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Les stratégies de groupe (GPO)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Les stratégies de groupe (GPO)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-le-principe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 Le principe
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-comment-une-gpo-arrive-sur-un-poste" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 Comment une GPO arrive sur un poste
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-le-ciblage--où-lier-une-gpo-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 Le ciblage : où lier une GPO ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74-lordre-dapplication--lsdou" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4 L'ordre d'application : LSDOU
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#75-restreindre-ou-forcer-une-gpo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.5 Restreindre ou forcer une GPO
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#76-diagnostiquer-une-gpo-qui-ne-marche-pas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.6 Diagnostiquer une GPO qui ne marche pas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#77-les-modèles-dadministration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.7 Les modèles d'administration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#78-les-stratégies-de-mot-de-passe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.8 Les stratégies de mot de passe
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-powershell--les-bases-pour-scripter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. PowerShell : les bases pour scripter
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. PowerShell : les bases pour scripter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-comprendre-une-commande" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 Comprendre une commande
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-les-briques-de-base" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 Les briques de base
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83-les-boucles-et-les-conditions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3 Les boucles et les conditions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#84-lancer-un-script" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.4 Lancer un script
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-scripts-dexemple" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Scripts d'exemple
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Scripts d&#39;exemple">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#script-1--vérifier-que-les-machines-de-la-maquette-répondent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Script 1 — Vérifier que les machines de la maquette répondent
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#script-2--créer-les-ou-et-les-groupes-globaux-des-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Script 2 — Créer les OU et les groupes globaux des services
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#script-3--créer-des-utilisateurs-depuis-un-fichier-csv" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Script 3 — Créer des utilisateurs depuis un fichier CSV
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#script-4--créer-des-comptes-de-test-numérotés" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Script 4 — Créer des comptes de test numérotés
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#script-5--vérifier-les-services-dun-contrôleur-de-domaine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Script 5 — Vérifier les services d'un contrôleur de domaine
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#script-6--rapport-des-comptes-désactivés" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Script 6 — Rapport des comptes désactivés
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-mémo-des-commandes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Mémo des commandes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Mémo des commandes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#système-et-réseau" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Système et réseau
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#active-directory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Active Directory
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ressources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ressources
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gpo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GPO
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consoles-utiles-windows--r" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Consoles utiles (Windows + R)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-testez-vous" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Testez-vous
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../raccourcis-claviers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Raccourcis clavier Windows / Windows Server — Administration système et réseau
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    TP
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TP/tp01-creation-infrastructure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP1 — Création de l'infrastructure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TP/tp02-creation-domaine-ad/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP2 — Création d'un domaine Active Directory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TP/tp03-gestion-domaine-ad/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP3 — Gestion d'un domaine Active Directory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TP/tp04-gestion-ressources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP4 — Gestion de ressources
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TP/tp05-strategies-de-groupe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP5 — Les stratégies de groupe (GPO)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#sommaire" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sommaire
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-les-contextes-de-travail" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Les contextes de travail
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-windows-server--éditions-installation-outils" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Windows Server : éditions, installation, outils
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Windows Server : éditions, installation, outils">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-les-éditions-de-windows-server-2022" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Les éditions de Windows Server 2022
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-les-modes-dinstallation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Les modes d'installation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-les-outils-de-gestion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 Les outils de gestion
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-surveiller-létat-du-système" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 Surveiller l'état du système
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-checklist-avant-de-déployer-un-serveur" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5 Checklist avant de déployer un serveur
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-active-directory--les-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Active Directory : les concepts
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Active Directory : les concepts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-groupe-de-travail-ou-domaine-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Groupe de travail ou domaine ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-la-structure-logique" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 La structure logique
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-où-sont-stockées-les-données-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 Où sont stockées les données ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-le-contrôleur-de-domaine-dc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 Le contrôleur de domaine (DC)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-le-catalogue-global-gc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5 Le catalogue global (GC)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#36-les-rôles-fsmo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.6 Les rôles FSMO
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#37-promouvoir-un-contrôleur-de-domaine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.7 Promouvoir un contrôleur de domaine
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#38-les-niveaux-fonctionnels" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.8 Les niveaux fonctionnels
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-active-directory--gérer-les-objets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Active Directory : gérer les objets
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Active Directory : gérer les objets">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-les-utilisateurs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Les utilisateurs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-les-ordinateurs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Les ordinateurs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-les-groupes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 Les groupes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-conteneurs-et-unités-dorganisation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 Conteneurs et unités d'organisation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-les-sites-active-directory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Les sites Active Directory
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-laccès-aux-ressources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. L'accès aux ressources
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. L&#39;accès aux ressources">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-les-autorisations-ntfs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Les autorisations NTFS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-les-partages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Les partages
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-les-droits-effectifs--partage--ntfs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 Les droits effectifs : partage + NTFS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64-la-méthode-agdlp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4 La méthode AGDLP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#65-les-imprimantes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.5 Les imprimantes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#66-la-délégation-administrative" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.6 La délégation administrative
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-les-stratégies-de-groupe-gpo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Les stratégies de groupe (GPO)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Les stratégies de groupe (GPO)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-le-principe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 Le principe
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-comment-une-gpo-arrive-sur-un-poste" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 Comment une GPO arrive sur un poste
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-le-ciblage--où-lier-une-gpo-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 Le ciblage : où lier une GPO ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74-lordre-dapplication--lsdou" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4 L'ordre d'application : LSDOU
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#75-restreindre-ou-forcer-une-gpo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.5 Restreindre ou forcer une GPO
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#76-diagnostiquer-une-gpo-qui-ne-marche-pas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.6 Diagnostiquer une GPO qui ne marche pas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#77-les-modèles-dadministration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.7 Les modèles d'administration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#78-les-stratégies-de-mot-de-passe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.8 Les stratégies de mot de passe
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-powershell--les-bases-pour-scripter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. PowerShell : les bases pour scripter
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. PowerShell : les bases pour scripter">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-comprendre-une-commande" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 Comprendre une commande
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-les-briques-de-base" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 Les briques de base
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83-les-boucles-et-les-conditions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3 Les boucles et les conditions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#84-lancer-un-script" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.4 Lancer un script
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-scripts-dexemple" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Scripts d'exemple
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Scripts d&#39;exemple">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#script-1--vérifier-que-les-machines-de-la-maquette-répondent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Script 1 — Vérifier que les machines de la maquette répondent
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#script-2--créer-les-ou-et-les-groupes-globaux-des-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Script 2 — Créer les OU et les groupes globaux des services
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#script-3--créer-des-utilisateurs-depuis-un-fichier-csv" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Script 3 — Créer des utilisateurs depuis un fichier CSV
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#script-4--créer-des-comptes-de-test-numérotés" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Script 4 — Créer des comptes de test numérotés
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#script-5--vérifier-les-services-dun-contrôleur-de-domaine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Script 5 — Vérifier les services d'un contrôleur de domaine
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#script-6--rapport-des-comptes-désactivés" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Script 6 — Rapport des comptes désactivés
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-mémo-des-commandes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Mémo des commandes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Mémo des commandes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#système-et-réseau" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Système et réseau
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#active-directory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Active Directory
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ressources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ressources
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gpo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GPO
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consoles-utiles-windows--r" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Consoles utiles (Windows + R)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-testez-vous" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Testez-vous
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="fiche-de-révision--administration-windows-et-active-directory">Fiche de révision — Administration Windows et Active Directory</h1>
+<blockquote>
+<p><strong>Module ASR02-02</strong> · Résumé du cours, relié aux TP 1 à 5, avec des exemples de scripts PowerShell simples.</p>
+<p>📌 Dans les exemples : domaine <strong><code>domAD.ad</code></strong> (NetBIOS <strong><code>DOMAD</code></strong>), réseau <strong><code>192.168.0.0/16</code></strong>.</p>
+</blockquote>
+<hr />
+<h2 id="sommaire">Sommaire</h2>
+<ol>
+<li><a href="#1-les-contextes-de-travail">Les contextes de travail</a></li>
+<li><a href="#2-windows-server--éditions-installation-outils">Windows Server : éditions, installation, outils</a></li>
+<li><a href="#3-active-directory--les-concepts">Active Directory : les concepts</a></li>
+<li><a href="#4-active-directory--gérer-les-objets">Active Directory : gérer les objets</a></li>
+<li><a href="#5-les-sites-active-directory">Les sites Active Directory</a></li>
+<li><a href="#6-laccès-aux-ressources">L'accès aux ressources</a></li>
+<li><a href="#7-les-stratégies-de-groupe-gpo">Les stratégies de groupe (GPO)</a></li>
+<li><a href="#8-powershell--les-bases-pour-scripter">PowerShell : les bases pour scripter</a></li>
+<li><a href="#9-scripts-dexemple">Scripts d'exemple</a></li>
+<li><a href="#10-mémo-des-commandes">Mémo des commandes</a></li>
+<li><a href="#11-testez-vous">Testez-vous</a></li>
+</ol>
+<hr />
+<h2 id="1-les-contextes-de-travail">1. Les contextes de travail</h2>
+<p>Où sont hébergés les services de l'entreprise (authentification, fichiers, messagerie…) ?</p>
+<table>
+<thead>
+<tr>
+<th>Contexte</th>
+<th>Où sont les serveurs ?</th>
+<th>Accès nomade</th>
+<th>Qui gère ?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>On-premises</strong> (traditionnel)</td>
+<td>Dans les locaux, sur le réseau privé de l'entreprise</td>
+<td>Par <strong>VPN</strong></td>
+<td>Les techniciens internes ou un prestataire</td>
+</tr>
+<tr>
+<td><strong>Cloud</strong></td>
+<td>Dans les datacenters d'un prestataire</td>
+<td><strong>Directement</strong> par Internet, sans VPN</td>
+<td>Le prestataire (Internet obligatoire)</td>
+</tr>
+<tr>
+<td><strong>Hybride</strong></td>
+<td>Un mélange : certains services en interne, d'autres dans le cloud</td>
+<td>Selon le service utilisé</td>
+<td>L'entreprise et le(s) prestataire(s)</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>🧪 <strong>Dans les TP</strong> : on travaille en <strong>on-premises</strong>. Tous les serveurs (CD1, CD2, SRV1) sont « chez nous », sur un réseau privé.</p>
+</blockquote>
+<hr />
+<h2 id="2-windows-server--éditions-installation-outils">2. Windows Server : éditions, installation, outils</h2>
+<h3 id="21-les-éditions-de-windows-server-2022">2.1 Les éditions de Windows Server 2022</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><strong>Essentials</strong></th>
+<th><strong>Standard</strong></th>
+<th><strong>Datacenter</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Pour qui ?</strong></td>
+<td>Petites entreprises</td>
+<td>Plus de 25 utilisateurs, peu de virtualisation</td>
+<td>Environnements très virtualisés</td>
+</tr>
+<tr>
+<td><strong>Licences</strong></td>
+<td>25 utilisateurs / 50 périphériques max, inclus</td>
+<td>Licences d'accès client (<strong>CAL</strong>) + 1 licence pour 16 cœurs</td>
+<td>CAL + 1 licence pour 16 cœurs</td>
+</tr>
+<tr>
+<td><strong>VM Hyper-V autorisées</strong></td>
+<td>1 seule</td>
+<td><strong>2</strong></td>
+<td><strong>Illimité</strong></td>
+</tr>
+<tr>
+<td><strong>Particularité</strong></td>
+<td>—</td>
+<td>Fonctionnalités standard</td>
+<td>+ fonctions avancées (SDN…)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="22-les-modes-dinstallation">2.2 Les modes d'installation</h3>
+<table>
+<thead>
+<tr>
+<th><strong>Expérience de bureau</strong> (graphique)</th>
+<th><strong>Server Core</strong> (minimal)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Interface graphique complète</td>
+<td>Presque pas d'interface graphique</td>
+</tr>
+<tr>
+<td>Consoles utilisables directement sur le serveur</td>
+<td>Administration <strong>à distance</strong> (RSAT, WAC, PowerShell)</td>
+</tr>
+<tr>
+<td>Plus de RAM et de disque</td>
+<td><strong>Moins de ressources</strong> consommées</td>
+</tr>
+<tr>
+<td>Plus de services qui tournent</td>
+<td><strong>Surface d'attaque réduite</strong> : moins de services, moins de failles</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>⚠️ <strong>Choix définitif</strong> : on ne peut pas passer de l'un à l'autre après l'installation. Beaucoup d'entreprises installent 1 ou 2 serveurs graphiques pour administrer, et tout le reste en Core.</p>
+</blockquote>
+<h3 id="23-les-outils-de-gestion">2.3 Les outils de gestion</h3>
+<table>
+<thead>
+<tr>
+<th>Outil</th>
+<th>Rôle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Gestionnaire de serveur</strong></td>
+<td>La console centrale : ajout de rôles, vue d'ensemble des serveurs</td>
+</tr>
+<tr>
+<td><strong>PowerShell</strong></td>
+<td>Ligne de commande <strong>et</strong> langage de script, l'outil moderne</td>
+</tr>
+<tr>
+<td><strong>Invite de commandes (<code>cmd</code>)</strong></td>
+<td>Héritage des anciens Windows (<code>ipconfig</code>, <code>netdom</code>…)</td>
+</tr>
+<tr>
+<td><strong>Consoles MMC</strong></td>
+<td><code>dsa.msc</code>, <code>dnsmgmt.msc</code>… utilisables à distance grâce aux <strong>RSAT</strong></td>
+</tr>
+<tr>
+<td><strong>Windows Admin Center</strong> (WAC)</td>
+<td>Console <strong>web</strong> (HTTPS), depuis 2018, pour gérer plusieurs serveurs</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>🧪 <strong>TP1</strong> : on installe WAC sur SRV1 et on y ajoute CD1. <strong>TP2</strong> : on installe les RSAT sur W10-CL1 → <a href="../TP/tp02-creation-domaine-ad/">voir TP2</a></p>
+</blockquote>
+<h3 id="24-surveiller-létat-du-système">2.4 Surveiller l'état du système</h3>
+<p>Surveiller un serveur sert à <strong>garantir la disponibilité</strong> des services, <strong>trouver la cause</strong> d'une panne et <strong>optimiser</strong> les ressources.</p>
+<table>
+<thead>
+<tr>
+<th>Outil</th>
+<th>Raccourci</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Gestionnaire des tâches</strong></td>
+<td><code>Ctrl + Shift + Échap</code></td>
+<td>Vue <strong>immédiate</strong> : processus, CPU, mémoire, disque, réseau, utilisateurs</td>
+</tr>
+<tr>
+<td><strong>Moniteur de ressources</strong></td>
+<td><code>resmon</code></td>
+<td>Plus détaillé, <strong>par processus</strong></td>
+</tr>
+<tr>
+<td><strong>Analyseur de performances</strong></td>
+<td><code>perfmon</code></td>
+<td><strong>Collecte</strong> de données dans la durée, puis rapports</td>
+</tr>
+<tr>
+<td><strong>Observateur d'événements</strong></td>
+<td><code>eventvwr</code></td>
+<td><strong>Journaux</strong> des messages du système, des services et des applications</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Les journaux de l'Observateur d'événements :</strong></p>
+<table>
+<thead>
+<tr>
+<th>Journal</th>
+<th>Contenu</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Application</strong></td>
+<td>Événements des applications (ex : installation MSI)</td>
+</tr>
+<tr>
+<td><strong>Sécurité</strong></td>
+<td>Événements d'<strong>audit</strong> (connexions, accès…)</td>
+</tr>
+<tr>
+<td><strong>Système</strong></td>
+<td>Événements du système d'exploitation (pilotes, services…)</td>
+</tr>
+<tr>
+<td><strong>Journaux dédiés</strong></td>
+<td>Certains rôles ont leur propre journal (DNS Server, Directory Service…)</td>
+</tr>
+</tbody>
+</table>
+<p>L'Observateur permet aussi de créer des <strong>vues personnalisées</strong>, des <strong>abonnements</strong> (collecter les événements d'autres serveurs) et de <strong>déclencher une action</strong> quand un événement survient.</p>
+<blockquote>
+<p>🧪 <strong>TP1</strong> : on crée une <strong>ligne de base</strong> de performances de CD1 avec l'Analyseur, puis on retrouve l'installation de WAC dans le journal <strong>Application</strong> → <a href="../TP/tp01-creation-infrastructure/">voir TP1</a></p>
+</blockquote>
+<h3 id="25-checklist-avant-de-déployer-un-serveur">2.5 Checklist avant de déployer un serveur</h3>
+<ol>
+<li>Choisir l'<strong>édition</strong> adaptée.</li>
+<li>Choisir le <strong>mode d'installation</strong> (graphique ou Core).</li>
+<li>Définir le <strong>nom d'hôte</strong> et le suffixe DNS.</li>
+<li>Configurer le <strong>réseau</strong> avec une <strong>IP fixe</strong>.</li>
+<li><strong>Analyser l'existant</strong> : que fait déjà l'infrastructure ?</li>
+</ol>
+<hr />
+<h2 id="3-active-directory--les-concepts">3. Active Directory : les concepts</h2>
+<h3 id="31-groupe-de-travail-ou-domaine-">3.1 Groupe de travail ou domaine ?</h3>
+<pre class="mermaid"><code>flowchart LR
+    subgraph WG["❌ Groupe de travail (Workgroup)"]
+        P1["💻 PC 1&lt;br/&gt;base SAM locale"]
+        P2["💻 PC 2&lt;br/&gt;base SAM locale"]
+        P3["💻 PC 3&lt;br/&gt;base SAM locale"]
+    end
+    subgraph DOM["✅ Domaine Active Directory"]
+        DC["🖥️ Contrôleur de domaine&lt;br/&gt;annuaire AD DS"]
+        M1["💻 PC 1"] --&gt;|authentification| DC
+        M2["💻 PC 2"] --&gt;|authentification| DC
+        M3["🖥️ Serveur"] --&gt;|authentification| DC
+    end</code></pre>
+<table>
+<thead>
+<tr>
+<th><strong>Groupe de travail</strong></th>
+<th><strong>Domaine AD</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Chaque PC a sa propre base de comptes : la <strong>SAM</strong></td>
+<td>Une base <strong>centrale</strong> : l'annuaire AD</td>
+</tr>
+<tr>
+<td>Un compte par PC, pas de connexion unique</td>
+<td><strong>Un seul compte</strong> pour se connecter sur n'importe quelle machine</td>
+</tr>
+<tr>
+<td>Mots de passe et permissions difficiles à gérer</td>
+<td>Mots de passe, droits et GPO gérés <strong>à un seul endroit</strong></td>
+</tr>
+<tr>
+<td>Adapté aux <strong>très petits</strong> environnements</td>
+<td>Adapté aux entreprises</td>
+</tr>
+</tbody>
+</table>
+<p>Les machines du domaine <strong>font confiance</strong> au domaine : elles <strong>délèguent l'authentification</strong> au contrôleur de domaine.</p>
+<blockquote>
+<p>💡 <strong>Active Directory</strong> est l'annuaire de Windows depuis Windows 2000. Il contient les utilisateurs, groupes, ordinateurs, imprimantes, dossiers partagés… Il s'appuie sur d'autres services : <strong>DNS</strong> (indispensable), TCP/IP, DHCP, <strong>Kerberos</strong> (authentification), <strong>LDAP</strong> (interrogation de l'annuaire), SNTP (heure), NTFS.</p>
+</blockquote>
+<h3 id="32-la-structure-logique">3.2 La structure logique</h3>
+<pre class="mermaid"><code>flowchart TD
+    F["🌲 FORÊT&lt;br/&gt;schéma et catalogue global communs"] --&gt; A1["🌳 ARBRE 1&lt;br/&gt;domAD.ad"]
+    F --&gt; A2["🌳 ARBRE 2&lt;br/&gt;autre-nom.ad"]
+    A1 --&gt; D1["🏢 DOMAINE&lt;br/&gt;domAD.ad"]
+    D1 --&gt; D2["🏢 Domaine enfant&lt;br/&gt;nantes.domAD.ad"]
+    D1 --&gt; OU1["📁 OU DOMAD"]
+    OU1 --&gt; OU2["📁 OU Utilisateurs"]
+    OU2 --&gt; O1["👤 Objets&lt;br/&gt;utilisateurs, groupes, ordinateurs"]</code></pre>
+<table>
+<thead>
+<tr>
+<th>Élément</th>
+<th>Définition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Forêt</strong></td>
+<td>Ensemble de 1 à n arbres. Tous partagent le même <strong>schéma</strong> et le même <strong>catalogue global</strong>. Les domaines d'une forêt se font confiance (<strong>approbations bidirectionnelles</strong> par défaut).</td>
+</tr>
+<tr>
+<td><strong>Arbre</strong></td>
+<td>Ensemble de domaines qui partagent le même nom DNS : <code>nantes.domAD.ad</code> est enfant de <code>domAD.ad</code>.</td>
+</tr>
+<tr>
+<td><strong>Domaine</strong></td>
+<td>Ensemble d'ordinateurs et d'utilisateurs qui partagent la <strong>même base d'annuaire</strong>. Il a un nom DNS unique (souvent en <code>.local</code> ou <code>.ad</code> pour ne pas entrer en conflit avec Internet).</td>
+</tr>
+<tr>
+<td><strong>Unité d'organisation (OU)</strong></td>
+<td>« Dossier » <strong>logique</strong> (pas physique) pour ranger les objets, <strong>appliquer des GPO</strong> et <strong>déléguer</strong> l'administration.</td>
+</tr>
+<tr>
+<td><strong>Objet</strong></td>
+<td>Tout élément de l'annuaire : utilisateur, ordinateur, groupe, imprimante… Chaque objet a des <strong>attributs</strong> (nom, téléphone, service…).</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>🧪 <strong>TP2</strong> : on crée une <strong>nouvelle forêt</strong> qui contient un seul domaine, <code>domAD.ad</code>.</p>
+</blockquote>
+<h3 id="33-où-sont-stockées-les-données-">3.3 Où sont stockées les données ?</h3>
+<p>L'annuaire est découpé en <strong>partitions</strong> :</p>
+<table>
+<thead>
+<tr>
+<th>Partition</th>
+<th>Contenu</th>
+<th>Répliquée sur…</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Domaine</strong></td>
+<td>Les objets du domaine (OU, utilisateurs, groupes…)</td>
+<td>Tous les DC <strong>du domaine</strong></td>
+</tr>
+<tr>
+<td><strong>Schéma</strong></td>
+<td>La « définition » des objets : quelles classes, quels attributs</td>
+<td>Tous les DC <strong>de la forêt</strong></td>
+</tr>
+<tr>
+<td><strong>Configuration</strong></td>
+<td>Configuration des services : <strong>sites</strong>, services, partitions</td>
+<td>Tous les DC <strong>de la forêt</strong></td>
+</tr>
+<tr>
+<td><strong>Applicatives</strong></td>
+<td>Zones DNS intégrées à AD…</td>
+<td>Selon la configuration</td>
+</tr>
+</tbody>
+</table>
+<p>Et physiquement, sur chaque contrôleur de domaine :</p>
+<table>
+<thead>
+<tr>
+<th>Emplacement</th>
+<th>Contenu</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>C:\Windows\NTDS</code></td>
+<td>La <strong>base de données</strong> AD (fichier <code>ntds.dit</code>)</td>
+</tr>
+<tr>
+<td><code>C:\Windows\SYSVOL</code></td>
+<td>Un <strong>partage</strong> de fichiers : GPO, scripts de connexion</td>
+</tr>
+</tbody>
+</table>
+<h3 id="34-le-contrôleur-de-domaine-dc">3.4 Le contrôleur de domaine (DC)</h3>
+<p>Un <strong>contrôleur de domaine</strong> est un serveur qui héberge l'annuaire. Il a 5 missions :</p>
+<ol>
+<li><strong>Authentification</strong> : « Qui es-tu ? As-tu le droit d'entrer ? »</li>
+<li><strong>Autorisation</strong> : « À quoi as-tu le droit d'accéder ? »</li>
+<li><strong>Stockage</strong> de la base Active Directory.</li>
+<li><strong>Distribution des GPO</strong>.</li>
+<li><strong>Réplication</strong> avec les autres DC pour la continuité de service.</li>
+</ol>
+<blockquote>
+<p>💡 <strong>Multi-maître</strong> : avec plusieurs DC, <strong>tous</strong> peuvent modifier l'annuaire. Les modifications sont ensuite copiées entre eux par <strong>réplication</strong>. C'est pour ça qu'on installe <strong>au moins 2 DC</strong> : si l'un tombe, l'autre prend le relais.</p>
+</blockquote>
+<p><strong>Le RODC</strong> (<em>Read-Only Domain Controller</em>) est un DC <strong>en lecture seule</strong> :
+- la réplication se fait dans <strong>un seul sens</strong> (vers le RODC) ;
+- il ne stocke que les mots de passe <strong>autorisés</strong> ;
+- il a un administrateur local.</p>
+<p>On l'utilise dans une agence où la <strong>sécurité physique est faible</strong> (le serveur peut être volé) et où les besoins d'authentification sont réduits.</p>
+<blockquote>
+<p>🧪 <strong>TP2</strong> : CD1 puis <strong>CD2</strong> sont promus contrôleurs de domaine. <code>repadmin /replsummary</code> vérifie qu'ils se répliquent bien.</p>
+</blockquote>
+<h3 id="35-le-catalogue-global-gc">3.5 Le catalogue global (GC)</h3>
+<p>Le <strong>catalogue global</strong> contient <strong>tous les objets de la forêt</strong>, mais seulement <strong>une partie de leurs attributs</strong> (les plus utiles pour la recherche).</p>
+<p>Il sert à :
+- <strong>ouvrir une session</strong> : il fournit les appartenances aux groupes universels ;
+- <strong>chercher</strong> un objet dans toute la forêt, quel que soit son domaine.</p>
+<p>Un <strong>serveur de catalogue global</strong> est un DC qui en héberge une copie. <strong>Recommandation : tous les DC doivent être catalogue global.</strong> C'est coché par défaut (paramètre <code>-NoGlobalCatalog</code> pour le désactiver en PowerShell). Réglage dans <strong>Sites et services AD → NTDS Settings → Catalogue global</strong>.</p>
+<h3 id="36-les-rôles-fsmo">3.6 Les rôles FSMO</h3>
+<p>La plupart des opérations peuvent se faire sur n'importe quel DC. Mais <strong>5 opérations</strong> ne sont confiées qu'à <strong>un seul DC</strong> : ce sont les rôles <strong>FSMO</strong> (<em>Flexible Single Master Operation</em>).</p>
+<table>
+<thead>
+<tr>
+<th>Rôle</th>
+<th>Unique dans…</th>
+<th>À quoi il sert</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Maître de schéma</strong></td>
+<td>la <strong>forêt</strong></td>
+<td>Seul DC autorisé à <strong>modifier le schéma</strong></td>
+</tr>
+<tr>
+<td><strong>Maître d'attribution des noms</strong></td>
+<td>la <strong>forêt</strong></td>
+<td><strong>Ajouter/supprimer des domaines</strong> (et partitions d'application), renommer un domaine</td>
+</tr>
+<tr>
+<td><strong>Émulateur PDC</strong> (CDP)</td>
+<td>le <strong>domaine</strong></td>
+<td>Reçoit en priorité les <strong>changements de mot de passe</strong>, modifie les <strong>GPO</strong>, <strong>source de l'heure</strong> du domaine</td>
+</tr>
+<tr>
+<td><strong>Maître RID</strong></td>
+<td>le <strong>domaine</strong></td>
+<td>Distribue aux DC des <strong>plages de RID</strong>, qui servent à fabriquer les <strong>SID</strong> (identifiants uniques) des nouveaux objets</td>
+</tr>
+<tr>
+<td><strong>Maître d'infrastructure</strong></td>
+<td>le <strong>domaine</strong></td>
+<td>Met à jour les <strong>références entre objets de domaines différents</strong></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>🧠 <strong>Moyen mnémotechnique</strong> : <strong>2 de forêt</strong> (Schéma, Noms) + <strong>3 de domaine</strong> (PDC, RID, Infrastructure) = 5. Le 1er DC de la forêt a les 5 rôles, le 1er DC d'un nouveau domaine a les 3 rôles de domaine.</p>
+</blockquote>
+<p><strong>Déplacer un rôle :</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>Transfert</strong></th>
+<th><strong>Saisie</strong> (récupération)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Le DC d'origine est <strong>joignable</strong></td>
+<td>Le DC d'origine est <strong>mort</strong></td>
+</tr>
+<tr>
+<td>Opération propre, les deux DC se mettent d'accord</td>
+<td>Opération de dernier recours (<code>-Force</code>)</td>
+</tr>
+<tr>
+<td>—</td>
+<td>⚠️ Le DC d'origine ne doit <strong>plus jamais</strong> être remis en ligne</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="c"># Voir les rôles de la forêt puis du domaine</span>
+<span class="nb">Get-ADForest</span> <span class="p">|</span> <span class="nb">Select-Object</span> <span class="p">*</span><span class="n">master</span>
+<span class="nb">Get-ADDomain</span> <span class="p">|</span> <span class="nb">Select-Object</span> <span class="n">pdc</span><span class="p">*,</span> <span class="p">*</span><span class="n">master</span>
+
+<span class="c"># Transférer RID et PDC vers CD2 (fait au TP2)</span>
+<span class="nb">Move-ADDirectoryServerOperationMasterRole</span> <span class="n">-Identity</span> <span class="s2">"CD2"</span> <span class="n">-OperationMasterRole</span> <span class="n">RIDMaster</span><span class="p">,</span> <span class="n">PDCEmulator</span>
+</code></pre></div>
+<blockquote>
+<p>🧪 <strong>TP2</strong> : on répartit les rôles, avec <strong>RID + PDC sur CD2</strong> et les 3 autres sur CD1 → <a href="../TP/tp02-creation-domaine-ad/">voir TP2</a></p>
+</blockquote>
+<h3 id="37-promouvoir-un-contrôleur-de-domaine">3.7 Promouvoir un contrôleur de domaine</h3>
+<p><strong>Les 3 scénarios de promotion :</strong></p>
+<table>
+<thead>
+<tr>
+<th>Scénario</th>
+<th>But</th>
+<th>Commande PowerShell</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Nouvelle forêt</strong> (et nouveau domaine)</td>
+<td>Créer un annuaire isolé</td>
+<td><code>Install-ADDSForest</code></td>
+</tr>
+<tr>
+<td><strong>Nouveau domaine</strong> dans une forêt existante</td>
+<td>Nouvelle entité avec ses propres objets et admins</td>
+<td><code>Install-ADDSDomain</code></td>
+</tr>
+<tr>
+<td><strong>DC supplémentaire</strong> dans un domaine existant</td>
+<td>Disponibilité, tolérance de panne, répartition de charge</td>
+<td><code>Install-ADDSDomainController</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Les étapes :</strong></p>
+<pre class="mermaid"><code>flowchart LR
+    A["1️⃣ Prérequis&lt;br/&gt;nom + IP fixe"] --&gt; B["2️⃣ Ajouter le rôle&lt;br/&gt;AD DS"]
+    B --&gt; C["3️⃣ Choisir les options&lt;br/&gt;DNS · GC · RODC&lt;br/&gt;niveau fonctionnel&lt;br/&gt;mot de passe DSRM"]
+    C --&gt; D["4️⃣ Promotion&lt;br/&gt;(assistant ou PowerShell)"]</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c"># Étape 2 : ajouter le rôle</span>
+<span class="nb">Install-WindowsFeature</span> <span class="n">AD-Domain-Services</span> <span class="n">-IncludeManagementTools</span>
+</code></pre></div>
+<p><strong>Le mot de passe DSRM</strong> (mode de restauration des services d'annuaire) sert à démarrer le DC en mode maintenance pour réparer AD. <strong>Note-le !</strong></p>
+<p><strong>La dépromotion</strong> (retirer un DC) : <code>Uninstall-ADDSDomainController</code>. Avant, vérifie que le DC ne détient <strong>aucun rôle FSMO</strong>, et qu'il reste d'autres <strong>catalogues globaux</strong> et d'autres <strong>serveurs DNS</strong>.</p>
+<h3 id="38-les-niveaux-fonctionnels">3.8 Les niveaux fonctionnels</h3>
+<p>Le <strong>niveau fonctionnel</strong> détermine les <strong>fonctionnalités AD disponibles</strong>. Il est limité par le <strong>plus ancien</strong> Windows Server utilisé comme DC.</p>
+<ul>
+<li><strong>Niveau de domaine (DFL)</strong> : dépend du DC le plus ancien <strong>du domaine</strong>.</li>
+<li><strong>Niveau de forêt (FFL)</strong> : dépend du domaine au niveau le plus bas <strong>de la forêt</strong>.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Version du DC</th>
+<th>Niveau 2025</th>
+<th>Niveau 2016</th>
+<th>Niveau 2012 R2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Windows Server 2025</td>
+<td>✅</td>
+<td>✅</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>Windows Server 2016 / 2019 / <strong>2022</strong></td>
+<td>❌</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Windows Server 2012 R2</td>
+<td>❌</td>
+<td>❌</td>
+<td>✅</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>💡 <strong>Exemple</strong> : un domaine avec un DC 2022 et un DC 2012 R2 ne peut pas dépasser le niveau <strong>2012 R2</strong>. Il n'existe pas de niveau « 2019 » ni « 2022 » : ils utilisent le niveau <strong>2016</strong>.</p>
+</blockquote>
+<hr />
+<h2 id="4-active-directory--gérer-les-objets">4. Active Directory : gérer les objets</h2>
+<p>Trois outils pour gérer l'annuaire au quotidien :
+- la MMC <strong>Utilisateurs et ordinateurs Active Directory</strong> (<code>dsa.msc</code>) ;
+- le <strong>Centre d'administration Active Directory</strong> (<code>dsac.exe</code>), qui affiche l'historique PowerShell de tes actions ;
+- les commandes <strong>PowerShell</strong> du module <code>ActiveDirectory</code>.</p>
+<h3 id="41-les-utilisateurs">4.1 Les utilisateurs</h3>
+<p>Un <strong>compte utilisateur</strong> est un objet <strong>unique</strong> qui permet de s'authentifier et d'ouvrir une session. Ses <strong>attributs</strong> sont répartis en onglets :
+- informations générales (nom, poste, téléphone…) ;
+- options du compte (désactivé, expiration, horaires d'accès…) ;
+- Bureau à distance ;
+- appartenance aux groupes.</p>
+<div class="highlight"><pre><span></span><code><span class="c"># Créer un utilisateur (exemple du cours)</span>
+<span class="nb">New-ADUser</span> <span class="n">-Name</span> <span class="s2">"Khammett"</span> <span class="p">`</span>
+           <span class="n">-GivenName</span> <span class="s2">"Kirk"</span> <span class="n">-Surname</span> <span class="s2">"HAMMETT"</span> <span class="p">`</span>
+           <span class="n">-DisplayName</span> <span class="s2">"Hammett Kirk"</span> <span class="p">`</span>
+           <span class="n">-UserPrincipalName</span> <span class="s2">"khammett@domAD.ad"</span> <span class="p">`</span>
+           <span class="n">-AccountPassword</span> <span class="p">(</span><span class="nb">ConvertTo-SecureString</span> <span class="s2">"Mercre10"</span> <span class="n">-AsPlainText</span> <span class="n">-Force</span><span class="p">)</span> <span class="p">`</span>
+           <span class="n">-Enabled</span> <span class="nv">$true</span>
+
+<span class="c"># Rechercher / modifier</span>
+<span class="nb">Get-ADUser</span> <span class="n">-Filter</span> <span class="s2">"Department -eq 'Comptabilité'"</span>
+<span class="nb">Set-ADUser</span> <span class="s2">"khammett"</span> <span class="n">-Title</span> <span class="s2">"Guitariste"</span>
+</code></pre></div>
+<p><strong>Importer des comptes en masse depuis un CSV</strong> (méthode du cours) :</p>
+<ol>
+<li>Créer un <strong>compte de référence</strong>.</li>
+<li>L'<strong>exporter</strong> en CSV (<code>Get-ADUser ... | Export-Csv</code>) pour voir la structure.</li>
+<li>Construire un <strong>CSV d'import</strong> avec <strong>un seul</strong> compte, et le tester (<code>Import-Csv | New-ADUser</code>).</li>
+<li><strong>Valider</strong>, corriger le CSV ou la commande si besoin.</li>
+<li>Importer <strong>tous</strong> les comptes.</li>
+</ol>
+<p>→ Voir le <a href="#script-3--créer-des-utilisateurs-depuis-un-fichier-csv">script 3</a>.</p>
+<blockquote>
+<p>🧪 <strong>TP3</strong> : on crée des <strong>modèles</strong> (comptes désactivés avec les attributs communs d'un service) puis on les <strong>copie</strong> pour créer David, Isabelle, Ivan… → <a href="../TP/tp03-gestion-domaine-ad/">voir TP3</a></p>
+</blockquote>
+<h3 id="42-les-ordinateurs">4.2 Les ordinateurs</h3>
+<p>Une machine jointe au domaine <strong>s'authentifie aussi</strong> : elle a un compte ordinateur avec un <strong>mot de passe</strong>, stocké à la fois sur la machine et dans l'AD. Ensemble, ils forment un <strong>canal sécurisé</strong>.</p>
+<ul>
+<li><strong>Pré-création</strong> : on crée le compte ordinateur <strong>avant</strong> la jonction, pour choisir son OU et qui a le droit de l'intégrer.</li>
+<li><strong>Réinitialisation</strong> : quand le poste est remplacé ou que le canal sécurisé est cassé.</li>
+</ul>
+<blockquote>
+<p>⚠️ <strong>Clonage</strong> : deux machines avec le <strong>même SID</strong> posent problème dans un domaine. Avant de cloner une machine, on la généralise avec <strong><code>sysprep</code></strong>.</p>
+<p>🧪 <strong>TP2</strong> : <code>Add-Computer -DomainName domAD.ad</code> pour joindre SRV1 et W10-CL1.</p>
+</blockquote>
+<h3 id="43-les-groupes">4.3 Les groupes</h3>
+<p>Un groupe a un <strong>type</strong> et une <strong>étendue</strong>.</p>
+<p><strong>Le type :</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>Sécurité</strong></th>
+<th><strong>Distribution</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sert à <strong>donner des droits</strong> (placé dans les ACL)</td>
+<td>Sert uniquement de <strong>liste de diffusion</strong> mail</td>
+</tr>
+<tr>
+<td>Peut aussi servir de liste de diffusion</td>
+<td>Ne peut pas recevoir de droits</td>
+</tr>
+</tbody>
+</table>
+<p><strong>L'étendue :</strong></p>
+<table>
+<thead>
+<tr>
+<th>Étendue</th>
+<th>Sert à…</th>
+<th>Peut contenir</th>
+<th>Utilisable sur</th>
+<th>Exemple de nom</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Globale</strong></td>
+<td>Regrouper des personnes qui se <strong>ressemblent</strong> (un service)</td>
+<td>Utilisateurs, ordinateurs, groupes globaux <strong>du même domaine</strong></td>
+<td>Toute la forêt</td>
+<td><code>G-Comptabilité</code></td>
+</tr>
+<tr>
+<td><strong>Universelle</strong></td>
+<td>Regrouper des groupes <strong>de plusieurs domaines</strong></td>
+<td>Objets de <strong>tout domaine de la forêt</strong></td>
+<td>Toute la forêt</td>
+<td><code>U-Commerciaux</code></td>
+</tr>
+<tr>
+<td><strong>Domaine local</strong></td>
+<td>Regrouper ceux qui ont <strong>le même droit sur une ressource</strong></td>
+<td>Objets de <strong>tout domaine de la forêt</strong></td>
+<td><strong>Seulement son domaine</strong></td>
+<td><code>DL-Compta-Modification</code></td>
+</tr>
+<tr>
+<td><strong>Locale</strong></td>
+<td>Groupes intégrés à <strong>une machine</strong> (Administrateurs, Utilisateurs du Bureau à distance…)</td>
+<td>Comptes locaux et du domaine</td>
+<td><strong>Seulement cette machine</strong></td>
+<td><code>Administrateurs</code></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>🧠 <strong>Pour retenir</strong> : le groupe <strong>Global</strong> répond à « <strong>QUI</strong> sont ces gens ? », le groupe de <strong>Domaine Local</strong> répond à « <strong>QUOI</strong> ont-ils le droit de faire, et sur quoi ? ».</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="nb">New-ADGroup</span> <span class="n">-Name</span> <span class="s2">"G-Comptabilité"</span> <span class="n">-GroupScope</span> <span class="n">Global</span> <span class="n">-GroupCategory</span> <span class="n">Security</span>
+<span class="nb">Add-ADGroupMember</span> <span class="s2">"G-Comptabilité"</span> <span class="n">-Members</span> <span class="s2">"curique"</span><span class="p">,</span> <span class="s2">"ctalmie"</span>
+<span class="nb">Get-ADGroupMember</span> <span class="s2">"G-Comptabilité"</span>
+</code></pre></div>
+<blockquote>
+<p>🧪 <strong>TP3</strong> : groupes <strong>globaux</strong> par service (<code>G-Direction</code>, <code>G-Informatique</code>…). <strong>TP4</strong> : groupes de <strong>domaine local</strong> par ressource (<code>DL-Documentation-Lecture</code>…).</p>
+</blockquote>
+<h3 id="44-conteneurs-et-unités-dorganisation">4.4 Conteneurs et unités d'organisation</h3>
+<p><strong>Les conteneurs système</strong> existent par défaut. On ne peut pas en créer, et on <strong>ne peut pas y lier de GPO</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Conteneur</th>
+<th>Contenu</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Builtin</strong></td>
+<td>Groupes de domaine local intégrés (Administrateurs, Opérateurs de sauvegarde…)</td>
+</tr>
+<tr>
+<td><strong>Computers</strong></td>
+<td>Les ordinateurs qui rejoignent le domaine, <strong>par défaut</strong></td>
+</tr>
+<tr>
+<td><strong>Users</strong></td>
+<td>Utilisateurs et groupes par défaut (Administrateur, Admins du domaine…)</td>
+</tr>
+<tr>
+<td><strong>System</strong></td>
+<td>Objets internes au fonctionnement d'AD (ex : conteneur des PSO)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Les unités d'organisation</strong> sont créées par l'administrateur. Elles servent à <strong>3 choses</strong> :</p>
+<ol>
+<li><strong>Appliquer des GPO</strong> ciblées ;</li>
+<li><strong>Déléguer</strong> l'administration ;</li>
+<li><strong>Organiser</strong> les objets.</li>
+</ol>
+<blockquote>
+<p>⚠️ Un objet ne peut être que dans <strong>un seul</strong> conteneur à la fois. Bonne pratique : créer ses objets <strong>dans ses propres OU</strong>, pas dans les conteneurs par défaut.</p>
+<p>🧪 <strong>TP3</strong> : arborescence <code>DOMAD</code> → <code>Utilisateurs / Groupes / Stations / Serveurs</code> → un sous-dossier par service. <strong>TP5</strong> : on doit déplacer W10-CL1 et SRV1 hors de <code>Computers</code> pour que les GPO ordinateur s'appliquent.</p>
+</blockquote>
+<hr />
+<h2 id="5-les-sites-active-directory">5. Les sites Active Directory</h2>
+<p>Un <strong>site</strong> représente un <strong>lieu géographique</strong> relié par un réseau rapide (ex : Nantes, Quimper). Il est défini par ses <strong>sous-réseaux</strong> IP.</p>
+<p><strong>À quoi ça sert ?</strong>
+- Un client s'authentifie auprès d'un <strong>DC proche</strong> (du même site).
+- On contrôle <strong>quand</strong> a lieu la réplication entre sites (fenêtre de réplication).
+- Les utilisateurs accèdent aux <strong>services les plus proches</strong> (ex : DFS).</p>
+<pre class="mermaid"><code>flowchart LR
+    subgraph S1["🏢 Site Siege — 192.168.0.0/16"]
+        CD1["🖥️ CD1"] &lt;--&gt;|"intrasite&lt;br/&gt;quasi instantanée"| CD2["🖥️ CD2"]
+    end
+    subgraph S2["🏬 Site Agence — 172.16.0.0/16"]
+        DC3["🖥️ futur DC"]
+    end
+    S1 &lt;--&gt;|"intersite via un lien de site&lt;br/&gt;(DEFAULTIPSITELINK)&lt;br/&gt;planifiable"| S2</code></pre>
+<table>
+<thead>
+<tr>
+<th>Réplication <strong>intrasite</strong> (même site)</th>
+<th>Réplication <strong>intersite</strong> (entre sites)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Permanente, <strong>moins d'une minute</strong></td>
+<td>Planifiée selon le <strong>lien de site</strong></td>
+</tr>
+<tr>
+<td>Objets de connexion créés <strong>par paires</strong></td>
+<td>Passe par les liens de site</td>
+</tr>
+<tr>
+<td>Topologie mise à jour <strong>automatiquement</strong></td>
+<td>Configurable (coût, horaires)</td>
+</tr>
+</tbody>
+</table>
+<p>Le <strong>KCC</strong> (<em>Knowledge Consistency Checker</em>) est le service qui calcule <strong>automatiquement</strong> qui réplique avec qui (les <strong>objets de connexion</strong>).</p>
+<div class="highlight"><pre><span></span><code><span class="n">repadmin</span> <span class="p">/</span><span class="n">replsummary</span>   <span class="c"># résumé de l'état de la réplication</span>
+<span class="n">repadmin</span> <span class="p">/</span><span class="n">showrepl</span>      <span class="c"># détail de la réplication</span>
+<span class="n">repadmin</span> <span class="p">/</span><span class="n">syncall</span>       <span class="c"># force la synchronisation avec tous les partenaires</span>
+<span class="n">repadmin</span> <span class="p">/</span><span class="n">kcc</span>           <span class="c"># force le KCC à recalculer la topologie</span>
+</code></pre></div>
+<blockquote>
+<p>🧪 <strong>TP3</strong> : on renomme le site par défaut en <strong>Siege</strong>, on crée le site <strong>Agence</strong> avec le sous-réseau <code>172.16.0.0/16</code>, et <code>nltest /dsgetsite</code> confirme que W10-CL1 est dans le site Siege → <a href="../TP/tp03-gestion-domaine-ad/">voir TP3</a></p>
+</blockquote>
+<hr />
+<h2 id="6-laccès-aux-ressources">6. L'accès aux ressources</h2>
+<h3 id="61-les-autorisations-ntfs">6.1 Les autorisations NTFS</h3>
+<p><strong>À quoi ça sert ?</strong> Définir <strong>qui</strong> peut faire <strong>quoi</strong> sur un dossier ou un fichier, sur un disque formaté en <strong>NTFS</strong> (ou ReFS). On les gère dans l'onglet <strong>Sécurité</strong>.</p>
+<p><strong>À qui s'appliquent-elles ?</strong> À toute entité qui a un <strong>SID</strong> : utilisateurs, groupes, ordinateurs. <strong>On privilégie les groupes.</strong></p>
+<p><strong>Les autorisations de base :</strong></p>
+<table>
+<thead>
+<tr>
+<th>Autorisation</th>
+<th>Permet de…</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Lecture</strong></td>
+<td>Voir le contenu des fichiers</td>
+</tr>
+<tr>
+<td><strong>Affichage du contenu du dossier</strong></td>
+<td>Lister le contenu d'un dossier</td>
+</tr>
+<tr>
+<td><strong>Lecture et exécution</strong></td>
+<td>Lire + lancer des programmes</td>
+</tr>
+<tr>
+<td><strong>Écriture</strong></td>
+<td>Créer des fichiers et dossiers</td>
+</tr>
+<tr>
+<td><strong>Modification</strong></td>
+<td>Tout ce qui précède + <strong>supprimer</strong></td>
+</tr>
+<tr>
+<td><strong>Contrôle total</strong></td>
+<td>Tout + <strong>modifier les autorisations</strong> et <strong>s'approprier</strong> l'objet</td>
+</tr>
+</tbody>
+</table>
+<p>Il existe aussi des <strong>autorisations avancées</strong>, plus fines : parcours du dossier, création de fichiers, suppression, appropriation…</p>
+<p><strong>Les règles de calcul :</strong></p>
+<table>
+<thead>
+<tr>
+<th>Règle</th>
+<th>Explication</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Cumul</strong></td>
+<td>Si tu es dans 2 groupes (Lecture + Modification), tu as <strong>Modification</strong></td>
+</tr>
+<tr>
+<td><strong>Le refus l'emporte</strong></td>
+<td>Un <strong>Refuser</strong> annule l'autorisation correspondante</td>
+</tr>
+<tr>
+<td><strong>Ce qui n'est pas autorisé est interdit</strong></td>
+<td>Sans aucune règle pour toi, tu n'as <strong>aucun accès</strong> (refus <em>implicite</em>)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Explicite ou héritée ?</strong>
+- <strong>Explicite</strong> : définie directement sur l'objet.
+- <strong>Héritée</strong> : reçue automatiquement du dossier parent. Elle apparaît <strong>grisée</strong> dans l'onglet Sécurité.
+- On peut <strong>désactiver l'héritage</strong> sur un dossier pour repartir de zéro.
+- Ordre de priorité : <strong>Refus explicite &gt; Autorisation explicite &gt; Refus hérité &gt; Autorisation héritée</strong>.</p>
+<p><strong>Copier ou déplacer un fichier, que deviennent ses droits ?</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><strong>Même partition</strong></th>
+<th><strong>Autre partition / disque</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Déplacer</strong></td>
+<td><strong>Conserve</strong> ses droits</td>
+<td><strong>Hérite</strong> du dossier de destination</td>
+</tr>
+<tr>
+<td><strong>Copier</strong></td>
+<td><strong>Hérite</strong> du dossier de destination</td>
+<td><strong>Hérite</strong> du dossier de destination</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>🧠 <strong>Astuce</strong> : un seul cas conserve les droits d'origine, le <strong>déplacement sur la même partition</strong>. C'est logique : le fichier ne bouge pas vraiment, seul son « chemin » change.</p>
+</blockquote>
+<h3 id="62-les-partages">6.2 Les partages</h3>
+<p>Un <strong>partage</strong> rend un dossier accessible <strong>par le réseau</strong> (<code>\\SRV1\Compta</code>). Il a ses propres autorisations, avec <strong>3 niveaux</strong> : <strong>Lecture</strong>, <strong>Modification</strong>, <strong>Contrôle total</strong>. On y retrouve le cumul des droits et le refus prioritaire.</p>
+<p>Un nom qui se termine par <strong><code>$</code></strong> (<code>Info$</code>) rend le partage <strong>invisible</strong> dans la liste, mais il reste accessible si on connaît son nom.</p>
+<h3 id="63-les-droits-effectifs--partage--ntfs">6.3 Les droits effectifs : partage + NTFS</h3>
+<pre class="mermaid"><code>flowchart LR
+    U["👤 Utilisateur"] --&gt;|"1️⃣ passe d'abord par"| P["🚪 Droits de PARTAGE"]
+    P --&gt;|"2️⃣ puis par"| N["🔐 Droits NTFS"]
+    N --&gt; F["📂 Dossier"]
+    R["⚖️ Droit final =&lt;br/&gt;le PLUS RESTRICTIF des deux"]</code></pre>
+<p><strong>Exemple</strong> : partage en <em>Lecture</em> + NTFS en <em>Contrôle total</em> → l'utilisateur n'a que la <strong>Lecture</strong>.</p>
+<blockquote>
+<p>💡 <strong>Bonne pratique</strong> (et exemple du cours) : partage en <strong>Contrôle total pour les Utilisateurs authentifiés</strong>, et <strong>tout le filtrage en NTFS</strong>. Il n'y a ainsi qu'un seul endroit à vérifier.</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="nb">Get-SmbShare</span>                                                         <span class="c"># lister les partages</span>
+<span class="nb">New-SmbShare</span> <span class="n">-Name</span> <span class="s2">"Compta"</span> <span class="n">-Path</span> <span class="s2">"E:\DATA\Services\Comptabilité"</span> <span class="n">-FullAccess</span> <span class="s2">"Utilisateurs authentifiés"</span>
+<span class="nb">Set-SmbShare</span> <span class="n">-Name</span> <span class="s2">"Compta"</span> <span class="n">-Description</span> <span class="s2">"Partage de la comptabilité"</span>
+<span class="nb">Remove-SmbShare</span> <span class="n">-Name</span> <span class="s2">"Compta"</span>
+</code></pre></div>
+<h3 id="64-la-méthode-agdlp">6.4 La méthode AGDLP</h3>
+<p>C'est <strong>la</strong> méthode recommandée par Microsoft pour donner des accès :</p>
+<pre class="mermaid"><code>flowchart LR
+    A["👤 A&lt;br/&gt;Account&lt;br/&gt;Pénélope"] --&gt; G["👥 G&lt;br/&gt;groupe Global&lt;br/&gt;G-Rédaction"]
+    G --&gt; DL["🔑 DL&lt;br/&gt;groupe Domaine Local&lt;br/&gt;DL-Modification-Articles"]
+    DL --&gt; P["📂 P&lt;br/&gt;Permission&lt;br/&gt;Modification sur Articles"]</code></pre>
+<table>
+<thead>
+<tr>
+<th>Côté <strong>gestion des utilisateurs</strong> (A → G)</th>
+<th>Côté <strong>gestion de la ressource</strong> (DL → P)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>On range les gens par service</td>
+<td>On crée un groupe par droit sur la ressource</td>
+</tr>
+<tr>
+<td>Un nouvel arrivant ? On l'ajoute au groupe global</td>
+<td>Qui peut modifier Articles ? On lit les membres du DL</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>🧪 <strong>TP4</strong> : <code>Christelle</code> → <code>G-Comptabilité</code> → <code>DL-Compta-Modification</code> → <em>Modification</em> sur <code>E:\DATA\Services\Comptabilité</code> → <a href="../TP/tp04-gestion-ressources/">voir TP4</a></p>
+</blockquote>
+<h3 id="65-les-imprimantes">6.5 Les imprimantes</h3>
+<p><strong>Vocabulaire Microsoft</strong> (piège d'examen !) :</p>
+<table>
+<thead>
+<tr>
+<th>Terme</th>
+<th>Signification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Périphérique d'impression</strong></td>
+<td>La machine <strong>physique</strong> (ce qu'on appelle couramment « l'imprimante »)</td>
+</tr>
+<tr>
+<td><strong>Imprimante</strong></td>
+<td>L'objet <strong>logique</strong> dans Windows, avec son pilote, ses droits et ses horaires</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Plusieurs imprimantes → 1 périphérique</strong> : pour avoir des réglages différents (horaires, priorités, droits).</li>
+<li><strong>1 imprimante → plusieurs périphériques</strong> : c'est un <strong>pool d'impression</strong>, qui répartit les travaux.</li>
+</ul>
+<p>Le rôle <strong>Serveur d'impression</strong> fournit la console <strong>Gestion de l'impression</strong> (<code>printmanagement.msc</code>) : pilotes, ports TCP/IP, imprimantes, <strong>déploiement par GPO</strong>.</p>
+<p><strong>Les autorisations d'impression :</strong></p>
+<table>
+<thead>
+<tr>
+<th>Autorisation</th>
+<th>Permet de…</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Imprimer</strong></td>
+<td>Envoyer des documents</td>
+</tr>
+<tr>
+<td><strong>Gérer les documents</strong></td>
+<td>Suspendre, reprendre, supprimer les travaux <strong>des autres</strong> (gérer la file d'attente)</td>
+</tr>
+<tr>
+<td><strong>Gérer cette imprimante</strong></td>
+<td>Modifier la configuration, partager, changer les droits</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Déployer les imprimantes</strong> : manuellement, par script ou par <strong>GPO</strong> (depuis la console Gestion de l'impression).</p>
+<blockquote>
+<p>🧪 <strong>TP4</strong> : SRV1 devient serveur d'impression. Pour limiter la Comptabilité à la plage 20h-6h, on crée <strong>2 imprimantes logiques</strong> vers le <strong>même périphérique</strong>. <strong>TP5</strong> : on les déploie par GPO → <a href="../TP/tp04-gestion-ressources/">voir TP4</a></p>
+</blockquote>
+<h3 id="66-la-délégation-administrative">6.6 La délégation administrative</h3>
+<p><strong>Principe</strong> : confier des <strong>tâches ciblées</strong> (réinitialiser des mots de passe, créer des comptes…) sur une <strong>OU précise</strong> à un <strong>groupe</strong> qui n'est pas administrateur du domaine. C'est le principe du <strong>moindre privilège</strong>.</p>
+<p>Pour déléguer, il faut définir 3 choses :
+1. <strong>Quels privilèges</strong> ?
+2. <strong>À qui</strong> ? Toujours un <strong>groupe de sécurité</strong>.
+3. <strong>Où</strong> ? Une <strong>OU</strong>.</p>
+<p><strong>Comment ?</strong> Tout objet AD a une <strong>ACL</strong>. L'assistant <strong>Délégation de contrôle</strong> (clic droit sur une OU dans <code>dsa.msc</code>) y ajoute les bons droits. La liste des tâches proposées vient du fichier <code>C:\Windows\System32\delegwiz.inf</code>.</p>
+<p><strong>Fournir l'outil adapté</strong> : on crée une <strong>MMC personnalisée</strong> qui ne montre que l'OU concernée et les tâches déléguées. Les étapes :
+1. Nouvelle MMC avec le composant <em>Utilisateurs et ordinateurs AD</em>.
+2. Sur l'OU déléguée, choisir <strong>Nouvelle fenêtre à partir d'ici</strong>.
+3. Créer une <strong>vue de liste des tâches</strong> et y ajouter les tâches déléguées.
+4. Enregistrer la console et la donner aux personnes concernées.</p>
+<blockquote>
+<p>🧪 <strong>TP4</strong> : <strong>David</strong> gère les comptes de l'OU Comptabilité, le <strong>Support technique</strong> gère toutes les OU <strong>sauf</strong> Informatique, et <strong>Isabelle</strong> est dans <strong>Admins du domaine</strong> → <a href="../TP/tp04-gestion-ressources/">voir TP4</a></p>
+</blockquote>
+<hr />
+<h2 id="7-les-stratégies-de-groupe-gpo">7. Les stratégies de groupe (GPO)</h2>
+<h3 id="71-le-principe">7.1 Le principe</h3>
+<p>Presque toute la configuration de Windows est stockée dans le <strong>registre</strong>. Une <strong>GPO</strong> modifie des valeurs du registre sur <strong>un ensemble de machines ou d'utilisateurs</strong>, depuis une console graphique, sans passer sur chaque poste.</p>
+<p><strong>Objectifs</strong> : réduire le <strong>coût total de possession</strong> (TCO) et améliorer le <strong>retour sur investissement</strong> (ROI), en réduisant les tâches d'administration et en simplifiant les déploiements.</p>
+<p><strong>Les ruches du registre :</strong></p>
+<table>
+<thead>
+<tr>
+<th>Ruche</th>
+<th>Contenu</th>
+<th>Côté GPO</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>HKEY_LOCAL_MACHINE</strong> (HKLM)</td>
+<td>Configuration de <strong>l'ordinateur</strong></td>
+<td>Configuration <strong>ordinateur</strong></td>
+</tr>
+<tr>
+<td><strong>HKEY_CURRENT_USER</strong> (HKCU)</td>
+<td>Configuration de <strong>l'utilisateur connecté</strong></td>
+<td>Configuration <strong>utilisateur</strong></td>
+</tr>
+<tr>
+<td><strong>HKEY_USERS</strong></td>
+<td>Tous les profils chargés</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>HKEY_CLASSES_ROOT</strong></td>
+<td>Applications, extensions de fichiers</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>HKEY_CURRENT_CONFIG</strong></td>
+<td>Profil matériel utilisé</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Stratégie de groupe ou stratégie locale ?</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>Stratégie de groupe</strong></th>
+<th><strong>Stratégie locale</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nécessite un <strong>domaine</strong></td>
+<td>Fonctionne avec ou sans domaine</td>
+</tr>
+<tr>
+<td>S'applique à <strong>des ensembles</strong> d'objets</td>
+<td>Se configure <strong>poste par poste</strong> (<code>gpedit.msc</code>)</td>
+</tr>
+<tr>
+<td><strong>L'emporte</strong> en cas de conflit</td>
+<td>Perd face à une GPO</td>
+</tr>
+</tbody>
+</table>
+<h3 id="72-comment-une-gpo-arrive-sur-un-poste">7.2 Comment une GPO arrive sur un poste</h3>
+<pre class="mermaid"><code>flowchart LR
+    DC["🖥️ Contrôleur de domaine&lt;br/&gt;GPO stockées dans SYSVOL"] --&gt;|"téléchargement"| CSE["⚙️ Extensions côté client (CSE)&lt;br/&gt;sur chaque poste"]
+    CSE --&gt;|"appliquent les paramètres"| REG["🗂️ Registre / sécurité&lt;br/&gt;du poste"]</code></pre>
+<p><strong>Quand les GPO sont-elles appliquées ?</strong>
+- au <strong>démarrage</strong> (paramètres ordinateur) et à l'<strong>ouverture de session</strong> (paramètres utilisateur) ;
+- puis en arrière-plan toutes les <strong>90 minutes ± 30 minutes</strong> ;
+- sur les <strong>contrôleurs de domaine</strong> : toutes les <strong>5 minutes</strong>.</p>
+<p>Pour forcer l'application immédiate : <strong><code>gpupdate /force</code></strong>.</p>
+<h3 id="73-le-ciblage--où-lier-une-gpo-">7.3 Le ciblage : où lier une GPO ?</h3>
+<p>Une GPO se <strong>lie</strong> à un <strong>Site</strong>, un <strong>Domaine</strong> ou une <strong>OU</strong>. Elle s'applique :
+- aux <strong>ordinateurs</strong> de ce conteneur (et des sous-conteneurs) pour la partie <strong>ordinateur</strong> ;
+- aux <strong>utilisateurs</strong> de ce conteneur (et des sous-conteneurs) pour la partie <strong>utilisateur</strong>.</p>
+<blockquote>
+<p>⚠️ <strong>Une GPO ne s'applique PAS à un groupe</strong> en le liant. Pour cibler un groupe, on utilise le <strong>filtrage de sécurité</strong> (voir 7.5).</p>
+</blockquote>
+<h3 id="74-lordre-dapplication--lsdou">7.4 L'ordre d'application : LSDOU</h3>
+<pre class="mermaid"><code>flowchart LR
+    L["1️⃣ Local"] --&gt; S["2️⃣ Site"] --&gt; D["3️⃣ Domaine"] --&gt; O["4️⃣ OU parente"] --&gt; O2["5️⃣ OU enfant"]
+    O2 --&gt; W["🏆 La DERNIÈRE appliquée gagne&lt;br/&gt;= la plus proche de l'objet"]</code></pre>
+<ul>
+<li><strong>Cumul</strong> : si les GPO règlent des paramètres <strong>différents</strong>, tout s'additionne.</li>
+<li><strong>Conflit</strong> : si deux GPO règlent le <strong>même</strong> paramètre différemment, c'est la <strong>dernière appliquée</strong> qui gagne, donc la plus proche de l'objet.</li>
+<li><strong>Dans une même OU</strong> : les GPO avec le numéro d'ordre de liaison <strong>le plus élevé</strong> sont appliquées en premier. C'est donc la GPO <strong>n°1</strong> qui a le dernier mot.</li>
+</ul>
+<h3 id="75-restreindre-ou-forcer-une-gpo">7.5 Restreindre ou forcer une GPO</h3>
+<table>
+<thead>
+<tr>
+<th>Mécanisme</th>
+<th>Effet</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Blocage de l'héritage</strong> (sur une OU)</td>
+<td>L'OU <strong>ignore toutes</strong> les GPO héritées de ses parents</td>
+</tr>
+<tr>
+<td><strong>Appliqué</strong> (ou <em>renforcé</em>, sur un lien)</td>
+<td>La GPO <strong>passe outre</strong> le blocage d'héritage et devient <strong>prioritaire</strong></td>
+</tr>
+<tr>
+<td><strong>Filtrage de sécurité</strong></td>
+<td>Autorise ou refuse la <strong>lecture</strong> et l'<strong>application</strong> de la GPO à certains groupes</td>
+</tr>
+<tr>
+<td><strong>Filtre WMI</strong></td>
+<td>Applique la GPO seulement si une condition sur la machine est vraie (version d'OS, type de machine…)</td>
+</tr>
+<tr>
+<td><strong>État de la GPO</strong></td>
+<td>Activée, désactivée, ou partie utilisateur / ordinateur désactivée</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>🧪 <strong>TP5</strong> :
+- <strong>filtrage de sécurité</strong> : la GPO Intérimaires ne s'applique qu'à <code>G-Intérimaires</code> ;
+- <strong>refus</strong> : la redirection de dossiers exclut les intérimaires ;
+- <strong>filtre WMI</strong> : <code>ProductType = 3</code> cible uniquement les serveurs membres pour le Bureau à distance.</p>
+<p><a href="../TP/tp05-strategies-de-groupe/">Voir TP5</a></p>
+</blockquote>
+<h3 id="76-diagnostiquer-une-gpo-qui-ne-marche-pas">7.6 Diagnostiquer une GPO qui ne marche pas</h3>
+<p><strong>Première question : la GPO a-t-elle été appliquée ?</strong></p>
+<table>
+<thead>
+<tr>
+<th>GPO <strong>appliquée</strong> mais sans effet</th>
+<th>GPO <strong>non appliquée</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Paramètre <strong>non pris en charge</strong> par cette version de Windows</td>
+<td>Problème de <strong>liaison</strong> (mauvaise OU, objet mal rangé)</td>
+</tr>
+<tr>
+<td><strong>Conflit</strong> avec une autre GPO prioritaire</td>
+<td><strong>Filtrage de sécurité</strong> qui l'exclut</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Outils :</strong>
+- <code>gpresult /r</code> sur le poste concerné (ou <code>gpresult /h rapport.html</code> pour le détail) ;
+- l'assistant <strong>Résultats de stratégie de groupe</strong> dans <code>gpmc.msc</code>.</p>
+<h3 id="77-les-modèles-dadministration">7.7 Les modèles d'administration</h3>
+<p>Les paramètres configurables par GPO sont décrits dans des <strong>modèles d'administration</strong>, composés de 2 types de fichiers :
+- <strong><code>.admx</code></strong> : la liste des paramètres ;
+- <strong><code>.adml</code></strong> : les textes traduits, un fichier par langue, rangé dans le dossier de la langue (ex : <code>fr-FR</code>).</p>
+<p>Des modèles supplémentaires s'ajoutent selon les besoins : Microsoft Office, Firefox…</p>
+<table>
+<thead>
+<tr>
+<th>Stockage <strong>local</strong></th>
+<th><strong>Magasin central</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>C:\Windows\PolicyDefinitions</code></td>
+<td><code>SYSVOL\&lt;domaine&gt;\Policies\PolicyDefinitions</code></td>
+</tr>
+<tr>
+<td>Chaque poste utilise <strong>ses propres</strong> modèles</td>
+<td><strong>Tous</strong> les éditeurs de GPO utilisent <strong>les mêmes</strong> modèles</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>🧪 <strong>TP5</strong> : on copie <code>PolicyDefinitions</code> dans SYSVOL pour créer le magasin central.</p>
+</blockquote>
+<h3 id="78-les-stratégies-de-mot-de-passe">7.8 Les stratégies de mot de passe</h3>
+<p>Les <strong>stratégies de compte</strong> (mot de passe, verrouillage) sont <strong>uniques pour tout le domaine</strong>. Elles se règlent dans la <strong>Default Domain Policy</strong>, liée à la racine du domaine.</p>
+<p>Pour appliquer des règles <strong>différentes à un groupe</strong>, on utilise les <strong>stratégies de mots de passe affinées</strong> avec des objets <strong>PSO</strong> (<em>Password Settings Objects</em>) :
+- ce ne sont <strong>pas</strong> des GPO, on les crée dans le <strong>Centre d'administration AD</strong> ou en PowerShell ;
+- ils sont stockés dans <strong>System → Password Settings Container</strong> ;
+- ils s'appliquent à un <strong>groupe de sécurité</strong> ou à des utilisateurs.</p>
+<blockquote>
+<p>🧪 <strong>TP5</strong> : Default Domain Policy avec 10 caractères, complexité, historique de 20, changement tous les 30 jours. <strong>PSO-Informatique</strong> : verrouillage après 2 échecs, déverrouillage par un administrateur uniquement.</p>
+</blockquote>
+<hr />
+<h2 id="8-powershell--les-bases-pour-scripter">8. PowerShell : les bases pour scripter</h2>
+<h3 id="81-comprendre-une-commande">8.1 Comprendre une commande</h3>
+<p>Une commande PowerShell (<em>cmdlet</em>) s'écrit toujours <strong>Verbe-Nom</strong> :</p>
+<table>
+<thead>
+<tr>
+<th>Verbe</th>
+<th>Sens</th>
+<th>Exemple</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Get</code></td>
+<td>Lire, afficher</td>
+<td><code>Get-ADUser</code></td>
+</tr>
+<tr>
+<td><code>New</code></td>
+<td>Créer</td>
+<td><code>New-ADGroup</code></td>
+</tr>
+<tr>
+<td><code>Set</code></td>
+<td>Modifier</td>
+<td><code>Set-ADUser</code></td>
+</tr>
+<tr>
+<td><code>Remove</code></td>
+<td>Supprimer</td>
+<td><code>Remove-ADGroup</code></td>
+</tr>
+<tr>
+<td><code>Add</code></td>
+<td>Ajouter à quelque chose</td>
+<td><code>Add-ADGroupMember</code></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="c"># Trouver une commande : toutes celles qui parlent de "ADUser"</span>
+<span class="nb">Get-Command</span> <span class="p">*</span><span class="n">ADUser</span><span class="p">*</span>
+
+<span class="c"># Afficher l'aide et des exemples d'une commande</span>
+<span class="nb">Get-Help</span> <span class="nb">New-ADUser</span> <span class="n">-Examples</span>
+</code></pre></div>
+<h3 id="82-les-briques-de-base">8.2 Les briques de base</h3>
+<div class="highlight"><pre><span></span><code><span class="c"># --- Une VARIABLE : une boîte qui contient une valeur, son nom commence par $ ---</span>
+<span class="nv">$service</span> <span class="p">=</span> <span class="s2">"Comptabilité"</span>
+<span class="nb">Write-Host</span> <span class="s2">"Le service est : $service"</span>
+
+<span class="c"># --- Un TABLEAU : une liste de valeurs séparées par des virgules ---</span>
+<span class="nv">$services</span> <span class="p">=</span> <span class="s2">"Direction"</span><span class="p">,</span> <span class="s2">"Informatique"</span><span class="p">,</span> <span class="s2">"Comptabilité"</span>
+
+<span class="c"># --- Le PIPELINE | : le résultat d'une commande est envoyé à la suivante ---</span>
+<span class="c"># Ici : tous les utilisateurs → on garde les désactivés → on affiche leur nom</span>
+<span class="nb">Get-ADUser</span> <span class="n">-Filter</span> <span class="p">*</span> <span class="p">|</span> <span class="nb">Where-Object</span> <span class="n">Enabled</span> <span class="o">-eq</span> <span class="nv">$false</span> <span class="p">|</span> <span class="nb">Select-Object</span> <span class="n">Name</span>
+</code></pre></div>
+<h3 id="83-les-boucles-et-les-conditions">8.3 Les boucles et les conditions</h3>
+<div class="highlight"><pre><span></span><code><span class="c"># --- FOREACH : répéter une action pour CHAQUE élément d'une liste ---</span>
+<span class="nv">$services</span> <span class="p">=</span> <span class="s2">"Direction"</span><span class="p">,</span> <span class="s2">"Informatique"</span><span class="p">,</span> <span class="s2">"Comptabilité"</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$service</span> <span class="k">in</span> <span class="nv">$services</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nb">Write-Host</span> <span class="s2">"Traitement du service $service"</span>
+<span class="p">}</span>
+
+<span class="c"># --- FOR : répéter une action un NOMBRE de fois ---</span>
+<span class="c"># $i commence à 1, on continue tant que $i est inférieur ou égal à 3, et on ajoute 1 à chaque tour</span>
+<span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="p">=</span> <span class="n">1</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">-le</span> <span class="n">3</span><span class="p">;</span> <span class="nv">$i</span><span class="p">++)</span> <span class="p">{</span>
+    <span class="nb">Write-Host</span> <span class="s2">"Tour numéro $i"</span>
+<span class="p">}</span>
+
+<span class="c"># --- IF / ELSE : faire une action SEULEMENT si une condition est vraie ---</span>
+<span class="nv">$nombre</span> <span class="p">=</span> <span class="n">5</span>
+<span class="k">if</span> <span class="p">(</span><span class="nv">$nombre</span> <span class="o">-gt</span> <span class="n">3</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nb">Write-Host</span> <span class="s2">"$nombre est plus grand que 3"</span>
+<span class="p">}</span>
+<span class="k">else</span> <span class="p">{</span>
+    <span class="nb">Write-Host</span> <span class="s2">"$nombre est plus petit ou égal à 3"</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Les opérateurs de comparaison</strong> (pas de <code>&gt;</code> ni <code>=</code> en PowerShell !) :</p>
+<table>
+<thead>
+<tr>
+<th>Opérateur</th>
+<th>Signification</th>
+<th>Opérateur</th>
+<th>Signification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-eq</code></td>
+<td>égal (<em>equal</em>)</td>
+<td><code>-ne</code></td>
+<td>différent (<em>not equal</em>)</td>
+</tr>
+<tr>
+<td><code>-gt</code></td>
+<td>plus grand (<em>greater than</em>)</td>
+<td><code>-lt</code></td>
+<td>plus petit (<em>less than</em>)</td>
+</tr>
+<tr>
+<td><code>-ge</code></td>
+<td>plus grand ou égal</td>
+<td><code>-le</code></td>
+<td>plus petit ou égal</td>
+</tr>
+<tr>
+<td><code>-like</code></td>
+<td>ressemble à (avec <code>*</code>)</td>
+<td><code>-notlike</code></td>
+<td>ne ressemble pas à</td>
+</tr>
+</tbody>
+</table>
+<h3 id="84-lancer-un-script">8.4 Lancer un script</h3>
+<ol>
+<li>Écris ton script dans <strong>PowerShell ISE</strong> ou <strong>VS Code</strong>.</li>
+<li>Enregistre-le avec l'extension <strong><code>.ps1</code></strong>, en <strong>UTF-8 avec BOM</strong> pour que les accents s'affichent bien.</li>
+<li>Autorise l'exécution des scripts (une seule fois, en administrateur) :</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c"># Autorise les scripts locaux ; les scripts téléchargés doivent être signés</span>
+<span class="nb">Set-ExecutionPolicy</span> <span class="n">RemoteSigned</span>
+</code></pre></div>
+<ol>
+<li>Lance-le depuis son dossier :</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="p">.\</span><span class="n">MonScript</span><span class="p">.</span><span class="n">ps1</span>
+</code></pre></div>
+<hr />
+<h2 id="9-scripts-dexemple">9. Scripts d'exemple</h2>
+<p>Tous ces scripts sont <strong>courts</strong> et utilisent uniquement les briques vues plus haut : variables, tableaux, <code>foreach</code>, <code>for</code>, <code>if</code>.</p>
+<h3 id="script-1--vérifier-que-les-machines-de-la-maquette-répondent">Script 1 — Vérifier que les machines de la maquette répondent</h3>
+<p>📍 <em>À lancer depuis n'importe quelle machine de la maquette</em> · lien : <strong>TP1</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c"># Liste des machines à tester</span>
+<span class="nv">$machines</span> <span class="p">=</span> <span class="s2">"CD1"</span><span class="p">,</span> <span class="s2">"CD2"</span><span class="p">,</span> <span class="s2">"SRV1"</span><span class="p">,</span> <span class="s2">"W10-CL1"</span>
+
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$machine</span> <span class="k">in</span> <span class="nv">$machines</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c"># Test-Connection -Quiet renvoie simplement Vrai ($true) ou Faux ($false)</span>
+    <span class="nv">$repond</span> <span class="p">=</span> <span class="nb">Test-Connection</span> <span class="nv">$machine</span> <span class="n">-Count</span> <span class="n">1</span> <span class="n">-Quiet</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$repond</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nb">Write-Host</span> <span class="s2">"$machine répond"</span> <span class="n">-ForegroundColor</span> <span class="n">Green</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="p">{</span>
+        <span class="nb">Write-Host</span> <span class="s2">"$machine ne répond pas !"</span> <span class="n">-ForegroundColor</span> <span class="n">Red</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<p>💡 Si une machine ne répond pas, vérifie son IP, son DNS et la règle de pare-feu ICMP (voir TP1).</p>
+</blockquote>
+<h3 id="script-2--créer-les-ou-et-les-groupes-globaux-des-services">Script 2 — Créer les OU et les groupes globaux des services</h3>
+<p>📍 <em>Sur un DC ou W10-CL1 avec RSAT</em> · lien : <strong>TP3</strong></p>
+<blockquote>
+<p>⚠️ Ce script suppose que les OU <code>Utilisateurs</code> et <code>Groupes</code> existent, mais pas encore les OU des services. Sur ta maquette du TP3, où elles existent déjà, il affichera des erreurs « objet déjà existant » : c'est normal.</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="c"># Les services de l'entreprise</span>
+<span class="nv">$services</span> <span class="p">=</span> <span class="s2">"Direction"</span><span class="p">,</span> <span class="s2">"Informatique"</span><span class="p">,</span> <span class="s2">"Comptabilite"</span>
+
+<span class="c"># Emplacements dans l'annuaire</span>
+<span class="nv">$ouUtilisateurs</span> <span class="p">=</span> <span class="s2">"OU=Utilisateurs,OU=DOMAD,DC=domAD,DC=ad"</span>
+<span class="nv">$ouGroupes</span>      <span class="p">=</span> <span class="s2">"OU=Groupes,OU=DOMAD,DC=domAD,DC=ad"</span>
+
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$service</span> <span class="k">in</span> <span class="nv">$services</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c"># 1. Une OU pour ranger les utilisateurs du service</span>
+    <span class="nb">New-ADOrganizationalUnit</span> <span class="n">-Name</span> <span class="nv">$service</span> <span class="n">-Path</span> <span class="nv">$ouUtilisateurs</span>
+
+    <span class="c"># 2. Une OU pour ranger les groupes du service</span>
+    <span class="nb">New-ADOrganizationalUnit</span> <span class="n">-Name</span> <span class="nv">$service</span> <span class="n">-Path</span> <span class="nv">$ouGroupes</span>
+
+    <span class="c"># 3. Le groupe global du service, rangé dans son OU</span>
+    <span class="nb">New-ADGroup</span> <span class="n">-Name</span> <span class="s2">"G-$service"</span> <span class="p">`</span>
+                <span class="n">-GroupScope</span> <span class="n">Global</span> <span class="p">`</span>
+                <span class="n">-GroupCategory</span> <span class="n">Security</span> <span class="p">`</span>
+                <span class="n">-Path</span> <span class="s2">"OU=$service,$ouGroupes"</span>
+
+    <span class="nb">Write-Host</span> <span class="s2">"Service $service créé : 2 OU + le groupe G-$service"</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="script-3--créer-des-utilisateurs-depuis-un-fichier-csv">Script 3 — Créer des utilisateurs depuis un fichier CSV</h3>
+<p>📍 <em>Sur un DC ou W10-CL1 avec RSAT</em> · lien : <strong>TP3</strong> · méthode d'import du cours</p>
+<p><strong>Le fichier <code>C:\Scripts\nouveaux.csv</code></strong> (le séparateur <code>;</code> est celui d'Excel en français) :</p>
+<div class="highlight"><pre><span></span><code>Prenom;Nom;Service;Poste
+Julie;Martin;Comptabilite;Comptable
+Paul;Durand;Informatique;Technicien
+Emma;Petit;Direction;Assistante de direction
+</code></pre></div>
+<p><strong>Le script :</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c"># Lit le fichier CSV : chaque ligne devient un "utilisateur" avec les colonnes comme propriétés</span>
+<span class="nv">$utilisateurs</span> <span class="p">=</span> <span class="nb">Import-Csv</span> <span class="s2">"C:\Scripts\nouveaux.csv"</span> <span class="n">-Delimiter</span> <span class="s2">";"</span>
+
+<span class="c"># Mot de passe de départ, commun à tous</span>
+<span class="nv">$motDePasse</span> <span class="p">=</span> <span class="nb">ConvertTo-SecureString</span> <span class="s2">"Cs3cr3t!"</span> <span class="n">-AsPlainText</span> <span class="n">-Force</span>
+
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$u</span> <span class="k">in</span> <span class="nv">$utilisateurs</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c"># Identifiant : 1re lettre du prénom + nom, en minuscules (ex : jmartin)</span>
+    <span class="nv">$login</span> <span class="p">=</span> <span class="p">(</span><span class="nv">$u</span><span class="p">.</span><span class="n">Prenom</span><span class="p">.</span><span class="n">Substring</span><span class="p">(</span><span class="n">0</span><span class="p">,</span> <span class="n">1</span><span class="p">)</span> <span class="p">+</span> <span class="nv">$u</span><span class="p">.</span><span class="n">Nom</span><span class="p">).</span><span class="n">ToLower</span><span class="p">()</span>
+
+    <span class="c"># L'OU dépend du service indiqué dans le CSV</span>
+    <span class="nv">$ou</span> <span class="p">=</span> <span class="s2">"OU=</span><span class="p">$(</span><span class="nv">$u</span><span class="p">.</span><span class="n">Service</span><span class="p">)</span><span class="s2">,OU=Utilisateurs,OU=DOMAD,DC=domAD,DC=ad"</span>
+
+    <span class="nb">New-ADUser</span> <span class="n">-Name</span> <span class="s2">"</span><span class="p">$(</span><span class="nv">$u</span><span class="p">.</span><span class="n">Prenom</span><span class="p">)</span><span class="s2"> </span><span class="p">$(</span><span class="nv">$u</span><span class="p">.</span><span class="n">Nom</span><span class="p">)</span><span class="s2">"</span> <span class="p">`</span>
+               <span class="n">-GivenName</span> <span class="nv">$u</span><span class="p">.</span><span class="n">Prenom</span> <span class="p">`</span>
+               <span class="n">-Surname</span> <span class="nv">$u</span><span class="p">.</span><span class="n">Nom</span> <span class="p">`</span>
+               <span class="n">-SamAccountName</span> <span class="nv">$login</span> <span class="p">`</span>
+               <span class="n">-UserPrincipalName</span> <span class="s2">"$login@domAD.ad"</span> <span class="p">`</span>
+               <span class="n">-Title</span> <span class="nv">$u</span><span class="p">.</span><span class="n">Poste</span> <span class="p">`</span>
+               <span class="n">-Department</span> <span class="nv">$u</span><span class="p">.</span><span class="n">Service</span> <span class="p">`</span>
+               <span class="n">-Path</span> <span class="nv">$ou</span> <span class="p">`</span>
+               <span class="n">-AccountPassword</span> <span class="nv">$motDePasse</span> <span class="p">`</span>
+               <span class="n">-ChangePasswordAtLogon</span> <span class="nv">$true</span> <span class="p">`</span>
+               <span class="n">-Enabled</span> <span class="nv">$true</span>
+
+    <span class="c"># Ajoute l'utilisateur au groupe global de son service</span>
+    <span class="nb">Add-ADGroupMember</span> <span class="n">-Identity</span> <span class="s2">"G-</span><span class="p">$(</span><span class="nv">$u</span><span class="p">.</span><span class="n">Service</span><span class="p">)</span><span class="s2">"</span> <span class="n">-Members</span> <span class="nv">$login</span>
+
+    <span class="nb">Write-Host</span> <span class="s2">"Créé : $login dans le service </span><span class="p">$(</span><span class="nv">$u</span><span class="p">.</span><span class="n">Service</span><span class="p">)</span><span class="s2">"</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<p>💡 <code>-ChangePasswordAtLogon $true</code> oblige l'utilisateur à choisir son propre mot de passe à la première connexion. C'est une bonne pratique de sécurité.</p>
+</blockquote>
+<h3 id="script-4--créer-des-comptes-de-test-numérotés">Script 4 — Créer des comptes de test numérotés</h3>
+<p>📍 <em>Sur un DC ou W10-CL1 avec RSAT</em> · exemple de boucle <strong><code>for</code></strong></p>
+<div class="highlight"><pre><span></span><code><span class="nv">$ou</span> <span class="p">=</span> <span class="s2">"OU=Utilisateurs,OU=DOMAD,DC=domAD,DC=ad"</span>
+
+<span class="c"># Crée test01, test02 ... test05</span>
+<span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="p">=</span> <span class="n">1</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">-le</span> <span class="n">5</span><span class="p">;</span> <span class="nv">$i</span><span class="p">++)</span> <span class="p">{</span>
+    <span class="c"># "{0:D2}" -f $i écrit le nombre sur 2 chiffres : 1 → 01</span>
+    <span class="nv">$login</span> <span class="p">=</span> <span class="s2">"test"</span> <span class="p">+</span> <span class="p">(</span><span class="s2">"{0:D2}"</span> <span class="o">-f</span> <span class="nv">$i</span><span class="p">)</span>
+
+    <span class="c"># Sans mot de passe, le compte est créé désactivé</span>
+    <span class="nb">New-ADUser</span> <span class="n">-Name</span> <span class="nv">$login</span> <span class="n">-SamAccountName</span> <span class="nv">$login</span> <span class="n">-Path</span> <span class="nv">$ou</span>
+
+    <span class="nb">Write-Host</span> <span class="s2">"Compte $login créé (désactivé)"</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Et pour faire le ménage après tes tests :</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="p">=</span> <span class="n">1</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">-le</span> <span class="n">5</span><span class="p">;</span> <span class="nv">$i</span><span class="p">++)</span> <span class="p">{</span>
+    <span class="nv">$login</span> <span class="p">=</span> <span class="s2">"test"</span> <span class="p">+</span> <span class="p">(</span><span class="s2">"{0:D2}"</span> <span class="o">-f</span> <span class="nv">$i</span><span class="p">)</span>
+    <span class="c"># -Confirm:$false : supprime sans demander confirmation</span>
+    <span class="nb">Remove-ADUser</span> <span class="n">-Identity</span> <span class="nv">$login</span> <span class="n">-Confirm</span><span class="p">:</span><span class="nv">$false</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="script-5--vérifier-les-services-dun-contrôleur-de-domaine">Script 5 — Vérifier les services d'un contrôleur de domaine</h3>
+<p>📍 <em>Sur CD1 ou CD2</em> · lien : <strong>TP2</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c"># Services indispensables au fonctionnement d'un DC</span>
+<span class="nv">$services</span> <span class="p">=</span> <span class="p">@(</span>
+    <span class="s2">"NTDS"</span><span class="p">,</span>      <span class="c"># Services de domaine Active Directory</span>
+    <span class="s2">"DNS"</span><span class="p">,</span>       <span class="c"># Serveur DNS</span>
+    <span class="s2">"Netlogon"</span><span class="p">,</span>  <span class="c"># Authentification des utilisateurs et machines</span>
+    <span class="s2">"Kdc"</span><span class="p">,</span>       <span class="c"># Centre de distribution de clés Kerberos</span>
+    <span class="s2">"DFSR"</span>       <span class="c"># Réplication du dossier SYSVOL (et donc des GPO)</span>
+<span class="p">)</span>
+
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$nom</span> <span class="k">in</span> <span class="nv">$services</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$service</span> <span class="p">=</span> <span class="nb">Get-Service</span> <span class="n">-Name</span> <span class="nv">$nom</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$service</span><span class="p">.</span><span class="n">Status</span> <span class="o">-eq</span> <span class="s2">"Running"</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nb">Write-Host</span> <span class="s2">"$nom : en fonctionnement"</span> <span class="n">-ForegroundColor</span> <span class="n">Green</span>
+    <span class="p">}</span>
+    <span class="k">else</span> <span class="p">{</span>
+        <span class="nb">Write-Host</span> <span class="s2">"$nom : ARRÊTÉ (</span><span class="p">$(</span><span class="nv">$service</span><span class="p">.</span><span class="n">Status</span><span class="p">)</span><span class="s2">)"</span> <span class="n">-ForegroundColor</span> <span class="n">Red</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="script-6--rapport-des-comptes-désactivés">Script 6 — Rapport des comptes désactivés</h3>
+<p>📍 <em>Sur un DC ou W10-CL1 avec RSAT</em> · lien : <strong>TP3</strong> (équivalent de la requête enregistrée)</p>
+<div class="highlight"><pre><span></span><code><span class="c"># Récupère tous les comptes utilisateurs désactivés</span>
+<span class="nv">$comptes</span> <span class="p">=</span> <span class="nb">Search-ADAccount</span> <span class="n">-AccountDisabled</span> <span class="n">-UsersOnly</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nv">$comptes</span><span class="p">.</span><span class="n">Count</span> <span class="o">-eq</span> <span class="n">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nb">Write-Host</span> <span class="s2">"Aucun compte désactivé."</span>
+<span class="p">}</span>
+<span class="k">else</span> <span class="p">{</span>
+    <span class="nb">Write-Host</span> <span class="s2">"</span><span class="p">$(</span><span class="nv">$comptes</span><span class="p">.</span><span class="n">Count</span><span class="p">)</span><span class="s2"> compte(s) désactivé(s) :"</span>
+
+    <span class="k">foreach</span> <span class="p">(</span><span class="nv">$compte</span> <span class="k">in</span> <span class="nv">$comptes</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nb">Write-Host</span> <span class="s2">" - </span><span class="p">$(</span><span class="nv">$compte</span><span class="p">.</span><span class="n">Name</span><span class="p">)</span><span class="s2">"</span>
+    <span class="p">}</span>
+
+    <span class="c"># Exporte aussi la liste dans un fichier CSV, lisible avec Excel</span>
+    <span class="nv">$comptes</span> <span class="p">|</span> <span class="nb">Select-Object</span> <span class="n">Name</span><span class="p">,</span> <span class="n">SamAccountName</span><span class="p">,</span> <span class="n">DistinguishedName</span> <span class="p">|</span>
+        <span class="nb">Export-Csv</span> <span class="s2">"C:\Scripts\comptes_desactives.csv"</span> <span class="n">-Delimiter</span> <span class="s2">";"</span> <span class="n">-NoTypeInformation</span> <span class="n">-Encoding</span> <span class="n">UTF8</span>
+
+    <span class="nb">Write-Host</span> <span class="s2">"Rapport enregistré dans C:\Scripts\comptes_desactives.csv"</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr />
+<h2 id="10-mémo-des-commandes">10. Mémo des commandes</h2>
+<h3 id="système-et-réseau">Système et réseau</h3>
+<table>
+<thead>
+<tr>
+<th>Commande</th>
+<th>Utilité</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Get-NetAdapter</code></td>
+<td>Lister les cartes réseau</td>
+</tr>
+<tr>
+<td><code>New-NetIPAddress</code></td>
+<td>Définir une IP fixe</td>
+</tr>
+<tr>
+<td><code>Set-DnsClientServerAddress</code></td>
+<td>Définir le serveur DNS</td>
+</tr>
+<tr>
+<td><code>Rename-Computer</code></td>
+<td>Renommer la machine</td>
+</tr>
+<tr>
+<td><code>Test-Connection</code></td>
+<td>Tester la connexion (ping)</td>
+</tr>
+<tr>
+<td><code>Get-Service</code></td>
+<td>État des services</td>
+</tr>
+<tr>
+<td><code>Get-WinEvent</code></td>
+<td>Lire les journaux d'événements</td>
+</tr>
+</tbody>
+</table>
+<h3 id="active-directory">Active Directory</h3>
+<table>
+<thead>
+<tr>
+<th>Commande</th>
+<th>Utilité</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Install-WindowsFeature AD-Domain-Services</code></td>
+<td>Installer le rôle AD DS</td>
+</tr>
+<tr>
+<td><code>Install-ADDSForest</code> / <code>Install-ADDSDomain</code> / <code>Install-ADDSDomainController</code></td>
+<td>Promouvoir un DC (3 scénarios)</td>
+</tr>
+<tr>
+<td><code>Uninstall-ADDSDomainController</code></td>
+<td>Dépromouvoir un DC</td>
+</tr>
+<tr>
+<td><code>Add-Computer -DomainName</code></td>
+<td>Joindre une machine au domaine</td>
+</tr>
+<tr>
+<td><code>Get-ADForest</code> / <code>Get-ADDomain</code></td>
+<td>Infos forêt / domaine (dont les rôles FSMO)</td>
+</tr>
+<tr>
+<td><code>Move-ADDirectoryServerOperationMasterRole</code></td>
+<td>Transférer des rôles FSMO</td>
+</tr>
+<tr>
+<td><code>netdom query fsmo</code></td>
+<td>Voir les détenteurs des rôles FSMO</td>
+</tr>
+<tr>
+<td><code>New-ADOrganizationalUnit</code></td>
+<td>Créer une OU</td>
+</tr>
+<tr>
+<td><code>New-ADUser</code> / <code>Get-ADUser</code> / <code>Set-ADUser</code></td>
+<td>Créer / chercher / modifier un utilisateur</td>
+</tr>
+<tr>
+<td><code>New-ADGroup</code> / <code>Set-ADGroup</code> / <code>Remove-ADGroup</code></td>
+<td>Créer / modifier / supprimer un groupe</td>
+</tr>
+<tr>
+<td><code>Add-ADGroupMember</code> / <code>Get-ADGroupMember</code></td>
+<td>Ajouter / lister les membres d'un groupe</td>
+</tr>
+<tr>
+<td><code>Move-ADObject</code></td>
+<td>Déplacer un objet dans une autre OU</td>
+</tr>
+<tr>
+<td><code>Search-ADAccount -AccountDisabled</code></td>
+<td>Trouver les comptes désactivés</td>
+</tr>
+<tr>
+<td><code>Import-Csv</code> / <code>Export-Csv</code></td>
+<td>Importer / exporter des données CSV</td>
+</tr>
+<tr>
+<td><code>repadmin /replsummary</code></td>
+<td>État de la réplication</td>
+</tr>
+<tr>
+<td><code>nltest /dsgetsite</code></td>
+<td>Site AD de la machine</td>
+</tr>
+</tbody>
+</table>
+<h3 id="ressources">Ressources</h3>
+<table>
+<thead>
+<tr>
+<th>Commande</th>
+<th>Utilité</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Get-SmbShare</code> / <code>New-SmbShare</code> / <code>Set-SmbShare</code> / <code>Remove-SmbShare</code></td>
+<td>Gérer les partages</td>
+</tr>
+<tr>
+<td><code>icacls</code></td>
+<td>Afficher et modifier les droits NTFS</td>
+</tr>
+<tr>
+<td><code>Add-Printer</code> / <code>Get-Printer</code></td>
+<td>Ajouter / lister des imprimantes</td>
+</tr>
+</tbody>
+</table>
+<h3 id="gpo">GPO</h3>
+<table>
+<thead>
+<tr>
+<th>Commande</th>
+<th>Utilité</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>gpupdate /force</code></td>
+<td>Appliquer les GPO immédiatement</td>
+</tr>
+<tr>
+<td><code>gpresult /r</code></td>
+<td>Voir les GPO appliquées</td>
+</tr>
+<tr>
+<td><code>New-GPO</code> / <code>New-GPLink</code></td>
+<td>Créer / lier une GPO</td>
+</tr>
+<tr>
+<td><code>Get-GPInheritance</code></td>
+<td>GPO héritées par une OU</td>
+</tr>
+</tbody>
+</table>
+<h3 id="consoles-utiles-windows--r">Consoles utiles (<code>Windows + R</code>)</h3>
+<table>
+<thead>
+<tr>
+<th>Commande</th>
+<th>Console</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>dsa.msc</code></td>
+<td>Utilisateurs et ordinateurs AD</td>
+</tr>
+<tr>
+<td><code>dsac.exe</code></td>
+<td>Centre d'administration AD</td>
+</tr>
+<tr>
+<td><code>dssite.msc</code></td>
+<td>Sites et services AD</td>
+</tr>
+<tr>
+<td><code>domain.msc</code></td>
+<td>Domaines et approbations AD</td>
+</tr>
+<tr>
+<td><code>gpmc.msc</code></td>
+<td>Gestion des stratégies de groupe</td>
+</tr>
+<tr>
+<td><code>dnsmgmt.msc</code></td>
+<td>Gestionnaire DNS</td>
+</tr>
+<tr>
+<td><code>printmanagement.msc</code></td>
+<td>Gestion de l'impression</td>
+</tr>
+<tr>
+<td><code>perfmon</code> / <code>resmon</code> / <code>eventvwr</code></td>
+<td>Performances / ressources / événements</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="11-testez-vous">11. Testez-vous</h2>
+<p>Essaie de répondre de tête avant de lire la réponse.</p>
+<p><strong>1. Quelle est la différence entre un groupe de travail et un domaine ?</strong></p>
+<blockquote>
+<p>✅ <strong>Réponse</strong> : Dans un <strong>groupe de travail</strong>, chaque PC a sa propre base de comptes (SAM), il faut donc un compte par machine. Dans un <strong>domaine</strong>, les comptes sont dans un <strong>annuaire central</strong> (AD) : un seul compte permet de se connecter partout, et l'administration est centralisée.</p>
+</blockquote>
+<p><strong>2. Pourquoi installer au moins deux contrôleurs de domaine ?</strong></p>
+<blockquote>
+<p>✅ <strong>Réponse</strong> : Pour la <strong>tolérance de panne</strong>. Si un DC tombe, l'autre continue d'authentifier les utilisateurs. Grâce à la <strong>réplication multi-maître</strong>, ils ont tous les deux une copie complète de l'annuaire.</p>
+</blockquote>
+<p><strong>3. Citez les 5 rôles FSMO et leur portée.</strong></p>
+<blockquote>
+<p>✅ <strong>Réponse</strong> :</p>
+<ul>
+<li><strong>Forêt</strong> : maître de <strong>schéma</strong>, maître d'<strong>attribution des noms</strong> de domaine.</li>
+<li><strong>Domaine</strong> : <strong>émulateur PDC</strong>, maître <strong>RID</strong>, maître d'<strong>infrastructure</strong>.</li>
+</ul>
+</blockquote>
+<p><strong>4. Quand fait-on une saisie de rôle FSMO plutôt qu'un transfert ?</strong></p>
+<blockquote>
+<p>✅ <strong>Réponse</strong> : Quand le DC qui détient le rôle est <strong>définitivement hors service</strong>. Après une saisie, ce DC ne doit <strong>plus jamais</strong> être remis sur le réseau.</p>
+</blockquote>
+<p><strong>5. Que signifie AGDLP ?</strong></p>
+<blockquote>
+<p>✅ <strong>Réponse</strong> : <strong>A</strong>ccounts → <strong>G</strong>roupes globaux → groupes de <strong>D</strong>omaine <strong>L</strong>ocal → <strong>P</strong>ermissions. On met les comptes dans un groupe global (par service), ce groupe dans un groupe de domaine local (par ressource et par droit), et on donne la permission au groupe de domaine local.</p>
+</blockquote>
+<p><strong>6. Un partage donne « Lecture », le NTFS donne « Contrôle total ». Quel est le droit effectif ?</strong></p>
+<blockquote>
+<p>✅ <strong>Réponse</strong> : <strong>Lecture</strong> : on garde toujours le droit <strong>le plus restrictif</strong> des deux.</p>
+</blockquote>
+<p><strong>7. Je déplace un fichier vers un dossier de la même partition. Garde-t-il ses droits ?</strong></p>
+<blockquote>
+<p>✅ <strong>Réponse</strong> : <strong>Oui</strong>. C'est le seul cas où les droits d'origine sont conservés. Dans tous les autres cas (copie, ou déplacement vers une autre partition), le fichier <strong>hérite</strong> des droits du dossier de destination.</p>
+</blockquote>
+<p><strong>8. Que signifie LSDOU et quelle GPO gagne en cas de conflit ?</strong></p>
+<blockquote>
+<p>✅ <strong>Réponse</strong> : <strong>L</strong>ocal → <strong>S</strong>ite → <strong>D</strong>omaine → <strong>OU</strong>, c'est l'ordre d'application. En cas de conflit, c'est la <strong>dernière appliquée</strong> qui gagne, donc la plus proche de l'objet (l'OU la plus basse).</p>
+</blockquote>
+<p><strong>9. J'ai lié une GPO avec des paramètres ordinateur à l'OU Utilisateurs. Pourquoi rien ne se passe ?</strong></p>
+<blockquote>
+<p>✅ <strong>Réponse</strong> : Les paramètres <strong>ordinateur</strong> s'appliquent aux <strong>ordinateurs</strong> présents dans l'OU liée. Si l'OU ne contient que des utilisateurs, ces paramètres ne touchent personne.</p>
+</blockquote>
+<p><strong>10. Comment appliquer une politique de mot de passe différente au service Informatique ?</strong></p>
+<blockquote>
+<p>✅ <strong>Réponse</strong> : Avec une <strong>stratégie de mot de passe affinée</strong> : un objet <strong>PSO</strong>, créé dans le Centre d'administration AD (Password Settings Container) et appliqué au groupe <code>G-Informatique</code>. La Default Domain Policy, elle, ne peut définir qu'<strong>une seule</strong> politique pour tout le domaine.</p>
+</blockquote>
+<p><strong>11. Quelle est la différence entre une « imprimante » et un « périphérique d'impression » ?</strong></p>
+<blockquote>
+<p>✅ <strong>Réponse</strong> : Le <strong>périphérique d'impression</strong> est la machine physique. L'<strong>imprimante</strong> est l'objet logique dans Windows (pilote, droits, horaires). On peut avoir plusieurs imprimantes pour un seul périphérique, ou une imprimante pour plusieurs périphériques (un pool).</p>
+</blockquote>
+<p><strong>12. Qu'est-ce que le magasin central et pourquoi le créer ?</strong></p>
+<blockquote>
+<p>✅ <strong>Réponse</strong> : C'est le dossier <code>SYSVOL\&lt;domaine&gt;\Policies\PolicyDefinitions</code>, qui contient les modèles d'administration (<code>.admx</code> / <code>.adml</code>). Une fois créé, <strong>toutes</strong> les consoles de GPO du domaine utilisent les <strong>mêmes</strong> modèles, quel que soit le poste d'où on édite.</p>
+</blockquote>
+<p><strong>13. Server Core ou expérience de bureau : lequel est le plus sécurisé et pourquoi ?</strong></p>
+<blockquote>
+<p>✅ <strong>Réponse</strong> : <strong>Server Core</strong> : moins de composants installés et moins de services qui tournent, donc une <strong>surface d'attaque réduite</strong>. Il consomme aussi moins de ressources.</p>
+</blockquote>
+<p><strong>14. Dans un script, comment répéter une action pour chaque élément d'une liste ?</strong></p>
+<blockquote>
+<p>✅ <strong>Réponse</strong> : Avec une boucle <strong><code>foreach</code></strong> :</p>
+<div class="highlight"><pre><span></span><code><span class="k">foreach</span> <span class="p">(</span><span class="nv">$service</span> <span class="k">in</span> <span class="s2">"Direction"</span><span class="p">,</span> <span class="s2">"Informatique"</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nb">Write-Host</span> <span class="nv">$service</span>
+<span class="p">}</span>
+</code></pre></div>
+</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

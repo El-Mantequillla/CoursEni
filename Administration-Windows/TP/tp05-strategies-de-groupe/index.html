@@ -1,0 +1,2329 @@
+
+<!doctype html>
+<html lang="fr" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../tp04-gestion-ressources/">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>TP5 — Les stratégies de groupe (GPO) - Mes notes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#tp5--les-stratégies-de-groupe-gpo" class="md-skip">
+          Aller au contenu
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="En-tête">
+    <a href="../../.." title="Mes notes" class="md-header__button md-logo" aria-label="Mes notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Mes notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              TP5 — Les stratégies de groupe (GPO)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Rechercher" placeholder="Rechercher" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Recherche">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Effacer" aria-label="Effacer" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initialisation de la recherche
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Mes notes" class="md-nav__button md-logo" aria-label="Mes notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Mes notes
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cours et TP ENI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Administration Windows
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Administration Windows
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fiche-revision-windows-ad/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fiche de révision — Administration Windows et Active Directory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../raccourcis-claviers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Raccourcis clavier Windows / Windows Server — Administration système et réseau
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    TP
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tp01-creation-infrastructure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP1 — Création de l'infrastructure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tp02-creation-domaine-ad/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP2 — Création d'un domaine Active Directory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tp03-gestion-domaine-ad/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP3 — Gestion d'un domaine Active Directory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tp04-gestion-ressources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP4 — Gestion de ressources
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP5 — Les stratégies de groupe (GPO)
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP5 — Les stratégies de groupe (GPO)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#sommaire" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sommaire
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comprendre-les-gpo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comprendre les GPO
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Comprendre les GPO">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cest-quoi-une-gpo-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C'est quoi une GPO ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lordre-dapplication--lsdou" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        L'ordre d'application : LSDOU
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#le-plan-de-ce-tp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Le plan de ce TP
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#étape-0--ranger-les-ordinateurs-dans-les-ou" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 0 — Ranger les ordinateurs dans les OU
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#étape-1--gpo-pour-tous--sécurité-de-base" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 1 — GPO pour tous : sécurité de base
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Étape 1 — GPO pour tous : sécurité de base">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#méthode-powershell" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Méthode PowerShell
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#méthode-graphique-équivalente" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Méthode graphique (équivalente)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#étape-2--gpo-direction--restrictions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 2 — GPO Direction : restrictions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#étape-3--gpo-intérimaires--filtrage-par-groupe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 3 — GPO Intérimaires : filtrage par groupe
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Étape 3 — GPO Intérimaires : filtrage par groupe">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#le-principe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Le principe
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#création-et-filtrage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Création et filtrage
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lanimation-de-bienvenue--un-cas-particulier" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        L'animation de bienvenue : un cas particulier
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#étape-4--stratégie-de-mots-de-passe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 4 — Stratégie de mots de passe
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Étape 4 — Stratégie de mots de passe">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#le-principe_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Le principe
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#41-politique-générale-tous-les-utilisateurs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Politique générale (tous les utilisateurs)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-pso-pour-le-service-informatique" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 PSO pour le service Informatique
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#étape-5--déployer-les-imprimantes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 5 — Déployer les imprimantes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Étape 5 — Déployer les imprimantes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-créer-les-gpo-vides" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Créer les GPO vides
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-ajouter-limprimante-dans-chaque-gpo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Ajouter l'imprimante dans chaque GPO
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#étape-6--magasin-central-des-modèles-dadministration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 6 — Magasin central des modèles d'administration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Étape 6 — Magasin central des modèles d&#39;administration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#le-principe_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Le principe
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#étape-7--support-technique--configuration-réseau-des-postes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 7 — Support technique : configuration réseau des postes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Étape 7 — Support technique : configuration réseau des postes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#le-principe_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Le principe
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#étape-8--redirection-du-dossier-documents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 8 — Redirection du dossier Documents
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Étape 8 — Redirection du dossier Documents">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#le-principe_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Le principe
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#81-créer-le-partage-sécurisé-sur-srv1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 Créer le partage sécurisé sur SRV1
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-créer-la-gpo-de-redirection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 Créer la GPO de redirection
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83-exclure-les-intérimaires" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3 Exclure les intérimaires
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#étape-9--bureau-à-distance-automatique-sur-les-nouveaux-serveurs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 9 — Bureau à distance automatique sur les nouveaux serveurs
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Étape 9 — Bureau à distance automatique sur les nouveaux serveurs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#le-principe_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Le principe
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#91-créer-la-gpo-et-ses-paramètres" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1 Créer la GPO et ses paramètres
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92-autoriser-le-support-technique" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2 Autoriser le Support technique
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#93-créer-et-associer-le-filtre-wmi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.3 Créer et associer le filtre WMI
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#94-tester" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.4 Tester
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tester-et-dépanner-les-gpo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tester et dépanner les GPO
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#récapitulatif" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Récapitulatif
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#sommaire" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sommaire
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comprendre-les-gpo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comprendre les GPO
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Comprendre les GPO">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cest-quoi-une-gpo-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C'est quoi une GPO ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lordre-dapplication--lsdou" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        L'ordre d'application : LSDOU
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#le-plan-de-ce-tp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Le plan de ce TP
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#étape-0--ranger-les-ordinateurs-dans-les-ou" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 0 — Ranger les ordinateurs dans les OU
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#étape-1--gpo-pour-tous--sécurité-de-base" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 1 — GPO pour tous : sécurité de base
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Étape 1 — GPO pour tous : sécurité de base">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#méthode-powershell" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Méthode PowerShell
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#méthode-graphique-équivalente" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Méthode graphique (équivalente)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#étape-2--gpo-direction--restrictions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 2 — GPO Direction : restrictions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#étape-3--gpo-intérimaires--filtrage-par-groupe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 3 — GPO Intérimaires : filtrage par groupe
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Étape 3 — GPO Intérimaires : filtrage par groupe">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#le-principe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Le principe
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#création-et-filtrage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Création et filtrage
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lanimation-de-bienvenue--un-cas-particulier" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        L'animation de bienvenue : un cas particulier
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#étape-4--stratégie-de-mots-de-passe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 4 — Stratégie de mots de passe
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Étape 4 — Stratégie de mots de passe">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#le-principe_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Le principe
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#41-politique-générale-tous-les-utilisateurs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Politique générale (tous les utilisateurs)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-pso-pour-le-service-informatique" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 PSO pour le service Informatique
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#étape-5--déployer-les-imprimantes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 5 — Déployer les imprimantes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Étape 5 — Déployer les imprimantes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-créer-les-gpo-vides" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Créer les GPO vides
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-ajouter-limprimante-dans-chaque-gpo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Ajouter l'imprimante dans chaque GPO
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#étape-6--magasin-central-des-modèles-dadministration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 6 — Magasin central des modèles d'administration
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Étape 6 — Magasin central des modèles d&#39;administration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#le-principe_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Le principe
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#étape-7--support-technique--configuration-réseau-des-postes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 7 — Support technique : configuration réseau des postes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Étape 7 — Support technique : configuration réseau des postes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#le-principe_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Le principe
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#étape-8--redirection-du-dossier-documents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 8 — Redirection du dossier Documents
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Étape 8 — Redirection du dossier Documents">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#le-principe_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Le principe
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#81-créer-le-partage-sécurisé-sur-srv1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 Créer le partage sécurisé sur SRV1
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-créer-la-gpo-de-redirection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 Créer la GPO de redirection
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83-exclure-les-intérimaires" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3 Exclure les intérimaires
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#étape-9--bureau-à-distance-automatique-sur-les-nouveaux-serveurs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 9 — Bureau à distance automatique sur les nouveaux serveurs
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Étape 9 — Bureau à distance automatique sur les nouveaux serveurs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#le-principe_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Le principe
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#91-créer-la-gpo-et-ses-paramètres" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1 Créer la GPO et ses paramètres
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92-autoriser-le-support-technique" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2 Autoriser le Support technique
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#93-créer-et-associer-le-filtre-wmi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.3 Créer et associer le filtre WMI
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#94-tester" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.4 Tester
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tester-et-dépanner-les-gpo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tester et dépanner les GPO
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#récapitulatif" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Récapitulatif
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="tp5--les-stratégies-de-groupe-gpo">TP5 — Les stratégies de groupe (GPO)</h1>
+<blockquote>
+<p><strong>Objectifs</strong> : configurer des paramètres ciblés par GPO, créer et lier des stratégies, durcir la politique de mots de passe, déployer des imprimantes, rediriger des dossiers et automatiser la configuration des serveurs.</p>
+<p>⚠️ <strong>Convention</strong> : remplace <code>NN</code> par tes initiales partout (<code>DOMNN</code> → <code>DOMJD</code>, <code>DC=domNN</code> → <code>DC=domJD</code>).</p>
+<p>🧪 <strong>#MaintenantJeTeste</strong> : l'énoncé insiste, et il a raison. <strong>Teste chaque GPO avant de passer à la suivante.</strong> Une erreur est bien plus facile à trouver quand une seule chose a changé.</p>
+</blockquote>
+<hr />
+<h2 id="sommaire">Sommaire</h2>
+<ul>
+<li><a href="#comprendre-les-gpo">Comprendre les GPO</a></li>
+<li><a href="#étape-0--ranger-les-ordinateurs-dans-les-ou">Étape 0 — Ranger les ordinateurs dans les OU</a></li>
+<li><a href="#étape-1--gpo-pour-tous--sécurité-de-base">Étape 1 — GPO pour tous : sécurité de base</a></li>
+<li><a href="#étape-2--gpo-direction--restrictions">Étape 2 — GPO Direction : restrictions</a></li>
+<li><a href="#étape-3--gpo-intérimaires--filtrage-par-groupe">Étape 3 — GPO Intérimaires : filtrage par groupe</a></li>
+<li><a href="#étape-4--stratégie-de-mots-de-passe">Étape 4 — Stratégie de mots de passe</a></li>
+<li><a href="#étape-5--déployer-les-imprimantes">Étape 5 — Déployer les imprimantes</a></li>
+<li><a href="#étape-6--magasin-central-des-modèles-dadministration">Étape 6 — Magasin central des modèles d'administration</a></li>
+<li><a href="#étape-7--support-technique--configuration-réseau-des-postes">Étape 7 — Support technique : configuration réseau des postes</a></li>
+<li><a href="#étape-8--redirection-du-dossier-documents">Étape 8 — Redirection du dossier Documents</a></li>
+<li><a href="#étape-9--bureau-à-distance-automatique-sur-les-nouveaux-serveurs">Étape 9 — Bureau à distance automatique sur les nouveaux serveurs</a></li>
+<li><a href="#tester-et-dépanner-les-gpo">Tester et dépanner les GPO</a></li>
+<li><a href="#récapitulatif">Récapitulatif</a></li>
+</ul>
+<hr />
+<h2 id="comprendre-les-gpo">Comprendre les GPO</h2>
+<h3 id="cest-quoi-une-gpo-">C'est quoi une GPO ?</h3>
+<p>Une <strong>stratégie de groupe</strong> (<em>Group Policy Object</em>) est un ensemble de paramètres appliqué automatiquement à des utilisateurs ou des ordinateurs. On configure une fois, et tous les postes concernés reçoivent la configuration.</p>
+<p>Une GPO contient <strong>deux parties indépendantes</strong> :</p>
+<table>
+<thead>
+<tr>
+<th>Partie</th>
+<th>S'applique à…</th>
+<th>Quand ?</th>
+<th>Exemple</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Configuration ordinateur</strong></td>
+<td>Les <strong>ordinateurs</strong> présents dans l'OU liée</td>
+<td>Au démarrage, puis toutes les ~90 min</td>
+<td>Pare-feu, Bureau à distance</td>
+</tr>
+<tr>
+<td><strong>Configuration utilisateur</strong></td>
+<td>Les <strong>utilisateurs</strong> présents dans l'OU liée</td>
+<td>À l'ouverture de session, puis toutes les ~90 min</td>
+<td>Gestionnaire des tâches, corbeille</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>⚠️ <strong>Piège classique</strong> : une GPO avec des paramètres <strong>ordinateur</strong> liée à une OU qui ne contient que des <strong>utilisateurs</strong> ne fait <strong>rien</strong>. Et inversement.</p>
+</blockquote>
+<h3 id="lordre-dapplication--lsdou">L'ordre d'application : LSDOU</h3>
+<p>Les GPO s'appliquent dans cet ordre. En cas de conflit, <strong>la dernière appliquée gagne</strong> : c'est l'OU la plus proche de l'objet qui a le dernier mot.</p>
+<pre class="mermaid"><code>flowchart LR
+    L["1️⃣ Local&lt;br/&gt;(GPO locale du PC)"] --&gt; S["2️⃣ Site"]
+    S --&gt; D["3️⃣ Domaine&lt;br/&gt;(Default Domain Policy)"]
+    D --&gt; O1["4️⃣ OU parente&lt;br/&gt;(DOMNN)"]
+    O1 --&gt; O2["5️⃣ OU enfant&lt;br/&gt;(Utilisateurs &gt; Direction)"]
+    O2 --&gt; R["✅ Résultat final&lt;br/&gt;la dernière gagne"]</code></pre>
+<h3 id="le-plan-de-ce-tp">Le plan de ce TP</h3>
+<pre class="mermaid"><code>flowchart TB
+    DOM["🌐 domNN.ad&lt;br/&gt;🔗 Default Domain Policy (mots de passe)&lt;br/&gt;🔗 GPO-Serveurs-RDP (filtre WMI : serveurs membres)"]
+    DOM --&gt; R["📁 DOMNN&lt;br/&gt;🔗 GPO-Tous-Securite"]
+    R --&gt; U["📁 Utilisateurs&lt;br/&gt;🔗 GPO-Interimaires (filtrée sur G-Intérimaires)&lt;br/&gt;🔗 GPO-Redirection-Documents"]
+    R --&gt; ST["📁 Stations&lt;br/&gt;🔗 GPO-Stations-Config"]
+    R --&gt; SV["📁 Serveurs"]
+    U --&gt; UD["📁 Direction&lt;br/&gt;🔗 GPO-Direction-Restrictions&lt;br/&gt;🔗 GPO-Imprimante-Generale"]
+    U --&gt; UI["📁 Informatique&lt;br/&gt;🔗 GPO-Imprimante-Generale"]
+    U --&gt; UC["📁 Comptabilite&lt;br/&gt;🔗 GPO-Imprimante-Compta"]</code></pre>
+<p>Toutes les commandes s'exécutent sur un <strong>DC</strong> ou sur <strong>W10-CL1 avec les RSAT</strong>, en administrateur du domaine. Le module <code>GroupPolicy</code> est installé avec la console de gestion des stratégies de groupe (<code>gpmc.msc</code>).</p>
+<hr />
+<h2 id="étape-0--ranger-les-ordinateurs-dans-les-ou">Étape 0 — Ranger les ordinateurs dans les OU</h2>
+<p>Au TP2, W10-CL1 et SRV1 ont rejoint le domaine dans le conteneur <strong><code>Computers</code></strong>. Or un conteneur ne peut <strong>pas</strong> recevoir de GPO. Il faut les déplacer dans nos OU pour que les paramètres ordinateur s'appliquent.</p>
+<div class="highlight"><pre><span></span><code><span class="nv">$racine</span> <span class="p">=</span> <span class="s2">"OU=DOMNN,DC=domNN,DC=ad"</span>
+
+<span class="c"># Le poste client va dans Stations (ici dans le sous-dossier Informatique, à adapter)</span>
+<span class="nb">Get-ADComputer</span> <span class="s2">"W10-CL1"</span> <span class="p">|</span> <span class="nb">Move-ADObject</span> <span class="n">-TargetPath</span> <span class="s2">"OU=Informatique,OU=Stations,$racine"</span>
+
+<span class="c"># Le serveur membre va dans Serveurs</span>
+<span class="nb">Get-ADComputer</span> <span class="s2">"SRV1"</span> <span class="p">|</span> <span class="nb">Move-ADObject</span> <span class="n">-TargetPath</span> <span class="s2">"OU=Serveurs,$racine"</span>
+</code></pre></div>
+<hr />
+<h2 id="étape-1--gpo-pour-tous--sécurité-de-base">Étape 1 — GPO pour tous : sécurité de base</h2>
+<p><strong>Besoins :</strong></p>
+<ul>
+<li>ne pas afficher le nom du dernier utilisateur connecté ;</li>
+<li>forcer l'activation du pare-feu et bloquer les connexions entrantes.</li>
+</ul>
+<p>Ces deux paramètres sont des paramètres <strong>ordinateur</strong>. On lie la GPO à l'OU racine <strong>DOMNN</strong> pour qu'elle touche toutes les machines rangées dessous.</p>
+<blockquote>
+<p>💡 <strong>Pourquoi masquer le dernier utilisateur ?</strong> Afficher son identifiant donne à un attaquant la moitié des informations de connexion. Il ne lui reste plus qu'à deviner le mot de passe.</p>
+</blockquote>
+<h3 id="méthode-powershell">Méthode PowerShell</h3>
+<p><code>Set-GPRegistryValue</code> écrit dans une GPO la valeur de registre qui correspond au paramètre voulu.</p>
+<div class="highlight"><pre><span></span><code><span class="c"># 1. Crée la GPO et la lie à l'OU DOMNN</span>
+<span class="nb">New-GPO</span> <span class="n">-Name</span> <span class="s2">"GPO-Tous-Securite"</span> <span class="p">|</span>
+    <span class="nb">New-GPLink</span> <span class="n">-Target</span> <span class="s2">"OU=DOMNN,DC=domNN,DC=ad"</span>
+
+<span class="c"># 2. Ne pas afficher le dernier nom d'utilisateur</span>
+<span class="nb">Set-GPRegistryValue</span> <span class="n">-Name</span> <span class="s2">"GPO-Tous-Securite"</span> <span class="p">`</span>
+    <span class="n">-Key</span> <span class="s2">"HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\System"</span> <span class="p">`</span>
+    <span class="n">-ValueName</span> <span class="s2">"DontDisplayLastUserName"</span> <span class="n">-Type</span> <span class="n">DWord</span> <span class="n">-Value</span> <span class="n">1</span>
+
+<span class="c"># 3. Pare-feu : activé (EnableFirewall = 1) et entrées bloquées (DefaultInboundAction = 1)</span>
+<span class="c">#    pour les 3 profils réseau : domaine, privé et public</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$profil</span> <span class="k">in</span> <span class="s2">"DomainProfile"</span><span class="p">,</span> <span class="s2">"PrivateProfile"</span><span class="p">,</span> <span class="s2">"PublicProfile"</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$cle</span> <span class="p">=</span> <span class="s2">"HKLM\Software\Policies\Microsoft\WindowsFirewall\$profil"</span>
+    <span class="nb">Set-GPRegistryValue</span> <span class="n">-Name</span> <span class="s2">"GPO-Tous-Securite"</span> <span class="n">-Key</span> <span class="nv">$cle</span> <span class="n">-ValueName</span> <span class="s2">"EnableFirewall"</span>       <span class="n">-Type</span> <span class="n">DWord</span> <span class="n">-Value</span> <span class="n">1</span>
+    <span class="nb">Set-GPRegistryValue</span> <span class="n">-Name</span> <span class="s2">"GPO-Tous-Securite"</span> <span class="n">-Key</span> <span class="nv">$cle</span> <span class="n">-ValueName</span> <span class="s2">"DefaultInboundAction"</span> <span class="n">-Type</span> <span class="n">DWord</span> <span class="n">-Value</span> <span class="n">1</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="méthode-graphique-équivalente">Méthode graphique (équivalente)</h3>
+<table>
+<thead>
+<tr>
+<th>Paramètre</th>
+<th>Chemin dans l'éditeur de GPO</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dernier utilisateur</td>
+<td>Configuration ordinateur → Stratégies → Paramètres Windows → Paramètres de sécurité → Stratégies locales → Options de sécurité → <strong>Ouverture de session interactive : ne pas afficher le dernier utilisateur connecté</strong> → Activé</td>
+</tr>
+<tr>
+<td>Pare-feu</td>
+<td>Configuration ordinateur → Stratégies → Paramètres Windows → Paramètres de sécurité → <strong>Pare-feu Windows Defender avec fonctions avancées</strong> → Propriétés → pour chaque profil : État = Actif, Connexions entrantes = Bloquer</td>
+</tr>
+</tbody>
+</table>
+<p>🧪 <strong>Test</strong> : sur W10-CL1, lance <code>gpupdate /force</code>, redémarre, et vérifie que l'écran de connexion ne propose plus le dernier utilisateur.</p>
+<hr />
+<h2 id="étape-2--gpo-direction--restrictions">Étape 2 — GPO Direction : restrictions</h2>
+<p><strong>Besoins</strong> (paramètres <strong>utilisateur</strong>, liés à l'OU <code>Utilisateurs &gt; Direction</code>) :</p>
+<table>
+<thead>
+<tr>
+<th>Besoin</th>
+<th>Valeur de registre</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Pas de « Propriétés » dans le clic droit sur <em>Ce PC</em></td>
+<td><code>NoPropertiesMyComputer = 1</code></td>
+</tr>
+<tr>
+<td>Console Certificats interdite dans les MMC</td>
+<td><code>Restrict_Run = 1</code> sur le composant Certificats</td>
+</tr>
+<tr>
+<td>Outils d'édition du registre bloqués</td>
+<td><code>DisableRegistryTools = 1</code></td>
+</tr>
+<tr>
+<td>Gestionnaire des tâches bloqué</td>
+<td><code>DisableTaskMgr = 1</code></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="nv">$gpo</span> <span class="p">=</span> <span class="s2">"GPO-Direction-Restrictions"</span>
+
+<span class="c"># 1. Crée la GPO et la lie à l'OU des utilisateurs de la Direction</span>
+<span class="nb">New-GPO</span> <span class="n">-Name</span> <span class="nv">$gpo</span> <span class="p">|</span>
+    <span class="nb">New-GPLink</span> <span class="n">-Target</span> <span class="s2">"OU=Direction,OU=Utilisateurs,OU=DOMNN,DC=domNN,DC=ad"</span>
+
+<span class="c"># 2. Supprime "Propriétés" du menu contextuel de Ce PC</span>
+<span class="nb">Set-GPRegistryValue</span> <span class="n">-Name</span> <span class="nv">$gpo</span> <span class="p">`</span>
+    <span class="n">-Key</span> <span class="s2">"HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer"</span> <span class="p">`</span>
+    <span class="n">-ValueName</span> <span class="s2">"NoPropertiesMyComputer"</span> <span class="n">-Type</span> <span class="n">DWord</span> <span class="n">-Value</span> <span class="n">1</span>
+
+<span class="c"># 3. Interdit le composant enfichable "Certificats" dans les consoles MMC</span>
+<span class="c">#    (le GUID identifie le composant Certificats)</span>
+<span class="nb">Set-GPRegistryValue</span> <span class="n">-Name</span> <span class="nv">$gpo</span> <span class="p">`</span>
+    <span class="n">-Key</span> <span class="s2">"HKCU\Software\Policies\Microsoft\MMC\{53D6AB1D-2488-11D1-A28C-00C04FB94F17}"</span> <span class="p">`</span>
+    <span class="n">-ValueName</span> <span class="s2">"Restrict_Run"</span> <span class="n">-Type</span> <span class="n">DWord</span> <span class="n">-Value</span> <span class="n">1</span>
+
+<span class="c"># 4. Bloque l'éditeur du registre (regedit)</span>
+<span class="nb">Set-GPRegistryValue</span> <span class="n">-Name</span> <span class="nv">$gpo</span> <span class="p">`</span>
+    <span class="n">-Key</span> <span class="s2">"HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\System"</span> <span class="p">`</span>
+    <span class="n">-ValueName</span> <span class="s2">"DisableRegistryTools"</span> <span class="n">-Type</span> <span class="n">DWord</span> <span class="n">-Value</span> <span class="n">1</span>
+
+<span class="c"># 5. Bloque le Gestionnaire des tâches</span>
+<span class="nb">Set-GPRegistryValue</span> <span class="n">-Name</span> <span class="nv">$gpo</span> <span class="p">`</span>
+    <span class="n">-Key</span> <span class="s2">"HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\System"</span> <span class="p">`</span>
+    <span class="n">-ValueName</span> <span class="s2">"DisableTaskMgr"</span> <span class="n">-Type</span> <span class="n">DWord</span> <span class="n">-Value</span> <span class="n">1</span>
+</code></pre></div>
+<p><strong>Chemins graphiques</strong> (Configuration utilisateur → Stratégies → Modèles d'administration) :</p>
+<ul>
+<li><strong>Bureau</strong> → <em>Supprimer Propriétés du menu contextuel de l'icône Ordinateur</em> ;</li>
+<li><strong>Composants Windows → Microsoft Management Console → Composants logiciels enfichables restreints/autorisés</strong> → <em>Certificats</em> → Désactivé ;</li>
+<li><strong>Système</strong> → <em>Empêcher l'accès aux outils de modifications du Registre</em> ;</li>
+<li><strong>Système → Options Ctrl+Alt+Suppr</strong> → <em>Supprimer le Gestionnaire des tâches</em>.</li>
+</ul>
+<p>🧪 <strong>Test</strong> : connecte-toi avec <strong>David</strong> sur W10-CL1. <code>regedit</code>, <code>Ctrl + Shift + Esc</code> et l'ajout de <em>Certificats</em> dans <code>mmc</code> doivent être bloqués. Refais le test avec <strong>Christelle</strong> : tout doit fonctionner normalement.</p>
+<hr />
+<h2 id="étape-3--gpo-intérimaires--filtrage-par-groupe">Étape 3 — GPO Intérimaires : filtrage par groupe</h2>
+<h3 id="le-principe">Le principe</h3>
+<p>Les intérimaires ne forment pas une OU : Christophe est rangé dans l'OU Comptabilité. On lie donc la GPO à l'OU <strong>Utilisateurs</strong> (tous les utilisateurs), puis on la <strong>filtre</strong> pour qu'elle ne s'applique qu'aux membres de <strong>G-Intérimaires</strong>.</p>
+<pre class="mermaid"><code>flowchart LR
+    GPO["📜 GPO-Interimaires&lt;br/&gt;liée à OU Utilisateurs"] --&gt; F{"🔍 Filtrage de sécurité&lt;br/&gt;membre de G-Intérimaires ?"}
+    F --&gt;|"Oui : Christophe"| A["✅ Appliquée"]
+    F --&gt;|"Non : David, Christelle…"| N["⛔ Ignorée"]</code></pre>
+<h3 id="création-et-filtrage">Création et filtrage</h3>
+<div class="highlight"><pre><span></span><code><span class="nv">$gpo</span> <span class="p">=</span> <span class="s2">"GPO-Interimaires"</span>
+
+<span class="c"># 1. Crée la GPO et la lie à l'OU Utilisateurs</span>
+<span class="nb">New-GPO</span> <span class="n">-Name</span> <span class="nv">$gpo</span> <span class="p">|</span>
+    <span class="nb">New-GPLink</span> <span class="n">-Target</span> <span class="s2">"OU=Utilisateurs,OU=DOMNN,DC=domNN,DC=ad"</span>
+
+<span class="c"># 2. Masque la Corbeille sur le Bureau (le GUID identifie la Corbeille)</span>
+<span class="nb">Set-GPRegistryValue</span> <span class="n">-Name</span> <span class="nv">$gpo</span> <span class="p">`</span>
+    <span class="n">-Key</span> <span class="s2">"HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\NonEnum"</span> <span class="p">`</span>
+    <span class="n">-ValueName</span> <span class="s2">"{645FF040-5081-101B-9F08-00AA002F954E}"</span> <span class="n">-Type</span> <span class="n">DWord</span> <span class="n">-Value</span> <span class="n">1</span>
+
+<span class="c"># 3. Interdit la lecture des CD/DVD (le GUID identifie la classe "lecteurs CD/DVD")</span>
+<span class="nb">Set-GPRegistryValue</span> <span class="n">-Name</span> <span class="nv">$gpo</span> <span class="p">`</span>
+    <span class="n">-Key</span> <span class="s2">"HKCU\Software\Policies\Microsoft\Windows\RemovableStorageDevices\{53f56308-b6bf-11d0-94f2-00a0c91efb8b}"</span> <span class="p">`</span>
+    <span class="n">-ValueName</span> <span class="s2">"Deny_Read"</span> <span class="n">-Type</span> <span class="n">DWord</span> <span class="n">-Value</span> <span class="n">1</span>
+
+<span class="c"># 4. Filtrage : G-Intérimaires peut LIRE et APPLIQUER la GPO</span>
+<span class="nb">Set-GPPermission</span> <span class="n">-Name</span> <span class="nv">$gpo</span> <span class="n">-TargetName</span> <span class="s2">"G-Intérimaires"</span> <span class="n">-TargetType</span> <span class="nb">Group </span><span class="n">-PermissionLevel</span> <span class="n">GpoApply</span>
+
+<span class="c"># 5. Les Utilisateurs authentifiés gardent seulement la LECTURE (plus l'application)</span>
+<span class="c">#    Le nom du groupe est récupéré via son SID pour fonctionner en français comme en anglais</span>
+<span class="nv">$utilisateursAuth</span> <span class="p">=</span> <span class="p">(</span><span class="no">[Security.Principal.SecurityIdentifier]</span><span class="s2">"S-1-5-11"</span><span class="p">).</span><span class="n">Translate</span><span class="p">(</span><span class="no">[Security.Principal.NTAccount]</span><span class="p">).</span><span class="n">Value</span><span class="p">.</span><span class="n">Split</span><span class="p">(</span><span class="s2">"\"</span><span class="p">)[</span><span class="n">1</span><span class="p">]</span>
+<span class="nb">Set-GPPermission</span> <span class="n">-Name</span> <span class="nv">$gpo</span> <span class="n">-TargetName</span> <span class="nv">$utilisateursAuth</span> <span class="n">-TargetType</span> <span class="nb">Group </span><span class="n">-PermissionLevel</span> <span class="n">GpoRead</span> <span class="o">-Replace</span>
+</code></pre></div>
+<blockquote>
+<p>⚠️ <strong>Ne supprime pas complètement « Utilisateurs authentifiés »</strong> : depuis 2016, les ordinateurs doivent pouvoir <strong>lire</strong> toutes les GPO. Sans cette lecture, la GPO ne s'applique plus du tout, même aux intérimaires. C'est pour ça qu'on garde <code>GpoRead</code>.</p>
+</blockquote>
+<h3 id="lanimation-de-bienvenue--un-cas-particulier">L'animation de bienvenue : un cas particulier</h3>
+<p>Le paramètre <em>Afficher l'animation lors de la première connexion</em> existe <strong>uniquement côté ordinateur</strong>. Il ne peut donc pas être filtré sur un groupe d'utilisateurs. La solution : l'appliquer à toutes les stations. L'animation ne s'affiche de toute façon qu'à la toute première connexion d'un utilisateur sur un poste.</p>
+<div class="highlight"><pre><span></span><code><span class="c"># GPO des stations, liée à l'OU Stations (elle servira aussi à l'étape 7)</span>
+<span class="nb">New-GPO</span> <span class="n">-Name</span> <span class="s2">"GPO-Stations-Config"</span> <span class="p">|</span>
+    <span class="nb">New-GPLink</span> <span class="n">-Target</span> <span class="s2">"OU=Stations,OU=DOMNN,DC=domNN,DC=ad"</span>
+
+<span class="c"># Désactive l'animation de première connexion (0 = désactivée)</span>
+<span class="nb">Set-GPRegistryValue</span> <span class="n">-Name</span> <span class="s2">"GPO-Stations-Config"</span> <span class="p">`</span>
+    <span class="n">-Key</span> <span class="s2">"HKLM\Software\Microsoft\Windows\CurrentVersion\Policies\System"</span> <span class="p">`</span>
+    <span class="n">-ValueName</span> <span class="s2">"EnableFirstLogonAnimation"</span> <span class="n">-Type</span> <span class="n">DWord</span> <span class="n">-Value</span> <span class="n">0</span>
+</code></pre></div>
+<p>Chemin graphique : Configuration ordinateur → Modèles d'administration → <strong>Système → Ouverture de session</strong> → <em>Afficher l'animation lors de la première connexion</em> → Désactivé.</p>
+<p>🧪 <strong>Test</strong> : connecte-toi avec <strong>Christophe</strong> : pas de Corbeille, lecteur CD inaccessible. Avec <strong>Christelle</strong> (même OU, pas intérimaire), tout est normal.</p>
+<hr />
+<h2 id="étape-4--stratégie-de-mots-de-passe">Étape 4 — Stratégie de mots de passe</h2>
+<h3 id="le-principe_1">Le principe</h3>
+<pre class="mermaid"><code>flowchart TB
+    subgraph TOUS["🔐 Default Domain Policy — tous les utilisateurs"]
+        P1["10 caractères minimum&lt;br/&gt;Complexité obligatoire&lt;br/&gt;Historique : 20 mots de passe&lt;br/&gt;Changement tous les 30 jours"]
+    end
+    subgraph INFO["🔐 PSO-Informatique — remplace la précédente pour G-Informatique"]
+        P2["Mêmes règles&lt;br/&gt;+ verrouillage après 2 échecs&lt;br/&gt;+ déverrouillage par un administrateur uniquement"]
+    end
+    TOUS -.-&gt;|"le PSO est prioritaire&lt;br/&gt;pour ses membres"| INFO</code></pre>
+<ul>
+<li>La politique <strong>générale</strong> se règle <strong>uniquement</strong> dans la GPO liée au domaine : la <strong>Default Domain Policy</strong>.</li>
+<li>Une politique <strong>différente pour un groupe</strong> se fait avec un <strong>PSO</strong> (<em>Password Settings Object</em>, stratégie de mot de passe affinée).</li>
+</ul>
+<h3 id="41-politique-générale-tous-les-utilisateurs">4.1 Politique générale (tous les utilisateurs)</h3>
+<p>On modifie la <strong>Default Domain Policy</strong> dans <code>gpmc.msc</code> → clic droit → <strong>Modifier</strong> :</p>
+<p><strong>Configuration ordinateur → Stratégies → Paramètres Windows → Paramètres de sécurité → Stratégies de comptes → Stratégie de mot de passe</strong></p>
+<table>
+<thead>
+<tr>
+<th>Paramètre</th>
+<th>Valeur</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Longueur minimale du mot de passe</td>
+<td>10 caractères</td>
+</tr>
+<tr>
+<td>Le mot de passe doit respecter des exigences de complexité</td>
+<td>Activé</td>
+</tr>
+<tr>
+<td>Conserver l'historique des mots de passe</td>
+<td>20 mots de passe</td>
+</tr>
+<tr>
+<td>Durée de vie maximale du mot de passe</td>
+<td>30 jours</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>⚠️ <strong>Pourquoi pas en PowerShell ?</strong> La commande <code>Set-ADDefaultDomainPasswordPolicy</code> modifie directement le domaine, mais la Default Domain Policy <strong>réécrit ses propres valeurs</strong> au rafraîchissement suivant. Pour un réglage durable, on modifie la GPO.</p>
+</blockquote>
+<p><strong>Vérification :</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c"># Affiche la politique de mot de passe effective du domaine</span>
+<span class="nb">Get-ADDefaultDomainPasswordPolicy</span>
+</code></pre></div>
+<h3 id="42-pso-pour-le-service-informatique">4.2 PSO pour le service Informatique</h3>
+<div class="highlight"><pre><span></span><code><span class="c"># Crée la stratégie affinée</span>
+<span class="c"># Un PSO REMPLACE entièrement la politique du domaine pour ses membres :</span>
+<span class="c"># il faut donc aussi y remettre les règles générales (longueur, complexité…)</span>
+<span class="nb">New-ADFineGrainedPasswordPolicy</span> <span class="n">-Name</span> <span class="s2">"PSO-Informatique"</span> <span class="p">`</span>
+    <span class="n">-Precedence</span> <span class="n">10</span> <span class="p">`</span>
+    <span class="n">-MinPasswordLength</span> <span class="n">10</span> <span class="p">`</span>
+    <span class="n">-ComplexityEnabled</span> <span class="nv">$true</span> <span class="p">`</span>
+    <span class="n">-PasswordHistoryCount</span> <span class="n">20</span> <span class="p">`</span>
+    <span class="n">-MaxPasswordAge</span> <span class="s2">"30.00:00:00"</span> <span class="p">`</span>
+    <span class="n">-MinPasswordAge</span> <span class="s2">"1.00:00:00"</span> <span class="p">`</span>
+    <span class="n">-LockoutThreshold</span> <span class="n">2</span> <span class="p">`</span>
+    <span class="n">-LockoutObservationWindow</span> <span class="s2">"00:30:00"</span> <span class="p">`</span>
+    <span class="n">-LockoutDuration</span> <span class="s2">"00:30:00"</span> <span class="p">`</span>
+    <span class="n">-ReversibleEncryptionEnabled</span> <span class="nv">$false</span>
+
+<span class="c"># Applique le PSO au groupe G-Informatique</span>
+<span class="nb">Add-ADFineGrainedPasswordPolicySubject</span> <span class="n">-Identity</span> <span class="s2">"PSO-Informatique"</span> <span class="n">-Subjects</span> <span class="s2">"G-Informatique"</span>
+</code></pre></div>
+<p><strong>Déverrouillage par un administrateur uniquement</strong> : ouvre le <strong>Centre d'administration AD</strong> (<code>dsac.exe</code>) → <strong>System → Password Settings Container</strong> → <em>PSO-Informatique</em> → section <em>Appliquer la stratégie de verrouillage de compte</em> → coche <strong>Jusqu'à ce qu'un administrateur déverrouille manuellement le compte</strong>.</p>
+<blockquote>
+<p>💡 <strong>Precedence</strong> (priorité) : si un utilisateur est concerné par plusieurs PSO, c'est celui dont le nombre est <strong>le plus petit</strong> qui s'applique.</p>
+</blockquote>
+<p><strong>Vérification :</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c"># Affiche la politique réellement appliquée à Ivan (doit être PSO-Informatique)</span>
+<span class="nb">Get-ADUserResultantPasswordPolicy</span> <span class="n">-Identity</span> <span class="s2">"itard"</span>
+
+<span class="c"># Après 2 mauvais mots de passe, vérifie le verrouillage…</span>
+<span class="nb">Get-ADUser</span> <span class="s2">"itard"</span> <span class="n">-Properties</span> <span class="n">LockedOut</span> <span class="p">|</span> <span class="nb">Select-Object</span> <span class="n">Name</span><span class="p">,</span> <span class="n">LockedOut</span>
+
+<span class="c"># … et déverrouille le compte (action réservée aux administrateurs)</span>
+<span class="nb">Unlock-ADAccount</span> <span class="n">-Identity</span> <span class="s2">"itard"</span>
+</code></pre></div>
+<hr />
+<h2 id="étape-5--déployer-les-imprimantes">Étape 5 — Déployer les imprimantes</h2>
+<p>On réutilise les deux imprimantes logiques du TP4 et on déploie chacune au bon service :</p>
+<table>
+<thead>
+<tr>
+<th>GPO</th>
+<th>Liée à</th>
+<th>Imprimante déployée</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GPO-Imprimante-Generale</td>
+<td>OU Utilisateurs → Direction <strong>et</strong> Informatique</td>
+<td><code>\\SRV1\Dell5210CN</code></td>
+</tr>
+<tr>
+<td>GPO-Imprimante-Compta</td>
+<td>OU Utilisateurs → Comptabilite</td>
+<td><code>\\SRV1\Dell5210CN-Compta</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="51-créer-les-gpo-vides">5.1 Créer les GPO vides</h3>
+<div class="highlight"><pre><span></span><code><span class="nv">$ou</span> <span class="p">=</span> <span class="s2">"OU=Utilisateurs,OU=DOMNN,DC=domNN,DC=ad"</span>
+
+<span class="c"># GPO générale, liée à deux OU</span>
+<span class="nb">New-GPO</span> <span class="n">-Name</span> <span class="s2">"GPO-Imprimante-Generale"</span> <span class="p">|</span> <span class="nb">New-GPLink</span> <span class="n">-Target</span> <span class="s2">"OU=Direction,$ou"</span>
+<span class="nb">New-GPLink</span> <span class="n">-Name</span> <span class="s2">"GPO-Imprimante-Generale"</span> <span class="n">-Target</span> <span class="s2">"OU=Informatique,$ou"</span>
+
+<span class="c"># GPO Comptabilité</span>
+<span class="nb">New-GPO</span> <span class="n">-Name</span> <span class="s2">"GPO-Imprimante-Compta"</span> <span class="p">|</span> <span class="nb">New-GPLink</span> <span class="n">-Target</span> <span class="s2">"OU=Comptabilite,$ou"</span>
+</code></pre></div>
+<h3 id="52-ajouter-limprimante-dans-chaque-gpo">5.2 Ajouter l'imprimante dans chaque GPO</h3>
+<p>Sur SRV1, ouvre <strong>Gestion de l'impression</strong> (<code>printmanagement.msc</code>) :</p>
+<ol>
+<li><strong>Serveurs d'impression → SRV1 → Imprimantes</strong> → clic droit sur <em>Dell 5210CN</em> → <strong>Déployer avec la stratégie de groupe</strong>.</li>
+<li><strong>Parcourir</strong> → choisis <em>GPO-Imprimante-Generale</em>.</li>
+<li>Coche <strong>Les utilisateurs auxquels cet objet GPO s'applique (par utilisateur)</strong> → <strong>Ajouter</strong> → <strong>OK</strong>.</li>
+<li>Recommence avec <em>Dell 5210CN - Compta</em> et <em>GPO-Imprimante-Compta</em>.</li>
+</ol>
+<blockquote>
+<p>💡 <strong>Alternative plus souple</strong> : les <strong>Préférences</strong> de GPO (Configuration utilisateur → Préférences → Paramètres du Panneau de configuration → <strong>Imprimantes</strong>) permettent de cibler un groupe précis avec le <strong>ciblage au niveau de l'élément</strong>, sans créer une GPO par imprimante.</p>
+</blockquote>
+<p>🧪 <strong>Test</strong> : connecte-toi avec Christelle, puis avec David. Chacun doit voir apparaître <strong>sa</strong> imprimante (<code>Get-Printer</code>).</p>
+<hr />
+<h2 id="étape-6--magasin-central-des-modèles-dadministration">Étape 6 — Magasin central des modèles d'administration</h2>
+<h3 id="le-principe_2">Le principe</h3>
+<p>Les paramètres des <strong>modèles d'administration</strong> sont décrits par des fichiers <strong><code>.admx</code></strong> (définitions) et <strong><code>.adml</code></strong> (traductions). Par défaut, chaque console GPO utilise les fichiers <strong>de la machine locale</strong>. Si W10-CL1 a des modèles différents de ceux des DC, on ne voit pas les mêmes paramètres selon le poste utilisé.</p>
+<p>Le <strong>magasin central</strong> est un dossier dans <strong>SYSVOL</strong>, répliqué sur tous les DC. Dès qu'il existe, <strong>toutes les consoles l'utilisent</strong> à la place des fichiers locaux.</p>
+<pre class="mermaid"><code>flowchart LR
+    SRC["📂 C:\Windows\PolicyDefinitions&lt;br/&gt;(sur un DC)"] --&gt;|copie| CS["🗄️ \\domNN.ad\SYSVOL\domNN.ad\&lt;br/&gt;Policies\PolicyDefinitions"]
+    CS --&gt;|réplication| CD1["🖥️ CD1"]
+    CS --&gt;|réplication| CD2["🖥️ CD2"]
+    CS --&gt;|utilisé par| W10["💻 Console GPO&lt;br/&gt;sur W10-CL1"]</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c"># Nom DNS du domaine (ex : domNN.ad)</span>
+<span class="nv">$domaine</span> <span class="p">=</span> <span class="p">(</span><span class="nb">Get-ADDomain</span><span class="p">).</span><span class="n">DNSRoot</span>
+
+<span class="c"># Copie les modèles d'administration du DC dans le magasin central</span>
+<span class="c"># (le dossier PolicyDefinitions est créé dans Policies)</span>
+<span class="nb">Copy-Item</span> <span class="n">-Path</span> <span class="s2">"C:\Windows\PolicyDefinitions"</span> <span class="p">`</span>
+          <span class="n">-Destination</span> <span class="s2">"\\$domaine\SYSVOL\$domaine\Policies\"</span> <span class="p">`</span>
+          <span class="n">-Recurse</span>
+</code></pre></div>
+<p><strong>Vérification :</strong> dans l'éditeur d'une GPO, clique sur <strong>Modèles d'administration</strong>. Le titre doit indiquer <em>Stratégies de modèles d'administration récupérées depuis le magasin central</em>.</p>
+<blockquote>
+<p>💡 Pour ajouter plus tard les modèles d'Office, de Chrome, etc., il suffit de copier leurs <code>.admx</code> et <code>.adml</code> dans ce même dossier.</p>
+</blockquote>
+<hr />
+<h2 id="étape-7--support-technique--configuration-réseau-des-postes">Étape 7 — Support technique : configuration réseau des postes</h2>
+<h3 id="le-principe_3">Le principe</h3>
+<p>Windows possède un groupe local intégré, <strong>Opérateurs de configuration réseau</strong>, dont les membres peuvent modifier la configuration IP <strong>sans être administrateurs</strong>. On ajoute <strong>G-Support technique</strong> à ce groupe sur <strong>toutes les stations</strong>, grâce aux <strong>Préférences</strong> de GPO.</p>
+<pre class="mermaid"><code>flowchart LR
+    GPO["📜 GPO-Stations-Config"] --&gt;|appliquée à| PC["💻 Chaque station"]
+    PC --&gt; LG["👥 Groupe local&lt;br/&gt;Opérateurs de configuration réseau"]
+    ST["👥 DOMNN\G-Support technique"] --&gt;|ajouté comme membre| LG
+    LG --&gt;|peut modifier| NET["🌐 Configuration IP"]</code></pre>
+<p>On complète la GPO <strong>GPO-Stations-Config</strong> (créée à l'étape 3, liée à l'OU Stations) :</p>
+<ol>
+<li><code>gpmc.msc</code> → clic droit sur <em>GPO-Stations-Config</em> → <strong>Modifier</strong>.</li>
+<li><strong>Configuration ordinateur → Préférences → Paramètres du Panneau de configuration → Utilisateurs et groupes locaux</strong>.</li>
+<li>Clic droit → <strong>Nouveau → Groupe local</strong>.</li>
+<li>Action : <strong>Mettre à jour</strong>. Nom du groupe : <strong>Opérateurs de configuration réseau (intégré)</strong>.</li>
+<li><strong>Ajouter</strong> → <code>DOMNN\G-Support technique</code>, action <strong>Ajouter à ce groupe</strong>.</li>
+</ol>
+<blockquote>
+<p>💡 <strong>Pourquoi « Mettre à jour » ?</strong> Cette action <strong>ajoute</strong> notre groupe sans toucher aux membres existants. L'action <em>Remplacer</em> viderait le groupe avant de le remplir.</p>
+</blockquote>
+<p>🧪 <strong>Test</strong> : sur W10-CL1, connecte-toi avec <strong>Ivan</strong>, ouvre <code>ncpa.cpl</code> et modifie la configuration IP de la carte. Remets ensuite les bonnes valeurs.</p>
+<div class="highlight"><pre><span></span><code><span class="c"># Sur W10-CL1 : vérifie les membres du groupe local</span>
+<span class="c"># (S-1-5-32-556 = Opérateurs de configuration réseau, quelle que soit la langue)</span>
+<span class="nb">Get-LocalGroupMember</span> <span class="n">-SID</span> <span class="s2">"S-1-5-32-556"</span>
+</code></pre></div>
+<hr />
+<h2 id="étape-8--redirection-du-dossier-documents">Étape 8 — Redirection du dossier Documents</h2>
+<h3 id="le-principe_4">Le principe</h3>
+<p>Le dossier <strong>Documents</strong> de chaque utilisateur est stocké <strong>sur SRV1</strong> plutôt que sur le disque du PC. Si le disque d'un poste tombe en panne, <strong>aucune donnée n'est perdue</strong>. Et les données sont sur le volume miroir <code>USERS</code> du TP4.</p>
+<pre class="mermaid"><code>flowchart LR
+    subgraph PC["💻 W10-CL1"]
+        DOC["📄 Documents&lt;br/&gt;(apparence locale)"]
+    end
+    subgraph SRV["🖥️ SRV1 — C:\Base (volume USERS en miroir)"]
+        R["📂 Redirection$"]
+        R --&gt; D1["📂 dgrenier\Documents"]
+        R --&gt; D2["📂 curique\Documents"]
+        R --&gt; D3["📂 itard\Documents"]
+    end
+    DOC --&gt;|"redirigé vers&lt;br/&gt;\\SRV1\Redirection$\%USERNAME%"| R
+    INT["👤 Christophe (intérimaire)"] -.-&gt;|"❌ GPO refusée"| R</code></pre>
+<h3 id="81-créer-le-partage-sécurisé-sur-srv1">8.1 Créer le partage sécurisé sur SRV1</h3>
+<p>Microsoft recommande des droits précis pour qu'un utilisateur puisse créer <strong>son</strong> dossier sans voir celui des autres :</p>
+<table>
+<thead>
+<tr>
+<th>Qui</th>
+<th>Droit</th>
+<th>S'applique à</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SYSTEM</td>
+<td>Contrôle total</td>
+<td>Dossier, sous-dossiers, fichiers</td>
+</tr>
+<tr>
+<td>Administrateurs</td>
+<td>Contrôle total</td>
+<td>Ce dossier uniquement</td>
+</tr>
+<tr>
+<td>CREATEUR PROPRIETAIRE</td>
+<td>Contrôle total</td>
+<td>Sous-dossiers et fichiers uniquement</td>
+</tr>
+<tr>
+<td>Utilisateurs concernés</td>
+<td>Lister le dossier + créer des dossiers</td>
+<td>Ce dossier uniquement</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>💡 <strong>Comment ça marche ?</strong> L'utilisateur peut seulement <strong>créer un dossier</strong> à la racine. Comme il en devient le <strong>propriétaire</strong>, la règle <em>CREATEUR PROPRIETAIRE</em> lui donne le contrôle total <strong>sur son dossier uniquement</strong>. Il ne peut pas ouvrir celui des autres.</p>
+</blockquote>
+<p>Sur <strong>SRV1</strong>, en administrateur :</p>
+<div class="highlight"><pre><span></span><code><span class="c"># Groupe de domaine local qui recevra l'accès (méthode AGDLP)</span>
+<span class="nb">New-ADGroup</span> <span class="n">-Name</span> <span class="s2">"DL-Redirection-Acces"</span> <span class="n">-GroupScope</span> <span class="n">DomainLocal</span> <span class="n">-GroupCategory</span> <span class="n">Security</span> <span class="p">`</span>
+            <span class="n">-Path</span> <span class="s2">"OU=Groupes,OU=DOMNN,DC=domNN,DC=ad"</span>
+
+<span class="c"># On y met "Utilisateurs du domaine" (SID en -513)</span>
+<span class="nv">$sidDomaine</span> <span class="p">=</span> <span class="p">(</span><span class="nb">Get-ADDomain</span><span class="p">).</span><span class="n">DomainSID</span><span class="p">.</span><span class="n">Value</span>
+<span class="nb">Add-ADGroupMember</span> <span class="s2">"DL-Redirection-Acces"</span> <span class="n">-Members</span> <span class="p">(</span><span class="nb">Get-ADGroup</span> <span class="n">-Identity</span> <span class="s2">"$sidDomaine-513"</span><span class="p">)</span>
+
+<span class="c"># Crée le dossier racine sur le volume USERS</span>
+<span class="nb">New-Item</span> <span class="n">-Path</span> <span class="s2">"C:\Base\Redirection"</span> <span class="n">-ItemType</span> <span class="n">Directory</span> <span class="n">-Force</span>
+
+<span class="c"># Droits NTFS recommandés par Microsoft</span>
+<span class="c">#   *S-1-5-18     = SYSTEM</span>
+<span class="c">#   *S-1-5-32-544 = Administrateurs</span>
+<span class="c">#   *S-1-3-0      = CREATEUR PROPRIETAIRE ; (IO) = sous-dossiers et fichiers uniquement</span>
+<span class="c">#   RD,AD,RA,REA,RC,X = lister, créer des dossiers, lire attributs et autorisations, traverser</span>
+<span class="n">icacls</span> <span class="s2">"C:\Base\Redirection"</span> <span class="p">/</span><span class="n">inheritance</span><span class="p">:</span><span class="nb">r </span><span class="p">`</span>
+    <span class="p">/</span><span class="n">grant</span> <span class="s2">"*S-1-5-18:(OI)(CI)F"</span> <span class="p">`</span>
+    <span class="p">/</span><span class="n">grant</span> <span class="s2">"*S-1-5-32-544:F"</span> <span class="p">`</span>
+    <span class="p">/</span><span class="n">grant</span> <span class="s2">"*S-1-3-0:(OI)(CI)(IO)F"</span> <span class="p">`</span>
+    <span class="p">/</span><span class="n">grant</span> <span class="s2">"DOMNN\DL-Redirection-Acces:(RD,AD,RA,REA,RC,X)"</span>
+
+<span class="c"># Partage caché ($), avec énumération basée sur l'accès :</span>
+<span class="c"># chacun ne voit que son propre dossier</span>
+<span class="nv">$utilisateursAuth</span> <span class="p">=</span> <span class="p">(</span><span class="no">[Security.Principal.SecurityIdentifier]</span><span class="s2">"S-1-5-11"</span><span class="p">).</span><span class="n">Translate</span><span class="p">(</span><span class="no">[Security.Principal.NTAccount]</span><span class="p">).</span><span class="n">Value</span>
+<span class="nb">New-SmbShare</span> <span class="n">-Name</span> <span class="s2">"Redirection$"</span> <span class="n">-Path</span> <span class="s2">"C:\Base\Redirection"</span> <span class="p">`</span>
+             <span class="n">-FullAccess</span> <span class="nv">$utilisateursAuth</span> <span class="p">`</span>
+             <span class="n">-FolderEnumerationMode</span> <span class="n">AccessBased</span>
+</code></pre></div>
+<h3 id="82-créer-la-gpo-de-redirection">8.2 Créer la GPO de redirection</h3>
+<div class="highlight"><pre><span></span><code><span class="c"># Crée la GPO et la lie à l'OU Utilisateurs</span>
+<span class="nb">New-GPO</span> <span class="n">-Name</span> <span class="s2">"GPO-Redirection-Documents"</span> <span class="p">|</span>
+    <span class="nb">New-GPLink</span> <span class="n">-Target</span> <span class="s2">"OU=Utilisateurs,OU=DOMNN,DC=domNN,DC=ad"</span>
+</code></pre></div>
+<p>Le paramétrage se fait dans l'éditeur (<code>gpmc.msc</code> → <em>GPO-Redirection-Documents</em> → <strong>Modifier</strong>) :</p>
+<ol>
+<li><strong>Configuration utilisateur → Stratégies → Paramètres Windows → Redirection de dossiers → Documents</strong> → clic droit → <strong>Propriétés</strong>.</li>
+<li>Paramètre : <strong>De base – Rediriger les dossiers de tout le monde vers le même emplacement</strong>.</li>
+<li>Emplacement : <strong>Créer un dossier pour chaque utilisateur sous le chemin racine</strong>.</li>
+<li>Chemin racine : <code>\\SRV1\Redirection$</code></li>
+<li>Onglet <strong>Paramètres</strong> : laisse cochés <strong>Accorder à l'utilisateur des droits exclusifs</strong> et <strong>Déplacer le contenu de Documents vers le nouvel emplacement</strong>.</li>
+</ol>
+<h3 id="83-exclure-les-intérimaires">8.3 Exclure les intérimaires</h3>
+<p>On ajoute un <strong>refus</strong> d'application pour G-Intérimaires. Ce réglage n'existe pas en PowerShell simple, il se fait en graphique :</p>
+<ol>
+<li><code>gpmc.msc</code> → <em>GPO-Redirection-Documents</em> → onglet <strong>Délégation</strong> → <strong>Avancé</strong>.</li>
+<li><strong>Ajouter</strong> → <code>G-Intérimaires</code>.</li>
+<li>Dans la colonne <strong>Refuser</strong>, coche <strong>Appliquer la stratégie de groupe</strong>.</li>
+</ol>
+<blockquote>
+<p>💡 Un <strong>refus</strong> l'emporte toujours sur une autorisation : Christophe est aussi un utilisateur authentifié, mais la GPO ne s'appliquera pas à lui.</p>
+</blockquote>
+<p>🧪 <strong>Test</strong> : connecte-toi avec Christelle, <strong>déconnecte-toi puis reconnecte-toi</strong> (la redirection s'applique à l'ouverture de session). Crée un fichier dans Documents, puis vérifie sur SRV1 :</p>
+<div class="highlight"><pre><span></span><code><span class="nb">Get-ChildItem</span> <span class="s2">"C:\Base\Redirection"</span> <span class="n">-Recurse</span>
+</code></pre></div>
+<p>Avec <strong>Christophe</strong>, Documents doit rester en local (<code>C:\Users\ctalmie\Documents</code>).</p>
+<hr />
+<h2 id="étape-9--bureau-à-distance-automatique-sur-les-nouveaux-serveurs">Étape 9 — Bureau à distance automatique sur les nouveaux serveurs</h2>
+<h3 id="le-principe_5">Le principe</h3>
+<p>Tout <strong>nouveau serveur membre</strong> doit activer le Bureau à distance avec <strong>NLA</strong> (authentification au niveau du réseau) pour le Support technique, <strong>sans intervention humaine</strong>.</p>
+<p><strong>Le piège</strong> : un nouveau serveur qui rejoint le domaine arrive dans le conteneur <strong><code>Computers</code></strong>, pas dans l'OU Serveurs. Une GPO liée à l'OU Serveurs ne le toucherait donc pas.</p>
+<p><strong>La solution</strong> : lier la GPO <strong>à la racine du domaine</strong>, avec un <strong>filtre WMI</strong> qui ne la laisse s'appliquer qu'aux <strong>serveurs membres</strong>, où qu'ils soient rangés.</p>
+<pre class="mermaid"><code>flowchart TB
+    GPO["📜 GPO-Serveurs-RDP&lt;br/&gt;liée à la racine du domaine"] --&gt; WMI{"🔍 Filtre WMI&lt;br/&gt;ProductType = 3 ?"}
+    WMI --&gt;|"1 = poste de travail"| X1["⛔ W10-CL1 ignoré"]
+    WMI --&gt;|"2 = contrôleur de domaine"| X2["⛔ CD1, CD2 ignorés"]
+    WMI --&gt;|"3 = serveur membre"| OK["✅ SRV1 et tout nouveau serveur&lt;br/&gt;RDP activé · NLA · pare-feu ouvert&lt;br/&gt;Support technique autorisé"]</code></pre>
+<blockquote>
+<p>💡 <strong>NLA</strong> oblige l'utilisateur à s'authentifier <strong>avant</strong> que la session distante ne s'ouvre. Cela protège le serveur contre certaines attaques et économise ses ressources.</p>
+</blockquote>
+<h3 id="91-créer-la-gpo-et-ses-paramètres">9.1 Créer la GPO et ses paramètres</h3>
+<div class="highlight"><pre><span></span><code><span class="nv">$gpo</span> <span class="p">=</span> <span class="s2">"GPO-Serveurs-RDP"</span>
+
+<span class="c"># 1. Crée la GPO et la lie à la RACINE du domaine</span>
+<span class="nb">New-GPO</span> <span class="n">-Name</span> <span class="nv">$gpo</span> <span class="p">|</span> <span class="nb">New-GPLink</span> <span class="n">-Target</span> <span class="s2">"DC=domNN,DC=ad"</span>
+
+<span class="nv">$cleRDS</span> <span class="p">=</span> <span class="s2">"HKLM\Software\Policies\Microsoft\Windows NT\Terminal Services"</span>
+
+<span class="c"># 2. Autorise les connexions Bureau à distance (0 = connexions autorisées)</span>
+<span class="nb">Set-GPRegistryValue</span> <span class="n">-Name</span> <span class="nv">$gpo</span> <span class="n">-Key</span> <span class="nv">$cleRDS</span> <span class="n">-ValueName</span> <span class="s2">"fDenyTSConnections"</span> <span class="n">-Type</span> <span class="n">DWord</span> <span class="n">-Value</span> <span class="n">0</span>
+
+<span class="c"># 3. Exige l'authentification NLA (1 = obligatoire)</span>
+<span class="nb">Set-GPRegistryValue</span> <span class="n">-Name</span> <span class="nv">$gpo</span> <span class="n">-Key</span> <span class="nv">$cleRDS</span> <span class="n">-ValueName</span> <span class="s2">"UserAuthentication"</span> <span class="n">-Type</span> <span class="n">DWord</span> <span class="n">-Value</span> <span class="n">1</span>
+
+<span class="c"># 4. Ouvre le pare-feu pour le Bureau à distance (profil domaine)</span>
+<span class="nv">$cleFW</span> <span class="p">=</span> <span class="s2">"HKLM\Software\Policies\Microsoft\WindowsFirewall\DomainProfile\Services\RemoteDesktop"</span>
+<span class="nb">Set-GPRegistryValue</span> <span class="n">-Name</span> <span class="nv">$gpo</span> <span class="n">-Key</span> <span class="nv">$cleFW</span> <span class="n">-ValueName</span> <span class="s2">"Enabled"</span>         <span class="n">-Type</span> <span class="n">DWord</span>  <span class="n">-Value</span> <span class="n">1</span>
+<span class="nb">Set-GPRegistryValue</span> <span class="n">-Name</span> <span class="nv">$gpo</span> <span class="n">-Key</span> <span class="nv">$cleFW</span> <span class="n">-ValueName</span> <span class="s2">"RemoteAddresses"</span> <span class="n">-Type</span> <span class="n">String</span> <span class="n">-Value</span> <span class="s2">"*"</span>
+</code></pre></div>
+<p>Chemins graphiques équivalents (Configuration ordinateur → Stratégies → Modèles d'administration) :</p>
+<ul>
+<li><strong>Composants Windows → Services Bureau à distance → Hôte de la session Bureau à distance → Connexions</strong> → <em>Autoriser les utilisateurs à se connecter à distance à l'aide des services Bureau à distance</em> → Activé ;</li>
+<li><strong>… → Hôte de la session Bureau à distance → Sécurité</strong> → <em>Requérir l'authentification utilisateur pour les connexions à distance à l'aide de l'authentification au niveau du réseau</em> → Activé ;</li>
+<li><strong>Réseau → Connexions réseau → Pare-feu Windows Defender → Profil du domaine</strong> → <em>Autoriser les exceptions entrantes du Bureau à distance</em> → Activé.</li>
+</ul>
+<h3 id="92-autoriser-le-support-technique">9.2 Autoriser le Support technique</h3>
+<p>Dans l'éditeur de <em>GPO-Serveurs-RDP</em> : <strong>Configuration ordinateur → Préférences → Paramètres du Panneau de configuration → Utilisateurs et groupes locaux</strong> → <strong>Nouveau → Groupe local</strong> :</p>
+<ul>
+<li>Action : <strong>Mettre à jour</strong></li>
+<li>Groupe : <strong>Utilisateurs du Bureau à distance (intégré)</strong></li>
+<li>Membre à ajouter : <code>DOMNN\G-Support technique</code></li>
+</ul>
+<h3 id="93-créer-et-associer-le-filtre-wmi">9.3 Créer et associer le filtre WMI</h3>
+<p>Dans <code>gpmc.msc</code> :</p>
+<ol>
+<li>Clic droit sur <strong>Filtres WMI → Nouveau</strong>.</li>
+<li>Nom : <code>Serveurs membres uniquement</code>.</li>
+<li><strong>Ajouter</strong> une requête, espace de noms <code>root\CIMv2</code> :</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">Win32_OperatingSystem</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">ProductType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">"3"</span>
+</code></pre></div>
+<ol>
+<li>Sélectionne <em>GPO-Serveurs-RDP</em> → onglet <strong>Étendue</strong> → en bas, <strong>Filtrage WMI</strong> → choisis <code>Serveurs membres uniquement</code>.</li>
+</ol>
+<h3 id="94-tester">9.4 Tester</h3>
+<p>Comme l'indique l'énoncé, on désactive d'abord le Bureau à distance sur SRV1 :</p>
+<div class="highlight"><pre><span></span><code><span class="c"># Sur SRV1 : désactive le Bureau à distance (1 = connexions refusées)</span>
+<span class="nb">Set-ItemProperty</span> <span class="n">-Path</span> <span class="s2">"HKLM:\System\CurrentControlSet\Control\Terminal Server"</span> <span class="p">`</span>
+                 <span class="n">-Name</span> <span class="s2">"fDenyTSConnections"</span> <span class="n">-Value</span> <span class="n">1</span>
+
+<span class="c"># Applique immédiatement les GPO</span>
+<span class="n">gpupdate</span> <span class="p">/</span><span class="n">force</span>
+
+<span class="c"># Vérifie que la GPO est bien appliquée</span>
+<span class="n">gpresult</span> <span class="p">/</span><span class="nb">r </span><span class="p">/</span><span class="n">scope</span> <span class="n">computer</span>
+</code></pre></div>
+<p>Puis, depuis <strong>W10-CL1</strong>, connecté avec <strong>Ivan</strong> :</p>
+<div class="highlight"><pre><span></span><code><span class="n">mstsc</span> <span class="p">/</span><span class="n">v</span><span class="p">:</span><span class="n">SRV1</span>
+</code></pre></div>
+<p>La connexion doit fonctionner, avec une demande d'identifiants <strong>avant</strong> l'ouverture de la session : c'est le signe que NLA est actif.</p>
+<hr />
+<h2 id="tester-et-dépanner-les-gpo">Tester et dépanner les GPO</h2>
+<pre class="mermaid"><code>flowchart TD
+    A["❓ La GPO ne s'applique pas"] --&gt; B["gpupdate /force&lt;br/&gt;+ déconnexion/reconnexion"]
+    B --&gt; C{"gpresult /r&lt;br/&gt;la GPO est-elle listée ?"}
+    C --&gt;|"Appliquée"| D["✅ Vérifier le paramètre&lt;br/&gt;(bon chemin, bonne valeur ?)"]
+    C --&gt;|"Refusée : filtrage"| E["🔍 Vérifier le filtrage de sécurité&lt;br/&gt;et le filtre WMI"]
+    C --&gt;|"Absente"| F["🔍 Vérifier le lien de la GPO&lt;br/&gt;et l'OU de l'objet"]
+    F --&gt; G{"Paramètre ordinateur&lt;br/&gt;ou utilisateur ?"}
+    G --&gt;|"ordinateur"| H["L'ordinateur est-il&lt;br/&gt;dans l'OU liée ?"]
+    G --&gt;|"utilisateur"| I["L'utilisateur est-il&lt;br/&gt;dans l'OU liée ?"]</code></pre>
+<table>
+<thead>
+<tr>
+<th>Commande</th>
+<th>Utilité</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>gpupdate /force</code></td>
+<td>Réapplique immédiatement toutes les GPO</td>
+</tr>
+<tr>
+<td><code>gpresult /r</code></td>
+<td>Résumé des GPO appliquées (et refusées) pour l'utilisateur et l'ordinateur</td>
+</tr>
+<tr>
+<td><code>gpresult /h C:\rapport.html</code></td>
+<td>Rapport détaillé en HTML, paramètre par paramètre</td>
+</tr>
+<tr>
+<td><code>Get-GPO -All \| Select DisplayName</code></td>
+<td>Liste toutes les GPO du domaine</td>
+</tr>
+<tr>
+<td><code>Get-GPOReport -Name "GPO-Tous-Securite" -ReportType Html -Path C:\gpo.html</code></td>
+<td>Rapport sur le contenu d'une GPO</td>
+</tr>
+<tr>
+<td><code>Get-GPInheritance -Target "OU=Direction,OU=Utilisateurs,OU=DOMNN,DC=domNN,DC=ad"</code></td>
+<td>GPO héritées par une OU, dans l'ordre d'application</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>💡 <strong>Délai</strong> : sans <code>gpupdate</code>, les GPO se rafraîchissent toutes les <strong>90 minutes</strong> (± 30 min aléatoires). Certains paramètres (redirection de dossiers, installation de logiciels) ne s'appliquent <strong>qu'au démarrage ou à l'ouverture de session</strong>.</p>
+</blockquote>
+<hr />
+<h2 id="récapitulatif">Récapitulatif</h2>
+<table>
+<thead>
+<tr>
+<th>Besoin</th>
+<th>Commande / outil clé</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Créer et lier une GPO</td>
+<td><code>New-GPO \| New-GPLink</code></td>
+</tr>
+<tr>
+<td>Paramètre de modèle d'administration</td>
+<td><code>Set-GPRegistryValue</code></td>
+</tr>
+<tr>
+<td>Filtrer une GPO sur un groupe</td>
+<td><code>Set-GPPermission -PermissionLevel GpoApply</code></td>
+</tr>
+<tr>
+<td>Politique de mot de passe générale</td>
+<td>Default Domain Policy</td>
+</tr>
+<tr>
+<td>Politique de mot de passe par groupe</td>
+<td><code>New-ADFineGrainedPasswordPolicy</code> (PSO)</td>
+</tr>
+<tr>
+<td>Déployer une imprimante</td>
+<td>Gestion de l'impression → <em>Déployer avec la stratégie de groupe</em></td>
+</tr>
+<tr>
+<td>Magasin central</td>
+<td>Copier <code>PolicyDefinitions</code> dans SYSVOL</td>
+</tr>
+<tr>
+<td>Ajouter un groupe à un groupe local</td>
+<td>Préférences → Utilisateurs et groupes locaux</td>
+</tr>
+<tr>
+<td>Rediriger Documents</td>
+<td>Redirection de dossiers + partage sécurisé</td>
+</tr>
+<tr>
+<td>Cibler un type de machine</td>
+<td>Filtre WMI</td>
+</tr>
+<tr>
+<td>Vérifier l'application</td>
+<td><code>gpupdate /force</code>, <code>gpresult /r</code></td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

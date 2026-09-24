@@ -1,0 +1,1426 @@
+
+<!doctype html>
+<html lang="fr" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../../raccourcis-claviers/">
+      
+      
+        <link rel="next" href="../tp02-creation-domaine-ad/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>TP1 — Création de l'infrastructure - Mes notes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#tp1--création-de-linfrastructure" class="md-skip">
+          Aller au contenu
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="En-tête">
+    <a href="../../.." title="Mes notes" class="md-header__button md-logo" aria-label="Mes notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Mes notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              TP1 — Création de l'infrastructure
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Rechercher" placeholder="Rechercher" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Recherche">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Effacer" aria-label="Effacer" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initialisation de la recherche
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Mes notes" class="md-nav__button md-logo" aria-label="Mes notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Mes notes
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cours et TP ENI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Administration Windows
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Administration Windows
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fiche-revision-windows-ad/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fiche de révision — Administration Windows et Active Directory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../raccourcis-claviers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Raccourcis clavier Windows / Windows Server — Administration système et réseau
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    TP
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP1 — Création de l'infrastructure
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP1 — Création de l'infrastructure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#sommaire" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sommaire
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vue-densemble" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vue d'ensemble
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#étape-1--créer-les-machines-virtuelles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 1 — Créer les machines virtuelles
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#étape-2--configurer-le-réseau-des-vm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 2 — Configurer le réseau des VM
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#étape-3--mesurer-les-performances-de-cd1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 3 — Mesurer les performances de CD1
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Étape 3 — Mesurer les performances de CD1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#le-principe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Le principe
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#les-compteurs-demandés" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Les compteurs demandés
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#31-créer-lensemble-de-collecteurs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Créer l'ensemble de collecteurs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-planifier-la-collecte" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Planifier la collecte
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#étape-4--installer-windows-admin-center" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 4 — Installer Windows Admin Center
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Étape 4 — Installer Windows Admin Center">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#le-principe_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Le principe
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#41-installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Installation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-connexion-et-utilisation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Connexion et utilisation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#étape-5--analyser-le-relevé-de-performances" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 5 — Analyser le relevé de performances
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#étape-6--retrouver-des-événements-dans-les-journaux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 6 — Retrouver des événements dans les journaux
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#récapitulatif" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Récapitulatif
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tp02-creation-domaine-ad/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP2 — Création d'un domaine Active Directory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tp03-gestion-domaine-ad/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP3 — Gestion d'un domaine Active Directory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tp04-gestion-ressources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP4 — Gestion de ressources
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tp05-strategies-de-groupe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP5 — Les stratégies de groupe (GPO)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#sommaire" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sommaire
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vue-densemble" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vue d'ensemble
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#étape-1--créer-les-machines-virtuelles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 1 — Créer les machines virtuelles
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#étape-2--configurer-le-réseau-des-vm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 2 — Configurer le réseau des VM
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#étape-3--mesurer-les-performances-de-cd1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 3 — Mesurer les performances de CD1
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Étape 3 — Mesurer les performances de CD1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#le-principe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Le principe
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#les-compteurs-demandés" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Les compteurs demandés
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#31-créer-lensemble-de-collecteurs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Créer l'ensemble de collecteurs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-planifier-la-collecte" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Planifier la collecte
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#étape-4--installer-windows-admin-center" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 4 — Installer Windows Admin Center
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Étape 4 — Installer Windows Admin Center">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#le-principe_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Le principe
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#41-installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Installation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-connexion-et-utilisation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Connexion et utilisation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#étape-5--analyser-le-relevé-de-performances" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 5 — Analyser le relevé de performances
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#étape-6--retrouver-des-événements-dans-les-journaux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 6 — Retrouver des événements dans les journaux
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#récapitulatif" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Récapitulatif
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="tp1--création-de-linfrastructure">TP1 — Création de l'infrastructure</h1>
+<blockquote>
+<p><strong>Objectifs</strong> : créer les machines virtuelles, configurer le réseau des systèmes Windows, mesurer les performances d'un serveur, déployer Windows Admin Center et retrouver des événements dans les journaux.</p>
+</blockquote>
+<hr />
+<h2 id="sommaire">Sommaire</h2>
+<ul>
+<li><a href="#vue-densemble">Vue d'ensemble</a></li>
+<li><a href="#étape-1--créer-les-machines-virtuelles">Étape 1 — Créer les machines virtuelles</a></li>
+<li><a href="#étape-2--configurer-le-réseau-des-vm">Étape 2 — Configurer le réseau des VM</a></li>
+<li><a href="#étape-3--mesurer-les-performances-de-cd1">Étape 3 — Mesurer les performances de CD1</a></li>
+<li><a href="#étape-4--installer-windows-admin-center">Étape 4 — Installer Windows Admin Center</a></li>
+<li><a href="#étape-5--analyser-le-relevé-de-performances">Étape 5 — Analyser le relevé de performances</a></li>
+<li><a href="#étape-6--retrouver-des-événements-dans-les-journaux">Étape 6 — Retrouver des événements dans les journaux</a></li>
+<li><a href="#récapitulatif">Récapitulatif</a></li>
+</ul>
+<hr />
+<h2 id="vue-densemble">Vue d'ensemble</h2>
+<p>On construit une <strong>maquette</strong> : un petit réseau isolé qui simule l'infrastructure d'une entreprise. Toutes les VM sont en <strong>host-only</strong>, elles communiquent entre elles et avec ta machine hôte, mais pas avec Internet ni le réseau de l'école.</p>
+<pre class="mermaid"><code>flowchart LR
+    subgraph HOTE["💻 Machine de salle (VMware Workstation)"]
+        direction LR
+        subgraph LAN["Réseau host-only"]
+            CD1["🖥️ CD1&lt;br/&gt;Windows Server 2022&lt;br/&gt;1 CPU · 4 Go · 40 Go"]
+            SRV1["🖥️ SRV1&lt;br/&gt;Windows Server 2022&lt;br/&gt;1 CPU · 2 Go · 40 Go"]
+            W10["💻 W10-CL1&lt;br/&gt;Windows 10&lt;br/&gt;1 CPU · 4 Go · 40 Go"]
+        end
+    end
+    CD1 --- SRV1
+    SRV1 --- W10
+    W10 --- CD1</code></pre>
+<blockquote>
+<p>⚠️ <strong>Adresses IP</strong> : les adresses utilisées dans ce tuto sont des <strong>exemples</strong>. Remplace-les par celles du schéma fourni par ton formateur.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Machine</th>
+<th>Adresse IP (exemple)</th>
+<th>Masque</th>
+<th>DNS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CD1</td>
+<td><code>192.168.21.10</code></td>
+<td><code>/16</code></td>
+<td><code>127.0.0.1</code> puis lui-même</td>
+</tr>
+<tr>
+<td>SRV1</td>
+<td><code>192.168.21.20</code></td>
+<td><code>/16</code></td>
+<td>IP de CD1</td>
+</tr>
+<tr>
+<td>W10-CL1</td>
+<td><code>192.168.21.100</code></td>
+<td><code>/16</code></td>
+<td>IP de CD1</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="étape-1--créer-les-machines-virtuelles">Étape 1 — Créer les machines virtuelles</h2>
+<p>Cette étape se fait dans <strong>VMware Workstation</strong> (interface graphique).</p>
+<ol>
+<li>Sur le disque <code>D:</code>, crée une arborescence du type <code>D:\VM\CD1</code>, <code>D:\VM\SRV1</code>, <code>D:\VM\W10-CL1</code>.</li>
+<li>Copie les VM préconfigurées depuis le partage <strong>distrib</strong> dans leur dossier respectif.</li>
+<li>Ouvre chaque VM dans VMware et ajuste le matériel (CPU, RAM, disque) selon le tableau ci-dessus.</li>
+<li>Dans <strong>Network Adapter</strong>, choisis <strong>Host-only</strong>.</li>
+</ol>
+<blockquote>
+<p>💡 <strong>Pourquoi un dossier par VM ?</strong> Une VM est composée de plusieurs fichiers (<code>.vmx</code>, <code>.vmdk</code>, snapshots…). Les séparer évite les mélanges et facilite les sauvegardes.</p>
+</blockquote>
+<p>Tu peux créer l'arborescence en PowerShell sur ta machine de salle :</p>
+<div class="highlight"><pre><span></span><code><span class="c"># Crée un dossier par machine virtuelle sur le disque D:</span>
+<span class="c"># -Force : ne génère pas d'erreur si le dossier existe déjà</span>
+<span class="s2">"CD1"</span><span class="p">,</span> <span class="s2">"SRV1"</span><span class="p">,</span> <span class="s2">"W10-CL1"</span> <span class="p">|</span> <span class="k">ForEach</span><span class="n">-Object</span> <span class="p">{</span>
+    <span class="nb">New-Item</span> <span class="n">-Path</span> <span class="s2">"D:\VM\$_"</span> <span class="n">-ItemType</span> <span class="n">Directory</span> <span class="n">-Force</span>
+<span class="p">}</span>
+</code></pre></div>
+<hr />
+<h2 id="étape-2--configurer-le-réseau-des-vm">Étape 2 — Configurer le réseau des VM</h2>
+<p>On donne à chaque machine un <strong>nom</strong> et une <strong>adresse IP fixe</strong>. Un serveur doit toujours avoir une IP fixe : si son adresse change, les autres machines ne le trouvent plus.</p>
+<p>À exécuter <strong>dans chaque VM</strong>, dans une console PowerShell lancée <strong>en administrateur</strong> (exemple pour CD1) :</p>
+<div class="highlight"><pre><span></span><code><span class="c"># 1. Afficher les cartes réseau pour connaître leur nom (souvent "Ethernet0")</span>
+<span class="nb">Get-NetAdapter</span>
+
+<span class="c"># 2. Attribuer une adresse IP fixe à la carte</span>
+<span class="nb">New-NetIPAddress</span> <span class="n">-InterfaceAlias</span> <span class="s2">"Ethernet0"</span> <span class="p">`</span>
+                 <span class="n">-IPAddress</span> <span class="s2">"192.168.21.10"</span> <span class="p">`</span>
+                 <span class="n">-PrefixLength</span> <span class="n">16</span>          <span class="c"># /16 = masque 255.255.0.0</span>
+
+<span class="c"># 3. Indiquer le serveur DNS à utiliser</span>
+<span class="c">#    Pour CD1 (futur contrôleur de domaine) : il sera son propre DNS</span>
+<span class="nb">Set-DnsClientServerAddress</span> <span class="n">-InterfaceAlias</span> <span class="s2">"Ethernet0"</span> <span class="n">-ServerAddresses</span> <span class="s2">"127.0.0.1"</span>
+
+<span class="c"># 4. Renommer la machine puis redémarrer pour appliquer le nom</span>
+<span class="nb">Rename-Computer</span> <span class="n">-NewName</span> <span class="s2">"CD1"</span> <span class="n">-Restart</span>
+</code></pre></div>
+<p>Pour <strong>SRV1</strong> et <strong>W10-CL1</strong>, change l'IP et le nom, et mets l'<strong>IP de CD1</strong> comme DNS :</p>
+<div class="highlight"><pre><span></span><code><span class="c"># Exemple pour SRV1</span>
+<span class="nb">New-NetIPAddress</span> <span class="n">-InterfaceAlias</span> <span class="s2">"Ethernet0"</span> <span class="n">-IPAddress</span> <span class="s2">"192.168.21.20"</span> <span class="n">-PrefixLength</span> <span class="n">16</span>
+<span class="nb">Set-DnsClientServerAddress</span> <span class="n">-InterfaceAlias</span> <span class="s2">"Ethernet0"</span> <span class="n">-ServerAddresses</span> <span class="s2">"192.168.21.10"</span>
+<span class="nb">Rename-Computer</span> <span class="n">-NewName</span> <span class="s2">"SRV1"</span> <span class="n">-Restart</span>
+</code></pre></div>
+<p><strong>Vérification :</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c"># Affiche la configuration IP de la machine</span>
+<span class="nb">Get-NetIPConfiguration</span>
+
+<span class="c"># Teste la communication avec une autre VM (ici CD1)</span>
+<span class="nb">Test-Connection</span> <span class="n">192</span><span class="p">.</span><span class="n">168</span><span class="p">.</span><span class="n">21</span><span class="p">.</span><span class="n">10</span> <span class="n">-Count</span> <span class="n">2</span>
+</code></pre></div>
+<blockquote>
+<p>⚠️ Le <strong>ping</strong> est bloqué par défaut par le pare-feu Windows. S'il échoue, active la règle ICMP :</p>
+<div class="highlight"><pre><span></span><code><span class="c"># Autorise les réponses au ping (ICMPv4) sur cette machine</span>
+<span class="nb">Enable-NetFirewallRule</span> <span class="n">-Name</span> <span class="s2">"FPS-ICMP4-ERQ-In"</span>
+</code></pre></div>
+</blockquote>
+<hr />
+<h2 id="étape-3--mesurer-les-performances-de-cd1">Étape 3 — Mesurer les performances de CD1</h2>
+<h3 id="le-principe">Le principe</h3>
+<p>On crée une <strong>ligne de base</strong> (<em>baseline</em>) : une photo des performances « normales » du serveur. Plus tard, si le serveur ralentit, on compare avec cette référence pour trouver ce qui a changé.</p>
+<pre class="mermaid"><code>flowchart LR
+    A["📋 Ensemble de collecteurs&lt;br/&gt;(CompteurBase)"] --&gt;|lit toutes les 15 s| B["📈 Compteurs&lt;br/&gt;CPU · Mémoire · Disque"]
+    B --&gt; C["💾 Fichier .blg&lt;br/&gt;C:\PerfLogs\CompteurBase-AAMMJJ"]
+    D["⏰ Tâche planifiée&lt;br/&gt;chaque jour jusqu'à vendredi"] --&gt;|démarre| A
+    A --&gt;|s'arrête après 10 min| C
+    C --&gt; E["🔍 Analyseur de performances&lt;br/&gt;(lecture du rapport)"]</code></pre>
+<h3 id="les-compteurs-demandés">Les compteurs demandés</h3>
+<table>
+<thead>
+<tr>
+<th>Objet</th>
+<th>Compteur (nom anglais)</th>
+<th>Ce qu'il mesure</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Processeur</td>
+<td><code>% Processor Time</code></td>
+<td>Pourcentage du temps où le CPU travaille</td>
+</tr>
+<tr>
+<td>Processeur</td>
+<td><code>% Idle Time</code></td>
+<td>Pourcentage du temps où le CPU est inactif</td>
+</tr>
+<tr>
+<td>Mémoire</td>
+<td><code>Available MBytes</code></td>
+<td>Mémoire vive libre, en Mo</td>
+</tr>
+<tr>
+<td>Mémoire</td>
+<td><code>Pages/sec</code></td>
+<td>Échanges entre RAM et fichier d'échange (<em>swap</em>)</td>
+</tr>
+<tr>
+<td>Disque physique</td>
+<td><code>Avg. Disk sec/Read</code></td>
+<td>Temps moyen d'une lecture</td>
+</tr>
+<tr>
+<td>Disque physique</td>
+<td><code>Avg. Disk sec/Write</code></td>
+<td>Temps moyen d'une écriture</td>
+</tr>
+<tr>
+<td>Disque physique</td>
+<td><code>% Disk Time</code></td>
+<td>Temps passé à traiter des lectures/écritures</td>
+</tr>
+<tr>
+<td>Disque physique</td>
+<td><code>% Idle Time</code></td>
+<td>Temps d'inactivité du disque</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>💡 <strong>Comment lire ces valeurs ?</strong> Un CPU souvent au-dessus de 80 %, peu de mémoire disponible avec beaucoup de <code>Pages/sec</code>, ou des temps disque supérieurs à 20 ms signalent un serveur en difficulté.</p>
+</blockquote>
+<h3 id="31-créer-lensemble-de-collecteurs">3.1 Créer l'ensemble de collecteurs</h3>
+<p>On utilise <strong><code>logman</code></strong>, l'outil en ligne de commande de l'analyseur de performances. À exécuter sur <strong>CD1</strong> en administrateur :</p>
+<div class="highlight"><pre><span></span><code><span class="c"># Liste des compteurs à collecter</span>
+<span class="nv">$compteurs</span> <span class="p">=</span> <span class="p">@(</span>
+    <span class="s2">"\Processor(_Total)\% Processor Time"</span><span class="p">,</span>
+    <span class="s2">"\Processor(_Total)\% Idle Time"</span><span class="p">,</span>
+    <span class="s2">"\Memory\Available MBytes"</span><span class="p">,</span>
+    <span class="s2">"\Memory\Pages/sec"</span><span class="p">,</span>
+    <span class="s2">"\PhysicalDisk(_Total)\Avg. Disk sec/Read"</span><span class="p">,</span>
+    <span class="s2">"\PhysicalDisk(_Total)\Avg. Disk sec/Write"</span><span class="p">,</span>
+    <span class="s2">"\PhysicalDisk(_Total)\% Disk Time"</span><span class="p">,</span>
+    <span class="s2">"\PhysicalDisk(_Total)\% Idle Time"</span>
+<span class="p">)</span>
+
+<span class="c"># Crée l'ensemble de collecteurs "CompteurBase"</span>
+<span class="c">#   -c  : les compteurs à collecter</span>
+<span class="c">#   -si : intervalle d'échantillonnage (une mesure toutes les 15 secondes)</span>
+<span class="c">#   -rf : durée d'exécution (s'arrête automatiquement après 10 minutes)</span>
+<span class="c">#   -o  : fichier de sortie, avec la date du jour au format AAMMJJ</span>
+<span class="c">#   -f  : format binaire (.blg), lisible par l'analyseur de performances</span>
+<span class="n">logman</span> <span class="n">create</span> <span class="n">counter</span> <span class="n">CompteurBase</span> <span class="p">`</span>
+    <span class="n">-c</span> <span class="nv">$compteurs</span> <span class="p">`</span>
+    <span class="n">-si</span> <span class="n">00</span><span class="p">:</span><span class="n">00</span><span class="p">:</span><span class="n">15</span> <span class="p">`</span>
+    <span class="n">-rf</span> <span class="n">00</span><span class="p">:</span><span class="n">10</span><span class="p">:</span><span class="n">00</span> <span class="p">`</span>
+    <span class="o">-f</span> <span class="n">bin</span> <span class="p">`</span>
+    <span class="n">-o</span> <span class="s2">"C:\PerfLogs\CompteurBase-</span><span class="p">$(</span><span class="nb">Get-Date</span> <span class="n">-Format</span> <span class="s1">'yyMMdd'</span><span class="p">)</span><span class="s2">"</span>
+</code></pre></div>
+<blockquote>
+<p>⚠️ <strong>Windows en français</strong> : si <code>logman</code> refuse les noms anglais, affiche les noms exacts des compteurs de ton système avec :</p>
+<div class="highlight"><pre><span></span><code><span class="c"># Liste les compteurs disponibles pour l'objet Processeur, Mémoire et Disque physique</span>
+<span class="nb">Get-Counter</span> <span class="n">-ListSet</span> <span class="s2">"Processeur"</span><span class="p">,</span> <span class="s2">"Mémoire"</span><span class="p">,</span> <span class="s2">"Disque physique"</span> <span class="p">|</span>
+    <span class="nb">Select-Object</span> <span class="n">-ExpandProperty</span> <span class="n">Paths</span>
+</code></pre></div>
+<p>Tu peux aussi créer l'ensemble graphiquement : <strong>Analyseur de performances → Ensembles de collecteurs de données → Définis par l'utilisateur → Nouveau</strong>.</p>
+</blockquote>
+<h3 id="32-planifier-la-collecte">3.2 Planifier la collecte</h3>
+<p>La collecte doit démarrer <strong>dans 30 minutes</strong>, durer <strong>10 minutes</strong>, et se répéter <strong>chaque jour jusqu'à vendredi inclus</strong>. On crée une tâche planifiée qui, chaque jour :</p>
+<ol>
+<li>met à jour le nom du fichier avec la date du jour (<code>CompteurBase-AAMMJJ</code>) ;</li>
+<li>démarre la collecte (qui s'arrête seule après 10 min grâce à <code>-rf</code>).</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c"># Commande exécutée chaque jour par la tâche planifiée :</span>
+<span class="c">#   1. met à jour le nom du fichier de sortie avec la date du jour</span>
+<span class="c">#   2. démarre la collecte</span>
+<span class="nv">$commande</span> <span class="p">=</span> <span class="s1">'logman update CompteurBase -o "C:\PerfLogs\CompteurBase-$(Get-Date -Format yyMMdd)"; logman start CompteurBase'</span>
+
+<span class="c"># Action : lancer PowerShell avec cette commande</span>
+<span class="nv">$action</span> <span class="p">=</span> <span class="nb">New-ScheduledTaskAction</span> <span class="n">-Execute</span> <span class="s2">"powershell.exe"</span> <span class="p">`</span>
+                                  <span class="n">-Argument</span> <span class="s2">"-NoProfile -Command $commande"</span>
+
+<span class="c"># Déclencheur : tous les jours, en commençant dans 30 minutes</span>
+<span class="nv">$trigger</span> <span class="p">=</span> <span class="nb">New-ScheduledTaskTrigger</span> <span class="n">-Daily</span> <span class="n">-At</span> <span class="p">(</span><span class="nb">Get-Date</span><span class="p">).</span><span class="n">AddMinutes</span><span class="p">(</span><span class="n">30</span><span class="p">)</span>
+
+<span class="c"># Calcul du vendredi de la semaine en cours</span>
+<span class="c"># (DayOfWeek : lundi = 1 ... vendredi = 5)</span>
+<span class="nv">$vendredi</span> <span class="p">=</span> <span class="p">(</span><span class="nb">Get-Date</span><span class="p">).</span><span class="n">Date</span><span class="p">.</span><span class="n">AddDays</span><span class="p">(</span><span class="n">5</span> <span class="p">-</span> <span class="no">[int]</span><span class="p">(</span><span class="nb">Get-Date</span><span class="p">).</span><span class="n">DayOfWeek</span><span class="p">)</span>
+
+<span class="c"># La tâche expire le samedi à 00h00 (vendredi inclus)</span>
+<span class="nv">$trigger</span><span class="p">.</span><span class="n">EndBoundary</span> <span class="p">=</span> <span class="nv">$vendredi</span><span class="p">.</span><span class="n">AddDays</span><span class="p">(</span><span class="n">1</span><span class="p">).</span><span class="n">ToString</span><span class="p">(</span><span class="s2">"s"</span><span class="p">)</span>
+
+<span class="c"># Enregistre la tâche, exécutée par le compte SYSTEM avec les droits maximum</span>
+<span class="nb">Register-ScheduledTask</span> <span class="n">-TaskName</span> <span class="s2">"Collecte CompteurBase"</span> <span class="p">`</span>
+                       <span class="n">-Action</span> <span class="nv">$action</span> <span class="p">`</span>
+                       <span class="n">-Trigger</span> <span class="nv">$trigger</span> <span class="p">`</span>
+                       <span class="n">-User</span> <span class="s2">"NT AUTHORITY\SYSTEM"</span> <span class="p">`</span>
+                       <span class="n">-RunLevel</span> <span class="n">Highest</span>
+</code></pre></div>
+<p><strong>Vérification :</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c"># Affiche l'état de l'ensemble de collecteurs</span>
+<span class="n">logman</span> <span class="n">query</span> <span class="n">CompteurBase</span>
+
+<span class="c"># Affiche la tâche planifiée et sa prochaine exécution</span>
+<span class="nb">Get-ScheduledTask</span> <span class="n">-TaskName</span> <span class="s2">"Collecte CompteurBase"</span> <span class="p">|</span> <span class="nb">Get-ScheduledTaskInfo</span>
+</code></pre></div>
+<hr />
+<h2 id="étape-4--installer-windows-admin-center">Étape 4 — Installer Windows Admin Center</h2>
+<h3 id="le-principe_1">Le principe</h3>
+<p><strong>Windows Admin Center (WAC)</strong> est une console d'administration accessible depuis un <strong>navigateur web</strong>. Installée sur SRV1, elle permet de gérer plusieurs serveurs à distance sans ouvrir de session Bureau à distance sur chacun.</p>
+<pre class="mermaid"><code>flowchart LR
+    NAV["🌐 Navigateur&lt;br/&gt;(depuis W10-CL1 ou SRV1)"] --&gt;|"HTTPS :443"| WAC["🛠️ Windows Admin Center&lt;br/&gt;installé sur SRV1"]
+    WAC --&gt;|"WinRM / PowerShell"| SRV1["🖥️ SRV1"]
+    WAC --&gt;|"WinRM / PowerShell"| CD1["🖥️ CD1"]</code></pre>
+<h3 id="41-installation">4.1 Installation</h3>
+<ol>
+<li>Installe Firefox ou Chrome sur SRV1 depuis le serveur <strong>distrib</strong> (Internet Explorer n'est pas compatible).</li>
+<li>Lance le fichier <code>.msi</code> fourni par le formateur et garde <strong>tous les paramètres par défaut</strong>.</li>
+</ol>
+<p>Équivalent en ligne de commande (installation silencieuse) :</p>
+<div class="highlight"><pre><span></span><code><span class="c"># Installe WAC sans interface, sur le port 443,</span>
+<span class="c"># avec un certificat auto-signé généré automatiquement</span>
+<span class="n">msiexec</span> <span class="p">/</span><span class="n">i</span> <span class="s2">"C:\Sources\WindowsAdminCenter.msi"</span> <span class="p">/</span><span class="n">qn</span> <span class="n">SME_PORT</span><span class="p">=</span><span class="n">443</span> <span class="n">SSL_CERTIFICATE_OPTION</span><span class="p">=</span><span class="n">generate</span>
+</code></pre></div>
+<h3 id="42-connexion-et-utilisation">4.2 Connexion et utilisation</h3>
+<ol>
+<li>Ouvre <code>https://srv1:443</code> dans le navigateur. Accepte l'avertissement de certificat : il est auto-signé, c'est normal en maquette.</li>
+<li>Sélectionne <strong>SRV1 → Paramètres → Bureau à distance</strong> et active le Bureau à distance.</li>
+<li>Clique sur <strong>+ Ajouter → Serveurs</strong> et saisis <code>CD1</code>.</li>
+</ol>
+<p>Pour info, voici ce que WAC fait quand tu actives le Bureau à distance, en PowerShell :</p>
+<div class="highlight"><pre><span></span><code><span class="c"># Autorise les connexions Bureau à distance (0 = autorisé, 1 = refusé)</span>
+<span class="nb">Set-ItemProperty</span> <span class="n">-Path</span> <span class="s2">"HKLM:\System\CurrentControlSet\Control\Terminal Server"</span> <span class="p">`</span>
+                 <span class="n">-Name</span> <span class="s2">"fDenyTSConnections"</span> <span class="n">-Value</span> <span class="n">0</span>
+
+<span class="c"># Ouvre les règles du pare-feu pour le Bureau à distance</span>
+<span class="c"># (le nom de groupe "@FirewallAPI.dll,-28752" fonctionne quelle que soit la langue de Windows)</span>
+<span class="nb">Enable-NetFirewallRule</span> <span class="n">-Group</span> <span class="s2">"@FirewallAPI.dll,-28752"</span>
+</code></pre></div>
+<p><strong>Vérification depuis W10-CL1 :</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c"># Ouvre une connexion Bureau à distance vers SRV1</span>
+<span class="n">mstsc</span> <span class="p">/</span><span class="n">v</span><span class="p">:</span><span class="n">SRV1</span>
+</code></pre></div>
+<hr />
+<h2 id="étape-5--analyser-le-relevé-de-performances">Étape 5 — Analyser le relevé de performances</h2>
+<p>Une fois la collecte exécutée :</p>
+<ol>
+<li>Ouvre l'<strong>Analyseur de performances</strong> (<code>perfmon</code>).</li>
+<li>Va dans <strong>Rapports → Définis par l'utilisateur → CompteurBase</strong> et ouvre le rapport.</li>
+</ol>
+<p>Tu peux aussi lire le fichier en PowerShell :</p>
+<div class="highlight"><pre><span></span><code><span class="c"># Liste les fichiers de collecte générés</span>
+<span class="nb">Get-ChildItem</span> <span class="n">C</span><span class="p">:\</span><span class="n">PerfLogs</span> <span class="n">-Recurse</span> <span class="n">-Filter</span> <span class="s2">"*.blg"</span>
+
+<span class="c"># Importe un fichier et affiche la moyenne de chaque compteur</span>
+<span class="nb">Import-Counter</span> <span class="n">-Path</span> <span class="s2">"C:\PerfLogs\CompteurBase-*\*.blg"</span> <span class="p">|</span>
+    <span class="nb">Select-Object</span> <span class="n">-ExpandProperty</span> <span class="n">CounterSamples</span> <span class="p">|</span>
+    <span class="nb">Group-Object</span> <span class="n">Path</span> <span class="p">|</span>
+    <span class="nb">Select-Object</span> <span class="n">Name</span><span class="p">,</span> <span class="p">@{</span> <span class="n">Name</span> <span class="p">=</span> <span class="s2">"Moyenne"</span><span class="p">;</span> <span class="n">Expression</span> <span class="p">=</span> <span class="p">{</span> <span class="p">(</span><span class="nv">$_</span><span class="p">.</span><span class="n">Group</span><span class="p">.</span><span class="n">CookedValue</span> <span class="p">|</span> <span class="nb">Measure-Object</span> <span class="n">-Average</span><span class="p">).</span><span class="n">Average</span> <span class="p">}</span> <span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<p>💡 <strong>Les valeurs sont-elles correctes ?</strong> Sur une VM au repos, le CPU doit être bas, et <code>% Processor Time</code> + <code>% Idle Time</code> doivent faire environ 100 %. Sur un disque virtuel, des temps de lecture/écriture incohérents sont fréquents : le disque est émulé par VMware.</p>
+</blockquote>
+<hr />
+<h2 id="étape-6--retrouver-des-événements-dans-les-journaux">Étape 6 — Retrouver des événements dans les journaux</h2>
+<p>Chaque installation d'application via un <code>.msi</code> est enregistrée dans le journal <strong>Application</strong> par la source <strong>MsiInstaller</strong>.</p>
+<div class="highlight"><pre><span></span><code><span class="c"># Cherche dans le journal Application les événements d'installation MSI</span>
+<span class="c"># qui mentionnent "Admin Center"</span>
+<span class="nb">Get-WinEvent</span> <span class="n">-FilterHashtable</span> <span class="p">@{</span> <span class="n">LogName</span> <span class="p">=</span> <span class="s2">"Application"</span><span class="p">;</span> <span class="n">ProviderName</span> <span class="p">=</span> <span class="s2">"MsiInstaller"</span> <span class="p">}</span> <span class="p">|</span>
+    <span class="nb">Where-Object</span> <span class="n">Message</span> <span class="o">-like</span> <span class="s2">"*Admin Center*"</span> <span class="p">|</span>
+    <span class="nb">Select-Object</span> <span class="n">TimeCreated</span><span class="p">,</span> <span class="n">Id</span><span class="p">,</span> <span class="n">Message</span> <span class="p">|</span>
+    <span class="nb">Format-List</span>
+</code></pre></div>
+<p>Dans le résultat, relève :</p>
+<ul>
+<li><strong>la date et l'heure</strong> : colonne <code>TimeCreated</code> ;</li>
+<li><strong>la version</strong> : indiquée dans le message, par exemple <code>Version du produit : 2.x.x</code>.</li>
+</ul>
+<blockquote>
+<p>💡 L'ID <strong>11707</strong> signifie « installation réussie », l'ID <strong>1033</strong> donne le résumé de l'installation avec la version.</p>
+</blockquote>
+<p>En graphique : <strong>Observateur d'événements</strong> (<code>eventvwr.msc</code>) → <strong>Journaux Windows → Application</strong> → <strong>Filtrer le journal actuel</strong> → source <code>MsiInstaller</code>.</p>
+<hr />
+<h2 id="récapitulatif">Récapitulatif</h2>
+<table>
+<thead>
+<tr>
+<th>Besoin</th>
+<th>Commande clé</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Fixer une IP</td>
+<td><code>New-NetIPAddress</code></td>
+</tr>
+<tr>
+<td>Définir le DNS</td>
+<td><code>Set-DnsClientServerAddress</code></td>
+</tr>
+<tr>
+<td>Renommer une machine</td>
+<td><code>Rename-Computer</code></td>
+</tr>
+<tr>
+<td>Créer une collecte de performances</td>
+<td><code>logman create counter</code></td>
+</tr>
+<tr>
+<td>Planifier une tâche</td>
+<td><code>Register-ScheduledTask</code></td>
+</tr>
+<tr>
+<td>Activer le Bureau à distance</td>
+<td><code>Set-ItemProperty ... fDenyTSConnections 0</code></td>
+</tr>
+<tr>
+<td>Lire les journaux</td>
+<td><code>Get-WinEvent -FilterHashtable</code></td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

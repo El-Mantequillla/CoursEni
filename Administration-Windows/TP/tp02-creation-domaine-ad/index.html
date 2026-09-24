@@ -1,0 +1,1552 @@
+
+<!doctype html>
+<html lang="fr" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../tp01-creation-infrastructure/">
+      
+      
+        <link rel="next" href="../tp03-gestion-domaine-ad/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>TP2 — Création d'un domaine Active Directory - Mes notes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#tp2--création-dun-domaine-active-directory" class="md-skip">
+          Aller au contenu
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="En-tête">
+    <a href="../../.." title="Mes notes" class="md-header__button md-logo" aria-label="Mes notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Mes notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              TP2 — Création d'un domaine Active Directory
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Rechercher" placeholder="Rechercher" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Recherche">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Effacer" aria-label="Effacer" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initialisation de la recherche
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Mes notes" class="md-nav__button md-logo" aria-label="Mes notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Mes notes
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cours et TP ENI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Administration Windows
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Administration Windows
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fiche-revision-windows-ad/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fiche de révision — Administration Windows et Active Directory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../raccourcis-claviers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Raccourcis clavier Windows / Windows Server — Administration système et réseau
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    TP
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tp01-creation-infrastructure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP1 — Création de l'infrastructure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP2 — Création d'un domaine Active Directory
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP2 — Création d'un domaine Active Directory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#sommaire" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sommaire
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vue-densemble" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vue d'ensemble
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Vue d&#39;ensemble">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cest-quoi-un-domaine-active-directory-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C'est quoi un domaine Active Directory ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#étape-1--simuler-puis-promouvoir-cd1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 1 — Simuler puis promouvoir CD1
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Étape 1 — Simuler puis promouvoir CD1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-installer-le-rôle-ad-ds" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 Installer le rôle AD DS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-simuler-la-promotion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 Simuler la promotion
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-promouvoir-cd1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 Promouvoir CD1
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#étape-2--ajouter-un-second-contrôleur-de-domaine-cd2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 2 — Ajouter un second contrôleur de domaine (CD2)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Étape 2 — Ajouter un second contrôleur de domaine (CD2)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-créer-la-vm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Créer la VM
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-configurer-le-réseau" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Configurer le réseau
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-promouvoir-cd2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 Promouvoir CD2
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#étape-3--intégrer-w10-cl1-et-srv1-au-domaine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 3 — Intégrer W10-CL1 et SRV1 au domaine
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#étape-4--administrer-depuis-le-poste-client-rsat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 4 — Administrer depuis le poste client (RSAT)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Étape 4 — Administrer depuis le poste client (RSAT)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#le-principe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Le principe
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#41-installer-les-rsat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Installer les RSAT
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-créer-un-utilisateur-à-ton-nom" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Créer un utilisateur à ton nom
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#étape-5--répartir-les-rôles-fsmo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 5 — Répartir les rôles FSMO
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Étape 5 — Répartir les rôles FSMO">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#le-principe_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Le principe
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#51-voir-les-détenteurs-actuels" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Voir les détenteurs actuels
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-déplacer-les-rôles-rid-et-pdc-vers-cd2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Déplacer les rôles RID et PDC vers CD2
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-vérifier" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 Vérifier
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#récapitulatif" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Récapitulatif
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tp03-gestion-domaine-ad/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP3 — Gestion d'un domaine Active Directory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tp04-gestion-ressources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP4 — Gestion de ressources
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tp05-strategies-de-groupe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP5 — Les stratégies de groupe (GPO)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#sommaire" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sommaire
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vue-densemble" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vue d'ensemble
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Vue d&#39;ensemble">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cest-quoi-un-domaine-active-directory-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        C'est quoi un domaine Active Directory ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#étape-1--simuler-puis-promouvoir-cd1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 1 — Simuler puis promouvoir CD1
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Étape 1 — Simuler puis promouvoir CD1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-installer-le-rôle-ad-ds" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 Installer le rôle AD DS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-simuler-la-promotion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 Simuler la promotion
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-promouvoir-cd1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 Promouvoir CD1
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#étape-2--ajouter-un-second-contrôleur-de-domaine-cd2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 2 — Ajouter un second contrôleur de domaine (CD2)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Étape 2 — Ajouter un second contrôleur de domaine (CD2)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-créer-la-vm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Créer la VM
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-configurer-le-réseau" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Configurer le réseau
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-promouvoir-cd2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 Promouvoir CD2
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#étape-3--intégrer-w10-cl1-et-srv1-au-domaine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 3 — Intégrer W10-CL1 et SRV1 au domaine
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#étape-4--administrer-depuis-le-poste-client-rsat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 4 — Administrer depuis le poste client (RSAT)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Étape 4 — Administrer depuis le poste client (RSAT)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#le-principe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Le principe
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#41-installer-les-rsat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Installer les RSAT
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-créer-un-utilisateur-à-ton-nom" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Créer un utilisateur à ton nom
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#étape-5--répartir-les-rôles-fsmo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 5 — Répartir les rôles FSMO
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Étape 5 — Répartir les rôles FSMO">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#le-principe_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Le principe
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#51-voir-les-détenteurs-actuels" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Voir les détenteurs actuels
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-déplacer-les-rôles-rid-et-pdc-vers-cd2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Déplacer les rôles RID et PDC vers CD2
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-vérifier" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 Vérifier
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#récapitulatif" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Récapitulatif
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="tp2--création-dun-domaine-active-directory">TP2 — Création d'un domaine Active Directory</h1>
+<blockquote>
+<p><strong>Objectifs</strong> : créer un domaine Active Directory, ajouter un second contrôleur de domaine, intégrer les machines au domaine, administrer depuis un poste client et répartir les rôles FSMO.</p>
+<p>⚠️ <strong>Convention</strong> : dans tout ce tuto, <strong><code>NN</code></strong> représente tes initiales. Remplace <code>domNN.ad</code> par ton vrai nom de domaine (ex : <code>domJD.ad</code>) et <code>DOMNN</code> par son nom NetBIOS (ex : <code>DOMJD</code>).</p>
+</blockquote>
+<hr />
+<h2 id="sommaire">Sommaire</h2>
+<ul>
+<li><a href="#vue-densemble">Vue d'ensemble</a></li>
+<li><a href="#étape-1--simuler-puis-promouvoir-cd1">Étape 1 — Simuler puis promouvoir CD1</a></li>
+<li><a href="#étape-2--ajouter-un-second-contrôleur-de-domaine-cd2">Étape 2 — Ajouter un second contrôleur de domaine (CD2)</a></li>
+<li><a href="#étape-3--intégrer-w10-cl1-et-srv1-au-domaine">Étape 3 — Intégrer W10-CL1 et SRV1 au domaine</a></li>
+<li><a href="#étape-4--administrer-depuis-le-poste-client-rsat">Étape 4 — Administrer depuis le poste client (RSAT)</a></li>
+<li><a href="#étape-5--répartir-les-rôles-fsmo">Étape 5 — Répartir les rôles FSMO</a></li>
+<li><a href="#récapitulatif">Récapitulatif</a></li>
+</ul>
+<hr />
+<h2 id="vue-densemble">Vue d'ensemble</h2>
+<h3 id="cest-quoi-un-domaine-active-directory-">C'est quoi un domaine Active Directory ?</h3>
+<p>Un <strong>domaine AD</strong> est une base de données centrale qui contient les utilisateurs, les ordinateurs et les groupes de l'entreprise. Au lieu de créer un compte sur chaque PC, on le crée <strong>une seule fois</strong> dans l'annuaire, et l'utilisateur peut se connecter sur n'importe quelle machine du domaine.</p>
+<p>Les serveurs qui hébergent cette base sont les <strong>contrôleurs de domaine</strong> (DC). On en installe <strong>au moins deux</strong> : si l'un tombe en panne, l'autre continue d'authentifier les utilisateurs.</p>
+<pre class="mermaid"><code>flowchart TB
+    subgraph DOM["🏢 Domaine domNN.ad"]
+        CD1["🖥️ CD1&lt;br/&gt;Contrôleur de domaine + DNS"]
+        CD2["🖥️ CD2&lt;br/&gt;Contrôleur de domaine + DNS"]
+        CD1 &lt;--&gt;|"🔁 Réplication AD"| CD2
+        SRV1["🖥️ SRV1&lt;br/&gt;Serveur membre"]
+        W10["💻 W10-CL1&lt;br/&gt;Poste client + RSAT"]
+    end
+    SRV1 -.-&gt;|authentification| CD1
+    W10 -.-&gt;|authentification| CD1
+    W10 -.-&gt;|administration à distance| CD2</code></pre>
+<table>
+<thead>
+<tr>
+<th>Machine</th>
+<th>Rôle</th>
+<th>Adresse IP (exemple)</th>
+<th>DNS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CD1</td>
+<td>Premier contrôleur de domaine</td>
+<td><code>192.168.21.10</code></td>
+<td><code>127.0.0.1</code></td>
+</tr>
+<tr>
+<td>CD2</td>
+<td>Contrôleur de domaine supplémentaire</td>
+<td><code>192.168.21.11</code></td>
+<td>IP de CD1</td>
+</tr>
+<tr>
+<td>SRV1</td>
+<td>Serveur membre</td>
+<td><code>192.168.21.20</code></td>
+<td>IP de CD1</td>
+</tr>
+<tr>
+<td>W10-CL1</td>
+<td>Poste client</td>
+<td><code>192.168.21.100</code></td>
+<td>IP de CD1</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>⚠️ Les adresses sont des <strong>exemples</strong>, utilise celles du schéma de ton formateur.</p>
+<p>💡 <strong>Pourquoi le DNS est-il si important ?</strong> Les machines trouvent les contrôleurs de domaine <strong>grâce au DNS</strong>. Si un client n'utilise pas le DNS du domaine, il ne pourra ni rejoindre le domaine ni s'y connecter. C'est la cause d'erreur n°1 en TP.</p>
+</blockquote>
+<hr />
+<h2 id="étape-1--simuler-puis-promouvoir-cd1">Étape 1 — Simuler puis promouvoir CD1</h2>
+<pre class="mermaid"><code>flowchart LR
+    A["1️⃣ Installer le rôle&lt;br/&gt;AD DS"] --&gt; B["2️⃣ Simuler&lt;br/&gt;Test-ADDSForestInstallation"]
+    B --&gt; C{"Tests OK ?"}
+    C --&gt;|Oui| D["3️⃣ Promouvoir&lt;br/&gt;Install-ADDSForest"]
+    C --&gt;|Non| E["🔧 Corriger&lt;br/&gt;(IP fixe, DNS, nom…)"]
+    E --&gt; B
+    D --&gt; F["🔄 Redémarrage&lt;br/&gt;CD1 devient DC"]</code></pre>
+<h3 id="11-installer-le-rôle-ad-ds">1.1 Installer le rôle AD DS</h3>
+<p>À exécuter sur <strong>CD1</strong>, en administrateur :</p>
+<div class="highlight"><pre><span></span><code><span class="c"># Installe le rôle "Services de domaine Active Directory"</span>
+<span class="c"># -IncludeManagementTools : ajoute aussi les consoles et le module PowerShell AD</span>
+<span class="nb">Install-WindowsFeature</span> <span class="n">AD-Domain-Services</span> <span class="n">-IncludeManagementTools</span>
+</code></pre></div>
+<h3 id="12-simuler-la-promotion">1.2 Simuler la promotion</h3>
+<p>La simulation vérifie que tous les prérequis sont remplis <strong>sans rien modifier</strong>. C'est la commande à noter dans ton compte rendu.</p>
+<div class="highlight"><pre><span></span><code><span class="c"># Simule la création d'une nouvelle forêt avec le domaine domNN.ad</span>
+<span class="c">#   -DomainName        : nom DNS complet du domaine</span>
+<span class="c">#   -DomainNetbiosName : nom court (15 caractères max, en majuscules)</span>
+<span class="c">#   -InstallDns        : installe aussi le serveur DNS sur CD1</span>
+<span class="nb">Test-ADDSForestInstallation</span> <span class="n">-DomainName</span> <span class="s2">"domNN.ad"</span> <span class="p">`</span>
+                            <span class="n">-DomainNetbiosName</span> <span class="s2">"DOMNN"</span> <span class="p">`</span>
+                            <span class="n">-InstallDns</span>
+</code></pre></div>
+<p>Le mot de passe du <strong>mode restauration des services d'annuaire</strong> (DSRM) te sera demandé. Il sert à réparer AD en cas de gros problème, note-le bien.</p>
+<blockquote>
+<p>💡 Les <strong>avertissements</strong> (warnings) sur la délégation DNS sont normaux dans une maquette. Seuls les résultats <strong>en échec</strong> bloquent la promotion.</p>
+</blockquote>
+<h3 id="13-promouvoir-cd1">1.3 Promouvoir CD1</h3>
+<div class="highlight"><pre><span></span><code><span class="c"># Crée la forêt et le domaine, puis redémarre automatiquement CD1</span>
+<span class="nb">Install-ADDSForest</span> <span class="n">-DomainName</span> <span class="s2">"domNN.ad"</span> <span class="p">`</span>
+                   <span class="n">-DomainNetbiosName</span> <span class="s2">"DOMNN"</span> <span class="p">`</span>
+                   <span class="n">-InstallDns</span> <span class="p">`</span>
+                   <span class="n">-SafeModeAdministratorPassword</span> <span class="p">(</span><span class="nb">Read-Host</span> <span class="s2">"Mot de passe DSRM"</span> <span class="n">-AsSecureString</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>Vérification après redémarrage</strong> (connecte-toi avec <code>DOMNN\Administrateur</code>) :</p>
+<div class="highlight"><pre><span></span><code><span class="c"># Affiche les informations du domaine</span>
+<span class="nb">Get-ADDomain</span> <span class="p">|</span> <span class="nb">Select-Object</span> <span class="n">DNSRoot</span><span class="p">,</span> <span class="n">NetBIOSName</span><span class="p">,</span> <span class="n">DomainMode</span>
+
+<span class="c"># Liste les contrôleurs de domaine</span>
+<span class="nb">Get-ADDomainController</span> <span class="n">-Filter</span> <span class="p">*</span> <span class="p">|</span> <span class="nb">Select-Object</span> <span class="n">Name</span><span class="p">,</span> <span class="n">IPv4Address</span><span class="p">,</span> <span class="n">Site</span>
+</code></pre></div>
+<hr />
+<h2 id="étape-2--ajouter-un-second-contrôleur-de-domaine-cd2">Étape 2 — Ajouter un second contrôleur de domaine (CD2)</h2>
+<h3 id="21-créer-la-vm">2.1 Créer la VM</h3>
+<p>Dans VMware Workstation, crée une VM <strong>CD2</strong> : 1 CPU, 4 Go de RAM, 40 Go de disque, carte réseau en <strong>host-only</strong>.</p>
+<h3 id="22-configurer-le-réseau">2.2 Configurer le réseau</h3>
+<p>Sur <strong>CD2</strong>, en administrateur :</p>
+<div class="highlight"><pre><span></span><code><span class="c"># IP fixe de CD2</span>
+<span class="nb">New-NetIPAddress</span> <span class="n">-InterfaceAlias</span> <span class="s2">"Ethernet0"</span> <span class="n">-IPAddress</span> <span class="s2">"192.168.21.11"</span> <span class="n">-PrefixLength</span> <span class="n">16</span>
+
+<span class="c"># DNS = CD1, pour que CD2 puisse trouver le domaine</span>
+<span class="nb">Set-DnsClientServerAddress</span> <span class="n">-InterfaceAlias</span> <span class="s2">"Ethernet0"</span> <span class="n">-ServerAddresses</span> <span class="s2">"192.168.21.10"</span>
+
+<span class="c"># Renomme la machine et redémarre</span>
+<span class="nb">Rename-Computer</span> <span class="n">-NewName</span> <span class="s2">"CD2"</span> <span class="n">-Restart</span>
+</code></pre></div>
+<h3 id="23-promouvoir-cd2">2.3 Promouvoir CD2</h3>
+<div class="highlight"><pre><span></span><code><span class="c"># Installe le rôle AD DS</span>
+<span class="nb">Install-WindowsFeature</span> <span class="n">AD-Domain-Services</span> <span class="n">-IncludeManagementTools</span>
+
+<span class="c"># Ajoute CD2 comme contrôleur de domaine SUPPLÉMENTAIRE du domaine existant</span>
+<span class="c">#   -Credential : un compte administrateur du domaine</span>
+<span class="c">#   -InstallDns : CD2 sera aussi serveur DNS (tolérance de panne du DNS)</span>
+<span class="nb">Install-ADDSDomainController</span> <span class="n">-DomainName</span> <span class="s2">"domNN.ad"</span> <span class="p">`</span>
+                             <span class="n">-InstallDns</span> <span class="p">`</span>
+                             <span class="n">-Credential</span> <span class="p">(</span><span class="nb">Get-Credential</span> <span class="s2">"DOMNN\Administrateur"</span><span class="p">)</span> <span class="p">`</span>
+                             <span class="n">-SafeModeAdministratorPassword</span> <span class="p">(</span><span class="nb">Read-Host</span> <span class="s2">"Mot de passe DSRM"</span> <span class="n">-AsSecureString</span><span class="p">)</span>
+</code></pre></div>
+<blockquote>
+<p>💡 <strong>Différence avec l'étape 1</strong> : <code>Install-ADDSForest</code> crée un <strong>nouveau</strong> domaine, alors que <code>Install-ADDSDomainController</code> <strong>rejoint</strong> un domaine existant. CD2 reçoit une copie complète de l'annuaire par réplication.</p>
+</blockquote>
+<p><strong>Vérification</strong> (sur CD1 ou CD2) :</p>
+<div class="highlight"><pre><span></span><code><span class="c"># Les deux DC doivent apparaître</span>
+<span class="nb">Get-ADDomainController</span> <span class="n">-Filter</span> <span class="p">*</span> <span class="p">|</span> <span class="nb">Select-Object</span> <span class="n">Name</span><span class="p">,</span> <span class="n">IPv4Address</span>
+
+<span class="c"># Vérifie l'état de la réplication entre les DC</span>
+<span class="n">repadmin</span> <span class="p">/</span><span class="n">replsummary</span>
+</code></pre></div>
+<hr />
+<h2 id="étape-3--intégrer-w10-cl1-et-srv1-au-domaine">Étape 3 — Intégrer W10-CL1 et SRV1 au domaine</h2>
+<p>Avant de rejoindre le domaine, la machine doit utiliser <strong>CD1 comme DNS</strong> (voir TP1). Ensuite, sur <strong>SRV1</strong> puis sur <strong>W10-CL1</strong>, en administrateur :</p>
+<div class="highlight"><pre><span></span><code><span class="c"># Vérifie que le domaine est bien trouvé via le DNS</span>
+<span class="nb">Resolve-DnsName</span> <span class="n">domNN</span><span class="p">.</span><span class="n">ad</span>
+
+<span class="c"># Intègre la machine au domaine puis redémarre</span>
+<span class="nb">Add-Computer</span> <span class="n">-DomainName</span> <span class="s2">"domNN.ad"</span> <span class="p">`</span>
+             <span class="n">-Credential</span> <span class="p">(</span><span class="nb">Get-Credential</span> <span class="s2">"DOMNN\Administrateur"</span><span class="p">)</span> <span class="p">`</span>
+             <span class="n">-Restart</span>
+</code></pre></div>
+<p><strong>Vérification</strong> (sur un DC) :</p>
+<div class="highlight"><pre><span></span><code><span class="c"># Liste les ordinateurs du domaine</span>
+<span class="nb">Get-ADComputer</span> <span class="n">-Filter</span> <span class="p">*</span> <span class="p">|</span> <span class="nb">Select-Object</span> <span class="n">Name</span><span class="p">,</span> <span class="n">DistinguishedName</span>
+</code></pre></div>
+<blockquote>
+<p>💡 Les ordinateurs qui rejoignent le domaine arrivent par défaut dans le conteneur <strong><code>Computers</code></strong>. On les rangera dans des unités d'organisation au TP3.</p>
+</blockquote>
+<hr />
+<h2 id="étape-4--administrer-depuis-le-poste-client-rsat">Étape 4 — Administrer depuis le poste client (RSAT)</h2>
+<h3 id="le-principe">Le principe</h3>
+<p>Les <strong>RSAT</strong> (<em>Remote Server Administration Tools</em>) installent sur Windows 10 les mêmes consoles que sur un serveur : Utilisateurs et ordinateurs AD, DNS, DHCP, GPO… L'administrateur travaille depuis <strong>son poste</strong>, sans ouvrir de session sur les serveurs. C'est plus sûr et plus pratique.</p>
+<h3 id="41-installer-les-rsat">4.1 Installer les RSAT</h3>
+<p>Sur <strong>W10-CL1</strong>, dans PowerShell <strong>en administrateur</strong> :</p>
+<div class="highlight"><pre><span></span><code><span class="c"># Liste les outils RSAT disponibles et leur état</span>
+<span class="nb">Get-WindowsCapability</span> <span class="n">-Online</span> <span class="n">-Name</span> <span class="s2">"Rsat*"</span> <span class="p">|</span> <span class="nb">Select-Object</span> <span class="n">Name</span><span class="p">,</span> <span class="n">State</span>
+
+<span class="c"># Installe tous les outils RSAT</span>
+<span class="nb">Get-WindowsCapability</span> <span class="n">-Online</span> <span class="n">-Name</span> <span class="s2">"Rsat*"</span> <span class="p">|</span> <span class="nb">Add-WindowsCapability</span> <span class="n">-Online</span>
+</code></pre></div>
+<blockquote>
+<p>⚠️ Cette méthode télécharge les outils depuis Windows Update. Sans accès Internet, utilise l'installation fournie par ton formateur (fichier <code>.msu</code> ou ISO <em>Features on Demand</em>).</p>
+</blockquote>
+<p>Pour installer seulement les outils essentiels :</p>
+<div class="highlight"><pre><span></span><code><span class="c"># Outils Active Directory (consoles + module PowerShell)</span>
+<span class="nb">Add-WindowsCapability</span> <span class="n">-Online</span> <span class="n">-Name</span> <span class="s2">"Rsat.ActiveDirectory.DS-LDS.Tools~~~~0.0.1.0"</span>
+
+<span class="c"># Console de gestion des stratégies de groupe</span>
+<span class="nb">Add-WindowsCapability</span> <span class="n">-Online</span> <span class="n">-Name</span> <span class="s2">"Rsat.GroupPolicy.Management.Tools~~~~0.0.1.0"</span>
+
+<span class="c"># Console DNS</span>
+<span class="nb">Add-WindowsCapability</span> <span class="n">-Online</span> <span class="n">-Name</span> <span class="s2">"Rsat.Dns.Tools~~~~0.0.1.0"</span>
+</code></pre></div>
+<h3 id="42-créer-un-utilisateur-à-ton-nom">4.2 Créer un utilisateur à ton nom</h3>
+<p>Ouvre le <strong>Centre d'administration Active Directory</strong> (<code>dsac.exe</code>) et crée ton utilisateur dans le conteneur <code>Users</code>. L'équivalent PowerShell :</p>
+<div class="highlight"><pre><span></span><code><span class="c"># Crée un utilisateur à ton nom (remplace Prénom/Nom)</span>
+<span class="nb">New-ADUser</span> <span class="n">-Name</span> <span class="s2">"Jean Dupont"</span> <span class="p">`</span>
+           <span class="n">-GivenName</span> <span class="s2">"Jean"</span> <span class="p">`</span>
+           <span class="n">-Surname</span> <span class="s2">"Dupont"</span> <span class="p">`</span>
+           <span class="n">-SamAccountName</span> <span class="s2">"jdupont"</span> <span class="p">`</span>
+           <span class="n">-UserPrincipalName</span> <span class="s2">"jdupont@domNN.ad"</span> <span class="p">`</span>
+           <span class="n">-AccountPassword</span> <span class="p">(</span><span class="nb">Read-Host</span> <span class="s2">"Mot de passe"</span> <span class="n">-AsSecureString</span><span class="p">)</span> <span class="p">`</span>
+           <span class="n">-Enabled</span> <span class="nv">$true</span>
+</code></pre></div>
+<blockquote>
+<p>💡 Le <strong>Centre d'administration AD</strong> affiche en bas une <strong>visionneuse de l'historique PowerShell</strong> : chaque action faite à la souris y apparaît sous forme de commande. C'est un excellent moyen d'apprendre PowerShell.</p>
+</blockquote>
+<hr />
+<h2 id="étape-5--répartir-les-rôles-fsmo">Étape 5 — Répartir les rôles FSMO</h2>
+<h3 id="le-principe_1">Le principe</h3>
+<p>La plupart des modifications AD peuvent se faire sur n'importe quel DC. Mais <strong>5 opérations</strong> sont confiées à <strong>un seul DC</strong> à la fois : ce sont les rôles <strong>FSMO</strong> (<em>Flexible Single Master Operations</em>).</p>
+<table>
+<thead>
+<tr>
+<th>Rôle</th>
+<th>Portée</th>
+<th>À quoi il sert</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Maître de schéma</strong></td>
+<td>Forêt</td>
+<td>Modifier la structure de l'annuaire (types d'objets et attributs)</td>
+</tr>
+<tr>
+<td><strong>Maître d'attribution de noms</strong></td>
+<td>Forêt</td>
+<td>Ajouter ou supprimer des domaines dans la forêt</td>
+</tr>
+<tr>
+<td><strong>Maître RID</strong></td>
+<td>Domaine</td>
+<td>Distribuer aux DC des lots d'identifiants uniques (SID) pour créer des objets</td>
+</tr>
+<tr>
+<td><strong>Émulateur PDC</strong></td>
+<td>Domaine</td>
+<td>Référence pour l'heure, les changements de mot de passe et les verrouillages de compte</td>
+</tr>
+<tr>
+<td><strong>Maître d'infrastructure</strong></td>
+<td>Domaine</td>
+<td>Mettre à jour les références entre objets de domaines différents</td>
+</tr>
+</tbody>
+</table>
+<p>Par défaut, <strong>CD1 possède les 5 rôles</strong>. S'il tombe en panne, tout est bloqué d'un coup. On répartit donc les rôles :</p>
+<pre class="mermaid"><code>flowchart LR
+    subgraph AVANT["❌ Avant"]
+        A1["🖥️ CD1&lt;br/&gt;Schéma · Noms · RID&lt;br/&gt;PDC · Infrastructure"]
+        A2["🖥️ CD2&lt;br/&gt;aucun rôle"]
+    end
+    subgraph APRES["✅ Après"]
+        B1["🖥️ CD1&lt;br/&gt;Schéma · Noms&lt;br/&gt;Infrastructure"]
+        B2["🖥️ CD2&lt;br/&gt;RID · PDC"]
+    end
+    AVANT ==&gt;|"Move-ADDirectoryServer&lt;br/&gt;OperationMasterRole"| APRES</code></pre>
+<h3 id="51-voir-les-détenteurs-actuels">5.1 Voir les détenteurs actuels</h3>
+<div class="highlight"><pre><span></span><code><span class="c"># Méthode rapide : affiche les 5 rôles et leur détenteur</span>
+<span class="n">netdom</span> <span class="n">query</span> <span class="n">fsmo</span>
+</code></pre></div>
+<p>Méthode PowerShell équivalente :</p>
+<div class="highlight"><pre><span></span><code><span class="c"># Rôles de niveau domaine</span>
+<span class="nb">Get-ADDomain</span> <span class="p">|</span> <span class="nb">Select-Object</span> <span class="n">RIDMaster</span><span class="p">,</span> <span class="n">PDCEmulator</span><span class="p">,</span> <span class="n">InfrastructureMaster</span>
+
+<span class="c"># Rôles de niveau forêt</span>
+<span class="nb">Get-ADForest</span> <span class="p">|</span> <span class="nb">Select-Object</span> <span class="n">SchemaMaster</span><span class="p">,</span> <span class="n">DomainNamingMaster</span>
+</code></pre></div>
+<h3 id="52-déplacer-les-rôles-rid-et-pdc-vers-cd2">5.2 Déplacer les rôles RID et PDC vers CD2</h3>
+<div class="highlight"><pre><span></span><code><span class="c"># Transfère les rôles Maître RID et Émulateur PDC vers CD2</span>
+<span class="nb">Move-ADDirectoryServerOperationMasterRole</span> <span class="n">-Identity</span> <span class="s2">"CD2"</span> <span class="p">`</span>
+                                          <span class="n">-OperationMasterRole</span> <span class="n">RIDMaster</span><span class="p">,</span> <span class="n">PDCEmulator</span>
+</code></pre></div>
+<p>Confirme avec <strong>O</strong> (Oui) ou <strong>T</strong> (Oui pour tout).</p>
+<h3 id="53-vérifier">5.3 Vérifier</h3>
+<div class="highlight"><pre><span></span><code><span class="n">netdom</span> <span class="n">query</span> <span class="n">fsmo</span>
+</code></pre></div>
+<p>Résultat attendu :</p>
+<div class="highlight"><pre><span></span><code>Contrôleur de schéma             CD1.domNN.ad
+Maître d'attribution de noms     CD1.domNN.ad
+PDC                              CD2.domNN.ad
+Gestionnaire du pool RID         CD2.domNN.ad
+Maître d'infrastructure          CD1.domNN.ad
+</code></pre></div>
+<blockquote>
+<p>💡 <strong>Transfert vs saisie</strong> : ici on <strong>transfère</strong> les rôles, les deux DC sont en ligne et se mettent d'accord. Si un DC est définitivement mort, on <strong>saisit</strong> le rôle avec le paramètre <code>-Force</code>. C'est une opération de dernier recours.</p>
+</blockquote>
+<hr />
+<h2 id="récapitulatif">Récapitulatif</h2>
+<table>
+<thead>
+<tr>
+<th>Besoin</th>
+<th>Commande clé</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Installer le rôle AD DS</td>
+<td><code>Install-WindowsFeature AD-Domain-Services</code></td>
+</tr>
+<tr>
+<td>Simuler une promotion</td>
+<td><code>Test-ADDSForestInstallation</code></td>
+</tr>
+<tr>
+<td>Créer une forêt / un domaine</td>
+<td><code>Install-ADDSForest</code></td>
+</tr>
+<tr>
+<td>Ajouter un DC</td>
+<td><code>Install-ADDSDomainController</code></td>
+</tr>
+<tr>
+<td>Joindre une machine au domaine</td>
+<td><code>Add-Computer</code></td>
+</tr>
+<tr>
+<td>Installer les RSAT</td>
+<td><code>Add-WindowsCapability -Name Rsat*</code></td>
+</tr>
+<tr>
+<td>Voir les rôles FSMO</td>
+<td><code>netdom query fsmo</code></td>
+</tr>
+<tr>
+<td>Déplacer des rôles FSMO</td>
+<td><code>Move-ADDirectoryServerOperationMasterRole</code></td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

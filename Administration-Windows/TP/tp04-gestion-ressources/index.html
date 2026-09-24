@@ -1,0 +1,2167 @@
+
+<!doctype html>
+<html lang="fr" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../tp03-gestion-domaine-ad/">
+      
+      
+        <link rel="next" href="../tp05-strategies-de-groupe/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>TP4 — Gestion de ressources - Mes notes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#tp4--gestion-de-ressources" class="md-skip">
+          Aller au contenu
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="En-tête">
+    <a href="../../.." title="Mes notes" class="md-header__button md-logo" aria-label="Mes notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Mes notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              TP4 — Gestion de ressources
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Rechercher" placeholder="Rechercher" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Recherche">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Effacer" aria-label="Effacer" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initialisation de la recherche
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Mes notes" class="md-nav__button md-logo" aria-label="Mes notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Mes notes
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cours et TP ENI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Administration Windows
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Administration Windows
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fiche-revision-windows-ad/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fiche de révision — Administration Windows et Active Directory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../raccourcis-claviers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Raccourcis clavier Windows / Windows Server — Administration système et réseau
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    TP
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tp01-creation-infrastructure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP1 — Création de l'infrastructure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tp02-creation-domaine-ad/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP2 — Création d'un domaine Active Directory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tp03-gestion-domaine-ad/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP3 — Gestion d'un domaine Active Directory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP4 — Gestion de ressources
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP4 — Gestion de ressources
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#sommaire" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sommaire
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#étape-1--ajouter-de-lespace-disque-sur-srv1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 1 — Ajouter de l'espace disque sur SRV1
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Étape 1 — Ajouter de l&#39;espace disque sur SRV1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#le-principe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Le principe
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#11-ajouter-les-disques-dans-vmware" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 Ajouter les disques dans VMware
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-créer-le-pool-de-stockage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 Créer le pool de stockage
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-créer-le-volume-data-e" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 Créer le volume DATA (E:)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-créer-le-volume-users-monté-dans-cbase" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4 Créer le volume USERS (monté dans C:\Base)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#étape-2--comprendre-la-méthode-agdlp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 2 — Comprendre la méthode AGDLP
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Étape 2 — Comprendre la méthode AGDLP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#le-principe_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Le principe
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#les-accès-demandés" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Les accès demandés
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#étape-3--créer-les-groupes-de-domaine-locaux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 3 — Créer les groupes de domaine locaux
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Étape 3 — Créer les groupes de domaine locaux">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ajouter-les-groupes-globaux-dans-les-groupes-locaux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ajouter les groupes globaux dans les groupes locaux
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#étape-4--créer-les-dossiers-et-les-partages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 4 — Créer les dossiers et les partages
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Étape 4 — Créer les dossiers et les partages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#le-principe--deux-niveaux-de-droits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Le principe : deux niveaux de droits
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#41-créer-larborescence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Créer l'arborescence
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-définir-les-droits-ntfs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Définir les droits NTFS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-créer-les-partages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 Créer les partages
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-publier-le-partage-documentation-dans-lannuaire" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 Publier le partage Documentation dans l'annuaire
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#étape-5--tester-les-accès" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 5 — Tester les accès
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Étape 5 — Tester les accès">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#résultats-attendus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Résultats attendus
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#étape-6--déléguer-des-privilèges-dans-lad" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 6 — Déléguer des privilèges dans l'AD
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Étape 6 — Déléguer des privilèges dans l&#39;AD">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#le-principe_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Le principe
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#61-créer-les-groupes-de-délégation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Créer les groupes de délégation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-appliquer-la-délégation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Appliquer la délégation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-isabelle-administratrice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 Isabelle administratrice
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64-tester" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4 Tester
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#étape-7--partager-limprimante" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 7 — Partager l'imprimante
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Étape 7 — Partager l&#39;imprimante">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#le-principe_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Le principe
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#71-installer-le-rôle-et-le-pilote" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 Installer le rôle et le pilote
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-créer-le-port-et-les-imprimantes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 Créer le port et les imprimantes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-horaires-et-autorisations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 Horaires et autorisations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74-tester-manuellement-depuis-w10-cl1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4 Tester manuellement depuis W10-CL1
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#récapitulatif" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Récapitulatif
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tp05-strategies-de-groupe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP5 — Les stratégies de groupe (GPO)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#sommaire" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sommaire
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#étape-1--ajouter-de-lespace-disque-sur-srv1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 1 — Ajouter de l'espace disque sur SRV1
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Étape 1 — Ajouter de l&#39;espace disque sur SRV1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#le-principe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Le principe
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#11-ajouter-les-disques-dans-vmware" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 Ajouter les disques dans VMware
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-créer-le-pool-de-stockage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 Créer le pool de stockage
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-créer-le-volume-data-e" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 Créer le volume DATA (E:)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14-créer-le-volume-users-monté-dans-cbase" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4 Créer le volume USERS (monté dans C:\Base)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#étape-2--comprendre-la-méthode-agdlp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 2 — Comprendre la méthode AGDLP
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Étape 2 — Comprendre la méthode AGDLP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#le-principe_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Le principe
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#les-accès-demandés" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Les accès demandés
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#étape-3--créer-les-groupes-de-domaine-locaux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 3 — Créer les groupes de domaine locaux
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Étape 3 — Créer les groupes de domaine locaux">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ajouter-les-groupes-globaux-dans-les-groupes-locaux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ajouter les groupes globaux dans les groupes locaux
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#étape-4--créer-les-dossiers-et-les-partages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 4 — Créer les dossiers et les partages
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Étape 4 — Créer les dossiers et les partages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#le-principe--deux-niveaux-de-droits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Le principe : deux niveaux de droits
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#41-créer-larborescence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Créer l'arborescence
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-définir-les-droits-ntfs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Définir les droits NTFS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-créer-les-partages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 Créer les partages
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-publier-le-partage-documentation-dans-lannuaire" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 Publier le partage Documentation dans l'annuaire
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#étape-5--tester-les-accès" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 5 — Tester les accès
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Étape 5 — Tester les accès">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#résultats-attendus" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Résultats attendus
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#étape-6--déléguer-des-privilèges-dans-lad" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 6 — Déléguer des privilèges dans l'AD
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Étape 6 — Déléguer des privilèges dans l&#39;AD">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#le-principe_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Le principe
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#61-créer-les-groupes-de-délégation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Créer les groupes de délégation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-appliquer-la-délégation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Appliquer la délégation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-isabelle-administratrice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 Isabelle administratrice
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64-tester" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4 Tester
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#étape-7--partager-limprimante" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 7 — Partager l'imprimante
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Étape 7 — Partager l&#39;imprimante">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#le-principe_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Le principe
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#71-installer-le-rôle-et-le-pilote" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 Installer le rôle et le pilote
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-créer-le-port-et-les-imprimantes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 Créer le port et les imprimantes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-horaires-et-autorisations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 Horaires et autorisations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74-tester-manuellement-depuis-w10-cl1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4 Tester manuellement depuis W10-CL1
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#récapitulatif" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Récapitulatif
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="tp4--gestion-de-ressources">TP4 — Gestion de ressources</h1>
+<blockquote>
+<p><strong>Objectifs</strong> : ajouter de l'espace de stockage tolérant aux pannes, partager des dossiers avec les bons droits, déléguer des privilèges dans l'Active Directory et partager une imprimante.</p>
+<p>⚠️ <strong>Convention</strong> : remplace <code>NN</code> par tes initiales partout (<code>DOMNN</code> → <code>DOMJD</code>, <code>DC=domNN</code> → <code>DC=domJD</code>).</p>
+</blockquote>
+<hr />
+<h2 id="sommaire">Sommaire</h2>
+<ul>
+<li><a href="#étape-1--ajouter-de-lespace-disque-sur-srv1">Étape 1 — Ajouter de l'espace disque sur SRV1</a></li>
+<li><a href="#étape-2--comprendre-la-méthode-agdlp">Étape 2 — Comprendre la méthode AGDLP</a></li>
+<li><a href="#étape-3--créer-les-groupes-de-domaine-locaux">Étape 3 — Créer les groupes de domaine locaux</a></li>
+<li><a href="#étape-4--créer-les-dossiers-et-les-partages">Étape 4 — Créer les dossiers et les partages</a></li>
+<li><a href="#étape-5--tester-les-accès">Étape 5 — Tester les accès</a></li>
+<li><a href="#étape-6--déléguer-des-privilèges-dans-lad">Étape 6 — Déléguer des privilèges dans l'AD</a></li>
+<li><a href="#étape-7--partager-limprimante">Étape 7 — Partager l'imprimante</a></li>
+<li><a href="#récapitulatif">Récapitulatif</a></li>
+</ul>
+<hr />
+<h2 id="étape-1--ajouter-de-lespace-disque-sur-srv1">Étape 1 — Ajouter de l'espace disque sur SRV1</h2>
+<h3 id="le-principe">Le principe</h3>
+<p>On ajoute 3 disques de 20 Go et on les regroupe dans un <strong>pool de stockage</strong>. Dans ce pool, on crée des <strong>disques virtuels en miroir</strong> : chaque donnée est écrite sur 2 disques. Si un disque tombe en panne, les données restent disponibles sur l'autre, <strong>sans interruption de service</strong>.</p>
+<pre class="mermaid"><code>flowchart TB
+    subgraph PHYS["💽 Disques physiques ajoutés (SCSI)"]
+        D1["Disque 1&lt;br/&gt;20 Go"]
+        D2["Disque 2&lt;br/&gt;20 Go"]
+        D3["Disque 3&lt;br/&gt;20 Go"]
+    end
+    PHYS --&gt; POOL["🗄️ Pool de stockage&lt;br/&gt;Pool-Donnees (≈ 60 Go bruts)"]
+    POOL --&gt; VD1["🪞 Disque virtuel DATA&lt;br/&gt;Miroir · 10 Go"]
+    POOL --&gt; VD2["🪞 Disque virtuel USERS&lt;br/&gt;Miroir · 5 Go"]
+    VD1 --&gt; V1["📂 Volume NTFS&lt;br/&gt;lecteur E:"]
+    VD2 --&gt; V2["📂 Volume NTFS&lt;br/&gt;monté dans C:\Base"]</code></pre>
+<blockquote>
+<p>💡 <strong>Miroir ou parité ?</strong> Les deux supportent la perte d'un disque. Le <strong>miroir</strong> consomme plus d'espace (données en double) mais il est plus rapide en écriture. La <strong>parité</strong> économise de l'espace mais écrit plus lentement. Pour une maquette, le miroir est le plus simple.</p>
+</blockquote>
+<h3 id="11-ajouter-les-disques-dans-vmware">1.1 Ajouter les disques dans VMware</h3>
+<p>VM <strong>SRV1</strong> éteinte → <strong>Edit virtual machine settings → Add → Hard Disk → SCSI → 20 Go</strong>. Répète 3 fois, puis démarre la VM.</p>
+<h3 id="12-créer-le-pool-de-stockage">1.2 Créer le pool de stockage</h3>
+<p>Sur <strong>SRV1</strong>, en administrateur :</p>
+<div class="highlight"><pre><span></span><code><span class="c"># Liste les disques disponibles pour un pool (vierges, non utilisés)</span>
+<span class="nv">$disques</span> <span class="p">=</span> <span class="nb">Get-PhysicalDisk</span> <span class="n">-CanPool</span> <span class="nv">$true</span>
+<span class="nv">$disques</span> <span class="p">|</span> <span class="nb">Select-Object</span> <span class="n">FriendlyName</span><span class="p">,</span> <span class="n">Size</span><span class="p">,</span> <span class="n">MediaType</span>
+
+<span class="c"># Récupère le sous-système de stockage de Windows</span>
+<span class="nv">$sousSysteme</span> <span class="p">=</span> <span class="nb">Get-StorageSubSystem</span> <span class="p">|</span> <span class="nb">Select-Object</span> <span class="n">-First</span> <span class="n">1</span>
+
+<span class="c"># Crée le pool avec les 3 disques</span>
+<span class="nb">New-StoragePool</span> <span class="n">-FriendlyName</span> <span class="s2">"Pool-Donnees"</span> <span class="p">`</span>
+                <span class="n">-StorageSubSystemUniqueId</span> <span class="nv">$sousSysteme</span><span class="p">.</span><span class="n">UniqueId</span> <span class="p">`</span>
+                <span class="n">-PhysicalDisks</span> <span class="nv">$disques</span>
+</code></pre></div>
+<h3 id="13-créer-le-volume-data-e">1.3 Créer le volume DATA (E:)</h3>
+<div class="highlight"><pre><span></span><code><span class="c"># Crée un disque virtuel de 10 Go en miroir dans le pool</span>
+<span class="c">#   -ResiliencySettingName Mirror : chaque donnée est écrite sur 2 disques</span>
+<span class="c">#   -ProvisioningType Fixed       : l'espace est réservé immédiatement</span>
+<span class="nb">New-VirtualDisk</span> <span class="n">-StoragePoolFriendlyName</span> <span class="s2">"Pool-Donnees"</span> <span class="p">`</span>
+                <span class="n">-FriendlyName</span> <span class="s2">"DATA"</span> <span class="p">`</span>
+                <span class="n">-ResiliencySettingName</span> <span class="n">Mirror</span> <span class="p">`</span>
+                <span class="n">-Size</span> <span class="n">10GB</span> <span class="p">`</span>
+                <span class="n">-ProvisioningType</span> <span class="n">Fixed</span>
+
+<span class="c"># Initialise le disque, crée une partition sur la lettre E: et la formate en NTFS</span>
+<span class="nb">Get-VirtualDisk</span> <span class="s2">"DATA"</span> <span class="p">|</span> <span class="nb">Get-Disk</span> <span class="p">|</span>
+    <span class="nb">Initialize-Disk</span> <span class="n">-PartitionStyle</span> <span class="n">GPT</span> <span class="n">-PassThru</span> <span class="p">|</span>
+    <span class="nb">New-Partition</span> <span class="n">-DriveLetter</span> <span class="n">E</span> <span class="n">-UseMaximumSize</span> <span class="p">|</span>
+    <span class="nb">Format-Volume</span> <span class="n">-FileSystem</span> <span class="n">NTFS</span> <span class="n">-NewFileSystemLabel</span> <span class="s2">"DATA"</span> <span class="n">-Confirm</span><span class="p">:</span><span class="nv">$false</span>
+</code></pre></div>
+<h3 id="14-créer-le-volume-users-monté-dans-cbase">1.4 Créer le volume USERS (monté dans C:\Base)</h3>
+<p>Au lieu d'une lettre, ce volume est <strong>monté dans un dossier vide</strong> : <code>C:\Base</code> donne accès à un disque différent de <code>C:</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="c"># Disque virtuel de 5 Go en miroir</span>
+<span class="nb">New-VirtualDisk</span> <span class="n">-StoragePoolFriendlyName</span> <span class="s2">"Pool-Donnees"</span> <span class="p">`</span>
+                <span class="n">-FriendlyName</span> <span class="s2">"USERS"</span> <span class="p">`</span>
+                <span class="n">-ResiliencySettingName</span> <span class="n">Mirror</span> <span class="p">`</span>
+                <span class="n">-Size</span> <span class="n">5GB</span> <span class="p">`</span>
+                <span class="n">-ProvisioningType</span> <span class="n">Fixed</span>
+
+<span class="c"># Le dossier de montage doit exister et être vide</span>
+<span class="nb">New-Item</span> <span class="n">-Path</span> <span class="s2">"C:\Base"</span> <span class="n">-ItemType</span> <span class="n">Directory</span> <span class="n">-Force</span>
+
+<span class="c"># Initialise le disque et crée la partition (sans lettre de lecteur)</span>
+<span class="nv">$partition</span> <span class="p">=</span> <span class="nb">Get-VirtualDisk</span> <span class="s2">"USERS"</span> <span class="p">|</span> <span class="nb">Get-Disk</span> <span class="p">|</span>
+    <span class="nb">Initialize-Disk</span> <span class="n">-PartitionStyle</span> <span class="n">GPT</span> <span class="n">-PassThru</span> <span class="p">|</span>
+    <span class="nb">New-Partition</span> <span class="n">-UseMaximumSize</span>
+
+<span class="c"># Formate en NTFS</span>
+<span class="nv">$partition</span> <span class="p">|</span> <span class="nb">Format-Volume</span> <span class="n">-FileSystem</span> <span class="n">NTFS</span> <span class="n">-NewFileSystemLabel</span> <span class="s2">"USERS"</span> <span class="n">-Confirm</span><span class="p">:</span><span class="nv">$false</span>
+
+<span class="c"># Monte la partition dans le dossier C:\Base</span>
+<span class="nv">$partition</span> <span class="p">|</span> <span class="nb">Add-PartitionAccessPath</span> <span class="n">-AccessPath</span> <span class="s2">"C:\Base\"</span>
+</code></pre></div>
+<p><strong>Vérification :</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c"># Les deux disques virtuels doivent être "Healthy" (sains) en miroir</span>
+<span class="nb">Get-VirtualDisk</span> <span class="p">|</span> <span class="nb">Select-Object</span> <span class="n">FriendlyName</span><span class="p">,</span> <span class="n">ResiliencySettingName</span><span class="p">,</span> <span class="n">Size</span><span class="p">,</span> <span class="n">HealthStatus</span>
+
+<span class="c"># Les volumes et leurs points de montage</span>
+<span class="nb">Get-Volume</span> <span class="p">|</span> <span class="nb">Where-Object</span> <span class="n">FileSystemLabel</span> <span class="n">-in</span> <span class="s2">"DATA"</span><span class="p">,</span> <span class="s2">"USERS"</span>
+</code></pre></div>
+<blockquote>
+<p>💡 <strong>Tester la tolérance de panne</strong> : retire un disque dans VMware pendant que la VM tourne. <code>E:</code> reste accessible, et <code>Get-VirtualDisk</code> affiche l'état <strong>Degraded</strong> (dégradé) au lieu de <strong>Healthy</strong>.</p>
+</blockquote>
+<hr />
+<h2 id="étape-2--comprendre-la-méthode-agdlp">Étape 2 — Comprendre la méthode AGDLP</h2>
+<h3 id="le-principe_1">Le principe</h3>
+<p>Microsoft recommande de <strong>ne jamais donner de droits directement à un utilisateur</strong>, ni même à un groupe global. On suit la chaîne <strong>AGDLP</strong> :</p>
+<table>
+<thead>
+<tr>
+<th>Lettre</th>
+<th>Signification</th>
+<th>Dans ce TP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>A</strong></td>
+<td><em>Accounts</em> : les comptes utilisateurs</td>
+<td>Christelle, Isabelle…</td>
+</tr>
+<tr>
+<td><strong>G</strong></td>
+<td><em>Global groups</em> : groupes globaux, <strong>un par service</strong> (qui sont les gens)</td>
+<td><code>G-Comptabilité</code></td>
+</tr>
+<tr>
+<td><strong>DL</strong></td>
+<td><em>Domain Local groups</em> : groupes de domaine locaux, <strong>un par ressource et par droit</strong> (ce qu'on peut faire)</td>
+<td><code>DL-Compta-Modification</code></td>
+</tr>
+<tr>
+<td><strong>P</strong></td>
+<td><em>Permissions</em> : les droits NTFS sur le dossier</td>
+<td>Modification sur <code>E:\DATA\Services\Comptabilité</code></td>
+</tr>
+</tbody>
+</table>
+<pre class="mermaid"><code>flowchart LR
+    A["👤 Comptes&lt;br/&gt;Christelle&lt;br/&gt;Christophe"] --&gt;|membres de| G["👥 Groupe global&lt;br/&gt;G-Comptabilité"]
+    G --&gt;|membre de| DL["🔑 Groupe de domaine local&lt;br/&gt;DL-Compta-Modification"]
+    DL --&gt;|reçoit la permission| P["📂 E:\DATA\Services\Comptabilité&lt;br/&gt;NTFS : Modification"]</code></pre>
+<blockquote>
+<p>💡 <strong>Pourquoi cette complexité ?</strong> Si un nouveau comptable arrive, on l'ajoute simplement dans <code>G-Comptabilité</code> : il obtient tous les accès du service <strong>sans toucher aux dossiers</strong>. Et en lisant les membres de <code>DL-Compta-Modification</code>, on sait immédiatement <strong>qui</strong> peut modifier ce dossier.</p>
+</blockquote>
+<h3 id="les-accès-demandés">Les accès demandés</h3>
+<pre class="mermaid"><code>flowchart LR
+    subgraph GG["👥 Groupes globaux"]
+        GU["Utilisateurs du domaine"]
+        GINT["G-Intérimaires"]
+        GI["G-Informatique"]
+        GC["G-Comptabilité"]
+    end
+    subgraph DLG["🔑 Groupes de domaine locaux"]
+        DL1["DL-Documentation-Lecture"]
+        DL2["DL-Documentation-Refus"]
+        DL3["DL-Documentation-CT"]
+        DL4["DL-Compta-Modification"]
+        DL5["DL-Compta-CT"]
+        DL6["DL-Info-CT"]
+    end
+    subgraph RES["📂 Ressources"]
+        R1["Documentation"]
+        R2["Compta"]
+        R3["Info$ (caché)"]
+    end
+    GU --&gt; DL1
+    GINT --&gt; DL2
+    GI --&gt; DL3
+    GC --&gt; DL4
+    GI --&gt; DL5
+    GI --&gt; DL6
+    DL1 --&gt;|Lecture| R1
+    DL2 --&gt;|❌ Refus| R1
+    DL3 --&gt;|Contrôle total| R1
+    DL4 --&gt;|Modification| R2
+    DL5 --&gt;|Contrôle total| R2
+    DL6 --&gt;|Contrôle total| R3</code></pre>
+<blockquote>
+<p>💡 <strong>Le cas des intérimaires</strong> : Christophe fait partie des « Utilisateurs du domaine », il reçoit donc la lecture sur Documentation. Pour le bloquer, on ajoute un <strong>refus explicite</strong>. Un refus l'emporte toujours sur une autorisation.</p>
+<p><strong>Le cas de Compta</strong> : « aucun privilège pour les autres services » ne nécessite pas de refus. Il suffit de <strong>ne pas leur donner d'accès</strong> : ce qui n'est pas autorisé est interdit.</p>
+</blockquote>
+<hr />
+<h2 id="étape-3--créer-les-groupes-de-domaine-locaux">Étape 3 — Créer les groupes de domaine locaux</h2>
+<p>Sur un DC ou sur W10-CL1 avec les RSAT :</p>
+<div class="highlight"><pre><span></span><code><span class="nv">$ouGroupes</span> <span class="p">=</span> <span class="s2">"OU=Groupes,OU=DOMNN,DC=domNN,DC=ad"</span>
+
+<span class="c"># Paramètres communs : groupes de sécurité, étendue Domaine local</span>
+<span class="nv">$typeDL</span> <span class="p">=</span> <span class="p">@{</span> <span class="n">GroupScope</span> <span class="p">=</span> <span class="s2">"DomainLocal"</span><span class="p">;</span> <span class="n">GroupCategory</span> <span class="p">=</span> <span class="s2">"Security"</span><span class="p">;</span> <span class="n">Path</span> <span class="p">=</span> <span class="nv">$ouGroupes</span> <span class="p">}</span>
+
+<span class="c"># Création des groupes (un par ressource et par niveau de droit)</span>
+<span class="s2">"DL-Documentation-Lecture"</span><span class="p">,</span> <span class="s2">"DL-Documentation-Refus"</span><span class="p">,</span> <span class="s2">"DL-Documentation-CT"</span><span class="p">,</span>
+<span class="s2">"DL-Compta-Modification"</span><span class="p">,</span> <span class="s2">"DL-Compta-CT"</span><span class="p">,</span>
+<span class="s2">"DL-Info-CT"</span> <span class="p">|</span> <span class="k">ForEach</span><span class="n">-Object</span> <span class="p">{</span>
+    <span class="nb">New-ADGroup</span> <span class="nv">@typeDL</span> <span class="n">-Name</span> <span class="nv">$_</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="ajouter-les-groupes-globaux-dans-les-groupes-locaux">Ajouter les groupes globaux dans les groupes locaux</h3>
+<div class="highlight"><pre><span></span><code><span class="c"># "Utilisateurs du domaine" a toujours un SID qui se termine par -513</span>
+<span class="c"># (on utilise le SID car le nom change selon la langue de Windows)</span>
+<span class="nv">$sidDomaine</span> <span class="p">=</span> <span class="p">(</span><span class="nb">Get-ADDomain</span><span class="p">).</span><span class="n">DomainSID</span><span class="p">.</span><span class="n">Value</span>
+<span class="nv">$utilisateursDuDomaine</span> <span class="p">=</span> <span class="nb">Get-ADGroup</span> <span class="n">-Identity</span> <span class="s2">"$sidDomaine-513"</span>
+
+<span class="c"># Documentation</span>
+<span class="nb">Add-ADGroupMember</span> <span class="s2">"DL-Documentation-Lecture"</span> <span class="n">-Members</span> <span class="nv">$utilisateursDuDomaine</span>
+<span class="nb">Add-ADGroupMember</span> <span class="s2">"DL-Documentation-Refus"</span>   <span class="n">-Members</span> <span class="s2">"G-Intérimaires"</span>
+<span class="nb">Add-ADGroupMember</span> <span class="s2">"DL-Documentation-CT"</span>      <span class="n">-Members</span> <span class="s2">"G-Informatique"</span>
+
+<span class="c"># Comptabilité</span>
+<span class="nb">Add-ADGroupMember</span> <span class="s2">"DL-Compta-Modification"</span>   <span class="n">-Members</span> <span class="s2">"G-Comptabilité"</span>
+<span class="nb">Add-ADGroupMember</span> <span class="s2">"DL-Compta-CT"</span>             <span class="n">-Members</span> <span class="s2">"G-Informatique"</span>
+
+<span class="c"># Informatique</span>
+<span class="nb">Add-ADGroupMember</span> <span class="s2">"DL-Info-CT"</span>               <span class="n">-Members</span> <span class="s2">"G-Informatique"</span>
+</code></pre></div>
+<hr />
+<h2 id="étape-4--créer-les-dossiers-et-les-partages">Étape 4 — Créer les dossiers et les partages</h2>
+<h3 id="le-principe--deux-niveaux-de-droits">Le principe : deux niveaux de droits</h3>
+<p>Un dossier partagé est protégé par <strong>deux couches</strong> de droits. Le droit effectif est <strong>le plus restrictif des deux</strong>.</p>
+<pre class="mermaid"><code>flowchart LR
+    U["👤 Utilisateur&lt;br/&gt;sur W10-CL1"] --&gt;|"\\SRV1\Compta"| P["🚪 Droits de PARTAGE&lt;br/&gt;Utilisateurs authentifiés :&lt;br/&gt;Contrôle total"]
+    P --&gt; N["🔐 Droits NTFS&lt;br/&gt;(le vrai filtrage)"]
+    N --&gt; F["📂 E:\DATA\Services\Comptabilité"]</code></pre>
+<blockquote>
+<p>💡 <strong>Bonne pratique</strong> : on ouvre largement le partage (<em>Utilisateurs authentifiés : Contrôle total</em>) et on gère <strong>tout le filtrage en NTFS</strong>. On n'a ainsi qu'un seul endroit à vérifier, et les droits NTFS s'appliquent aussi aux accès locaux.</p>
+</blockquote>
+<h3 id="41-créer-larborescence">4.1 Créer l'arborescence</h3>
+<p>Sur <strong>SRV1</strong>, en administrateur :</p>
+<div class="highlight"><pre><span></span><code><span class="c"># Crée les dossiers (et les dossiers parents manquants)</span>
+<span class="nb">New-Item</span> <span class="n">-Path</span> <span class="s2">"E:\DATA\Documentation"</span>          <span class="n">-ItemType</span> <span class="n">Directory</span> <span class="n">-Force</span>
+<span class="nb">New-Item</span> <span class="n">-Path</span> <span class="s2">"E:\DATA\Services\Comptabilité"</span>  <span class="n">-ItemType</span> <span class="n">Directory</span> <span class="n">-Force</span>
+<span class="nb">New-Item</span> <span class="n">-Path</span> <span class="s2">"E:\DATA\Informatique"</span>           <span class="n">-ItemType</span> <span class="n">Directory</span> <span class="n">-Force</span>
+</code></pre></div>
+<h3 id="42-définir-les-droits-ntfs">4.2 Définir les droits NTFS</h3>
+<p>On utilise <strong><code>icacls</code></strong>, plus lisible que les commandes PowerShell natives pour les droits NTFS.</p>
+<table>
+<thead>
+<tr>
+<th>Code icacls</th>
+<th>Signification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>F</code></td>
+<td>Contrôle total (<em>Full</em>)</td>
+</tr>
+<tr>
+<td><code>M</code></td>
+<td>Modification</td>
+</tr>
+<tr>
+<td><code>RX</code></td>
+<td>Lecture et exécution</td>
+</tr>
+<tr>
+<td><code>(OI)(CI)</code></td>
+<td>S'applique au dossier, aux sous-dossiers et aux fichiers</td>
+</tr>
+<tr>
+<td><code>/inheritance:r</code></td>
+<td>Supprime les droits hérités du dossier parent</td>
+</tr>
+<tr>
+<td><code>*S-1-5-18</code></td>
+<td>SYSTEM (désigné par son SID, valable en toutes langues)</td>
+</tr>
+<tr>
+<td><code>*S-1-5-32-544</code></td>
+<td>Administrateurs locaux</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="c"># --- Documentation ---</span>
+<span class="c"># /inheritance:r supprime les droits hérités de E:\ (qui donnent la lecture à tous)</span>
+<span class="n">icacls</span> <span class="s2">"E:\DATA\Documentation"</span> <span class="p">/</span><span class="n">inheritance</span><span class="p">:</span><span class="nb">r </span><span class="p">`</span>
+    <span class="p">/</span><span class="n">grant</span> <span class="s2">"*S-1-5-18:(OI)(CI)F"</span> <span class="p">`</span>
+    <span class="p">/</span><span class="n">grant</span> <span class="s2">"*S-1-5-32-544:(OI)(CI)F"</span> <span class="p">`</span>
+    <span class="p">/</span><span class="n">grant</span> <span class="s2">"DOMNN\DL-Documentation-CT:(OI)(CI)F"</span> <span class="p">`</span>
+    <span class="p">/</span><span class="n">grant</span> <span class="s2">"DOMNN\DL-Documentation-Lecture:(OI)(CI)RX"</span> <span class="p">`</span>
+    <span class="p">/</span><span class="n">deny</span>  <span class="s2">"DOMNN\DL-Documentation-Refus:(OI)(CI)F"</span>
+
+<span class="c"># --- Comptabilité ---</span>
+<span class="n">icacls</span> <span class="s2">"E:\DATA\Services\Comptabilité"</span> <span class="p">/</span><span class="n">inheritance</span><span class="p">:</span><span class="nb">r </span><span class="p">`</span>
+    <span class="p">/</span><span class="n">grant</span> <span class="s2">"*S-1-5-18:(OI)(CI)F"</span> <span class="p">`</span>
+    <span class="p">/</span><span class="n">grant</span> <span class="s2">"*S-1-5-32-544:(OI)(CI)F"</span> <span class="p">`</span>
+    <span class="p">/</span><span class="n">grant</span> <span class="s2">"DOMNN\DL-Compta-CT:(OI)(CI)F"</span> <span class="p">`</span>
+    <span class="p">/</span><span class="n">grant</span> <span class="s2">"DOMNN\DL-Compta-Modification:(OI)(CI)M"</span>
+
+<span class="c"># --- Informatique ---</span>
+<span class="n">icacls</span> <span class="s2">"E:\DATA\Informatique"</span> <span class="p">/</span><span class="n">inheritance</span><span class="p">:</span><span class="nb">r </span><span class="p">`</span>
+    <span class="p">/</span><span class="n">grant</span> <span class="s2">"*S-1-5-18:(OI)(CI)F"</span> <span class="p">`</span>
+    <span class="p">/</span><span class="n">grant</span> <span class="s2">"*S-1-5-32-544:(OI)(CI)F"</span> <span class="p">`</span>
+    <span class="p">/</span><span class="n">grant</span> <span class="s2">"DOMNN\DL-Info-CT:(OI)(CI)F"</span>
+</code></pre></div>
+<p><strong>Vérification :</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c"># Affiche les droits NTFS d'un dossier</span>
+<span class="n">icacls</span> <span class="s2">"E:\DATA\Documentation"</span>
+</code></pre></div>
+<h3 id="43-créer-les-partages">4.3 Créer les partages</h3>
+<div class="highlight"><pre><span></span><code><span class="c"># Nom local du groupe "Utilisateurs authentifiés" (SID S-1-5-11), quelle que soit la langue</span>
+<span class="nv">$utilisateursAuth</span> <span class="p">=</span> <span class="p">(</span><span class="no">[Security.Principal.SecurityIdentifier]</span><span class="s2">"S-1-5-11"</span><span class="p">).</span><span class="n">Translate</span><span class="p">(</span><span class="no">[Security.Principal.NTAccount]</span><span class="p">).</span><span class="n">Value</span>
+
+<span class="c"># -FolderEnumerationMode AccessBased : chacun ne voit que les dossiers auxquels il a accès</span>
+<span class="nb">New-SmbShare</span> <span class="n">-Name</span> <span class="s2">"Documentation"</span> <span class="n">-Path</span> <span class="s2">"E:\DATA\Documentation"</span> <span class="p">`</span>
+             <span class="n">-FullAccess</span> <span class="nv">$utilisateursAuth</span> <span class="n">-FolderEnumerationMode</span> <span class="n">AccessBased</span>
+
+<span class="nb">New-SmbShare</span> <span class="n">-Name</span> <span class="s2">"Compta"</span> <span class="n">-Path</span> <span class="s2">"E:\DATA\Services\Comptabilité"</span> <span class="p">`</span>
+             <span class="n">-FullAccess</span> <span class="nv">$utilisateursAuth</span> <span class="n">-FolderEnumerationMode</span> <span class="n">AccessBased</span>
+
+<span class="c"># Le $ à la fin du nom rend le partage INVISIBLE dans le voisinage réseau</span>
+<span class="c"># (il reste accessible si on connaît son nom : \\SRV1\Info$)</span>
+<span class="nb">New-SmbShare</span> <span class="n">-Name</span> <span class="s2">"Info$"</span> <span class="n">-Path</span> <span class="s2">"E:\DATA\Informatique"</span> <span class="p">`</span>
+             <span class="n">-FullAccess</span> <span class="nv">$utilisateursAuth</span>
+</code></pre></div>
+<blockquote>
+<p>⚠️ Un partage caché n'est <strong>pas</strong> un partage sécurisé : il est seulement absent de la liste. La sécurité repose toujours sur les droits NTFS.</p>
+</blockquote>
+<h3 id="44-publier-le-partage-documentation-dans-lannuaire">4.4 Publier le partage Documentation dans l'annuaire</h3>
+<p>Un partage <strong>publié</strong> apparaît dans l'AD : les utilisateurs peuvent le trouver avec la recherche de l'annuaire sans connaître le nom du serveur.</p>
+<div class="highlight"><pre><span></span><code><span class="c"># Crée un objet "Dossier partagé" (type volume) qui pointe vers le partage</span>
+<span class="nb">New-ADObject</span> <span class="n">-Name</span> <span class="s2">"Documentation"</span> <span class="p">`</span>
+             <span class="n">-Type</span> <span class="s2">"volume"</span> <span class="p">`</span>
+             <span class="n">-Path</span> <span class="s2">"OU=DOMNN,DC=domNN,DC=ad"</span> <span class="p">`</span>
+             <span class="n">-OtherAttributes</span> <span class="p">@{</span> <span class="n">uNCName</span> <span class="p">=</span> <span class="s2">"\\SRV1\Documentation"</span> <span class="p">}</span>
+</code></pre></div>
+<p>En graphique : <strong>Utilisateurs et ordinateurs AD</strong> → clic droit sur une OU → <strong>Nouveau → Dossier partagé</strong>.</p>
+<p><strong>Vérification :</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c"># Liste les partages de SRV1</span>
+<span class="nb">Get-SmbShare</span> <span class="p">|</span> <span class="nb">Where-Object</span> <span class="n">Name</span> <span class="n">-in</span> <span class="s2">"Documentation"</span><span class="p">,</span> <span class="s2">"Compta"</span><span class="p">,</span> <span class="s2">"Info$"</span>
+</code></pre></div>
+<hr />
+<h2 id="étape-5--tester-les-accès">Étape 5 — Tester les accès</h2>
+<p>Ouvre une session sur <strong>W10-CL1</strong> avec chaque utilisateur, puis teste :</p>
+<div class="highlight"><pre><span></span><code><span class="c"># Test d'ACCÈS / LECTURE : lister le contenu du partage</span>
+<span class="nb">Get-ChildItem</span> <span class="s2">"\\SRV1\Documentation"</span>
+
+<span class="c"># Test de MODIFICATION : créer puis supprimer un fichier</span>
+<span class="nb">New-Item</span> <span class="s2">"\\SRV1\Documentation\test.txt"</span> <span class="n">-ItemType</span> <span class="n">File</span>
+<span class="nb">Remove-Item</span> <span class="s2">"\\SRV1\Documentation\test.txt"</span>
+</code></pre></div>
+<blockquote>
+<p>⚠️ <strong>Appartenance aux groupes</strong> : les groupes d'un utilisateur sont lus <strong>à l'ouverture de session</strong>. Si tu modifies ses groupes, il doit <strong>se déconnecter et se reconnecter</strong> pour que le changement soit pris en compte.</p>
+</blockquote>
+<h3 id="résultats-attendus">Résultats attendus</h3>
+<p><strong>DOCUMENTATION</strong></p>
+<table>
+<thead>
+<tr>
+<th>Utilisateur</th>
+<th>Privilège testé</th>
+<th>Résultat attendu</th>
+<th>Pourquoi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Christophe</td>
+<td>Accès</td>
+<td>❌ ÉCHEC</td>
+<td>Intérimaire → refus explicite</td>
+</tr>
+<tr>
+<td>Christelle</td>
+<td>Accès</td>
+<td>✅ OK</td>
+<td>Utilisateur du domaine → lecture</td>
+</tr>
+<tr>
+<td>David</td>
+<td>Lecture</td>
+<td>✅ OK</td>
+<td>Utilisateur du domaine → lecture</td>
+</tr>
+<tr>
+<td>Isabelle</td>
+<td>Lecture</td>
+<td>✅ OK</td>
+<td>Informatique → contrôle total</td>
+</tr>
+<tr>
+<td>Christelle</td>
+<td>Modification</td>
+<td>❌ ÉCHEC</td>
+<td>Lecture seule</td>
+</tr>
+<tr>
+<td>Isabelle</td>
+<td>Modification</td>
+<td>✅ OK</td>
+<td>Informatique → contrôle total</td>
+</tr>
+</tbody>
+</table>
+<p><strong>COMPTABILITÉ</strong></p>
+<table>
+<thead>
+<tr>
+<th>Utilisateur</th>
+<th>Privilège testé</th>
+<th>Résultat attendu</th>
+<th>Pourquoi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Christelle</td>
+<td>Accès</td>
+<td>✅ OK</td>
+<td>Comptabilité → modification</td>
+</tr>
+<tr>
+<td>David</td>
+<td>Accès</td>
+<td>❌ ÉCHEC</td>
+<td>Service Direction → aucun droit</td>
+</tr>
+<tr>
+<td>Christelle</td>
+<td>Modification</td>
+<td>✅ OK</td>
+<td>Comptabilité → modification</td>
+</tr>
+<tr>
+<td>Isabelle</td>
+<td>Contrôle total</td>
+<td>✅ OK</td>
+<td>Informatique → contrôle total</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>💡 Pour tester le <strong>contrôle total</strong> d'Isabelle, ouvre les propriétés d'un fichier du partage → <strong>Sécurité → Modifier</strong>. Seul un utilisateur en contrôle total peut changer les autorisations.</p>
+</blockquote>
+<hr />
+<h2 id="étape-6--déléguer-des-privilèges-dans-lad">Étape 6 — Déléguer des privilèges dans l'AD</h2>
+<h3 id="le-principe_2">Le principe</h3>
+<p>La <strong>délégation</strong> donne à un utilisateur des droits d'administration <strong>limités à une OU</strong>, sans en faire un administrateur du domaine. C'est le principe du <strong>moindre privilège</strong> : chacun a juste les droits nécessaires à son travail.</p>
+<pre class="mermaid"><code>flowchart TB
+    subgraph DOM["🌐 domNN.ad"]
+        subgraph U["📁 Utilisateurs"]
+            OD["📁 Direction"]
+            OC["📁 Comptabilite"]
+            OI["📁 Informatique"]
+        end
+    end
+    DAVID["👤 David&lt;br/&gt;(DL-AD-Compta-Gestion)"] --&gt;|"créer · modifier · supprimer&lt;br/&gt;réinitialiser mot de passe"| OC
+    SUP["👥 Support technique&lt;br/&gt;(DL-AD-Support-Gestion)"] --&gt;|gérer les comptes| OD
+    SUP --&gt;|gérer les comptes| OC
+    SUP -.-&gt;|"❌ pas de droits"| OI
+    ISA["👤 Isabelle&lt;br/&gt;(Admins du domaine)"] ==&gt;|tous les droits| DOM</code></pre>
+<h3 id="61-créer-les-groupes-de-délégation">6.1 Créer les groupes de délégation</h3>
+<p>On délègue à des <strong>groupes</strong>, jamais à des personnes : si David change de poste, on retire juste son appartenance.</p>
+<div class="highlight"><pre><span></span><code><span class="nv">$ouGroupes</span> <span class="p">=</span> <span class="s2">"OU=Groupes,OU=DOMNN,DC=domNN,DC=ad"</span>
+
+<span class="nb">New-ADGroup</span> <span class="n">-Name</span> <span class="s2">"DL-AD-Compta-Gestion"</span>  <span class="n">-GroupScope</span> <span class="n">DomainLocal</span> <span class="n">-GroupCategory</span> <span class="n">Security</span> <span class="n">-Path</span> <span class="nv">$ouGroupes</span>
+<span class="nb">New-ADGroup</span> <span class="n">-Name</span> <span class="s2">"DL-AD-Support-Gestion"</span> <span class="n">-GroupScope</span> <span class="n">DomainLocal</span> <span class="n">-GroupCategory</span> <span class="n">Security</span> <span class="n">-Path</span> <span class="nv">$ouGroupes</span>
+
+<span class="nb">Add-ADGroupMember</span> <span class="s2">"DL-AD-Compta-Gestion"</span>  <span class="n">-Members</span> <span class="s2">"dgrenier"</span>
+<span class="nb">Add-ADGroupMember</span> <span class="s2">"DL-AD-Support-Gestion"</span> <span class="n">-Members</span> <span class="s2">"G-Support technique"</span>
+</code></pre></div>
+<h3 id="62-appliquer-la-délégation">6.2 Appliquer la délégation</h3>
+<p><strong>Méthode graphique (recommandée)</strong> : dans <strong>Utilisateurs et ordinateurs AD</strong>, clic droit sur l'OU → <strong>Délégation de contrôle</strong> → ajoute le groupe → coche <strong>Créer, supprimer et gérer les comptes d'utilisateurs</strong> et <strong>Réinitialiser les mots de passe utilisateur et forcer leur changement</strong>.</p>
+<p><strong>En ligne de commande</strong>, avec <code>dsacls</code> :</p>
+<div class="highlight"><pre><span></span><code><span class="c"># Fonction : donne à un groupe la gestion complète des utilisateurs d'une OU</span>
+<span class="k">function</span> <span class="nb">Set-DelegationUtilisateurs</span> <span class="p">{</span>
+    <span class="k">param</span><span class="p">(</span><span class="nv">$OU</span><span class="p">,</span> <span class="nv">$Groupe</span><span class="p">)</span>
+
+    <span class="c"># CCDC;user : créer (CC) et supprimer (DC) des objets de type utilisateur dans l'OU</span>
+    <span class="n">dsacls</span> <span class="nv">$OU</span> <span class="p">/</span><span class="n">I</span><span class="p">:</span><span class="n">T</span> <span class="p">/</span><span class="n">G</span> <span class="s2">"${Groupe}:CCDC;user"</span>
+
+    <span class="c"># GA;;user : tous les droits (GA = Generic All) sur les objets utilisateurs de l'OU,</span>
+    <span class="c"># ce qui inclut la modification des attributs et la réinitialisation du mot de passe</span>
+    <span class="c"># /I:S : s'applique uniquement aux objets enfants, pas à l'OU elle-même</span>
+    <span class="n">dsacls</span> <span class="nv">$OU</span> <span class="p">/</span><span class="n">I</span><span class="p">:</span><span class="n">S</span> <span class="p">/</span><span class="n">G</span> <span class="s2">"${Groupe}:GA;;user"</span>
+<span class="p">}</span>
+
+<span class="nv">$base</span> <span class="p">=</span> <span class="s2">"OU=Utilisateurs,OU=DOMNN,DC=domNN,DC=ad"</span>
+
+<span class="c"># David : gestion des comptes de la Comptabilité</span>
+<span class="nb">Set-DelegationUtilisateurs</span> <span class="n">-OU</span> <span class="s2">"OU=Comptabilite,$base"</span> <span class="n">-Groupe</span> <span class="s2">"DOMNN\DL-AD-Compta-Gestion"</span>
+
+<span class="c"># Support technique : tous les services SAUF Informatique</span>
+<span class="nb">Set-DelegationUtilisateurs</span> <span class="n">-OU</span> <span class="s2">"OU=Comptabilite,$base"</span> <span class="n">-Groupe</span> <span class="s2">"DOMNN\DL-AD-Support-Gestion"</span>
+<span class="nb">Set-DelegationUtilisateurs</span> <span class="n">-OU</span> <span class="s2">"OU=Direction,$base"</span>    <span class="n">-Groupe</span> <span class="s2">"DOMNN\DL-AD-Support-Gestion"</span>
+</code></pre></div>
+<blockquote>
+<p>💡 <strong>Pourquoi pas sur l'OU <code>Utilisateurs</code> directement ?</strong> Les droits seraient hérités par <strong>toutes</strong> les sous-OU, y compris Informatique. Le support pourrait alors réinitialiser le mot de passe d'Isabelle et prendre son identité d'administratrice.</p>
+</blockquote>
+<h3 id="63-isabelle-administratrice">6.3 Isabelle administratrice</h3>
+<p>L'énoncé demande un groupe qui dispose <strong>nativement</strong> de tous les droits : c'est <strong>Admins du domaine</strong>.</p>
+<div class="highlight"><pre><span></span><code><span class="c"># "Admins du domaine" a toujours un SID qui se termine par -512</span>
+<span class="nv">$sidDomaine</span> <span class="p">=</span> <span class="p">(</span><span class="nb">Get-ADDomain</span><span class="p">).</span><span class="n">DomainSID</span><span class="p">.</span><span class="n">Value</span>
+<span class="nb">Add-ADGroupMember</span> <span class="n">-Identity</span> <span class="s2">"$sidDomaine-512"</span> <span class="n">-Members</span> <span class="s2">"ivédère"</span>
+</code></pre></div>
+<blockquote>
+<p>💡 Dans une forêt à plusieurs domaines, le groupe qui a les droits sur <strong>toute la forêt</strong> est <strong>Administrateurs de l'entreprise</strong> (SID <code>-519</code>). Avec un seul domaine, <strong>Admins du domaine</strong> suffit.</p>
+</blockquote>
+<h3 id="64-tester">6.4 Tester</h3>
+<p>Sur <strong>W10-CL1</strong>, connecté en tant que <strong>David</strong> (les RSAT doivent être installés) :</p>
+<div class="highlight"><pre><span></span><code><span class="c"># Doit fonctionner : Christelle est dans l'OU Comptabilité</span>
+<span class="nb">Set-ADAccountPassword</span> <span class="n">-Identity</span> <span class="s2">"curique"</span> <span class="n">-Reset</span> <span class="p">`</span>
+    <span class="n">-NewPassword</span> <span class="p">(</span><span class="nb">ConvertTo-SecureString</span> <span class="s2">"Cs3cr3t!"</span> <span class="n">-AsPlainText</span> <span class="n">-Force</span><span class="p">)</span>
+
+<span class="c"># Doit ÉCHOUER (accès refusé) : Isabelle est dans l'OU Informatique</span>
+<span class="nb">Set-ADAccountPassword</span> <span class="n">-Identity</span> <span class="s2">"ivédère"</span> <span class="n">-Reset</span> <span class="p">`</span>
+    <span class="n">-NewPassword</span> <span class="p">(</span><span class="nb">ConvertTo-SecureString</span> <span class="s2">"Cs3cr3t!"</span> <span class="n">-AsPlainText</span> <span class="n">-Force</span><span class="p">)</span>
+</code></pre></div>
+<p>Refais le test avec <strong>Ivan</strong> : il doit pouvoir gérer Direction et Comptabilité, mais pas Informatique.</p>
+<hr />
+<h2 id="étape-7--partager-limprimante">Étape 7 — Partager l'imprimante</h2>
+<h3 id="le-principe_3">Le principe</h3>
+<p><strong>SRV1</strong> devient <strong>serveur d'impression</strong> : l'imprimante réseau est installée <strong>une seule fois</strong> sur le serveur, puis les postes s'y connectent. Le serveur gère les pilotes, les files d'attente et les droits.</p>
+<p>Pour limiter la Comptabilité à la plage <strong>20h-6h</strong> tout en laissant les autres imprimer toute la journée, on crée <strong>deux imprimantes logiques</strong> vers le <strong>même périphérique physique</strong>, chacune avec ses horaires et ses droits.</p>
+<pre class="mermaid"><code>flowchart LR
+    subgraph POSTES["💻 Postes clients"]
+        U1["👥 Tous les services&lt;br/&gt;sauf Comptabilité"]
+        U2["👥 Comptabilité"]
+    end
+    subgraph SRV1["🖥️ SRV1 — Serveur d'impression"]
+        P1["🖨️ Dell 5210CN&lt;br/&gt;disponible 24h/24"]
+        P2["🖨️ Dell 5210CN - Compta&lt;br/&gt;disponible 20h00 → 6h00"]
+        PORT["🔌 Port TCP/IP&lt;br/&gt;IP_192.168.21.30"]
+    end
+    IMP["🖨️ Imprimante physique&lt;br/&gt;Dell 5210CN&lt;br/&gt;192.168.21.30"]
+    U1 --&gt; P1
+    U2 --&gt; P2
+    P1 --&gt; PORT
+    P2 --&gt; PORT
+    PORT --&gt; IMP</code></pre>
+<h3 id="71-installer-le-rôle-et-le-pilote">7.1 Installer le rôle et le pilote</h3>
+<p>Sur <strong>SRV1</strong>, en administrateur :</p>
+<div class="highlight"><pre><span></span><code><span class="c"># Installe le rôle Serveur d'impression et sa console</span>
+<span class="nb">Install-WindowsFeature</span> <span class="n">Print-Server</span> <span class="n">-IncludeManagementTools</span>
+
+<span class="c"># Ajoute le pilote Dell au magasin de pilotes de Windows</span>
+<span class="c"># (remplace le chemin par celui du pilote fourni par le formateur)</span>
+<span class="n">pnputil</span> <span class="p">/</span><span class="nb">add-driver</span> <span class="s2">"C:\Pilotes\Dell\*.inf"</span> <span class="p">/</span><span class="n">install</span>
+
+<span class="c"># Installe le pilote 64 bits dans le serveur d'impression</span>
+<span class="c"># (vérifie le nom exact dans le fichier .inf si la commande échoue)</span>
+<span class="nb">Add-PrinterDriver</span> <span class="n">-Name</span> <span class="s2">"Dell Open Print PCL 5"</span>
+
+<span class="c"># Pilote 32 bits, pour les anciens postes (nécessite le .inf 32 bits)</span>
+<span class="nb">Add-PrinterDriver</span> <span class="n">-Name</span> <span class="s2">"Dell Open Print PCL 5"</span> <span class="p">`</span>
+                  <span class="n">-PrinterEnvironment</span> <span class="s2">"Windows NT x86"</span> <span class="p">`</span>
+                  <span class="n">-InfPath</span> <span class="s2">"C:\Pilotes\Dell\x86\pilote.inf"</span>
+</code></pre></div>
+<blockquote>
+<p>💡 <strong>Pourquoi deux pilotes ?</strong> Quand un poste se connecte, il <strong>télécharge le pilote depuis le serveur</strong>. Un Windows 32 bits a besoin du pilote 32 bits. En graphique : <strong>Gestion de l'impression → Imprimante → Propriétés → Partage → Pilotes supplémentaires</strong>.</p>
+</blockquote>
+<h3 id="72-créer-le-port-et-les-imprimantes">7.2 Créer le port et les imprimantes</h3>
+<div class="highlight"><pre><span></span><code><span class="c"># Port TCP/IP standard vers l'adresse de l'imprimante</span>
+<span class="c"># (équivalent du type de périphérique "Generic Network Card" de l'assistant)</span>
+<span class="nb">Add-PrinterPort</span> <span class="n">-Name</span> <span class="s2">"IP_192.168.21.30"</span> <span class="n">-PrinterHostAddress</span> <span class="s2">"192.168.21.30"</span>
+
+<span class="c"># Imprimante pour tout le monde, partagée et publiée dans l'AD (-Published)</span>
+<span class="nb">Add-Printer</span> <span class="n">-Name</span> <span class="s2">"Dell 5210CN"</span> <span class="p">`</span>
+            <span class="n">-DriverName</span> <span class="s2">"Dell Open Print PCL 5"</span> <span class="p">`</span>
+            <span class="n">-PortName</span> <span class="s2">"IP_192.168.21.30"</span> <span class="p">`</span>
+            <span class="n">-Shared</span> <span class="n">-ShareName</span> <span class="s2">"Dell5210CN"</span> <span class="p">`</span>
+            <span class="n">-Published</span>
+
+<span class="c"># Seconde imprimante logique, réservée à la Comptabilité</span>
+<span class="nb">Add-Printer</span> <span class="n">-Name</span> <span class="s2">"Dell 5210CN - Compta"</span> <span class="p">`</span>
+            <span class="n">-DriverName</span> <span class="s2">"Dell Open Print PCL 5"</span> <span class="p">`</span>
+            <span class="n">-PortName</span> <span class="s2">"IP_192.168.21.30"</span> <span class="p">`</span>
+            <span class="n">-Shared</span> <span class="n">-ShareName</span> <span class="s2">"Dell5210CN-Compta"</span> <span class="p">`</span>
+            <span class="n">-Published</span>
+</code></pre></div>
+<blockquote>
+<p>💡 <strong>Publiée dans l'AD</strong> : l'imprimante apparaît dans l'annuaire. Les utilisateurs la trouvent avec <strong>Ajouter une imprimante → Rechercher une imprimante dans l'annuaire</strong>.</p>
+</blockquote>
+<h3 id="73-horaires-et-autorisations">7.3 Horaires et autorisations</h3>
+<p>Ces réglages se font plus simplement dans <strong>Gestion de l'impression</strong> (<code>printmanagement.msc</code>).</p>
+<p><strong>Horaires</strong> : propriétés de <em>Dell 5210CN - Compta</em> → onglet <strong>Avancé</strong> → <strong>Disponible de 20:00 à 6:00</strong>.</p>
+<p><strong>Autorisations</strong> : onglet <strong>Sécurité</strong> de chaque imprimante.</p>
+<table>
+<thead>
+<tr>
+<th>Imprimante</th>
+<th>Groupe / utilisateur</th>
+<th>Autorisation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dell 5210CN</td>
+<td>Utilisateurs authentifiés</td>
+<td>✅ Imprimer</td>
+</tr>
+<tr>
+<td>Dell 5210CN</td>
+<td>G-Comptabilité</td>
+<td>❌ Refuser : Imprimer</td>
+</tr>
+<tr>
+<td>Dell 5210CN</td>
+<td>G-Informatique</td>
+<td>✅ Imprimer · Gérer cette imprimante · Gérer les documents</td>
+</tr>
+<tr>
+<td>Dell 5210CN - Compta</td>
+<td>G-Comptabilité</td>
+<td>✅ Imprimer</td>
+</tr>
+<tr>
+<td>Dell 5210CN - Compta</td>
+<td>David (responsable)</td>
+<td>✅ Imprimer · Gérer les documents</td>
+</tr>
+<tr>
+<td>Dell 5210CN - Compta</td>
+<td>G-Informatique</td>
+<td>✅ Imprimer · Gérer cette imprimante · Gérer les documents</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>⚠️ Sur <em>Dell 5210CN - Compta</em>, <strong>retire le groupe « Tout le monde »</strong>, sinon tout le monde pourrait imprimer dessus.</p>
+<p>💡 <strong>Le refus sur la première imprimante</strong> est indispensable : la Comptabilité fait partie des « Utilisateurs authentifiés » et pourrait sinon imprimer à toute heure sur l'imprimante principale.</p>
+</blockquote>
+<p><strong>Vérification :</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c"># Liste les imprimantes partagées et publiées</span>
+<span class="nb">Get-Printer</span> <span class="p">|</span> <span class="nb">Select-Object</span> <span class="n">Name</span><span class="p">,</span> <span class="n">ShareName</span><span class="p">,</span> <span class="n">Shared</span><span class="p">,</span> <span class="n">Published</span><span class="p">,</span> <span class="n">PortName</span>
+</code></pre></div>
+<h3 id="74-tester-manuellement-depuis-w10-cl1">7.4 Tester manuellement depuis W10-CL1</h3>
+<div class="highlight"><pre><span></span><code><span class="c"># Se connecte à l'imprimante partagée (le pilote est téléchargé depuis SRV1)</span>
+<span class="nb">Add-Printer</span> <span class="n">-ConnectionName</span> <span class="s2">"\\SRV1\Dell5210CN"</span>
+
+<span class="c"># Vérifie qu'elle est bien installée</span>
+<span class="nb">Get-Printer</span> <span class="p">|</span> <span class="nb">Where-Object</span> <span class="n">Name</span> <span class="o">-like</span> <span class="s2">"*Dell*"</span>
+</code></pre></div>
+<p>Le déploiement <strong>automatique</strong> par service se fera avec une GPO au TP5.</p>
+<hr />
+<h2 id="récapitulatif">Récapitulatif</h2>
+<table>
+<thead>
+<tr>
+<th>Besoin</th>
+<th>Commande clé</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Créer un pool de stockage</td>
+<td><code>New-StoragePool</code></td>
+</tr>
+<tr>
+<td>Créer un disque virtuel en miroir</td>
+<td><code>New-VirtualDisk -ResiliencySettingName Mirror</code></td>
+</tr>
+<tr>
+<td>Monter un volume dans un dossier</td>
+<td><code>Add-PartitionAccessPath</code></td>
+</tr>
+<tr>
+<td>Créer un groupe de domaine local</td>
+<td><code>New-ADGroup -GroupScope DomainLocal</code></td>
+</tr>
+<tr>
+<td>Droits NTFS</td>
+<td><code>icacls</code></td>
+</tr>
+<tr>
+<td>Créer un partage</td>
+<td><code>New-SmbShare</code></td>
+</tr>
+<tr>
+<td>Publier un partage dans l'AD</td>
+<td><code>New-ADObject -Type volume</code></td>
+</tr>
+<tr>
+<td>Déléguer des droits sur une OU</td>
+<td><code>dsacls</code> ou assistant <em>Délégation de contrôle</em></td>
+</tr>
+<tr>
+<td>Installer une imprimante partagée</td>
+<td><code>Add-PrinterPort</code> + <code>Add-Printer -Shared -Published</code></td>
+</tr>
+<tr>
+<td>Se connecter à une imprimante</td>
+<td><code>Add-Printer -ConnectionName</code></td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
