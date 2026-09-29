@@ -13,6 +13,8 @@ markdown_extensions:
   - tables
   - attr_list
   - md_in_html
+  - admonition              # blocs !!! note / !!! warning / !!! tip ...
+  - pymdownx.details        # blocs repliables ??? question ...
   - pymdownx.highlight      # coloration syntaxique du PowerShell
   - pymdownx.superfences:   # affichage des schémas Mermaid
       custom_fences:
