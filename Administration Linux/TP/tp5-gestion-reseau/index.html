@@ -1,0 +1,1703 @@
+
+<!doctype html>
+<html lang="fr" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../tp4-demarrage-et-services/">
+      
+      
+        <link rel="next" href="../tp6-depots-mises-a-jour/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>TP5 : Gestion réseau - Mes notes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#tp5--gestion-réseau" class="md-skip">
+          Aller au contenu
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="En-tête">
+    <a href="../../.." title="Mes notes" class="md-header__button md-logo" aria-label="Mes notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Mes notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              TP5 : Gestion réseau
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Rechercher" placeholder="Rechercher" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Recherche">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Effacer" aria-label="Effacer" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initialisation de la recherche
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Mes notes" class="md-nav__button md-logo" aria-label="Mes notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Mes notes
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cours et TP ENI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Administration Linux
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Administration Linux
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cours-admin-linux/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Administration Linux : fiche de révision
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../memo-chmod/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mémo : chmod, les droits sous Linux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../memo-commandes-stockage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mémo commandes : stockage, LVM, montage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../memo-systeme-fichiers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mémo : le système de fichiers sous Linux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../memo-types-volumes-partitions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mémo : partitions, LVM, systèmes de fichiers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    TP
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index%20%281%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tutos Administration Linux (M02)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tp1-installation-graphique/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP1 : Installer Oracle Linux avec bureau GNOME (srvclient)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tp10-gestion-logs%20%281%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP10 : Gestion des logs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tp11-analyse-systeme%20%281%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP11 : Analyse du système
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tp2-installation-serveur/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP2 : Installer Oracle Linux en mode serveur, sans interface graphique (serveur)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tp3-grub-mode-maintenance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP3 : Configurer GRUB et démarrer en mode maintenance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tp4-demarrage-et-services/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP4 : Gestion du démarrage et des services
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP5 : Gestion réseau
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP5 : Gestion réseau
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ce-que-demande-lénoncé" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ce que demande l'énoncé
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#étape-0--trouver-y-et-x-et-récupérer-passerelledns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 0 : trouver y et x, et récupérer passerelle/DNS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#étape-1--configurer-srv-gui-avec-loutil-graphique" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 1 : configurer srv-gui avec l'outil graphique
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#étape-2--configurer-srv-cli-sans-interface-graphique" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 2 : configurer srv-cli sans interface graphique
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Étape 2 : configurer srv-cli sans interface graphique">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#méthode-avec-nmtui-la-plus-simple-visuellement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Méthode avec nmtui (la plus simple visuellement)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#méthode-équivalente-avec-nmcli-en-une-fois" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Méthode équivalente avec nmcli en une fois
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#étape-3--tester-la-connectivité-entre-les-deux-vm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 3 : tester la connectivité entre les deux VM
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#étape-4--tester-la-résolution-du-nom-dhôte-wwwgithubcom-depuis-srv-gui" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 4 : tester la résolution du nom d'hôte www.github.com depuis srv-gui
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#à-retenir" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        À retenir
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tp6-depots-mises-a-jour/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP6 : Dépôts, mises à jour et installation de logiciels
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tp7-gestion-stockage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP7 : Gestion du stockage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tp8-gestion-utilisateurs%20%281%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP8 : Gestion des utilisateurs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tp9-gestion-permissions%20%281%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP9 : Gestion des permissions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Administration Windows
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Administration Windows
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Administration-Windows/fiche-revision-windows-ad/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fiche de révision — Administration Windows et Active Directory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Administration-Windows/raccourcis-claviers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Raccourcis clavier Windows / Windows Server — Administration système et réseau
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    TP
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Administration-Windows/TP/tp01-creation-infrastructure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP1 — Création de l'infrastructure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Administration-Windows/TP/tp02-creation-domaine-ad/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP2 — Création d'un domaine Active Directory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Administration-Windows/TP/tp03-gestion-domaine-ad/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP3 — Gestion d'un domaine Active Directory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Administration-Windows/TP/tp04-gestion-ressources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP4 — Gestion de ressources
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Administration-Windows/TP/tp05-strategies-de-groupe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP5 — Les stratégies de groupe (GPO)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ce-que-demande-lénoncé" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ce que demande l'énoncé
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#étape-0--trouver-y-et-x-et-récupérer-passerelledns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 0 : trouver y et x, et récupérer passerelle/DNS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#étape-1--configurer-srv-gui-avec-loutil-graphique" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 1 : configurer srv-gui avec l'outil graphique
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#étape-2--configurer-srv-cli-sans-interface-graphique" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 2 : configurer srv-cli sans interface graphique
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Étape 2 : configurer srv-cli sans interface graphique">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#méthode-avec-nmtui-la-plus-simple-visuellement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Méthode avec nmtui (la plus simple visuellement)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#méthode-équivalente-avec-nmcli-en-une-fois" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Méthode équivalente avec nmcli en une fois
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#étape-3--tester-la-connectivité-entre-les-deux-vm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 3 : tester la connectivité entre les deux VM
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#étape-4--tester-la-résolution-du-nom-dhôte-wwwgithubcom-depuis-srv-gui" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 4 : tester la résolution du nom d'hôte www.github.com depuis srv-gui
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#à-retenir" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        À retenir
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="tp5--gestion-réseau">TP5 : Gestion réseau</h1>
+<div class="admonition abstract">
+<p class="admonition-title">En bref</p>
+<p><strong>Objectifs</strong> : configurer une adresse IPv4 <strong>statique</strong> sur tes deux VM, tester la connectivité entre elles, puis tester la résolution de noms.
+<strong>Prérequis</strong> : avoir terminé l'atelier 4.
+<strong>Machines</strong> : <code>srv-gui</code> (ta VM graphique, l'ancien <code>srvclient</code>) et <code>srv-cli</code> (ta VM sans interface graphique, l'ancien <code>serveur</code>).
+<strong>Durée</strong> : 30 à 45 min.</p>
+</div>
+<pre class="mermaid"><code>flowchart LR
+    A["1. Déterminer y et x"] --&gt; B["2. Configurer srv-gui&lt;br/&gt;(outil graphique)"]
+    B --&gt; C["3. Configurer srv-cli&lt;br/&gt;(nmtui ou nmcli)"]
+    C --&gt; D["4. Tester la connectivité&lt;br/&gt;entre les deux VM"]
+    D --&gt; E["5. Tester la résolution DNS&lt;br/&gt;depuis srv-gui"]</code></pre>
+<h2 id="ce-que-demande-lénoncé">Ce que demande l'énoncé</h2>
+<p>Les deux VM doivent avoir une <strong>adresse IP fixe</strong> (statique), sur le réseau <code>10.y.x.0/16</code> :</p>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Signification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>y</code></td>
+<td>Le numéro du réseau de ta salle (donné par ton formateur)</td>
+</tr>
+<tr>
+<td><code>x</code></td>
+<td>Ton numéro de stagiaire = le <strong>dernier octet</strong> de l'adresse IP de ta machine hôte ENI</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Machine</th>
+<th>Adresse IP à donner</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>srv-gui</code></td>
+<td><code>10.y.x.1</code></td>
+</tr>
+<tr>
+<td><code>srv-cli</code></td>
+<td><code>10.y.x.11</code></td>
+</tr>
+</tbody>
+</table>
+<p>Passerelle et DNS : <strong>identiques à ceux de ton poste physique</strong> (l'ordinateur ENI sur lequel tournent tes VM).</p>
+<div class="admonition warning">
+<p class="admonition-title">Piège : <code>/16</code> ne veut pas dire masque <code>255.255.255.0</code></p>
+<p>Le réseau est en <code>/16</code>, donc le masque est <strong><code>255.255.0.0</code></strong>, pas <code>255.255.255.0</code> (<code>/24</code>). Avec le mauvais masque, tes deux VM ne se considéreront pas sur le même réseau local, même si les 3 premiers chiffres de leurs IP se ressemblent.</p>
+</div>
+<hr />
+<h2 id="étape-0--trouver-y-et-x-et-récupérer-passerelledns">Étape 0 : trouver <code>y</code> et <code>x</code>, et récupérer passerelle/DNS</h2>
+<p>Ces informations dépendent de <strong>ta machine hôte</strong>, pas de tes VM. Il faut donc regarder du côté de Windows (ou du système hôte), pas dans Oracle Linux.</p>
+<p><strong>Sur un hôte Windows</strong>, ouvre une invite de commandes et tape :</p>
+<div class="highlight"><pre><span></span><code>ipconfig /all
+</code></pre></div>
+<p>Repère, pour la carte réseau active (souvent « Ethernet » ou « Wi-Fi ») :</p>
+<table>
+<thead>
+<tr>
+<th>Information cherchée</th>
+<th>Ligne à lire dans <code>ipconfig /all</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ton adresse IP hôte (donne <code>y</code> et <code>x</code>)</td>
+<td><code>Adresse IPv4</code></td>
+</tr>
+<tr>
+<td>Passerelle par défaut</td>
+<td><code>Passerelle par défaut</code></td>
+</tr>
+<tr>
+<td>Serveur DNS</td>
+<td><code>Serveurs DNS</code></td>
+</tr>
+</tbody>
+</table>
+<p>Exemple : si ton adresse IPv4 hôte est <code>10.3.42.17</code>, alors <code>y = 3</code> et <code>x = 17</code>. Tes VM auront donc <code>10.3.17.1</code> (<code>srv-gui</code>) et <code>10.3.17.11</code> (<code>srv-cli</code>).</p>
+<div class="admonition note">
+<p class="admonition-title">Vérifie l'énoncé exact de ta salle</p>
+<p>La façon exacte de lire <code>y</code> et <code>x</code> peut légèrement varier selon le plan d'adressage réellement utilisé par ton centre de formation. En cas de doute sur la valeur de <code>y</code>, demande confirmation à ton formateur plutôt que de deviner.</p>
+</div>
+<hr />
+<h2 id="étape-1--configurer-srv-gui-avec-loutil-graphique">Étape 1 : configurer <code>srv-gui</code> avec l'outil graphique</h2>
+<p>L'énoncé impose l'outil <strong>graphique</strong> pour cette machine.</p>
+<ol>
+<li>Ouvre les <strong>Paramètres</strong> (ou <strong>Activités</strong> → <strong>Réseau</strong>, comme vu dans la fiche de révision).</li>
+<li>Clique sur la roue dentée ⚙️ à côté de ta connexion filaire (souvent nommée « Câblé » ou <code>Wired</code>).</li>
+<li>Va dans l'onglet <strong>IPv4</strong>.</li>
+<li>Passe la méthode de <strong>Automatique (DHCP)</strong> à <strong>Manuel</strong>.</li>
+<li>Renseigne :</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Champ</th>
+<th>Valeur</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Adresse</td>
+<td><code>10.y.x.1</code></td>
+</tr>
+<tr>
+<td>Masque de réseau (Netmask)</td>
+<td><code>255.255.0.0</code></td>
+</tr>
+<tr>
+<td>Passerelle</td>
+<td>celle de ton poste physique</td>
+</tr>
+<tr>
+<td>Serveurs DNS</td>
+<td>celui de ton poste physique</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>Clique sur <strong>Appliquer</strong>.</li>
+<li><strong>Redémarre la connexion</strong> pour que le changement soit pris en compte : bascule l'interrupteur en haut de la fenêtre sur <strong>Désactivé</strong> puis à nouveau sur <strong>Activé</strong> (un simple « Appliquer » ne suffit pas toujours).</li>
+</ol>
+<p>Vérifie en terminal :</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>ip<span class="w"> </span>a
+</code></pre></div>
+<p>Tu dois voir l'adresse <code>10.y.x.1/16</code> sur ton interface (<code>ens33</code> ou équivalent).</p>
+<hr />
+<h2 id="étape-2--configurer-srv-cli-sans-interface-graphique">Étape 2 : configurer <code>srv-cli</code> sans interface graphique</h2>
+<p>L'énoncé ne précise pas d'outil pour cette machine : comme elle n'a pas de bureau, on utilise <code>nmtui</code> (menus dans le terminal) ou <code>nmcli</code> (ligne de commande), vus dans la fiche de révision (chapitre 5).</p>
+<h3 id="méthode-avec-nmtui-la-plus-simple-visuellement">Méthode avec <code>nmtui</code> (la plus simple visuellement)</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># nmtui</span>
+</code></pre></div>
+<ol>
+<li>Choisis <strong>Edit a connection</strong>.</li>
+<li>Sélectionne ta connexion (souvent <code>Wired connection 1</code>), <strong>Edit</strong>.</li>
+<li>Dans <strong>IPv4 CONFIGURATION</strong>, passe de <code>&lt;Automatic&gt;</code> à <strong><code>&lt;Manual&gt;</code></strong>.</li>
+<li>Va sur <strong>Show</strong> puis <strong>Add</strong> pour ajouter une adresse :</li>
+<li><strong>Address</strong> : <code>10.y.x.11/16</code> (le <code>/16</code> remplace le masque ici)</li>
+<li><strong>Gateway</strong> : celle de ton poste physique</li>
+<li><strong>DNS servers</strong> : celui de ton poste physique</li>
+<li><strong>OK</strong>, puis <strong>Back</strong>, puis <strong>Quit</strong>.</li>
+<li>Relance la connexion :</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># nmcli connection down "Wired connection 1"</span>
+<span class="c1"># nmcli connection up "Wired connection 1"</span>
+</code></pre></div>
+<p>(remplace <code>"Wired connection 1"</code> par le nom réel de ta connexion, visible avec <code>nmcli connection show</code>.)</p>
+<h3 id="méthode-équivalente-avec-nmcli-en-une-fois">Méthode équivalente avec <code>nmcli</code> en une fois</h3>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>nmcli<span class="w"> </span>connection<span class="w"> </span>show<span class="w">                                   </span><span class="c1"># trouver le nom exact de la connexion</span>
+<span class="c1"># nmcli connection modify "Wired connection 1" ipv4.addresses 10.y.x.11/16</span>
+<span class="c1"># nmcli connection modify "Wired connection 1" ipv4.gateway &lt;passerelle_du_poste&gt;</span>
+<span class="c1"># nmcli connection modify "Wired connection 1" ipv4.dns &lt;dns_du_poste&gt;</span>
+<span class="c1"># nmcli connection modify "Wired connection 1" ipv4.method manual</span>
+<span class="c1"># nmcli connection up "Wired connection 1"</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Piège : oublier <code>ipv4.method manual</code></p>
+<p>Sans cette dernière ligne, NetworkManager continue de chercher une adresse en DHCP et <strong>ignore</strong> l'adresse statique que tu viens de définir. C'est l'erreur la plus fréquente avec <code>nmcli</code>.</p>
+</div>
+<p>Vérifie :</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>ip<span class="w"> </span>a
+</code></pre></div>
+<p>Tu dois voir <code>10.y.x.11/16</code>.</p>
+<hr />
+<h2 id="étape-3--tester-la-connectivité-entre-les-deux-vm">Étape 3 : tester la connectivité entre les deux VM</h2>
+<div class="admonition info">
+<p class="admonition-title">Cette étape ne vient pas du cours</p>
+<p>Le cours (chapitre 6) couvre la <strong>configuration</strong> du réseau (<code>ip a</code>, <code>ip r</code>, <code>/etc/resolv.conf</code>, <code>nmtui</code>/<code>nmcli</code>) mais ne donne aucune commande pour <strong>tester</strong> une connexion ou une résolution de nom. <code>ping</code>, utilisé ci-dessous, est une connaissance générale Linux, pas une commande du cours.</p>
+</div>
+<p>Depuis <code>srv-gui</code>, ping <code>srv-cli</code> :</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>ping<span class="w"> </span>-c4<span class="w"> </span><span class="m">10</span>.y.x.11
+</code></pre></div>
+<p>Et inversement, depuis <code>srv-cli</code> :</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>ping<span class="w"> </span>-c4<span class="w"> </span><span class="m">10</span>.y.x.1
+</code></pre></div>
+<p><strong>Résultat attendu</strong> : dans les deux sens, tu dois voir des réponses (<code>64 bytes from 10.y.x.x: icmp_seq=1 ttl=64 time=0.XXX ms</code>) et <code>0% packet loss</code> à la fin.</p>
+<div class="admonition warning">
+<p class="admonition-title">Si le ping ne passe pas</p>
+<p>Vérifie dans l'ordre :</p>
+<ol>
+<li><strong>Le masque</strong> : <code>ip a</code> doit afficher <code>/16</code> des deux côtés (pas <code>/24</code>).</li>
+<li><strong>La carte réseau des deux VM est bien en mode Bridge</strong> dans les paramètres de l'hyperviseur (vu au TP1/TP2), pas en NAT : sinon les deux VM ne sont pas sur le même réseau que le poste physique.</li>
+<li><strong>Le pare-feu</strong> : <code>firewalld</code> (vu au TP4) autorise le ping par défaut sur la zone standard, mais si tu as modifié ses règles, vérifie avec <code>firewall-cmd --list-all</code> sur la machine qui ne répond pas.</li>
+</ol>
+</div>
+<hr />
+<h2 id="étape-4--tester-la-résolution-du-nom-dhôte-wwwgithubcom-depuis-srv-gui">Étape 4 : tester la résolution du nom d'hôte <code>www.github.com</code> depuis <code>srv-gui</code></h2>
+<p><strong>Méthode du cours</strong> : le cours s'arrête à la <strong>vérification de la configuration</strong> DNS avec <code>cat /etc/resolv.conf</code> (chapitre 6.2.3) — il ne couvre aucune commande pour tester activement une résolution.</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>cat<span class="w"> </span>/etc/resolv.conf
+</code></pre></div>
+<p>Ça confirme quel serveur DNS est utilisé, mais ne dit pas encore si la résolution de <code>www.github.com</code> fonctionne réellement.</p>
+<div class="admonition info">
+<p class="admonition-title">Les commandes ci-dessous ne viennent pas du cours</p>
+<p>Pour vraiment <strong>tester</strong> la résolution (ce que demande l'énoncé), il faut une commande que le cours ne couvre pas. Deux options générales :</p>
+</div>
+<p>La résolution de noms (DNS) dépend du serveur DNS renseigné à l'étape 1. Teste avec :</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>getent<span class="w"> </span>hosts<span class="w"> </span>www.github.com
+</code></pre></div>
+<p>Cette commande interroge le système de résolution de noms configuré (via <code>/etc/resolv.conf</code>, lui-même mis à jour par NetworkManager) et affiche l'adresse IP correspondante si elle a été trouvée.</p>
+<div class="admonition tip">
+<p class="admonition-title">Autres façons de tester, si <code>getent</code> ne suffit pas</p>
+<p><div class="highlight"><pre><span></span><code>$<span class="w"> </span>ping<span class="w"> </span>-c2<span class="w"> </span>www.github.com
+</code></pre></div>
+Si le nom se résout mais qu'aucune réponse ping n'arrive, c'est un problème de connectivité vers Internet (ou un blocage), pas de DNS : dans ce cas, la ligne <code>PING www.github.com (adresse_IP)</code> s'affiche quand même, preuve que la résolution, elle, a fonctionné.</p>
+<p>Si les outils <code>nslookup</code> ou <code>dig</code> sont installés :
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>nslookup<span class="w"> </span>www.github.com
+</code></pre></div></p>
+</div>
+<p><strong>Pour vérifier la configuration DNS utilisée</strong> :</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>cat<span class="w"> </span>/etc/resolv.conf
+</code></pre></div>
+<p>Tu dois y retrouver la ligne <code>nameserver &lt;adresse_dns_du_poste&gt;</code>, celle que tu as renseignée à l'étape 1.</p>
+<div class="admonition warning">
+<p class="admonition-title">Si la résolution échoue</p>
+<p>Vérifie que le DNS renseigné est bien <strong>exactement</strong> celui de ton poste physique (<code>ipconfig /all</code>), et que ta VM a bien accès à Internet via la passerelle (teste d'abord <code>ping -c2 &lt;adresse_de_la_passerelle&gt;</code>, puis <code>ping -c2 8.8.8.8</code> pour vérifier l'accès Internet par IP, avant d'accuser le DNS).</p>
+</div>
+<hr />
+<h2 id="à-retenir">À retenir</h2>
+<ul>
+<li><code>/16</code> = masque <strong><code>255.255.0.0</code></strong>, pas <code>255.255.255.0</code>.</li>
+<li><code>y</code> (réseau de salle) et <code>x</code> (numéro de stagiaire) se lisent sur <strong>la machine hôte</strong>, pas dans la VM : <code>ipconfig /all</code> sous Windows.</li>
+<li><strong><code>srv-gui</code></strong> (avec bureau) se configure via l'outil graphique <strong>Paramètres → Réseau</strong>.</li>
+<li><strong><code>srv-cli</code></strong> (sans bureau) se configure via <strong><code>nmtui</code></strong> (menus) ou <strong><code>nmcli</code></strong> (ligne de commande) ; ne pas oublier <code>ipv4.method manual</code> avec <code>nmcli</code>.</li>
+<li>Un changement d'IP demande de <strong>redémarrer la connexion</strong> (bascule Désactivé/Activé, ou <code>nmcli connection down</code>/<code>up</code>) pour être pris en compte immédiatement.</li>
+<li><strong><code>getent hosts &lt;nom&gt;</code></strong> teste la résolution DNS ; <strong><code>cat /etc/resolv.conf</code></strong> montre le serveur DNS utilisé.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

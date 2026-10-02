@@ -1,0 +1,1874 @@
+
+<!doctype html>
+<html lang="fr" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../tp6-depots-mises-a-jour/">
+      
+      
+        <link rel="next" href="../tp8-gestion-utilisateurs%20%281%29/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>TP7 : Gestion du stockage - Mes notes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#tp7--gestion-du-stockage" class="md-skip">
+          Aller au contenu
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="En-tête">
+    <a href="../../.." title="Mes notes" class="md-header__button md-logo" aria-label="Mes notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Mes notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              TP7 : Gestion du stockage
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Rechercher" placeholder="Rechercher" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Recherche">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Effacer" aria-label="Effacer" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initialisation de la recherche
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Mes notes" class="md-nav__button md-logo" aria-label="Mes notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Mes notes
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cours et TP ENI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Administration Linux
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Administration Linux
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cours-admin-linux/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Administration Linux : fiche de révision
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../memo-chmod/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mémo : chmod, les droits sous Linux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../memo-commandes-stockage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mémo commandes : stockage, LVM, montage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../memo-systeme-fichiers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mémo : le système de fichiers sous Linux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../memo-types-volumes-partitions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mémo : partitions, LVM, systèmes de fichiers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    TP
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index%20%281%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tutos Administration Linux (M02)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tp1-installation-graphique/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP1 : Installer Oracle Linux avec bureau GNOME (srvclient)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tp10-gestion-logs%20%281%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP10 : Gestion des logs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tp11-analyse-systeme%20%281%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP11 : Analyse du système
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tp2-installation-serveur/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP2 : Installer Oracle Linux en mode serveur, sans interface graphique (serveur)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tp3-grub-mode-maintenance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP3 : Configurer GRUB et démarrer en mode maintenance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tp4-demarrage-et-services/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP4 : Gestion du démarrage et des services
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tp5-gestion-reseau/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP5 : Gestion réseau
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tp6-depots-mises-a-jour/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP6 : Dépôts, mises à jour et installation de logiciels
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP7 : Gestion du stockage
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP7 : Gestion du stockage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#adapter-le-tp-aux-disques-nvme" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Adapter le TP aux disques NVMe
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#partie-1--premier-disque-de-20-go" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Partie 1 : premier disque de 20 Go
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Partie 1 : premier disque de 20 Go">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#étape-0--ajouter-le-disque-dans-lhyperviseur" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 0 : ajouter le disque dans l'hyperviseur
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#étape-1--créer-les-deux-partitions-avec-fdisk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 1 : créer les deux partitions avec fdisk
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#étape-2a--la-première-partition-6-go-xfs-montage-manuel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 2a : la première partition (6 Go, xfs, montage manuel)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#étape-2b--la-deuxième-partition-ajoutée-au-groupe-de-volumes-existant" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 2b : la deuxième partition, ajoutée au groupe de volumes existant
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#étape-3--créer-le-volume-logique--data--10-go-ext4-montage-automatique-par-uuid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 3 : créer le volume logique « Data » (10 Go, ext4, montage automatique par UUID)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#étape-4--ajouter-lespace-restant-du-groupe-à-var-sans-interruption-ni-perte-de-données" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 4 : ajouter l'espace restant du groupe à /var, sans interruption ni perte de données
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#partie-2--deuxième-disque-de-40-go-dédié-à-une-base-de-données" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Partie 2 : deuxième disque de 40 Go, dédié à une base de données
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Partie 2 : deuxième disque de 40 Go, dédié à une base de données">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#étape-0--ajouter-le-disque" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 0 : ajouter le disque
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#étape-1--intégrer-lintégralité-du-disque-au-groupe-de-volumes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 1 : intégrer l'intégralité du disque au groupe de volumes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#étape-2--créer-le-volume-logique-pour-la-base-de-données" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 2 : créer le volume logique pour la base de données
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#étape-3--montage-automatique" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 3 : montage automatique
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#question--quelle-taille-fait-le-dossier-etc-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Question : quelle taille fait le dossier /etc ?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vérification-finale" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vérification finale
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#à-retenir" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        À retenir
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tp8-gestion-utilisateurs%20%281%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP8 : Gestion des utilisateurs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tp9-gestion-permissions%20%281%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP9 : Gestion des permissions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Administration Windows
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Administration Windows
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Administration-Windows/fiche-revision-windows-ad/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fiche de révision — Administration Windows et Active Directory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Administration-Windows/raccourcis-claviers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Raccourcis clavier Windows / Windows Server — Administration système et réseau
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    TP
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Administration-Windows/TP/tp01-creation-infrastructure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP1 — Création de l'infrastructure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Administration-Windows/TP/tp02-creation-domaine-ad/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP2 — Création d'un domaine Active Directory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Administration-Windows/TP/tp03-gestion-domaine-ad/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP3 — Gestion d'un domaine Active Directory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Administration-Windows/TP/tp04-gestion-ressources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP4 — Gestion de ressources
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Administration-Windows/TP/tp05-strategies-de-groupe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP5 — Les stratégies de groupe (GPO)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#adapter-le-tp-aux-disques-nvme" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Adapter le TP aux disques NVMe
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#partie-1--premier-disque-de-20-go" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Partie 1 : premier disque de 20 Go
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Partie 1 : premier disque de 20 Go">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#étape-0--ajouter-le-disque-dans-lhyperviseur" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 0 : ajouter le disque dans l'hyperviseur
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#étape-1--créer-les-deux-partitions-avec-fdisk" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 1 : créer les deux partitions avec fdisk
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#étape-2a--la-première-partition-6-go-xfs-montage-manuel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 2a : la première partition (6 Go, xfs, montage manuel)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#étape-2b--la-deuxième-partition-ajoutée-au-groupe-de-volumes-existant" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 2b : la deuxième partition, ajoutée au groupe de volumes existant
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#étape-3--créer-le-volume-logique--data--10-go-ext4-montage-automatique-par-uuid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 3 : créer le volume logique « Data » (10 Go, ext4, montage automatique par UUID)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#étape-4--ajouter-lespace-restant-du-groupe-à-var-sans-interruption-ni-perte-de-données" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 4 : ajouter l'espace restant du groupe à /var, sans interruption ni perte de données
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#partie-2--deuxième-disque-de-40-go-dédié-à-une-base-de-données" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Partie 2 : deuxième disque de 40 Go, dédié à une base de données
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Partie 2 : deuxième disque de 40 Go, dédié à une base de données">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#étape-0--ajouter-le-disque" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 0 : ajouter le disque
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#étape-1--intégrer-lintégralité-du-disque-au-groupe-de-volumes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 1 : intégrer l'intégralité du disque au groupe de volumes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#étape-2--créer-le-volume-logique-pour-la-base-de-données" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 2 : créer le volume logique pour la base de données
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#étape-3--montage-automatique" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 3 : montage automatique
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#question--quelle-taille-fait-le-dossier-etc-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Question : quelle taille fait le dossier /etc ?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vérification-finale" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Vérification finale
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#à-retenir" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        À retenir
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="tp7--gestion-du-stockage">TP7 : Gestion du stockage</h1>
+<div class="admonition abstract">
+<p class="admonition-title">En bref</p>
+<p><strong>Objectifs</strong> : ajouter des disques, les partitionner, les intégrer à LVM, créer des volumes logiques et les monter automatiquement.
+<strong>Prérequis</strong> : avoir terminé l'atelier 6 (implicite, pas précisé dans l'énoncé).
+<strong>Machine</strong> : <code>srv-cli</code>.
+<strong>Durée</strong> : 45 min à 1 h.</p>
+</div>
+<div class="admonition danger">
+<p class="admonition-title">Avant de commencer : fais un snapshot de ta VM</p>
+<p>L'énoncé le demande explicitement. Dans ton hyperviseur (VirtualBox : clic droit sur la VM → <strong>Prendre un instantané</strong> ; VMware : <strong>VM → Snapshot → Take Snapshot</strong>), fais une sauvegarde de l'état actuel <strong>avant</strong> de toucher aux disques. Le partitionnement et le formatage sont des opérations qui peuvent mal tourner (mauvais disque sélectionné, mauvaise partition supprimée) ; un snapshot te permet de revenir en arrière en quelques secondes.</p>
+</div>
+<h2 id="adapter-le-tp-aux-disques-nvme">Adapter le TP aux disques NVMe</h2>
+<p>L'énoncé demande des disques en <strong>SCSI</strong>, mais si tu as ajouté les tiens en <strong>NVMe</strong> (contrôleur différent, plus rapide, courant sur les hyperviseurs récents), la seule vraie différence est le <strong>nommage des périphériques</strong>.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>SCSI/SATA</th>
+<th>NVMe</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Disque</td>
+<td><code>/dev/sdb</code>, <code>/dev/sdc</code>...</td>
+<td><code>/dev/nvme1n1</code>, <code>/dev/nvme2n1</code>...</td>
+</tr>
+<tr>
+<td>Partition</td>
+<td><code>/dev/sdb1</code>, <code>/dev/sdb2</code>...</td>
+<td><code>/dev/nvme1n1p1</code>, <code>/dev/nvme1n1p2</code>...</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Piège : le nommage NVMe peut surprendre (<code>nvme0n2</code> plutôt que <code>nvme1n1</code>)</p>
+<p>Deux disques NVMe distincts peuvent apparaître comme deux <strong>contrôleurs</strong> différents (<code>nvme0n1</code>, <code>nvme1n1</code>) <strong>ou</strong> comme deux <strong>namespaces</strong> du même contrôleur (<code>nvme0n1</code>, <code>nvme0n2</code>), selon la façon dont l'hyperviseur les attache à la VM. Ne pars donc pas du principe que ton second disque s'appellera forcément <code>nvme1n1</code> : vérifie toujours avec <code>lsblk</code> avant de lancer <code>fdisk</code>, et adapte le nom en conséquence. Dans tout ce tuto, remplace <code>nvme1n1</code>/<code>nvme2n1</code> par les noms réellement affichés chez toi (par exemple <code>nvme0n2</code>, <code>nvme0n3</code>...).</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Piège : ne pas oublier le <code>p</code> avant le numéro de partition</p>
+<p>Sur un disque <code>sdb</code>, la partition 1 s'appelle <code>sdb1</code> (pas de séparateur). Sur un disque NVMe, il <strong>faut</strong> un <code>p</code> avant le numéro : <code>nvme0n2p1</code>. Sans ce <code>p</code>, la commande cible un périphérique qui n'existe pas.</p>
+</div>
+<p>Toutes les commandes ci-dessous utilisent la syntaxe NVMe ; remplace simplement les noms par les tiens (vérifiés avec <code>lsblk</code> à chaque étape).</p>
+<pre class="mermaid"><code>flowchart TD
+    D1["Disque 1 : 20 Go (nvme0n2)"] --&gt; P1["Partition 1 : 6 Go, xfs&lt;br/&gt;montage manuel /partition"]
+    D1 --&gt; P2["Partition 2 : reste de l'espace&lt;br/&gt;ajoutée au VG existant"]
+    P2 --&gt; LV1["LV Data : 10 Go, ext4&lt;br/&gt;/srv/data (auto, via UUID)"]
+    P2 --&gt; LV2["Reste ajouté à LV var&lt;br/&gt;(déjà monté sur /var)"]
+    D2["Disque 2 : 40 Go (nvme0n3)"] --&gt; VG["Intégralité ajoutée au VG"]
+    VG --&gt; LV3["Nouveau LV : xfs&lt;br/&gt;/srv/BDD (auto)"]</code></pre>
+<hr />
+<h2 id="partie-1--premier-disque-de-20-go">Partie 1 : premier disque de 20 Go</h2>
+<h3 id="étape-0--ajouter-le-disque-dans-lhyperviseur">Étape 0 : ajouter le disque dans l'hyperviseur</h3>
+<p>Dans les paramètres de la VM <code>srv-cli</code> (VM éteinte ou disque à chaud selon ton hyperviseur), ajoute un nouveau disque dur de <strong>20 Go</strong>, sur un contrôleur NVMe.</p>
+<p>Redémarre si besoin, puis identifie le nouveau disque :</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>lsblk
+</code></pre></div>
+<p>Le nouveau disque apparaît sans partition (pas de point de montage), par exemple <code>nvme0n2</code> avec une taille de 20G. Si un disque NVMe ajouté à chaud n'apparaît pas, un redémarrage résout presque toujours le problème.</p>
+<h3 id="étape-1--créer-les-deux-partitions-avec-fdisk">Étape 1 : créer les deux partitions avec <code>fdisk</code></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># fdisk /dev/nvme0n2</span>
+</code></pre></div>
+<p>Dans l'invite interactive de <code>fdisk</code> :</p>
+<ol>
+<li><code>n</code> (nouvelle partition), <code>p</code> (primaire), <code>1</code> (numéro), Entrée (début par défaut), <code>+6G</code> (taille de la première partition).</li>
+<li><code>n</code> à nouveau, <code>p</code>, <code>2</code>, Entrée, <strong>Entrée</strong> (jusqu'à la fin du disque, pour prendre tout le reste).</li>
+<li><code>p</code> pour vérifier visuellement les deux partitions créées.</li>
+<li><code>w</code> pour <strong>écrire</strong> les changements sur le disque (rien n'est fait avant ce <code>w</code>).</li>
+</ol>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>partprobe<span class="w">                </span><span class="c1"># force le noyau à relire la table de partitions sans redémarrer</span>
+$<span class="w"> </span>lsblk
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title"><code>partprobe</code> ne vient pas du cours</p>
+<p>Ton cours ne mentionne pas cette commande. Sans elle, il arrive que le noyau garde en mémoire l'ancienne table de partitions juste après un <code>fdisk</code>, et qu'un <code>lsblk</code> immédiatement après ne montre pas encore les nouvelles partitions. Si ça t'arrive et que tu préfères t'en tenir uniquement aux commandes du cours, un redémarrage de la VM a le même effet.</p>
+</div>
+<p>Tu dois voir <code>nvme0n2p1</code> (6G) et <code>nvme0n2p2</code> (le reste, environ 14G).</p>
+<h3 id="étape-2a--la-première-partition-6-go-xfs-montage-manuel">Étape 2a : la première partition (6 Go, xfs, montage manuel)</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># mkfs.xfs /dev/nvme0n2p1</span>
+<span class="c1"># mkdir /partition</span>
+<span class="c1"># mount /dev/nvme0n2p1 /partition</span>
+</code></pre></div>
+<p>Vérifie :</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>df<span class="w"> </span>-h<span class="w"> </span>/partition
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">« Tester manuellement » = pas d'entrée dans <code>/etc/fstab</code></p>
+<p>L'énoncé demande de <strong>tester le montage manuellement</strong>, pas de le rendre permanent. Ne touche donc pas à <code>/etc/fstab</code> pour cette partition : un simple <code>mount</code> suffit à répondre à la consigne. Si tu redémarres la VM, ce montage disparaîtra, ce qui est normal ici.</p>
+</div>
+<h3 id="étape-2b--la-deuxième-partition-ajoutée-au-groupe-de-volumes-existant">Étape 2b : la deuxième partition, ajoutée au groupe de volumes existant</h3>
+<p>D'abord, identifie le nom de ton groupe de volumes (créé à l'installation, généralement <code>ol</code>) :</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>vgs
+</code></pre></div>
+<p>Prépare la partition pour LVM, puis intègre-la au groupe existant :</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># pvcreate /dev/nvme0n2p2</span>
+<span class="c1"># vgextend ol /dev/nvme0n2p2</span>
+</code></pre></div>
+<p>(remplace <code>ol</code> et <code>nvme0n2p2</code> par les noms réels affichés chez toi.)</p>
+<div class="admonition tip">
+<p class="admonition-title">Sur les versions récentes de LVM, <code>vgextend</code> peut créer le PV tout seul</p>
+<p>Si tu lances directement <code>vgextend ol /dev/nvme0n2p2</code> <strong>sans</strong> avoir fait <code>pvcreate</code> avant, LVM peut détecter que le périphérique n'est pas encore un volume physique et le créer lui-même au passage (tu verras alors les deux messages <code>Physical volume "..." successfully created</code> et <code>Volume group "ol" successfully extended</code> à la suite, pour une seule commande tapée). Les deux méthodes donnent le même résultat ; faire <code>pvcreate</code> séparément reste utile pour bien comprendre l'étape, mais n'est plus strictement obligatoire selon ta version de LVM2.</p>
+</div>
+<p>Vérifie que l'espace disponible dans le groupe a bien augmenté :</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>vgs
+$<span class="w"> </span>vgdisplay<span class="w"> </span>ol
+</code></pre></div>
+<h3 id="étape-3--créer-le-volume-logique--data--10-go-ext4-montage-automatique-par-uuid">Étape 3 : créer le volume logique « Data » (10 Go, ext4, montage automatique par UUID)</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># lvcreate -n Data -L 10G ol</span>
+<span class="c1"># mkfs.ext4 /dev/ol/Data</span>
+<span class="c1"># mkdir -p /srv/data</span>
+</code></pre></div>
+<p>Récupère l'<strong>UUID</strong> du nouveau système de fichiers :</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>blkid<span class="w"> </span>/dev/ol/Data
+</code></pre></div>
+<p>Copie la valeur après <code>UUID="..."</code>, puis ajoute une ligne dans <code>/etc/fstab</code> :</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># vi /etc/fstab</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>UUID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx   /srv/data   ext4   defaults   0   0
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Piège : tester avant de redémarrer</p>
+<p>Comme vu dans la fiche de révision, ne redémarre pas tout de suite pour vérifier. Teste d'abord avec :
+<div class="highlight"><pre><span></span><code><span class="c1"># mount /srv/data</span>
+</code></pre></div>
+(uniquement le point de montage, pas <code>mount -a</code>). Si aucune erreur ne s'affiche, la ligne est correcte. Vérifie avec <code>df -h /srv/data</code>.</p>
+</div>
+<h3 id="étape-4--ajouter-lespace-restant-du-groupe-à-var-sans-interruption-ni-perte-de-données">Étape 4 : ajouter l'espace restant du groupe à <code>/var</code>, sans interruption ni perte de données</h3>
+<p>Après avoir créé le LV <code>Data</code> de 10 Go, il reste environ 4 Go disponibles dans le groupe de volumes (14 Go de la partition 2, moins les 10 Go de <code>Data</code>). L'énoncé demande de donner <strong>tout ce qui reste</strong> au volume logique déjà monté sur <code>/var</code>.</p>
+<p><strong>Méthode du cours</strong> : ton cours (chapitre 7.2) n'enseigne que <code>lvextend</code> avec <strong><code>-L</code></strong> (taille absolue, ex. <code>lvextend -L +400M /dev/vggroup1/lv1</code>). Pour l'utiliser ici, il faudrait d'abord lire l'espace libre exact avec <code>vgs</code>, puis le reporter à la main :</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>vgs<span class="w">                          </span><span class="c1"># lit l'espace libre exact (colonne VFree)</span>
+<span class="c1"># lvextend -L +3.98G /dev/ol/var    # exemple : à adapter à la valeur lue juste avant</span>
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">Méthode plus directe, mais pas dans le cours</p>
+<p><div class="highlight"><pre><span></span><code><span class="c1"># lvextend -l +100%FREE /dev/ol/var</span>
+</code></pre></div>
+<code>-l</code> (minuscule) accepte un <strong>pourcentage</strong> plutôt qu'une taille fixe : <code>+100%FREE</code> prend tout l'espace libre restant du groupe, sans avoir à le lire et le retaper à la main. Cette syntaxe n'est pas dans le cours, mais elle évite tout risque d'erreur de calcul et correspond mieux à la formulation de l'énoncé (« l'espace restant sera à ajouter en <strong>intégralité</strong> »).</p>
+</div>
+<p><strong>Agrandir le système de fichiers</strong>, sans démonter ni interrompre l'accès (c'est justement ce que permet XFS, comme vu dans la fiche de révision) :</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># xfs_growfs /var</span>
+</code></pre></div>
+<div class="admonition danger">
+<p class="admonition-title">Piège : <code>resize2fs</code> ne fonctionne pas sur XFS</p>
+<p>D'après le partitionnement des TP1/TP2, <code>/var</code> a été créé en <strong>XFS</strong>. Utilise donc <strong><code>xfs_growfs</code></strong>, avec le <strong>point de montage</strong> en argument (<code>/var</code>), pas le nom du périphérique. <code>resize2fs</code> est réservé aux systèmes de fichiers <code>ext2/3/4</code> ; l'utiliser ici renverrait une erreur.</p>
+</div>
+<p><strong>Vérifier que la nouvelle taille est bien prise en compte</strong> (demandé explicitement par l'énoncé) :</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>df<span class="w"> </span>-h<span class="w"> </span>/var
+</code></pre></div>
+<p>La taille affichée doit refléter l'ajout de l'espace libre, sans qu'aucune interruption de service n'ait été nécessaire : <code>/var</code> est resté monté et accessible pendant toute l'opération.</p>
+<hr />
+<h2 id="partie-2--deuxième-disque-de-40-go-dédié-à-une-base-de-données">Partie 2 : deuxième disque de 40 Go, dédié à une base de données</h2>
+<h3 id="étape-0--ajouter-le-disque">Étape 0 : ajouter le disque</h3>
+<p>Ajoute un second disque NVMe de <strong>40 Go</strong> à <code>srv-cli</code>, puis identifie-le :</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>lsblk
+</code></pre></div>
+<p>Il apparaît par exemple sous le nom <code>nvme0n3</code>.</p>
+<h3 id="étape-1--intégrer-lintégralité-du-disque-au-groupe-de-volumes">Étape 1 : intégrer l'intégralité du disque au groupe de volumes</h3>
+<p>L'énoncé précise que <strong>toute</strong> la capacité du disque doit rejoindre le VG. Deux approches possibles :</p>
+<p><strong>Option simple</strong> : utiliser le disque entier comme volume physique, sans le partitionner :</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># pvcreate /dev/nvme0n3</span>
+<span class="c1"># vgextend ol /dev/nvme0n3</span>
+</code></pre></div>
+<p><strong>Option avec partition</strong> (si tu préfères garder l'habitude de toujours partitionner avant d'utiliser LVM, comme à la partie 1) :</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># fdisk /dev/nvme0n3</span>
+<span class="c1"># n, p, 1, Entrée, Entrée (toute la capacité)</span>
+<span class="c1"># t, 8e (type Linux LVM)</span>
+<span class="c1"># w</span>
+<span class="c1"># pvcreate /dev/nvme0n3p1</span>
+<span class="c1"># vgextend ol /dev/nvme0n3p1</span>
+</code></pre></div>
+<p>Les deux méthodes remplissent la consigne « l'intégralité de l'espace sera intégrée au groupe de volumes existant ». Vérifie ensuite :</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>vgs
+</code></pre></div>
+<h3 id="étape-2--créer-le-volume-logique-pour-la-base-de-données">Étape 2 : créer le volume logique pour la base de données</h3>
+<p><strong>Méthode du cours</strong> : <code>lvcreate -n &lt;nom&gt; -L &lt;taille&gt; &lt;vg&gt;</code> (chapitre 7.2), par exemple <code>lvcreate -n BDD -L 40G ol</code>.</p>
+<div class="admonition info">
+<p class="admonition-title"><code>-l 100%FREE</code> ne vient pas du cours, mais évite un piège</p>
+<p>Comme ce disque est <strong>entièrement dédié</strong> à ce volume, prendre directement tout l'espace disponible est plus sûr qu'une taille fixe en Go (voir le piège ci-dessous) :</p>
+</div>
+<div class="highlight"><pre><span></span><code><span class="c1"># lvcreate -n BDD -l 100%FREE ol</span>
+</code></pre></div>
+<div class="admonition danger">
+<p class="admonition-title">Piège : <code>-L 40G</code> peut échouer de justesse</p>
+<p>Si tu demandes une taille fixe avec <code>-L</code> (majuscule) correspondant exactement à la taille du disque, LVM peut répondre :
+<div class="highlight"><pre><span></span><code>Volume group "ol" has insufficient free space (10239 extents): 10240 required.
+</code></pre></div>
+C'est normal : LVM découpe l'espace en petites unités appelées <strong>extensions physiques</strong> (4 Mio chacune en général), et une infime partie du disque est réservée aux métadonnées LVM dès qu'il devient un volume physique. Il manque donc quelques Mio pour atteindre pile 40G. Utilise <code>-l 100%FREE</code> (minuscule, en pourcentage) plutôt que <code>-L 40G</code> (majuscule, taille absolue) pour éviter ce calcul : LVM prend alors tout ce qui est réellement disponible, sans arrondi problématique.</p>
+<p>Si tu tiens à fixer une taille précise malgré tout : <code>lvcreate -n BDD -l 10239 ol</code> (en donnant directement le nombre d'extensions restantes, visible avec <code>vgdisplay ol</code>), ou vise très légèrement en dessous (<code>-L 39.98G</code>).</p>
+</div>
+<div class="highlight"><pre><span></span><code><span class="c1"># mkfs.xfs /dev/ol/BDD</span>
+<span class="c1"># mkdir -p /srv/BDD</span>
+</code></pre></div>
+<h3 id="étape-3--montage-automatique">Étape 3 : montage automatique</h3>
+<p>Même méthode qu'à la partie 1 (UUID + <code>/etc/fstab</code>) :</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>blkid<span class="w"> </span>/dev/ol/BDD
+<span class="c1"># vi /etc/fstab</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>UUID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx   /srv/BDD   xfs   defaults   0   0
+</code></pre></div>
+<p>Teste avant de redémarrer :</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># mount /srv/BDD</span>
+$<span class="w"> </span>df<span class="w"> </span>-h<span class="w"> </span>/srv/BDD
+</code></pre></div>
+<hr />
+<h2 id="question--quelle-taille-fait-le-dossier-etc-">Question : quelle taille fait le dossier <code>/etc</code> ?</h2>
+<div class="admonition danger">
+<p class="admonition-title">Piège classique : <code>ls -l</code> ne donne PAS la taille d'un dossier</p>
+<p><code>ls -l /etc</code> n'affiche que la taille de l'<strong>inode</strong> du dossier lui-même (quelques Ko), pas celle de son contenu. Il faut utiliser <strong><code>du</code></strong>, comme vu dans la fiche de révision.</p>
+</div>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>du<span class="w"> </span>-sh<span class="w"> </span>/etc
+</code></pre></div>
+<ul>
+<li><code>-s</code> : total uniquement (pas le détail fichier par fichier).</li>
+<li><code>-h</code> : unités lisibles (Ko, Mo...).</li>
+</ul>
+<p>Si tu veux le détail par sous-dossier pour comprendre ce qui pèse le plus lourd :</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>du<span class="w"> </span>-h<span class="w"> </span>--max-depth<span class="o">=</span><span class="m">1</span><span class="w"> </span>/etc<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span>-rh<span class="w"> </span><span class="p">|</span><span class="w"> </span>head
+</code></pre></div>
+<p><code>sort -rh</code> trie du plus gros au plus petit, <code>head</code> limite l'affichage aux premières lignes.</p>
+<hr />
+<h2 id="vérification-finale">Vérification finale</h2>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>lsblk
+$<span class="w"> </span>df<span class="w"> </span>-h
+$<span class="w"> </span>vgs
+$<span class="w"> </span>lvs
+$<span class="w"> </span>cat<span class="w"> </span>/etc/fstab
+</code></pre></div>
+<p><code>lsblk</code> doit montrer l'arborescence complète : les deux nouveaux disques, leurs partitions, les volumes logiques (<code>Data</code>, <code>var</code> agrandi, <code>BDD</code>) et leurs points de montage respectifs (<code>/srv/data</code>, <code>/var</code>, <code>/srv/BDD</code>), plus <code>/partition</code> monté manuellement sur la première partition du premier disque.</p>
+<hr />
+<h2 id="à-retenir">À retenir</h2>
+<ul>
+<li>Sur un disque <strong>NVMe</strong>, les partitions s'appellent <code>nvme&lt;X&gt;n1p&lt;Y&gt;</code> (avec un <code>p</code>), contrairement à <code>sdX&lt;Y&gt;</code> en SCSI/SATA.</li>
+<li>« Tester manuellement » = un simple <code>mount</code>, <strong>pas</strong> de ligne dans <code>/etc/fstab</code>.</li>
+<li>« Montage automatique » = une ligne dans <code>/etc/fstab</code>, testée avec <code>mount /point</code> (jamais <code>mount -a</code>) avant de redémarrer.</li>
+<li><strong><code>lvextend -l +100%FREE</code></strong> prend tout l'espace libre restant du groupe de volumes, sans calcul manuel.</li>
+<li><strong><code>xfs_growfs &lt;point_de_montage&gt;</code></strong> agrandit un système de fichiers XFS <strong>à chaud</strong>, sans démonter ; <code>resize2fs</code> est réservé à ext2/3/4.</li>
+<li>Intégrer un disque entier à LVM ne demande pas forcément de le partitionner d'abord : <code>pvcreate</code> peut cibler directement le disque brut (<code>/dev/nvme0n3</code>).</li>
+<li><strong><code>du -sh &lt;dossier&gt;</code></strong> donne la taille réelle d'un dossier et de son contenu ; <code>ls -l</code> ne donne que la taille de l'inode du dossier.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

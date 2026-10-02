@@ -1,0 +1,1914 @@
+
+<!doctype html>
+<html lang="fr" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../tp3-grub-mode-maintenance/">
+      
+      
+        <link rel="next" href="../tp5-gestion-reseau/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>TP4 : Gestion du démarrage et des services - Mes notes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#tp4--gestion-du-démarrage-et-des-services" class="md-skip">
+          Aller au contenu
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="En-tête">
+    <a href="../../.." title="Mes notes" class="md-header__button md-logo" aria-label="Mes notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Mes notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              TP4 : Gestion du démarrage et des services
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Rechercher" placeholder="Rechercher" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Recherche">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Effacer" aria-label="Effacer" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initialisation de la recherche
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Mes notes" class="md-nav__button md-logo" aria-label="Mes notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Mes notes
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cours et TP ENI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Administration Linux
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Administration Linux
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cours-admin-linux/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Administration Linux : fiche de révision
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../memo-chmod/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mémo : chmod, les droits sous Linux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../memo-commandes-stockage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mémo commandes : stockage, LVM, montage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../memo-systeme-fichiers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mémo : le système de fichiers sous Linux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../memo-types-volumes-partitions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mémo : partitions, LVM, systèmes de fichiers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    TP
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index%20%281%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tutos Administration Linux (M02)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tp1-installation-graphique/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP1 : Installer Oracle Linux avec bureau GNOME (srvclient)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tp10-gestion-logs%20%281%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP10 : Gestion des logs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tp11-analyse-systeme%20%281%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP11 : Analyse du système
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tp2-installation-serveur/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP2 : Installer Oracle Linux en mode serveur, sans interface graphique (serveur)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tp3-grub-mode-maintenance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP3 : Configurer GRUB et démarrer en mode maintenance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP4 : Gestion du démarrage et des services
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP4 : Gestion du démarrage et des services
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#partie-1--configuration-du-système" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Partie 1 : configuration du système
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Partie 1 : configuration du système">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#question-1--en-combien-de-temps-le-système-a-t-il-démarré-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Question 1 : en combien de temps le système a-t-il démarré ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#question-2--démarrer-par-défaut-en-multi-usertarget" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Question 2 : démarrer par défaut en multi-user.target
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#question-3--exécuter-lenvironnement-graphique-sans-changer-la-cible-par-défaut-ni-redémarrer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Question 3 : exécuter l'environnement graphique sans changer la cible par défaut ni redémarrer
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#partie-3--le-pare-feu-natif-doracle-linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Partie 3 : le pare-feu natif d'Oracle Linux
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#partie-2--gestion-des-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Partie 2 : gestion des services
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Partie 2 : gestion des services">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#le-service-ssh-sshd--retrouver-ses-éléments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Le service SSH (sshd) : retrouver ses éléments
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#le-service-cron-crond--désactiver-puis-restaurer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Le service cron (crond) : désactiver puis restaurer
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Le service cron (crond) : désactiver puis restaurer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#étape-1--est-il-lancé-automatiquement-au-démarrage-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 1 : est-il lancé automatiquement au démarrage ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#étape-2--désactiver-son-démarrage-automatique" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 2 : désactiver son démarrage automatique
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#étape-3--redémarrer-et-valider" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 3 : redémarrer et valider
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#étape-4--restaurer-le-comportement-par-défaut" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 4 : restaurer le comportement par défaut
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tableau-récapitulatif-de-systemctl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tableau récapitulatif de systemctl
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#à-retenir" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        À retenir
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tp5-gestion-reseau/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP5 : Gestion réseau
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tp6-depots-mises-a-jour/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP6 : Dépôts, mises à jour et installation de logiciels
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tp7-gestion-stockage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP7 : Gestion du stockage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tp8-gestion-utilisateurs%20%281%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP8 : Gestion des utilisateurs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tp9-gestion-permissions%20%281%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP9 : Gestion des permissions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Administration Windows
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Administration Windows
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Administration-Windows/fiche-revision-windows-ad/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fiche de révision — Administration Windows et Active Directory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Administration-Windows/raccourcis-claviers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Raccourcis clavier Windows / Windows Server — Administration système et réseau
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    TP
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Administration-Windows/TP/tp01-creation-infrastructure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP1 — Création de l'infrastructure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Administration-Windows/TP/tp02-creation-domaine-ad/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP2 — Création d'un domaine Active Directory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Administration-Windows/TP/tp03-gestion-domaine-ad/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP3 — Gestion d'un domaine Active Directory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Administration-Windows/TP/tp04-gestion-ressources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP4 — Gestion de ressources
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Administration-Windows/TP/tp05-strategies-de-groupe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP5 — Les stratégies de groupe (GPO)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#partie-1--configuration-du-système" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Partie 1 : configuration du système
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Partie 1 : configuration du système">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#question-1--en-combien-de-temps-le-système-a-t-il-démarré-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Question 1 : en combien de temps le système a-t-il démarré ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#question-2--démarrer-par-défaut-en-multi-usertarget" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Question 2 : démarrer par défaut en multi-user.target
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#question-3--exécuter-lenvironnement-graphique-sans-changer-la-cible-par-défaut-ni-redémarrer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Question 3 : exécuter l'environnement graphique sans changer la cible par défaut ni redémarrer
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#partie-3--le-pare-feu-natif-doracle-linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Partie 3 : le pare-feu natif d'Oracle Linux
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#partie-2--gestion-des-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Partie 2 : gestion des services
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Partie 2 : gestion des services">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#le-service-ssh-sshd--retrouver-ses-éléments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Le service SSH (sshd) : retrouver ses éléments
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#le-service-cron-crond--désactiver-puis-restaurer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Le service cron (crond) : désactiver puis restaurer
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Le service cron (crond) : désactiver puis restaurer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#étape-1--est-il-lancé-automatiquement-au-démarrage-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 1 : est-il lancé automatiquement au démarrage ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#étape-2--désactiver-son-démarrage-automatique" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 2 : désactiver son démarrage automatique
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#étape-3--redémarrer-et-valider" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 3 : redémarrer et valider
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#étape-4--restaurer-le-comportement-par-défaut" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 4 : restaurer le comportement par défaut
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tableau-récapitulatif-de-systemctl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tableau récapitulatif de systemctl
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#à-retenir" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        À retenir
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="tp4--gestion-du-démarrage-et-des-services">TP4 : Gestion du démarrage et des services</h1>
+<div class="admonition abstract">
+<p class="admonition-title">En bref</p>
+<p><strong>Objectifs</strong> : mesurer le temps de démarrage, changer la cible de démarrage par défaut, et gérer des services avec <code>systemctl</code> (<code>sshd</code> et <code>crond</code>).
+<strong>Prérequis</strong> : avoir terminé le TP3.
+<strong>Machine</strong> : la VM graphique (<code>srv-gui</code> dans l'énoncé = ton <code>srvclient</code>).
+<strong>Durée</strong> : 30 à 40 min.</p>
+</div>
+<p>Ce TP a <strong>deux parties</strong> :</p>
+<pre class="mermaid"><code>flowchart LR
+    A["1. Configuration du système&lt;br/&gt;temps de démarrage&lt;br/&gt;cible par défaut"] --&gt; B["2. Gestion des services&lt;br/&gt;sshd : retrouver ses éléments&lt;br/&gt;crond : désactiver / réactiver"]</code></pre>
+<hr />
+<h2 id="partie-1--configuration-du-système">Partie 1 : configuration du système</h2>
+<h3 id="question-1--en-combien-de-temps-le-système-a-t-il-démarré-">Question 1 : en combien de temps le système a-t-il démarré ?</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># systemd-analyze</span>
+</code></pre></div>
+<p>Exemple de résultat :</p>
+<div class="highlight"><pre><span></span><code>Startup finished in 1.2s (kernel) + 2.5s (initrd) + 18.3s (userspace) = 22.0s
+graphical.target reached after 17.9s in userspace
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Élément</th>
+<th>Signification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>kernel</code></td>
+<td>Temps du <strong>noyau</strong> pour s'initialiser</td>
+</tr>
+<tr>
+<td><code>initrd</code></td>
+<td>Temps de l'<strong>initramfs</strong> (mini-système temporaire)</td>
+</tr>
+<tr>
+<td><code>userspace</code></td>
+<td>Temps de <strong>systemd</strong> et des services</td>
+</tr>
+<tr>
+<td>Total</td>
+<td>Somme des trois</td>
+</tr>
+</tbody>
+</table>
+<p>Pour savoir <strong>quels services</strong> ralentissent le plus le démarrage :</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># systemd-analyze blame</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Note ce temps <strong>avant</strong> de continuer</p>
+<p>Tu vas changer la cible de démarrage : garde la valeur pour la <strong>comparer</strong> après.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Ce que le chiffre ne compte pas</p>
+<p><code>systemd-analyze</code> ne compte ni l'<strong>arrêt</strong> du système, ni les secondes d'attente sur le <strong>menu GRUB</strong>. Pour mesurer le redémarrage complet, utilise un chronomètre (et retire les secondes de GRUB).</p>
+</div>
+<h3 id="question-2--démarrer-par-défaut-en-multi-usertarget">Question 2 : démarrer par défaut en <code>multi-user.target</code></h3>
+<p>D'abord, regarde la cible actuelle :</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># systemctl get-default</span>
+graphical.target
+</code></pre></div>
+<p>Puis change-la :</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># systemctl set-default multi-user.target</span>
+Removed<span class="w"> </span>/etc/systemd/system/default.target.
+Created<span class="w"> </span>symlink<span class="w"> </span>/etc/systemd/system/default.target<span class="w"> </span>→<span class="w"> </span>/usr/lib/systemd/system/multi-user.target.
+</code></pre></div>
+<p>Vérifie :</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># systemctl get-default</span>
+multi-user.target
+</code></pre></div>
+<p>Redémarre pour valider :</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># reboot</span>
+</code></pre></div>
+<p><strong>Résultat attendu</strong> : un écran de connexion <strong>en mode texte</strong>, sans le bureau GNOME. Relance ensuite <code>systemd-analyze</code> et compare : le démarrage est en général un peu plus rapide, car l'interface graphique n'est plus lancée.</p>
+<pre class="mermaid"><code>flowchart LR
+    subgraph AVANT
+    A["graphical.target&lt;br/&gt;bureau GNOME"]
+    end
+    subgraph APRES
+    B["multi-user.target&lt;br/&gt;console seule"]
+    end
+    A --&gt;|"systemctl set-default multi-user.target&lt;br/&gt;+ redémarrage"| B</code></pre>
+<div class="admonition warning">
+<p class="admonition-title">Piège : <code>set-default</code> ≠ <code>isolate</code></p>
+<ul>
+<li><code>systemctl set-default multi-user.target</code> : change la cible <strong>à chaque démarrage</strong> (modifie le lien <code>/etc/systemd/system/default.target</code>). <strong>C'est ce que demande l'énoncé.</strong></li>
+<li><code>systemctl isolate multi-user.target</code> : change la cible <strong>maintenant</strong>, mais on revient à l'ancienne au prochain redémarrage.</li>
+</ul>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Revenir au bureau</p>
+<p><code>systemctl set-default graphical.target</code> remet le mode graphique par défaut. Pour y passer tout de suite : <code>systemctl isolate graphical.target</code>.</p>
+</div>
+<h3 id="question-3--exécuter-lenvironnement-graphique-sans-changer-la-cible-par-défaut-ni-redémarrer">Question 3 : exécuter l'environnement graphique sans changer la cible par défaut ni redémarrer</h3>
+<p>C'est exactement le rôle d'<code>isolate</code>, qui change l'état <strong>immédiat</strong> sans toucher à ce qui est utilisé au démarrage :</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># systemctl isolate graphical.target</span>
+</code></pre></div>
+<p>Le bureau GNOME doit apparaître tout de suite. Vérifie ensuite que la cible par défaut n'a <strong>pas</strong> changé :</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># systemctl get-default</span>
+multi-user.target
+</code></pre></div>
+<p><code>get-default</code> doit toujours répondre <code>multi-user.target</code> : la consigne demande bien de ne pas modifier cette valeur, seulement de lancer le graphique ponctuellement.</p>
+<div class="admonition note">
+<p class="admonition-title">Pourquoi ça marche même si le paquet graphique n'a pas été réinstallé</p>
+<p>Passer la cible par défaut à <code>multi-user.target</code> (question 2) ne <strong>désinstalle</strong> aucun paquet lié à GNOME : ça change seulement quelle cible démarre au boot. Les paquets graphiques restent présents, donc <code>isolate graphical.target</code> peut les relancer à tout moment.</p>
+</div>
+<hr />
+<h2 id="partie-3--le-pare-feu-natif-doracle-linux">Partie 3 : le pare-feu natif d'Oracle Linux</h2>
+<p><strong>Question</strong> : existe-t-il un pare-feu natif sur Oracle Linux ? Quel est son nom ? Quel est son fichier de configuration systemd ?</p>
+<div class="admonition info">
+<p class="admonition-title">Cette partie ne vient pas du cours</p>
+<p>Le pare-feu n'est traité nulle part dans ton support de cours : la réponse ci-dessous vient entièrement de connaissances générales sur RHEL/Oracle Linux, pas d'une section du cours que tu pourrais retrouver et relire. Garde ça en tête si tu veux citer une source à l'écrit.</p>
+</div>
+<p>Oui : Oracle Linux (comme RHEL) intègre <strong>firewalld</strong> par défaut.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># systemctl status firewalld</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Élément demandé</th>
+<th>Réponse</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Nom du service</strong></td>
+<td><code>firewalld</code></td>
+</tr>
+<tr>
+<td><strong>Fichier de configuration systemd</strong></td>
+<td><code>/usr/lib/systemd/system/firewalld.service</code></td>
+</tr>
+</tbody>
+</table>
+<p>On retrouve ce chemin avec la même méthode que pour <code>sshd</code> au chapitre précédent :</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># systemctl show -p FragmentPath firewalld</span>
+<span class="nv">FragmentPath</span><span class="o">=</span>/usr/lib/systemd/system/firewalld.service
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Ne pas confondre avec sa configuration de zones</p>
+<p><code>firewalld.service</code> est le fichier <strong>systemd</strong> qui décrit comment lancer le service (ce que demande la question). La configuration des règles elles-mêmes (zones, ports autorisés) est ailleurs, dans <code>/etc/firewalld/</code>, et se manipule surtout avec la commande <code>firewall-cmd</code> plutôt qu'en éditant ces fichiers à la main.</p>
+</div>
+<div class="highlight"><pre><span></span><code><span class="c1"># firewall-cmd --state              # actif ou non</span>
+<span class="c1"># firewall-cmd --get-default-zone   # zone appliquée par défaut</span>
+<span class="c1"># firewall-cmd --list-all           # règles de la zone active</span>
+</code></pre></div>
+<hr />
+<h2 id="partie-2--gestion-des-services">Partie 2 : gestion des services</h2>
+<h3 id="le-service-ssh-sshd--retrouver-ses-éléments">Le service SSH (<code>sshd</code>) : retrouver ses éléments</h3>
+<p>SSH permet la <strong>connexion sécurisée à distance</strong>. Sous Oracle Linux, le service s'appelle <strong><code>sshd</code></strong> (et non <code>ssh</code> comme sous Debian).</p>
+<table>
+<thead>
+<tr>
+<th>À trouver</th>
+<th>Commande</th>
+<th>Résultat</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Le fichier de configuration systemd du service</strong></td>
+<td><code>systemctl status sshd</code> (ligne <code>Loaded:</code>) ou <code>systemctl show -p FragmentPath sshd</code></td>
+<td><code>/usr/lib/systemd/system/sshd.service</code></td>
+</tr>
+<tr>
+<td><strong>Le nom du binaire exécuté</strong></td>
+<td><code>systemctl cat sshd</code> puis la ligne <code>ExecStart=</code></td>
+<td><code>/usr/sbin/sshd</code></td>
+</tr>
+<tr>
+<td><strong>Le fichier de configuration du démon</strong></td>
+<td><code>rpm -qc openssh-server</code> ou <code>man sshd</code> (section FILES)</td>
+<td><code>/etc/ssh/sshd_config</code></td>
+</tr>
+</tbody>
+</table>
+<p>Exemple :</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># systemctl show -p FragmentPath sshd</span>
+<span class="nv">FragmentPath</span><span class="o">=</span>/usr/lib/systemd/system/sshd.service
+
+<span class="c1"># grep ExecStart /usr/lib/systemd/system/sshd.service</span>
+<span class="nv">ExecStart</span><span class="o">=</span>/usr/sbin/sshd<span class="w"> </span>-D<span class="w"> </span><span class="nv">$OPTIONS</span>
+
+<span class="c1"># rpm -qc openssh-server</span>
+/etc/ssh/sshd_config
+/etc/sysconfig/sshd
+...
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Ne pas confondre</p>
+<ul>
+<li><strong><code>/etc/ssh/sshd_config</code></strong> configure le <strong>serveur</strong> SSH (le démon).</li>
+<li><code>/etc/ssh/ssh_config</code> configure le <strong>client</strong> <code>ssh</code>.</li>
+<li><code>/etc/sysconfig/sshd</code> ne contient que des options de lancement (<code>$OPTIONS</code>).</li>
+</ul>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Et si on veut modifier le fichier systemd ?</p>
+<p>Le fichier d'origine dans <code>/usr/lib/systemd/system</code> <strong>ne se modifie pas</strong>. Un fichier de <strong>même nom</strong> dans <code>/etc/systemd/system</code> est <strong>prioritaire</strong> : on copie le fichier là-bas (ou <code>systemctl edit --full sshd</code>), on le modifie, puis <code>systemctl daemon-reload</code>. Par défaut, ce fichier prioritaire n'existe pas.</p>
+</div>
+<h3 id="le-service-cron-crond--désactiver-puis-restaurer">Le service cron (<code>crond</code>) : désactiver puis restaurer</h3>
+<p><code>cron</code> est le <strong>planificateur de tâches</strong>. Sous Oracle Linux, il s'appelle <strong><code>crond</code></strong>.</p>
+<h4 id="étape-1--est-il-lancé-automatiquement-au-démarrage-">Étape 1 : est-il lancé automatiquement au démarrage ?</h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># systemctl is-enabled crond</span>
+enabled
+
+<span class="c1"># systemctl status crond</span>
+</code></pre></div>
+<p><code>enabled</code> signifie qu'il démarre avec le système. Dans <code>status</code>, la ligne <code>Active: active (running)</code> indique qu'il tourne en ce moment.</p>
+<h4 id="étape-2--désactiver-son-démarrage-automatique">Étape 2 : désactiver son démarrage automatique</h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># systemctl disable crond</span>
+Removed<span class="w"> </span>/etc/systemd/system/multi-user.target.wants/crond.service.
+
+<span class="c1"># systemctl is-enabled crond</span>
+disabled
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Piège : <code>disable</code> n'arrête pas le service</p>
+<p><code>disable</code> supprime seulement le lien qui le lançait <strong>au démarrage</strong>. Le service <strong>continue de tourner</strong> jusqu'au redémarrage. Pour l'arrêter maintenant : <code>systemctl stop crond</code>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">« Totalement » : <code>disable</code> ou <code>mask</code> ?</p>
+<p><code>disable</code> empêche le lancement au boot, mais on peut encore le démarrer à la main ou via une dépendance. <code>systemctl mask crond</code> le bloque <strong>complètement</strong> (lien vers <code>/dev/null</code>). Le cours ne présente que <code>enable</code>/<code>disable</code>, donc <code>disable</code> est sans doute la réponse attendue. Si tu utilises <code>mask</code>, il faudra <code>systemctl unmask crond</code> avant de le réactiver.</p>
+</div>
+<h4 id="étape-3--redémarrer-et-valider">Étape 3 : redémarrer et valider</h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># reboot</span>
+</code></pre></div>
+<p>Après la reconnexion :</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># systemctl status crond</span>
+<span class="c1"># systemctl is-enabled crond</span>
+<span class="c1"># ps aux | grep crond</span>
+</code></pre></div>
+<p><strong>Résultat attendu</strong> : <code>inactive (dead)</code>, <code>disabled</code>, et <code>ps aux</code> ne montre que la ligne du <code>grep</code> lui-même. Cela prouve que <code>crond</code> n'a pas démarré tout seul.</p>
+<h4 id="étape-4--restaurer-le-comportement-par-défaut">Étape 4 : restaurer le comportement par défaut</h4>
+<p>La façon la plus précise de répondre à « restaurer les paramètres <strong>par défaut</strong> de démarrage » est d'utiliser le <strong>preset constructeur</strong> du service, plutôt que de ré-activer à la main :</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># systemctl preset crond</span>
+<span class="c1"># systemctl start crond</span>
+</code></pre></div>
+<p><code>preset</code> remet l'activation du service (<code>enabled</code>/<code>disabled</code>) à sa valeur d'<strong>origine définie par la distribution</strong>, visible dans la ligne <code>vendor preset:</code> de <code>systemctl status</code> — sans que tu aies besoin de connaître toi-même cette valeur à l'avance.</p>
+<div class="admonition note">
+<p class="admonition-title"><code>systemctl default crond</code> n'existe pas</p>
+<p><code>default</code> désigne une <strong>cible</strong> (<code>default.target</code>), pas une action applicable à un service précis. <code>systemctl default crond</code> ne ferait rien de ce que tu attends ici — la commande correcte est bien <code>preset</code>.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Alternative équivalente dans ce cas précis</p>
+<p>Puisque tu sais déjà que <code>crond</code> était <code>enabled</code> à l'origine (vérifié à l'étape 1), ré-activer directement donne le même résultat :
+<div class="highlight"><pre><span></span><code><span class="c1"># systemctl enable --now crond</span>
+</code></pre></div>
+<code>preset</code> reste la méthode à privilégier si tu ne connaissais pas l'état d'origine du service.</p>
+</div>
+<p>Vérifie :</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># systemctl is-enabled crond</span>
+enabled
+<span class="c1"># systemctl status crond</span>
+</code></pre></div>
+<p>Tu dois voir <code>enabled</code> et <code>active (running)</code>.</p>
+<pre class="mermaid"><code>flowchart LR
+    A["enabled + active&lt;br/&gt;(état d'origine)"] --&gt;|"systemctl disable crond&lt;br/&gt;+ reboot"| B["disabled + inactive"]
+    B --&gt;|"systemctl enable --now crond"| A</code></pre>
+<h3 id="tableau-récapitulatif-de-systemctl">Tableau récapitulatif de <code>systemctl</code></h3>
+<table>
+<thead>
+<tr>
+<th>Je veux...</th>
+<th>Commande</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Voir l'état d'un service</td>
+<td><code>systemctl status &lt;service&gt;</code></td>
+</tr>
+<tr>
+<td>Le démarrer / l'arrêter <strong>maintenant</strong></td>
+<td><code>systemctl start</code> / <code>systemctl stop &lt;service&gt;</code></td>
+</tr>
+<tr>
+<td>Le redémarrer</td>
+<td><code>systemctl restart &lt;service&gt;</code></td>
+</tr>
+<tr>
+<td>Le lancer <strong>au démarrage</strong> / ne plus le lancer</td>
+<td><code>systemctl enable</code> / <code>systemctl disable &lt;service&gt;</code></td>
+</tr>
+<tr>
+<td>Savoir s'il démarre au boot</td>
+<td><code>systemctl is-enabled &lt;service&gt;</code></td>
+</tr>
+<tr>
+<td>Faire <code>enable</code> + <code>start</code> en une fois</td>
+<td><code>systemctl enable --now &lt;service&gt;</code></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Piège : <code>start</code> ≠ <code>enable</code></p>
+<ul>
+<li><code>start</code> / <code>stop</code> : agissent <strong>maintenant</strong>, sont oubliés au redémarrage.</li>
+<li><code>enable</code> / <code>disable</code> : agissent <strong>au prochain démarrage</strong>, sans démarrer ni arrêter le service tout de suite.</li>
+</ul>
+</div>
+<h2 id="à-retenir">À retenir</h2>
+<ul>
+<li><code>systemd-analyze</code> : temps de démarrage ; <code>systemd-analyze blame</code> : les services les plus lents.</li>
+<li><strong><code>set-default</code></strong> modifie la cible au démarrage ; <strong><code>isolate</code></strong> change seulement l'état actuel.</li>
+<li>Les fichiers de service d'origine sont dans <code>/usr/lib/systemd/system</code> ; la copie dans <code>/etc/systemd/system</code> est <strong>prioritaire</strong>.</li>
+<li>Sous Oracle Linux : <code>sshd</code> (SSH), <code>crond</code> (cron) et <code>firewalld</code> (pare-feu natif).</li>
+<li><strong><code>enable</code>/<code>disable</code></strong> gèrent le démarrage automatique, <strong><code>start</code>/<code>stop</code></strong> gèrent l'état immédiat.</li>
+<li><code>isolate</code> permet de lancer une cible (ex. <code>graphical.target</code>) sans jamais toucher à <code>set-default</code>.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,4271 @@
+
+<!doctype html>
+<html lang="fr" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../..">
+      
+      
+        <link rel="next" href="../memo-chmod/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Administration Linux : fiche de révision - Mes notes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#administration-linux--fiche-de-révision" class="md-skip">
+          Aller au contenu
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="En-tête">
+    <a href="../.." title="Mes notes" class="md-header__button md-logo" aria-label="Mes notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Mes notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Administration Linux : fiche de révision
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Rechercher" placeholder="Rechercher" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Recherche">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Effacer" aria-label="Effacer" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initialisation de la recherche
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Mes notes" class="md-nav__button md-logo" aria-label="Mes notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Mes notes
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cours et TP ENI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Administration Linux
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Administration Linux
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Administration Linux : fiche de révision
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Administration Linux : fiche de révision
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-histoire-de-rhel-et-de-ses-dérivés" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Histoire de RHEL et de ses dérivés
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-installer-le-système" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Installer le système
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Installer le système">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-les-modes-dinstallation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Les modes d'installation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-le-partitionnement-à-linstallation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Le partitionnement à l'installation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-root--lécole-du-su-et-lécole-du-sudo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 Root : l'école du su et l'école du sudo
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-le-démarrage--grub-noyau-systemd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Le démarrage : GRUB, noyau, systemd
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Le démarrage : GRUB, noyau, systemd">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-grub2--le-chargeur-damorçage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 GRUB2 : le chargeur d'amorçage
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-le-noyau-linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Le noyau Linux
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-la-ligne-de-lancement-du-noyau" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 La ligne de lancement du noyau
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-systemd--le-gestionnaire-de-système" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 systemd : le gestionnaire de système
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-fichiers-de-services-et-priorité" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5 Fichiers de services et priorité
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#36-éteindre-et-redémarrer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.6 Éteindre et redémarrer
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-le-mode-maintenance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Le mode maintenance
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Le mode maintenance">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#méthode-1--single-atelier-3-partie-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Méthode 1 : single (atelier 3, partie 2)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#méthode-2--initbinbash-atelier-3-partie-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Méthode 2 : init=/bin/bash (atelier 3, partie 3)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#méthode-3--le-média-dinstallation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Méthode 3 : le média d'installation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-le-réseau" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Le réseau
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Le réseau">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#consulter-la-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Consulter la configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configurer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configurer
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-les-paquets-dnf-rpm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Les paquets (dnf, rpm)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Les paquets (dnf, rpm)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-les-briques" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Les briques
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-fichiers-de-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Fichiers de configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-dnf--loutil-du-quotidien" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 dnf : l'outil du quotidien
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64-rpm--la-commande-de-bas-niveau" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4 rpm : la commande de bas niveau
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#65-installer-à-partir-des-sources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.5 Installer à partir des sources
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#66-comparatif" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.6 Comparatif
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-le-stockage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Le stockage
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Le stockage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-partitionner-un-disque" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 Partitionner un disque
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-lvm--logical-volume-manager" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 LVM : Logical Volume Manager
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-les-systèmes-de-fichiers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 Les systèmes de fichiers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74-monter-un-système-de-fichiers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4 Monter un système de fichiers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#75-montage-automatique--etcfstab" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.5 Montage automatique : /etc/fstab
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#76-procédure-complète--ajouter-un-nouveau-disque" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.6 Procédure complète : ajouter un nouveau disque
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#77-espace-disque--df-et-du" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.7 Espace disque : df et du
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-utilisateurs-et-groupes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Utilisateurs et groupes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Utilisateurs et groupes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-les-identifiants" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 Les identifiants
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-les-quatre-fichiers-à-connaître" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 Les quatre fichiers à connaître
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83-commandes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3 Commandes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#84-changer-didentité-et-élever-ses-privilèges" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.4 Changer d'identité et élever ses privilèges
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-droits-sur-les-fichiers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Droits sur les fichiers
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Droits sur les fichiers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91-modifier-les-droits-et-les-propriétaires" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1 Modifier les droits et les propriétaires
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92-umask--les-droits-par-défaut-à-la-création" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2 umask : les droits par défaut à la création
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#93-droits-spéciaux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.3 Droits spéciaux
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-services-et-journaux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Services et journaux
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Services et journaux">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#101-gérer-les-services-avec-systemctl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.1 Gérer les services avec systemctl
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#102-retrouver-les-éléments-dun-service-atelier-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.2 Retrouver les éléments d'un service (atelier 4)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#103-les-journaux-logs--deux-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.3 Les journaux (logs) : deux services
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#104-journalctl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.4 journalctl
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#105-rsyslog--facilities-et-priorités" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.5 rsyslog : facilities et priorités
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#106-conserver-et-limiter-les-logs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.6 Conserver et limiter les logs
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-analyser-le-système" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Analyser le système
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-aide-mémoire-final-et-auto-évaluation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Aide-mémoire final et auto-évaluation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12. Aide-mémoire final et auto-évaluation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#121-fichiers-importants" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.1 Fichiers importants
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#122-auto-évaluation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.2 Auto-évaluation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../memo-chmod/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mémo : chmod, les droits sous Linux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../memo-commandes-stockage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mémo commandes : stockage, LVM, montage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../memo-systeme-fichiers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mémo : le système de fichiers sous Linux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../memo-types-volumes-partitions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mémo : partitions, LVM, systèmes de fichiers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    TP
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TP/index%20%281%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tutos Administration Linux (M02)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TP/tp1-installation-graphique/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP1 : Installer Oracle Linux avec bureau GNOME (srvclient)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TP/tp10-gestion-logs%20%281%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP10 : Gestion des logs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TP/tp11-analyse-systeme%20%281%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP11 : Analyse du système
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TP/tp2-installation-serveur/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP2 : Installer Oracle Linux en mode serveur, sans interface graphique (serveur)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TP/tp3-grub-mode-maintenance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP3 : Configurer GRUB et démarrer en mode maintenance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TP/tp4-demarrage-et-services/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP4 : Gestion du démarrage et des services
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TP/tp5-gestion-reseau/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP5 : Gestion réseau
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TP/tp6-depots-mises-a-jour/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP6 : Dépôts, mises à jour et installation de logiciels
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TP/tp7-gestion-stockage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP7 : Gestion du stockage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TP/tp8-gestion-utilisateurs%20%281%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP8 : Gestion des utilisateurs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TP/tp9-gestion-permissions%20%281%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP9 : Gestion des permissions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Administration Windows
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Administration Windows
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration-Windows/fiche-revision-windows-ad/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fiche de révision — Administration Windows et Active Directory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration-Windows/raccourcis-claviers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Raccourcis clavier Windows / Windows Server — Administration système et réseau
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    TP
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration-Windows/TP/tp01-creation-infrastructure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP1 — Création de l'infrastructure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration-Windows/TP/tp02-creation-domaine-ad/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP2 — Création d'un domaine Active Directory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration-Windows/TP/tp03-gestion-domaine-ad/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP3 — Gestion d'un domaine Active Directory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration-Windows/TP/tp04-gestion-ressources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP4 — Gestion de ressources
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration-Windows/TP/tp05-strategies-de-groupe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP5 — Les stratégies de groupe (GPO)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-histoire-de-rhel-et-de-ses-dérivés" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Histoire de RHEL et de ses dérivés
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-installer-le-système" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Installer le système
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Installer le système">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-les-modes-dinstallation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Les modes d'installation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-le-partitionnement-à-linstallation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Le partitionnement à l'installation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-root--lécole-du-su-et-lécole-du-sudo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 Root : l'école du su et l'école du sudo
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-le-démarrage--grub-noyau-systemd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Le démarrage : GRUB, noyau, systemd
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Le démarrage : GRUB, noyau, systemd">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-grub2--le-chargeur-damorçage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 GRUB2 : le chargeur d'amorçage
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-le-noyau-linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Le noyau Linux
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-la-ligne-de-lancement-du-noyau" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 La ligne de lancement du noyau
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-systemd--le-gestionnaire-de-système" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 systemd : le gestionnaire de système
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#35-fichiers-de-services-et-priorité" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5 Fichiers de services et priorité
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#36-éteindre-et-redémarrer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.6 Éteindre et redémarrer
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-le-mode-maintenance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Le mode maintenance
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Le mode maintenance">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#méthode-1--single-atelier-3-partie-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Méthode 1 : single (atelier 3, partie 2)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#méthode-2--initbinbash-atelier-3-partie-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Méthode 2 : init=/bin/bash (atelier 3, partie 3)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#méthode-3--le-média-dinstallation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Méthode 3 : le média d'installation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-le-réseau" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Le réseau
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Le réseau">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#consulter-la-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Consulter la configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configurer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configurer
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-les-paquets-dnf-rpm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Les paquets (dnf, rpm)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Les paquets (dnf, rpm)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-les-briques" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Les briques
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-fichiers-de-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Fichiers de configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-dnf--loutil-du-quotidien" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 dnf : l'outil du quotidien
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64-rpm--la-commande-de-bas-niveau" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4 rpm : la commande de bas niveau
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#65-installer-à-partir-des-sources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.5 Installer à partir des sources
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#66-comparatif" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.6 Comparatif
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-le-stockage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Le stockage
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Le stockage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-partitionner-un-disque" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 Partitionner un disque
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-lvm--logical-volume-manager" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 LVM : Logical Volume Manager
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-les-systèmes-de-fichiers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 Les systèmes de fichiers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74-monter-un-système-de-fichiers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4 Monter un système de fichiers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#75-montage-automatique--etcfstab" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.5 Montage automatique : /etc/fstab
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#76-procédure-complète--ajouter-un-nouveau-disque" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.6 Procédure complète : ajouter un nouveau disque
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#77-espace-disque--df-et-du" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.7 Espace disque : df et du
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-utilisateurs-et-groupes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Utilisateurs et groupes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Utilisateurs et groupes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-les-identifiants" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 Les identifiants
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-les-quatre-fichiers-à-connaître" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 Les quatre fichiers à connaître
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83-commandes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3 Commandes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#84-changer-didentité-et-élever-ses-privilèges" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.4 Changer d'identité et élever ses privilèges
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-droits-sur-les-fichiers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Droits sur les fichiers
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Droits sur les fichiers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91-modifier-les-droits-et-les-propriétaires" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1 Modifier les droits et les propriétaires
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92-umask--les-droits-par-défaut-à-la-création" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2 umask : les droits par défaut à la création
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#93-droits-spéciaux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.3 Droits spéciaux
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-services-et-journaux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Services et journaux
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Services et journaux">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#101-gérer-les-services-avec-systemctl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.1 Gérer les services avec systemctl
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#102-retrouver-les-éléments-dun-service-atelier-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.2 Retrouver les éléments d'un service (atelier 4)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#103-les-journaux-logs--deux-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.3 Les journaux (logs) : deux services
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#104-journalctl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.4 journalctl
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#105-rsyslog--facilities-et-priorités" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.5 rsyslog : facilities et priorités
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#106-conserver-et-limiter-les-logs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.6 Conserver et limiter les logs
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-analyser-le-système" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Analyser le système
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-aide-mémoire-final-et-auto-évaluation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Aide-mémoire final et auto-évaluation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12. Aide-mémoire final et auto-évaluation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#121-fichiers-importants" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.1 Fichiers importants
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#122-auto-évaluation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.2 Auto-évaluation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="administration-linux--fiche-de-révision">Administration Linux : fiche de révision</h1>
+<p>Module <strong>M02 : Administration d'un système Linux</strong> (ENI, Oracle Linux / RHEL).
+Cette fiche reprend tout le cours dans l'ordre, avec des schémas, les commandes à connaître et les pièges rencontrés en atelier.</p>
+<div class="admonition info">
+<p class="admonition-title">Comment lire cette fiche</p>
+<ul>
+<li><strong>Prompt <code>$</code></strong> : utilisateur standard. <strong>Prompt <code>#</code></strong> : compte root (administrateur).</li>
+<li>Syntaxe d'une commande : <code>commande [options] &lt;argument&gt;</code> (<code>[ ]</code> = facultatif, <code>&lt; &gt;</code> = à remplacer).</li>
+<li>Les blocs <strong>Piège</strong> signalent une erreur classique (cours ou TP).</li>
+<li>Les blocs <strong>Bonus</strong> ajoutent une commande qui n'est pas dans le cours mais qui est très utile.</li>
+</ul>
+</div>
+<p><strong>Sommaire</strong></p>
+<ol>
+<li><a href="#1-histoire-de-rhel-et-de-ses-derives">Histoire de RHEL et de ses dérivés</a></li>
+<li><a href="#2-installer-le-systeme">Installer le système</a></li>
+<li><a href="#3-le-demarrage-grub-noyau-systemd">Le démarrage : GRUB, noyau, systemd</a></li>
+<li><a href="#4-le-mode-maintenance">Le mode maintenance</a></li>
+<li><a href="#5-le-reseau">Le réseau</a></li>
+<li><a href="#6-les-paquets-dnf-rpm">Les paquets (dnf, rpm)</a></li>
+<li><a href="#7-le-stockage">Le stockage : partitions, LVM, systèmes de fichiers, montage</a></li>
+<li><a href="#8-utilisateurs-et-groupes">Utilisateurs et groupes</a></li>
+<li><a href="#9-droits-sur-les-fichiers">Droits sur les fichiers</a></li>
+<li><a href="#10-services-et-journaux">Services et journaux (systemd, journald, rsyslog)</a></li>
+<li><a href="#11-analyser-le-systeme">Analyser le système</a></li>
+<li><a href="#12-aide-memoire-final-et-auto-evaluation">Aide-mémoire final et auto-évaluation</a></li>
+</ol>
+<hr />
+<h2 id="1-histoire-de-rhel-et-de-ses-dérivés">1. Histoire de RHEL et de ses dérivés</h2>
+<p><strong>RHEL</strong> (Red Hat Enterprise Linux) est la distribution Linux d'entreprise de Red Hat, pensée pour les <strong>serveurs</strong> et les postes de travail. Elle est <strong>payante</strong> (abonnement) et supportée <strong>10 ans</strong>. L'accent est mis sur la <strong>stabilité</strong> : on préfère des logiciels éprouvés aux dernières nouveautés (environ 10 000 paquets seulement).</p>
+<pre class="mermaid"><code>flowchart LR
+    F["Fedora&lt;br/&gt;(amont, dernières versions)"] --&gt; C["CentOS Stream&lt;br/&gt;(mise à jour en continu)"]
+    C --&gt; R["RHEL&lt;br/&gt;(commercial, stable)"]
+    R --&gt; O["Oracle Linux"]
+    R --&gt; K["Rocky Linux"]
+    R --&gt; X["autres forks&lt;br/&gt;sans abonnement"]</code></pre>
+<table>
+<thead>
+<tr>
+<th>Année</th>
+<th>Événement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1993</td>
+<td>Fondation de Red Hat</td>
+</tr>
+<tr>
+<td>1994</td>
+<td>Marc Ewing crée Red Hat Linux</td>
+</tr>
+<tr>
+<td>2000 – 2003</td>
+<td>Naissance de <strong>RHEL</strong> (avec support LTS, <em>Long Term Support</em>)</td>
+</tr>
+<tr>
+<td>2003</td>
+<td>Red Hat abandonne la version grand public, qui devient <strong>Fedora</strong></td>
+</tr>
+<tr>
+<td>2014</td>
+<td>Red Hat rachète <strong>CentOS</strong></td>
+</tr>
+<tr>
+<td>2018</td>
+<td><strong>IBM</strong> rachète Red Hat</td>
+</tr>
+<tr>
+<td>fin 2021</td>
+<td>Fin de CentOS 8, remplacé par <strong>CentOS Stream</strong> ; création de <strong>Rocky Linux</strong></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">À retenir</p>
+<ul>
+<li><strong>Fedora</strong> : gratuite, très à jour, sert de terrain de test (<em>upstream</em>).</li>
+<li><strong>CentOS Stream</strong> : étape intermédiaire entre Fedora et RHEL.</li>
+<li><strong>Oracle Linux</strong> et <strong>Rocky Linux</strong> sont des <strong>forks</strong> de RHEL : quasiment identiques, mais <strong>sans abonnement</strong>. C'est Oracle Linux qu'on installe en atelier.</li>
+</ul>
+</div>
+<hr />
+<h2 id="2-installer-le-système">2. Installer le système</h2>
+<h3 id="21-les-modes-dinstallation">2.1 Les modes d'installation</h3>
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>Principe</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>CD / DVD</strong></td>
+<td>Le plus répandu (image ISO)</td>
+</tr>
+<tr>
+<td><strong>Clé USB</strong></td>
+<td>Clé bootable créée à partir de l'ISO (ex : unetbootin)</td>
+</tr>
+<tr>
+<td><strong>Boot réseau (PXE)</strong></td>
+<td>Le BIOS demande une IP (BOOTP), puis télécharge un fichier en <strong>TFTP</strong></td>
+</tr>
+<tr>
+<td><strong>Automatisé / clonage</strong></td>
+<td>FAI, CD préconfigurés, Clonezilla, Acronis... pour déployer beaucoup de machines</td>
+</tr>
+</tbody>
+</table>
+<p>Avant d'installer, on vérifie la compatibilité matérielle avec la <strong>HCL</strong> (<em>Hardware Compatibility List</em>) de Red Hat. On télécharge aussi l'image adaptée à l'architecture (<strong>x86_64</strong> pour les PC Intel/AMD récents).</p>
+<h3 id="22-le-partitionnement-à-linstallation">2.2 Le partitionnement à l'installation</h3>
+<p>Minimum recommandé : une partition pour la racine <code>/</code> et une pour le <strong>swap</strong> (espace d'échange, utilisé quand la RAM est pleine). Sous Linux, le swap est une partition, pas un fichier comme sous Windows.</p>
+<table>
+<thead>
+<tr>
+<th>RAM</th>
+<th>Taille conseillée du swap</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&lt; 1 Go</td>
+<td>RAM × 1,5</td>
+</tr>
+<tr>
+<td>≤ 2 Go</td>
+<td>= RAM</td>
+</tr>
+<tr>
+<td>&gt; 2 Go</td>
+<td>2 Go ou plus selon le besoin</td>
+</tr>
+</tbody>
+</table>
+<p>Points importants :</p>
+<ul>
+<li>Le système de fichiers par défaut sur RHEL est <strong>XFS</strong>.</li>
+<li><code>/boot</code> doit être sur une <strong>partition primaire normale</strong> (pas dans LVM) : c'est là que se trouve la fin du chargeur d'amorçage.</li>
+<li>Le reste est géré en <strong>LVM</strong> (voir <a href="#7-le-stockage">partie 7</a>).</li>
+</ul>
+<pre class="mermaid"><code>flowchart TB
+    D["Disque sda de 40 Go"] --&gt; P1["sda1: /boot&lt;br/&gt;partition normale, 500 MiB, XFS"]
+    D --&gt; P2["sda2: LVM"]
+    P2 --&gt; VG["Groupe de volumes ol"]
+    VG --&gt; S["swap"]
+    VG --&gt; R["/ : 20 GiB, XFS"]
+    VG --&gt; V["/var : 10 GiB, XFS"]
+    VG --&gt; H["/home : le reste, ext4"]</code></pre>
+<p>C'est le partitionnement des <strong>ateliers 1 et 2</strong> (VM <code>srvclient</code> graphique et VM <code>serveur</code> sans bureau).</p>
+<h3 id="23-root--lécole-du-su-et-lécole-du-sudo">2.3 Root : l'école du <code>su</code> et l'école du <code>sudo</code></h3>
+<p>À l'installation, on choisit comment administrer la machine :</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>École du <strong>su</strong></th>
+<th>École du <strong>sudo</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Configuration</td>
+<td>On <strong>définit un mot de passe root</strong></td>
+<td>On <strong>laisse root sans mot de passe</strong></td>
+</tr>
+<tr>
+<td>Pour devenir admin</td>
+<td><code>su -</code> puis mot de passe <strong>de root</strong></td>
+<td><code>sudo -i</code> puis mot de passe <strong>de l'utilisateur</strong></td>
+</tr>
+<tr>
+<td>Mode maintenance</td>
+<td>Possible</td>
+<td><strong>Impossible</strong> si un seul utilisateur a le sudo</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Piège</p>
+<p>Le cours déconseille fortement de ne créer <strong>qu'un seul utilisateur avec sudo et pas de mot de passe root</strong> : le système ne pourra plus démarrer en mode maintenance. Correction possible après coup : <code>sudo passwd root</code> (active le compte root).</p>
+</div>
+<hr />
+<h2 id="3-le-démarrage--grub-noyau-systemd">3. Le démarrage : GRUB, noyau, systemd</h2>
+<pre class="mermaid"><code>flowchart LR
+    A["BIOS / UEFI"] --&gt; B["GRUB2&lt;br/&gt;chargeur d'amorçage"]
+    B --&gt; C["Noyau Linux&lt;br/&gt;vmlinuz + initramfs"]
+    C --&gt; D["systemd&lt;br/&gt;premier processus, PID 1"]
+    D --&gt; E["Cible (target)&lt;br/&gt;rescue, multi-user, graphical"]</code></pre>
+<h3 id="31-grub2--le-chargeur-damorçage">3.1 GRUB2 : le chargeur d'amorçage</h3>
+<p>C'est le <strong>premier programme</strong> lancé par le BIOS/UEFI. Sa mission : <strong>charger le noyau</strong> (ou proposer un choix entre plusieurs noyaux/systèmes).</p>
+<table>
+<thead>
+<tr>
+<th>Fichier / dossier</th>
+<th>Rôle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/boot/grub2/grub.cfg</code></td>
+<td>Configuration finale. <strong>Ne jamais l'éditer</strong> : il est régénéré (mise à jour du noyau...)</td>
+</tr>
+<tr>
+<td><code>/etc/default/grub</code></td>
+<td>Paramètres globaux (c'est <strong>ici</strong> qu'on modifie)</td>
+</tr>
+<tr>
+<td><code>/etc/grub.d/</code></td>
+<td>Scripts de configuration (détection d'autres OS...)</td>
+</tr>
+<tr>
+<td><code>/boot/loader/entries/</code></td>
+<td>Fichiers qui construisent les entrées du menu</td>
+</tr>
+</tbody>
+</table>
+<p>Après modification de <code>/etc/default/grub</code>, on <strong>régénère</strong> la configuration :</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># grub2-mkconfig -o /boot/grub2/grub.cfg</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Piège</p>
+<p>Le cours écrit <code>grub-mkconfig</code>, mais sur Oracle Linux / RHEL la commande s'appelle <strong><code>grub2-mkconfig</code></strong>. Ce chemin est valable en BIOS legacy ; en UEFI, <code>grub.cfg</code> est sous <code>/boot/efi/EFI/...</code>.</p>
+</div>
+<p><strong>Atelier 3, partie 1 : afficher le menu GRUB au moins 3 secondes</strong></p>
+<p>Dans <code>/etc/default/grub</code> :</p>
+<div class="highlight"><pre><span></span><code><span class="na">GRUB_TIMEOUT</span><span class="o">=</span><span class="s">5</span>
+<span class="na">GRUB_TIMEOUT_STYLE</span><span class="o">=</span><span class="s">menu</span>
+</code></pre></div>
+<ul>
+<li><code>GRUB_TIMEOUT</code> : durée d'affichage en secondes.</li>
+<li><code>GRUB_TIMEOUT_STYLE=menu</code> : rend l'affichage explicite. Sur Oracle Linux 8, le menu s'affichait déjà par défaut ; la ligne ne fait que le garantir.</li>
+</ul>
+<p>Puis <code>grub2-mkconfig -o /boot/grub2/grub.cfg</code> et redémarrage. Tu dois voir le décompte « The selected entry will be started automatically in Ns ».</p>
+<h3 id="32-le-noyau-linux">3.2 Le noyau Linux</h3>
+<p>Le <strong>noyau</strong> (<em>kernel</em>) fait le lien entre le matériel et le système : il gère les systèmes de fichiers, le chiffrement, les pilotes, et lance <strong>systemd</strong>. Il est <strong>modulaire</strong> (plusieurs fichiers). Deux fichiers sont indispensables dans <code>/boot</code> :</p>
+<table>
+<thead>
+<tr>
+<th>Fichier</th>
+<th>Contenu</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>vmlinuz-&lt;version&gt;</code></td>
+<td>Le noyau lui-même</td>
+</tr>
+<tr>
+<td><code>initramfs-&lt;version&gt;.img</code></td>
+<td>Mini-système temporaire chargé en RAM, avec les pilotes nécessaires pour <strong>trouver et monter la vraie racine</strong> (LVM, RAID, chiffrement...) ; régénéré à chaque mise à jour</td>
+</tr>
+</tbody>
+</table>
+<p>Le menu GRUB propose plusieurs noyaux (4 maximum par défaut) et une entrée <strong>rescue</strong> de secours. Sur Oracle Linux tu as deux familles : le noyau <strong>UEK</strong> (Oracle) et le noyau compatible RHEL.</p>
+<h3 id="33-la-ligne-de-lancement-du-noyau">3.3 La ligne de lancement du noyau</h3>
+<p>En appuyant sur <code>e</code> dans le menu GRUB, on peut <strong>modifier temporairement</strong> cette ligne (jusqu'au prochain redémarrage) :</p>
+<div class="highlight"><pre><span></span><code>linux ($root)/vmlinuz-4.18.0-240.15.1.el8_3.x86_64 root=/dev/mapper/ol-root ro crashkernel=auto
+resume=/dev/mapper/ol-swap rd.lvm.lv=ol/root rd.lvm.lv=ol/swap rhgb quiet
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Élément</th>
+<th>Signification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>vmlinuz-...</code></td>
+<td>Image du noyau à charger</td>
+</tr>
+<tr>
+<td><code>root=/dev/mapper/ol-root</code></td>
+<td>Où se trouve la racine <code>/</code></td>
+</tr>
+<tr>
+<td><code>ro</code></td>
+<td>Racine montée en <strong>lecture seule</strong> au départ (ne pas changer)</td>
+</tr>
+<tr>
+<td><code>crashkernel=auto</code></td>
+<td>Active kdump (copie de la mémoire en cas de plantage)</td>
+</tr>
+<tr>
+<td><code>resume=/dev/mapper/ol-swap</code></td>
+<td>Emplacement pour la mise en veille prolongée</td>
+</tr>
+<tr>
+<td><code>rd.lvm.lv=ol/root</code> et <code>ol/swap</code></td>
+<td>Active les volumes LVM concernés</td>
+</tr>
+<tr>
+<td><code>rhgb</code></td>
+<td>Démarrage graphique (Plymouth)</td>
+</tr>
+<tr>
+<td><code>quiet</code></td>
+<td>Démarrage silencieux (pas de messages)</td>
+</tr>
+</tbody>
+</table>
+<p>Raccourcis dans l'éditeur GRUB : <code>Ctrl+x</code> démarre avec la ligne modifiée. Attention, le <strong>clavier est en QWERTY</strong> à ce stade.</p>
+<h3 id="34-systemd--le-gestionnaire-de-système">3.4 systemd : le gestionnaire de système</h3>
+<p><strong>systemd</strong> est le <strong>premier processus</strong> lancé par le noyau (<strong>PID 1</strong>). Il démarre tous les services, en parallèle et en respectant leurs dépendances, et monte les systèmes de fichiers. Il remplace les anciens scripts System V.</p>
+<p>Il utilise des <strong>cibles</strong> (<em>targets</em>) : des groupes de services correspondant à un état du système.</p>
+<table>
+<thead>
+<tr>
+<th>Cible</th>
+<th>Rôle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>poweroff.target</code></td>
+<td>Arrêter le système</td>
+</tr>
+<tr>
+<td><code>rescue.target</code></td>
+<td><strong>Mode maintenance</strong></td>
+</tr>
+<tr>
+<td><code>multi-user.target</code></td>
+<td>Mode <strong>console</strong> (multi-utilisateurs, sans interface graphique)</td>
+</tr>
+<tr>
+<td><code>graphical.target</code></td>
+<td>Mode <strong>graphique</strong></td>
+</tr>
+<tr>
+<td><code>reboot.target</code></td>
+<td>Redémarrer</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="c1"># systemctl get-default                       # cible de démarrage actuelle</span>
+<span class="c1"># systemctl set-default multi-user.target     # changer la cible PAR DÉFAUT (permanent)</span>
+<span class="c1"># systemctl isolate multi-user.target         # changer de cible MAINTENANT (temporaire)</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Piège : <code>set-default</code> ≠ <code>isolate</code></p>
+<ul>
+<li><code>set-default</code> modifie ce qui est utilisé <strong>à chaque démarrage</strong> (le lien <code>/etc/systemd/system/default.target</code>).</li>
+<li><code>isolate</code> change l'état <strong>tout de suite</strong>, mais au redémarrage on revient à la cible par défaut.</li>
+</ul>
+<p>L'atelier 4 demande <code>set-default multi-user.target</code>.</p>
+</div>
+<h3 id="35-fichiers-de-services-et-priorité">3.5 Fichiers de services et priorité</h3>
+<ul>
+<li>Les fichiers de services d'origine sont dans <code>/usr/lib/systemd/system</code> : <strong>on ne les modifie pas</strong> à cet endroit.</li>
+<li>Un fichier de <strong>même nom</strong> placé dans <code>/etc/systemd/system</code> est <strong>prioritaire</strong>. C'est comme ça qu'on personnalise un service.</li>
+<li>Pour créer son propre service : son fichier va dans <code>/etc/systemd/system</code>, puis on l'active.</li>
+</ul>
+<p>Après avoir modifié un fichier de service, on demande à systemd de relire ses fichiers : <code>systemctl daemon-reload</code>.</p>
+<h3 id="36-éteindre-et-redémarrer">3.6 Éteindre et redémarrer</h3>
+<p>Le cours recommande <code>shutdown</code> plutôt que <code>systemctl isolate poweroff.target</code> sur un serveur de production : on peut <strong>différer</strong> l'action et <strong>prévenir</strong> les utilisateurs connectés.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># shutdown -h +10 "Arrêt dans 10 minutes"     # -h : arrêter</span>
+<span class="c1"># shutdown -r now                             # -r : redémarrer</span>
+<span class="c1"># shutdown -c                                 # -c : annuler</span>
+</code></pre></div>
+<p><strong>Mesurer le démarrage</strong> (atelier 4) : <code>systemd-analyze</code> donne le temps total (noyau + initrd + espace utilisateur), et <code>systemd-analyze blame</code> liste les services les plus lents.</p>
+<hr />
+<h2 id="4-le-mode-maintenance">4. Le mode maintenance</h2>
+<p>Le mode maintenance (<code>rescue.target</code>) démarre le <strong>strict minimum</strong> : la racine est montée, un shell root est disponible, mais pas de réseau ni de services. Il sert à réparer un système qui ne démarre plus, corriger <code>/etc/fstab</code>, vérifier un système de fichiers, ou <strong>récupérer l'accès sans le mot de passe root</strong>.</p>
+<pre class="mermaid"><code>flowchart TD
+    Q{"Comment entrer en maintenance ?"} --&gt; M1["Méthode 1&lt;br/&gt;GRUB : ajouter single"]
+    Q --&gt; M2["Méthode 2&lt;br/&gt;GRUB : init=/bin/bash"]
+    Q --&gt; M3["Méthode 3&lt;br/&gt;média d'installation : Troubleshooting, Rescue"]
+    M1 --&gt; R1["demande le mot de passe root"]
+    M2 --&gt; R2["aucun mot de passe&lt;br/&gt;racine en lecture seule"]
+    M3 --&gt; R3["suivre les indications"]</code></pre>
+<h3 id="méthode-1--single-atelier-3-partie-2">Méthode 1 : <code>single</code> (atelier 3, partie 2)</h3>
+<ol>
+<li>Menu GRUB, sélectionner le noyau, touche <code>e</code>.</li>
+<li>Sur la ligne <code>linux</code>, <strong>retirer</strong> <code>rhgb quiet</code> et <strong>ajouter</strong> <code>single</code> à la fin.</li>
+<li><code>Ctrl+x</code> pour démarrer. Sortir avec <code>Ctrl+d</code>.</li>
+</ol>
+<p>Le système demande le <strong>mot de passe root</strong>. Cette méthode <strong>ne marche pas</strong> si root n'a pas de mot de passe (école du sudo).</p>
+<h3 id="méthode-2--initbinbash-atelier-3-partie-3">Méthode 2 : <code>init=/bin/bash</code> (atelier 3, partie 3)</h3>
+<p>Cette méthode remplace le premier processus par un simple <strong>shell</strong> : aucun mot de passe n'est demandé. Elle est « brutale » car le système n'est pas démarré normalement.</p>
+<ol>
+<li>Menu GRUB, touche <code>e</code>, sur la ligne <code>linux</code> : retirer <code>rhgb quiet</code>, ajouter <code>init=/bin/bash</code>.</li>
+<li><code>Ctrl+x</code>, puis <code>Entrée</code> une fois le démarrage terminé.</li>
+<li>Dans le shell (prompt <code>bash-4.4#</code> ou <code>:/#</code>) :</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># /usr/sbin/load_policy -i         # charge la politique SELinux</span>
+<span class="c1"># mount -o remount,rw /            # racine en lecture-écriture</span>
+<span class="c1"># touch /root/test.txt             # ... faire les modifications voulues ...</span>
+<span class="c1"># touch /.autorelabel              # SELinux recalculera les étiquettes au prochain boot</span>
+<span class="c1"># sync                             # écrit le cache sur le disque</span>
+</code></pre></div>
+<ol>
+<li>Redémarrer par <strong>extinction forcée</strong> de la VM (il n'y a pas de systemd, donc <code>reboot</code> ne marche pas).</li>
+</ol>
+<p><strong>Pourquoi ces commandes ?</strong></p>
+<table>
+<thead>
+<tr>
+<th>Commande</th>
+<th>Raison</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mount -o remount,rw /</code></td>
+<td>La racine est en lecture seule (<code>ro</code> sur la ligne du noyau)</td>
+</tr>
+<tr>
+<td><code>load_policy -i</code></td>
+<td>SELinux n'est pas chargé sans systemd ; sans lui, les fichiers créés reçoivent une mauvaise étiquette</td>
+</tr>
+<tr>
+<td><code>touch /.autorelabel</code></td>
+<td>Force SELinux à recalculer les étiquettes de tout le système au prochain démarrage (démarrage plus long)</td>
+</tr>
+<tr>
+<td><code>sync</code></td>
+<td>Vide le cache RAM vers le disque avant l'extinction brutale</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Pièges rencontrés en TP</p>
+<ul>
+<li>Écrire <code>init</code> en <strong>minuscules</strong> et avec le <code>/</code> : <strong><code>init=/bin/bash</code></strong> (pas <code>INIT=</code>, pas <code>init=bin/bash</code>).</li>
+<li>Si tu arrives sur un écran « <strong>Entering emergency mode</strong> » avec un prompt <code>:/#</code>, tu es dans le shell d'urgence de l'<strong>initramfs</strong>, pas dans le vrai système : <code>touch: command not found</code> en est le signe. La vraie racine est alors dans <strong><code>/sysroot</code></strong> : <code>mount -o remount,rw /sysroot</code>, puis <code>chroot /sysroot</code>.</li>
+<li>Le clavier est en <strong>QWERTY</strong> : <code>/</code> s'obtient avec la touche <code>!</code>, <code>-</code> avec <code>)</code>.</li>
+</ul>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Question de l'atelier : « Cela a-t-il fonctionné ? »</p>
+<p>Le fichier créé n'est réellement conservé que si les données ont été écrites sur le disque (<code>sync</code>) avant l'extinction forcée. Après redémarrage normal, on vérifie avec <code>ls -l /root</code>.</p>
+</div>
+<h3 id="méthode-3--le-média-dinstallation">Méthode 3 : le média d'installation</h3>
+<p>Démarrer sur l'ISO d'installation, puis menu <strong>Troubleshooting</strong>, <strong>Rescue</strong>, et suivre les indications.</p>
+<hr />
+<h2 id="5-le-réseau">5. Le réseau</h2>
+<p>Pour qu'une machine communique, il faut configurer la couche IP :</p>
+<pre class="mermaid"><code>flowchart LR
+    M["Machine"] --&gt; IP["Adresse IP + masque&lt;br/&gt;ex: 10.6.6.6/16"]
+    M --&gt; GW["Passerelle par défaut&lt;br/&gt;route vers l'extérieur"]
+    M --&gt; DNS["Serveur DNS&lt;br/&gt;résout les noms en IP"]</code></pre>
+<h3 id="consulter-la-configuration">Consulter la configuration</h3>
+<table>
+<thead>
+<tr>
+<th>Besoin</th>
+<th>Commande / fichier</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Voir les <strong>adresses IP</strong></td>
+<td><code>ip a</code></td>
+</tr>
+<tr>
+<td>Voir la <strong>route par défaut</strong> (passerelle)</td>
+<td><code>ip r</code></td>
+</tr>
+<tr>
+<td>Voir les <strong>serveurs DNS</strong></td>
+<td><code>cat /etc/resolv.conf</code> (lignes <code>nameserver</code>)</td>
+</tr>
+</tbody>
+</table>
+<p>Exemple de sortie de <code>ip a</code> : <code>inet 10.6.6.6/16</code> sur l'interface <code>ens33</code> signifie « adresse 10.6.6.6, masque /16 ». L'interface <code>lo</code> (127.0.0.1) est la boucle locale.</p>
+<h3 id="configurer">Configurer</h3>
+<ul>
+<li>Le service <strong>NetworkManager</strong> gère le réseau.</li>
+<li><strong>Sans interface graphique</strong> : <code>nmtui</code> (menus dans le terminal) ou <code>nmcli</code> (ligne de commande).</li>
+<li><strong>Avec interface graphique</strong> : Activités, puis Réseau.</li>
+<li>Après une modification : <code>systemctl restart NetworkManager</code>.</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Bonus</p>
+<p><code>nmcli device status</code> liste les interfaces et leur état ; <code>nmcli connection show</code> liste les connexions configurées.</p>
+</div>
+<hr />
+<h2 id="6-les-paquets-dnf-rpm">6. Les paquets (dnf, rpm)</h2>
+<p>Sous Linux, on n'installe pas les logiciels en téléchargeant des <code>.exe</code> au hasard : ils viennent de <strong>dépôts</strong> officiels, avec <strong>signature</strong> et <strong>gestion des dépendances</strong>. C'est le même principe qu'un « store », mais qui existe depuis les années 2000.</p>
+<p>Avantages : logithèque centralisée et signée (<strong>GPG</strong>), installation facile avec dépendances automatiques, mise à jour et suppression simples.</p>
+<h3 id="61-les-briques">6.1 Les briques</h3>
+<pre class="mermaid"><code>flowchart LR
+    M["Miroir&lt;br/&gt;liste de dépôts"] --&gt; D["Dépôt (repo)&lt;br/&gt;base de données + paquets RPM signés"]
+    D --&gt; DNF["dnf&lt;br/&gt;télécharge, résout les dépendances"]
+    DNF --&gt; RPM["rpm&lt;br/&gt;installe réellement"]
+    RPM --&gt; S["Système"]</code></pre>
+<table>
+<thead>
+<tr>
+<th>Brique</th>
+<th>Définition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Paquet RPM</strong></td>
+<td>Archive contenant le logiciel compilé, ses <strong>scripts</strong> (pre/post-installation), la <strong>liste de ses fichiers</strong>, sa <strong>description</strong> et une <strong>signature GPG</strong></td>
+</tr>
+<tr>
+<td><strong>Groupe de paquets</strong></td>
+<td>Un RPM qui liste d'autres RPM (ex : « Outils de développement »)</td>
+</tr>
+<tr>
+<td><strong>Dépôt (repository)</strong></td>
+<td>Site web contenant une mini base de données des paquets + les RPM signés</td>
+</tr>
+<tr>
+<td><strong>Miroir (mirror)</strong></td>
+<td>Page web listant plusieurs serveurs de dépôts ; <strong>facultatif</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="62-fichiers-de-configuration">6.2 Fichiers de configuration</h3>
+<ul>
+<li><code>/etc/yum.conf</code> : comportement général de yum/dnf.</li>
+<li>Les dépôts se déclarent dans des fichiers <strong><code>.repo</code></strong> placés dans le dossier des dépôts.</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Piège</p>
+<p>Le cours écrit <code>/etc/yum.repo.d</code>, mais le vrai dossier est <strong><code>/etc/yum.repos.d/</code></strong> (avec un « s »).</p>
+</div>
+<p>Structure d'un fichier <code>.repo</code> :</p>
+<div class="highlight"><pre><span></span><code><span class="k">[ol8_baseos_latest]</span>
+<span class="na">name</span><span class="o">=</span><span class="s">Oracle Linux 8 BaseOS Latest ($basearch)</span>
+<span class="na">baseurl</span><span class="o">=</span><span class="s">https://yum$ociregion.oracle.com/repo/OracleLinux/OL8/baseos/latest/$basearch/</span>
+<span class="na">gpgcheck</span><span class="o">=</span><span class="s">1</span>
+<span class="na">gpgkey</span><span class="o">=</span><span class="s">file:///etc/pki/rpm-gpg/RPM-GPG-KEY-oracle</span>
+<span class="na">enabled</span><span class="o">=</span><span class="s">1</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Ligne</th>
+<th>Rôle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>[nom]</code></td>
+<td>Identifiant du dépôt, <strong>unique</strong></td>
+</tr>
+<tr>
+<td><code>name=</code></td>
+<td>Nom lisible</td>
+</tr>
+<tr>
+<td><code>baseurl=</code></td>
+<td>Adresse <strong>d'un</strong> serveur de dépôt</td>
+</tr>
+<tr>
+<td><code>mirrorlist=</code></td>
+<td>Adresse d'une <strong>liste</strong> de miroirs</td>
+</tr>
+<tr>
+<td><code>gpgcheck=1</code> ou <code>0</code></td>
+<td>Vérifier (ou non) la signature des RPM</td>
+</tr>
+<tr>
+<td><code>gpgkey=</code></td>
+<td>Clé publique servant à vérifier les signatures</td>
+</tr>
+<tr>
+<td><code>enabled=1</code> ou <code>0</code></td>
+<td>Dépôt actif ou non (absent = actif)</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Piège</p>
+<p><code>mirrorlist</code> et <code>baseurl</code> <strong>ne doivent pas être actifs en même temps</strong> dans un même dépôt. On peut ajouter des dépôts tiers comme <strong>EPEL</strong>.</p>
+</div>
+<h3 id="63-dnf--loutil-du-quotidien">6.3 dnf : l'outil du quotidien</h3>
+<p><code>dnf</code> (successeur de <code>yum</code>) interroge d'abord sa <strong>base de données locale</strong> (cache, rafraîchi automatiquement s'il a plus de 6 h) pour ne pas solliciter les dépôts à chaque commande. Pour installer, il télécharge le paquet <strong>avec ses dépendances</strong> puis appelle <code>rpm</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Commandes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Lister les dépôts</strong></td>
+<td><code>dnf repolist</code> ; <code>dnf repolist all</code></td>
+</tr>
+<tr>
+<td><strong>Chercher / s'informer</strong></td>
+<td><code>dnf list installed</code> ; <code>dnf list available</code> ; <code>dnf search &lt;mot&gt;</code> ; <code>dnf info &lt;paquet&gt;</code> ; <code>dnf grouplist</code></td>
+</tr>
+<tr>
+<td><strong>Trouver quel paquet fournit un fichier</strong></td>
+<td><code>dnf provides "*/fichier"</code></td>
+</tr>
+<tr>
+<td><strong>Installer</strong></td>
+<td><code># dnf install &lt;paquet&gt;</code> ; <code># dnf install &lt;fichier.rpm&gt;</code> ; <code># dnf groupinstall "&lt;groupe&gt;"</code></td>
+</tr>
+<tr>
+<td><strong>Supprimer</strong></td>
+<td><code># dnf remove &lt;paquet&gt;</code> ; <code># dnf remove @"&lt;groupe&gt;"</code></td>
+</tr>
+<tr>
+<td><strong>Mettre à jour</strong></td>
+<td><code># dnf upgrade</code> (tout) ; <code># dnf upgrade &lt;paquet&gt;</code> ; <code># dnf check-upgrade</code> (vérifier sans installer)</td>
+</tr>
+<tr>
+<td><strong>Historique</strong></td>
+<td><code>dnf history</code> ; <code>dnf history info &lt;n°&gt;</code> ; <code># dnf history undo &lt;n°&gt;</code> ; <code># dnf history redo &lt;n°&gt;</code></td>
+</tr>
+<tr>
+<td><strong>Vider le cache</strong></td>
+<td><code>dnf clean all</code></td>
+</tr>
+</tbody>
+</table>
+<p>Limite : on ne peut pas avoir <strong>plusieurs versions</strong> du même logiciel.</p>
+<h3 id="64-rpm--la-commande-de-bas-niveau">6.4 rpm : la commande de bas niveau</h3>
+<p><code>rpm</code> installe un fichier <code>.rpm</code> <strong>déjà téléchargé</strong>, mais <strong>ne télécharge pas</strong> les dépendances (il prévient si elles manquent).</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># rpm -vUh paquet.rpm     # installer OU mettre à jour (-v détails, -U update/install, -h barre de progression)</span>
+<span class="c1"># rpm -e nom_court        # supprimer (utiliser le nom court, pas le nom complet du RPM)</span>
+$<span class="w"> </span>rpm<span class="w"> </span>-q<span class="w"> </span>programme<span class="w">        </span><span class="c1"># le paquet est-il installé ?</span>
+$<span class="w"> </span>rpm<span class="w"> </span>-qi<span class="w"> </span>programme<span class="w">       </span><span class="c1"># informations sur un paquet installé</span>
+$<span class="w"> </span>rpm<span class="w"> </span>-qp<span class="w"> </span>fichier.rpm<span class="w">     </span><span class="c1"># interroger un fichier RPM non installé</span>
+</code></pre></div>
+<p>Red Hat recommande <code>-U</code> plutôt que <code>-i</code> car il fonctionne à la fois pour installer et mettre à jour.</p>
+<div class="admonition tip">
+<p class="admonition-title">Bonus</p>
+<p><code>rpm -qf /usr/sbin/sshd</code> indique <strong>à quel paquet</strong> appartient un fichier ; <code>rpm -ql &lt;paquet&gt;</code> liste tous ses fichiers ; <code>rpm -qc &lt;paquet&gt;</code> liste ses <strong>fichiers de configuration</strong>. Très utile pour retrouver le fichier de configuration d'un démon.</p>
+</div>
+<h3 id="65-installer-à-partir-des-sources">6.5 Installer à partir des sources</h3>
+<p>Dernier recours : on récupère le <strong>code source</strong> et on le compile soi-même (pour avoir la dernière version ou une configuration très précise).</p>
+<div class="admonition warning">
+<p class="admonition-title">Piège</p>
+<p><strong>Toujours compiler avec un utilisateur normal, jamais en root.</strong> Seule la dernière étape (<code>make install</code>) se fait en root.</p>
+</div>
+<pre class="mermaid"><code>flowchart LR
+    A["1. Lire la documentation&lt;br/&gt;dépendances, options"] --&gt; B["2. ./configure&lt;br/&gt;vérifie le système, génère le Makefile"]
+    B --&gt; C["3. make&lt;br/&gt;compile, génère les binaires"]
+    C --&gt; D["4. make install&lt;br/&gt;en root: copie dans le système"]</code></pre>
+<p>Inconvénients : il faut les outils de compilation, gérer <strong>à la main</strong> les dépendances et créer soi-même les scripts de service. Deux types de dépendances :</p>
+<ul>
+<li><strong>Fonctionnelles</strong> : nécessaires pour faire tourner le programme.</li>
+<li><strong>De compilation</strong> : bibliothèques de développement, paquets nommés <code>xxx-devel</code>.</li>
+</ul>
+<p>Quand la compilation dit <code>Couldn't find superlib.so</code>, on cherche le paquet qui contient ce fichier : <code>dnf provides "*/superlib.so"</code>.</p>
+<p>Les sources ne sont pas certifiées comme les paquets de la distribution : risque de bugs ou de malwares.</p>
+<h3 id="66-comparatif">6.6 Comparatif</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><strong>dnf</strong></th>
+<th><strong>rpm</strong></th>
+<th><strong>Sources</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Télécharge</td>
+<td>Oui</td>
+<td>Non</td>
+<td>Non (on récupère le code)</td>
+</tr>
+<tr>
+<td>Gère les dépendances</td>
+<td>Oui, automatiquement</td>
+<td>Les signale seulement</td>
+<td>À la main</td>
+</tr>
+<tr>
+<td>Signature vérifiée</td>
+<td>Oui (dépôt)</td>
+<td>Oui (si la clé est là)</td>
+<td>Non</td>
+</tr>
+<tr>
+<td>Dernière version</td>
+<td>Selon le dépôt</td>
+<td>Selon le fichier</td>
+<td>Toujours possible</td>
+</tr>
+<tr>
+<td>Facilité</td>
+<td>Très facile</td>
+<td>Facile</td>
+<td>Difficile</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="7-le-stockage">7. Le stockage</h2>
+<h3 id="71-partitionner-un-disque">7.1 Partitionner un disque</h3>
+<p>Sous Linux, un disque est un <strong>périphérique bloc</strong> dans <code>/dev</code>. Deux normes de table de partitions :</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><strong>MBR</strong> (1983)</th>
+<th><strong>GPT</strong> (2013)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Emplacement</td>
+<td>512 premiers octets du disque</td>
+<td>Table dédiée</td>
+</tr>
+<tr>
+<td>Contenu</td>
+<td>446 octets de <strong>boot loader</strong> (stage 1 de GRUB) + 64 octets de <strong>table de partitions</strong> (+ 2 octets de signature)</td>
+<td>Table de partitions étendue</td>
+</tr>
+<tr>
+<td>Partitions</td>
+<td><strong>4 primaires</strong> max (ou 3 primaires + 1 <strong>étendue</strong> contenant les partitions <strong>logiques</strong>)</td>
+<td>128 (voire 256)</td>
+</tr>
+<tr>
+<td>Taille maxi</td>
+<td><strong>2,2 To</strong></td>
+<td>9,4 Zo</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Nommage</strong> (à connaître par cœur) :</p>
+<pre class="mermaid"><code>flowchart TB
+    D["/dev/sdb : le disque entier"] --&gt; A["/dev/sdb1 : primaire"]
+    D --&gt; B["/dev/sdb2 : primaire"]
+    D --&gt; C["/dev/sdb3 : étendue"]
+    C --&gt; L1["/dev/sdb5 : logique"]
+    C --&gt; L2["/dev/sdb6 : logique"]
+    C --&gt; L3["/dev/sdb7 : logique"]</code></pre>
+<ul>
+<li><code>sda</code>, <code>sdb</code>... : 1er, 2e disque (SCSI/SATA). Les numéros <strong>1 à 4</strong> sont réservés aux partitions primaires (et à l'étendue) ; les <strong>logiques commencent toujours à 5</strong>.</li>
+<li>Disque <strong>NVMe</strong> : <code>/dev/nvme0n1p1</code> = périphérique <code>nvme0</code>, disque <code>n1</code>, partition <code>p1</code>.</li>
+</ul>
+<p><strong>fdisk</strong> : outil de partitionnement (<code>parted</code>, <code>sfdisk</code>, <code>cfdisk</code>, <code>gparted</code> existent aussi).</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># fdisk -l /dev/sda        # afficher la table de partitions</span>
+<span class="c1"># fdisk /dev/sdb           # partitionner de façon interactive</span>
+</code></pre></div>
+<p>Touches importantes dans fdisk :</p>
+<table>
+<thead>
+<tr>
+<th>Touche</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>m</code></td>
+<td>Aide</td>
+</tr>
+<tr>
+<td><code>p</code></td>
+<td>Afficher la table</td>
+</tr>
+<tr>
+<td><code>n</code></td>
+<td>Nouvelle partition (<code>p</code> primaire ou <code>e</code> étendue, numéro, début, taille avec <code>+20G</code>)</td>
+</tr>
+<tr>
+<td><code>d</code></td>
+<td>Supprimer une partition</td>
+</tr>
+<tr>
+<td><code>t</code></td>
+<td>Changer le <strong>type</strong> (ex : <code>8e</code> = Linux LVM, <code>83</code> = Linux)</td>
+</tr>
+<tr>
+<td><code>g</code> / <code>o</code></td>
+<td>Créer une table <strong>GPT</strong> / <strong>DOS</strong> (MBR)</td>
+</tr>
+<tr>
+<td><code>w</code></td>
+<td><strong>Écrire</strong> les modifications et quitter</td>
+</tr>
+<tr>
+<td><code>q</code></td>
+<td>Quitter <strong>sans</strong> enregistrer</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Piège</p>
+<p>Tant qu'on n'a pas tapé <code>w</code>, <strong>rien n'est écrit</strong> sur le disque. Après <code>w</code>, c'est définitif.</p>
+</div>
+<h3 id="72-lvm--logical-volume-manager">7.2 LVM : Logical Volume Manager</h3>
+<p>Le partitionnement classique est rigide : on ne peut agrandir une partition qu'<strong>à froid</strong> et avec de l'espace <strong>contigu</strong>. <strong>LVM</strong> ajoute une couche logique souple.</p>
+<pre class="mermaid"><code>flowchart TB
+    D1["Partition ou disque&lt;br/&gt;/dev/sdb1"] --&gt; PV1["PV&lt;br/&gt;volume physique"]
+    D2["Partition ou disque&lt;br/&gt;/dev/sdc1"] --&gt; PV2["PV&lt;br/&gt;volume physique"]
+    PV1 --&gt; VG["VG&lt;br/&gt;groupe de volumes&lt;br/&gt;(réserve d'espace)"]
+    PV2 --&gt; VG
+    VG --&gt; LV1["LV root&lt;br/&gt;volume logique"]
+    VG --&gt; LV2["LV var"]
+    VG --&gt; LV3["LV home"]
+    LV1 --&gt; FS1["système de fichiers puis montage"]
+    LV2 --&gt; FS2["système de fichiers puis montage"]
+    LV3 --&gt; FS3["système de fichiers puis montage"]</code></pre>
+<ul>
+<li><strong>PV</strong> (Physical Volume) : partition/disque intégré à LVM.</li>
+<li><strong>VG</strong> (Volume Group) : regroupe un ou plusieurs PV.</li>
+<li><strong>LV</strong> (Logical Volume) : « partition » découpée dans un VG, qu'on formate et monte.</li>
+</ul>
+<p>Les commandes suivent toujours la même logique : <code>pv...</code>, <code>vg...</code>, <code>lv...</code> + <code>create</code>, <code>display</code>, <code>extend</code>, <code>reduce</code>, <code>remove</code>.</p>
+<p><strong>Prérequis</strong> : donner à la partition le type <strong><code>8e</code> (Linux LVM)</strong> avec <code>fdisk</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># pvcreate /dev/sdb1                          # créer un PV</span>
+<span class="c1"># vgcreate vggroup1 /dev/sdb1                 # créer un VG (on peut mettre plusieurs PV)</span>
+<span class="c1"># lvcreate -n lv1 -L 150M vggroup1            # créer un LV (-n nom, -L taille)</span>
+<span class="c1"># vgextend vggroup1 /dev/sdb2                 # ajouter un PV au VG</span>
+<span class="c1"># lvextend -L +400M /dev/vggroup1/lv1         # AJOUTER 400 Mo au LV</span>
+<span class="c1"># lvextend -L 1G /dev/vggroup1/lv1            # FIXER la taille à 1 Go</span>
+</code></pre></div>
+<p>Un LV est accessible via <code>/dev/&lt;vg&gt;/&lt;lv&gt;</code> <strong>ou</strong> <code>/dev/mapper/&lt;vg&gt;-&lt;lv&gt;</code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Piège : agrandir le LV ne suffit pas</p>
+<p>Après <code>lvextend</code>, le <strong>système de fichiers</strong> ne grandit pas tout seul. Il faut l'agrandir aussi :</p>
+<ul>
+<li>ext4 : <code># resize2fs /dev/vggroup1/lv1</code></li>
+<li>XFS : <code># xfs_growfs /point/de/montage</code> (XFS peut <strong>grandir</strong> mais <strong>pas être réduit</strong>)</li>
+</ul>
+</div>
+<p><strong>Afficher les informations</strong> : résumé avec <code>pvs</code>, <code>vgs</code>, <code>lvs</code> ; détail avec <code>pvdisplay</code>, <code>vgdisplay</code>, <code>lvdisplay</code>.</p>
+<h3 id="73-les-systèmes-de-fichiers">7.3 Les systèmes de fichiers</h3>
+<p>Un système de fichiers est découpé en <strong>blocs</strong> (4 Ko par défaut). Sans système de fichiers, un périphérique est inutilisable : c'est le <strong>formatage</strong> (<code>mkfs</code>) qui l'installe.</p>
+<p><strong>Le superbloc</strong> contient les informations vitales (taille des blocs, taille du système de fichiers, dernier montage, pointeur vers l'inode racine...). Il est <strong>dupliqué</strong> à plusieurs endroits par sécurité.</p>
+<p><strong>Les inodes</strong> : un inode décrit <strong>un fichier</strong> (type, droits, nombre de liens, UID, GID, taille, dates <code>atime</code>/<code>ctime</code>/<code>mtime</code>, adresses des blocs de données).</p>
+<pre class="mermaid"><code>flowchart LR
+    R["Répertoire&lt;br/&gt;contient le NOM du fichier"] --&gt; I["Inode&lt;br/&gt;type, droits, UID, GID,&lt;br/&gt;taille, dates, adresses"]
+    I --&gt; B["Blocs de données&lt;br/&gt;le contenu réel"]</code></pre>
+<div class="admonition note">
+<p class="admonition-title">À retenir</p>
+<p><strong>Le nom du fichier n'est pas dans l'inode</strong> : il est dans le répertoire qui contient le fichier. Un fichier est considéré supprimé quand son nombre de liens physiques tombe à 0.</p>
+</div>
+<table>
+<thead>
+<tr>
+<th>Système de fichiers</th>
+<th>À retenir</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>XFS</strong></td>
+<td><strong>Par défaut</strong> sur RHEL depuis la 7 ; 64 bits, <strong>journalisé</strong>, pour gros disques et beaucoup de fichiers</td>
+</tr>
+<tr>
+<td><strong>ext2 / ext3 / ext4</strong></td>
+<td>ext3 = ext2 + <strong>journalisation</strong> (meilleure récupération après une extinction brutale) ; ext4 peu fragmenté grâce à la pré-allocation de blocs contigus</td>
+</tr>
+<tr>
+<td>Autres</td>
+<td>NTFS, FAT... supportés ; Btrfs installable</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Précision</p>
+<p>Le cours dit que ext4 est le défaut sur RHEL 9 ; en réalité, RHEL utilise <strong>XFS par défaut</strong> aussi en RHEL 8 et 9. Retiens : <strong>XFS par défaut sur RHEL</strong>.</p>
+</div>
+<p><strong>Outils de gestion :</strong></p>
+<table>
+<thead>
+<tr>
+<th>Besoin</th>
+<th>Commande</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Créer (formater)</td>
+<td><code>mkfs.&lt;type&gt; /dev/...</code> (ex : <code>mkfs.xfs</code>, <code>mkfs.ext4</code>)</td>
+</tr>
+<tr>
+<td>XFS : modifier / agrandir / espace / quotas</td>
+<td><code>xfs_admin</code>, <code>xfs_growfs</code>, <code>xfs_spaceman</code>, <code>xfs_quota</code></td>
+</tr>
+<tr>
+<td>ext : modifier (label, vérifications) / lire le superbloc</td>
+<td><code>tune2fs</code> (<code>-L</code> étiquette, <code>-l</code> superbloc)</td>
+</tr>
+<tr>
+<td>ext : redimensionner</td>
+<td><code>resize2fs</code></td>
+</tr>
+<tr>
+<td>Vérifier ext</td>
+<td><code>fsck.&lt;type&gt;</code> (ex : <code>fsck.ext4</code>)</td>
+</tr>
+<tr>
+<td>Vérifier <strong>XFS</strong></td>
+<td><code>xfs_repair</code></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Piège</p>
+<p>Sur XFS, <strong><code>fsck.xfs</code> ne fait rien</strong> : il faut utiliser <code>xfs_repair</code>.</p>
+</div>
+<p><strong>Prendre des informations :</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># blkid                    # UUID, type et étiquette des périphériques formatés</span>
+$<span class="w"> </span>lsblk<span class="w">                    </span><span class="c1"># arborescence disques, partitions, LVM, points de montage</span>
+$<span class="w"> </span>lsblk<span class="w"> </span>-f<span class="w">                 </span><span class="c1"># idem avec type de système de fichiers et UUID</span>
+</code></pre></div>
+<h3 id="74-monter-un-système-de-fichiers">7.4 Monter un système de fichiers</h3>
+<p>Sous Linux, un système de fichiers devient accessible en <strong>montant</strong> son périphérique sur un <strong>répertoire</strong> : le <strong>point de montage</strong>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Piège</p>
+<p>Le contenu du répertoire choisi devient <strong>inaccessible</strong> tant qu'on monte dessus. Utilise donc un répertoire <strong>vide</strong>. Pour un montage temporaire, le cours conseille <strong><code>/mnt</code></strong>.</p>
+</div>
+<div class="highlight"><pre><span></span><code><span class="c1"># mount -t ext4 /dev/sdb1 /mnt      # monter (-t : type, -o : options)</span>
+<span class="c1"># umount /mnt                       # démonter</span>
+$<span class="w"> </span>findmnt<span class="w">                           </span><span class="c1"># arbre des montages</span>
+$<span class="w"> </span>findmnt<span class="w"> </span>/mnt<span class="w">                      </span><span class="c1"># infos sur un seul point de montage</span>
+$<span class="w"> </span>mount<span class="w">                             </span><span class="c1"># liste (peu lisible, mais montre les options)</span>
+</code></pre></div>
+<p><strong>Options de montage</strong> (<code>-o</code>, séparées par des virgules) :</p>
+<table>
+<thead>
+<tr>
+<th>Options</th>
+<th>Défaut</th>
+<th>Effet</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sync</code> / <code>async</code></td>
+<td><code>async</code></td>
+<td>Écriture immédiate ou via tampon RAM</td>
+</tr>
+<tr>
+<td><code>exec</code> / <code>noexec</code></td>
+<td><code>exec</code></td>
+<td>Autorise (ou non) l'exécution de programmes</td>
+</tr>
+<tr>
+<td><code>ro</code> / <code>rw</code></td>
+<td><code>rw</code></td>
+<td>Lecture seule ou lecture-écriture</td>
+</tr>
+<tr>
+<td><code>suid</code> / <code>nosuid</code></td>
+<td><code>suid</code></td>
+<td>Autorise (ou non) le SUID</td>
+</tr>
+<tr>
+<td><code>dev</code> / <code>nodev</code></td>
+<td><code>dev</code></td>
+<td>Interprète (ou non) les fichiers de périphériques</td>
+</tr>
+<tr>
+<td><code>user</code> / <code>nouser</code></td>
+<td><code>nouser</code></td>
+<td>(fstab) Un utilisateur simple peut monter</td>
+</tr>
+<tr>
+<td><code>auto</code> / <code>noauto</code></td>
+<td><code>auto</code></td>
+<td>(fstab) Monté (ou non) automatiquement au démarrage</td>
+</tr>
+<tr>
+<td><code>remount</code></td>
+<td>;</td>
+<td>(mount) <strong>Change</strong> les options sans démonter</td>
+</tr>
+</tbody>
+</table>
+<h3 id="75-montage-automatique--etcfstab">7.5 Montage automatique : <code>/etc/fstab</code></h3>
+<p>Les montages du démarrage sont déclarés dans <strong><code>/etc/fstab</code></strong>, lu par systemd au début du boot. Une ligne = 6 colonnes :</p>
+<div class="highlight"><pre><span></span><code># &lt;file system&gt;                              &lt;mount point&gt;  &lt;type&gt;  &lt;options&gt;  &lt;dump&gt; &lt;pass&gt;
+/dev/mapper/ol-root                          /              xfs     defaults   0      0
+UUID=32a0cf22-91d5-4082-9b69-548810a16c45    /boot          xfs     defaults   0      0
+/dev/mapper/ol-swap                          none           swap    defaults   0      0
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Colonne</th>
+<th>Signification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>file system</strong></td>
+<td>La source : <strong>UUID</strong> (le plus sûr), <strong>LABEL</strong> (pratique mais doublons possibles) ou chemin du périphérique (bien pour <strong>LVM</strong>, <strong>déconseillé</strong> pour <code>/dev/sdb1</code>)</td>
+</tr>
+<tr>
+<td><strong>mount point</strong></td>
+<td>Répertoire de montage (<code>none</code> pour le swap)</td>
+</tr>
+<tr>
+<td><strong>type</strong></td>
+<td>Type du système de fichiers (<code>auto</code> est possible mais ralentit)</td>
+</tr>
+<tr>
+<td><strong>options</strong></td>
+<td>Options de montage ; <code>defaults</code> = <code>async,nouser,exec,rw,auto,suid,dev</code></td>
+</tr>
+<tr>
+<td><strong>dump</strong></td>
+<td>Presque inutilisé</td>
+</tr>
+<tr>
+<td><strong>pass</strong></td>
+<td>Vérification au boot : <code>0</code> aucune, <code>1</code> pour la racine, <code>2</code> pour les autres</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Piège : tester le fstab sans risque</p>
+<p>Après avoir ajouté une ligne, teste-la <strong>avant de redémarrer</strong> avec <code>mount /point/de/montage</code> (uniquement le point de montage). Aucun message = c'est bon. Le cours <strong>déconseille <code>mount -a</code></strong>, qui essaie de monter toutes les entrées, pas seulement la nouvelle.</p>
+</div>
+<h3 id="76-procédure-complète--ajouter-un-nouveau-disque">7.6 Procédure complète : ajouter un nouveau disque</h3>
+<pre class="mermaid"><code>flowchart LR
+    A["1. fdisk&lt;br/&gt;créer la partition, type 8e"] --&gt; B["2. pvcreate"]
+    B --&gt; C["3. vgcreate&lt;br/&gt;ou vgextend"]
+    C --&gt; D["4. lvcreate"]
+    D --&gt; E["5. mkfs.xfs&lt;br/&gt;ou mkfs.ext4"]
+    E --&gt; F["6. mkdir + mount"]
+    F --&gt; G["7. ligne dans /etc/fstab&lt;br/&gt;puis test: mount /point"]</code></pre>
+<h3 id="77-espace-disque--df-et-du">7.7 Espace disque : <code>df</code> et <code>du</code></h3>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>df<span class="w"> </span>-h<span class="w">                </span><span class="c1"># espace des systèmes de fichiers montés (-h : unités lisibles, -i : inodes)</span>
+$<span class="w"> </span>du<span class="w"> </span>-hs<span class="w"> </span>/etc<span class="w">          </span><span class="c1"># taille d'un RÉPERTOIRE (-s : total seulement)</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Piège</p>
+<p><code>ls -l</code> ne donne <strong>pas</strong> la taille d'un répertoire (juste celle de son inode) : il faut <code>du</code>.</p>
+</div>
+<hr />
+<h2 id="8-utilisateurs-et-groupes">8. Utilisateurs et groupes</h2>
+<h3 id="81-les-identifiants">8.1 Les identifiants</h3>
+<p>Chaque utilisateur a un <strong>UID</strong> (identifiant utilisateur) et un <strong>GID</strong> (identifiant de son groupe principal). Il peut aussi appartenir à des <strong>groupes secondaires</strong>. Le groupe principal est celui associé à la session à la connexion.</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>UID / GID</th>
+<th>Rôle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>root</strong></td>
+<td>0</td>
+<td>Administrateur : tout-puissant. On évite de s'y connecter directement</td>
+</tr>
+<tr>
+<td><strong>Comptes de service</strong> (daemons)</td>
+<td>1 à 999</td>
+<td>Font tourner les services (99 % des services ne tournent <strong>pas</strong> en root, par sécurité)</td>
+</tr>
+<tr>
+<td><strong>Utilisateurs humains</strong></td>
+<td>1000 et plus</td>
+<td>Comptes des personnes</td>
+</tr>
+</tbody>
+</table>
+<h3 id="82-les-quatre-fichiers-à-connaître">8.2 Les quatre fichiers à connaître</h3>
+<pre class="mermaid"><code>flowchart LR
+    P["/etc/passwd&lt;br/&gt;utilisateurs, lisible par tous"] --&gt;|"x = mot de passe ailleurs"| S["/etc/shadow&lt;br/&gt;mots de passe hachés, root seulement"]
+    G["/etc/group&lt;br/&gt;groupes, lisible par tous"] --&gt;|"x = mot de passe ailleurs"| GS["/etc/gshadow&lt;br/&gt;infos cachées des groupes"]</code></pre>
+<p><strong><code>/etc/passwd</code></strong> : une ligne par utilisateur, 7 champs séparés par <code>:</code></p>
+<div class="highlight"><pre><span></span><code>penthium:x:1000:1000:penthium,666,666,:/home/penthium:/bin/bash
+nom : mdp(x) : UID : GID : nom complet : répertoire personnel : shell
+</code></pre></div>
+<ul>
+<li><code>x</code> : le hash du mot de passe est dans <code>/etc/shadow</code>.</li>
+<li>Nom complet modifiable avec <code>chfn</code> ; shell modifiable avec <code>chsh</code>.</li>
+<li>Un shell <code>/usr/sbin/nologin</code> empêche la connexion (comptes de service).</li>
+</ul>
+<p><strong><code>/etc/group</code></strong> : <code>nomdugroupe : x : GID : membres,secondaires</code></p>
+<p><strong><code>/etc/shadow</code></strong> : 9 champs séparés par <code>:</code></p>
+<div class="highlight"><pre><span></span><code>nom : hash : dernier changement : âge mini : âge maxi : avertissement : inactivité : fin de validité du compte : réservé
+</code></pre></div>
+<p>Le champ <strong>hash</strong> est lui-même découpé en 3 par <code>$</code> : <code>$6$sel$empreinte</code></p>
+<table>
+<thead>
+<tr>
+<th>Partie</th>
+<th>Rôle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>$1$</code> MD5, <code>$2a$</code> Blowfish, <code>$5$</code> SHA-256, <strong><code>$6$</code> SHA-512</strong></td>
+<td>Algorithme de hachage</td>
+</tr>
+<tr>
+<td><strong>Sel</strong> (<em>salt</em>)</td>
+<td>Chaîne aléatoire ajoutée <strong>avant</strong> le hachage : deux utilisateurs avec le même mot de passe ont des hashs <strong>différents</strong></td>
+</tr>
+<tr>
+<td>Empreinte</td>
+<td>Résultat du hachage</td>
+</tr>
+</tbody>
+</table>
+<p>Valeurs particulières du champ hash : <code>*</code> ou <code>!</code> = connexion par mot de passe <strong>impossible</strong> ; <code>!</code> devant un hash = mot de passe <strong>verrouillé</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Champ de vieillissement</th>
+<th>Sens</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dernier changement</td>
+<td>Nombre de jours depuis le 1er janvier 1970. <strong>0 = changement forcé</strong> à la prochaine connexion</td>
+</tr>
+<tr>
+<td>Âge minimum / maximum</td>
+<td>Délai avant de pouvoir changer / obligation de changer</td>
+</tr>
+<tr>
+<td>Avertissement</td>
+<td>Jours de prévenance avant expiration</td>
+</tr>
+<tr>
+<td>Inactivité</td>
+<td>Jours pendant lesquels le mot de passe reste accepté après expiration</td>
+</tr>
+<tr>
+<td>Fin de validité du compte</td>
+<td>Date d'expiration du <strong>compte</strong> (différente de celle du mot de passe)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="83-commandes">8.3 Commandes</h3>
+<p><strong>Groupes</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># groupadd -g 2000 compta        # créer un groupe (-g : GID)</span>
+<span class="c1"># groupmod -n nouveau ancien     # renommer (-n) ; -g change le GID (attention aux fichiers orphelins)</span>
+<span class="c1"># groupdel compta                # supprimer (le groupe ne doit plus être groupe principal d'un utilisateur)</span>
+<span class="c1"># gpasswd -a alice compta        # ajouter alice au groupe</span>
+<span class="c1"># gpasswd -d alice compta        # retirer alice du groupe</span>
+</code></pre></div>
+<p><strong>Utilisateurs</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># useradd -m -u 2001 -g users -G compta,wheel -s /bin/bash alice</span>
+<span class="c1"># usermod -aG compta alice       # AJOUTER un groupe secondaire</span>
+<span class="c1"># usermod -L alice               # verrouiller le mot de passe (ajoute ! devant le hash)</span>
+<span class="c1"># usermod -U alice               # déverrouiller</span>
+<span class="c1"># usermod -e 2026-12-31 alice    # date d'expiration du compte</span>
+<span class="c1"># userdel -r alice               # supprimer l'utilisateur ET son répertoire personnel</span>
+<span class="c1"># passwd alice                   # changer le mot de passe</span>
+<span class="c1"># passwd -e alice                # forcer le changement à la prochaine connexion</span>
+<span class="c1"># passwd -l alice                # verrouiller ; -u déverrouille</span>
+<span class="c1"># chage -l alice                 # afficher/modifier les champs de vieillissement (si installé)</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Option <code>useradd</code></th>
+<th>Rôle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-m</code> / <code>-M</code></td>
+<td>Créer / ne pas créer le répertoire personnel (sur RHEL, créé <strong>automatiquement</strong> par défaut)</td>
+</tr>
+<tr>
+<td><code>-d</code></td>
+<td>Chemin du répertoire personnel</td>
+</tr>
+<tr>
+<td><code>-u</code></td>
+<td>UID (sinon le plus petit disponible)</td>
+</tr>
+<tr>
+<td><code>-g</code></td>
+<td>Groupe <strong>principal</strong> (sinon un groupe du nom de l'utilisateur est créé)</td>
+</tr>
+<tr>
+<td><code>-G</code></td>
+<td>Groupes <strong>secondaires</strong>, séparés par des virgules</td>
+</tr>
+<tr>
+<td><code>-s</code></td>
+<td>Shell (chemin absolu)</td>
+</tr>
+<tr>
+<td><code>-r</code></td>
+<td>Compte <strong>système</strong> (service)</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Piège : <code>usermod -G</code> sans <code>-a</code></p>
+<p><code>usermod -G groupe user</code> <strong>remplace</strong> tous les groupes secondaires. Pour en <strong>ajouter</strong> un sans perdre les autres : <strong><code>usermod -aG groupe user</code></strong>.</p>
+</div>
+<p>Fichiers de configuration : <code>/etc/default/useradd</code> (valeurs par défaut, affichables avec <code>useradd -D</code>), <code>/etc/login.defs</code>, et <code>/etc/skel</code> (modèle copié dans chaque nouveau répertoire personnel).</p>
+<h3 id="84-changer-didentité-et-élever-ses-privilèges">8.4 Changer d'identité et élever ses privilèges</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><strong><code>su</code></strong></th>
+<th><strong><code>sudo</code></strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Principe</td>
+<td>Devenir un autre utilisateur</td>
+<td>Exécuter <strong>une commande</strong> avec les droits d'un autre (root par défaut)</td>
+</tr>
+<tr>
+<td>Mot de passe demandé</td>
+<td>Celui de l'<strong>utilisateur cible</strong></td>
+<td>Celui de <strong>l'utilisateur lui-même</strong></td>
+</tr>
+<tr>
+<td>Devenir root</td>
+<td><code>su -</code></td>
+<td><code>sudo -i</code></td>
+</tr>
+<tr>
+<td>Configuration</td>
+<td>Aucune</td>
+<td><code>/etc/sudoers</code> ; ou ajouter l'utilisateur au groupe <strong><code>wheel</code></strong> (= tous les privilèges)</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><code>su -</code> (ou <code>-l</code>) reproduit une connexion complète (environnement de l'utilisateur cible).</li>
+<li><code>su -c 'commande'</code> exécute une commande.</li>
+<li><code>sudo</code> mémorise l'authentification <strong>5 minutes</strong> par défaut.</li>
+<li>Avec <code>sudo</code>, on peut <strong>déléguer</strong> des tâches précises (gérer les comptes, faire les sauvegardes...) sans donner root.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note sur les exemples du cours</p>
+<p>L'exemple <code>sudo apt update</code> du cours est un reste de Debian. Sur Oracle Linux / RHEL, on utilise <strong><code>sudo dnf ...</code></strong>.</p>
+</div>
+<hr />
+<h2 id="9-droits-sur-les-fichiers">9. Droits sur les fichiers</h2>
+<p>Les droits sont stockés dans l'<strong>inode</strong>, en trois catégories : <strong>u</strong>ser (propriétaire), <strong>g</strong>roup (groupe propriétaire), <strong>o</strong>thers (les autres).</p>
+<div class="highlight"><pre><span></span><code> -  rwx  r-x  r--     ←  ls -l affiche ces 10 caractères
+ │   │    │    │
+ │   │    │    └── others : lecture seule
+ │   │    └─────── group  : lecture + exécution
+ │   └──────────── user   : lecture + écriture + exécution
+ └──────────────── type : - fichier, d répertoire, l lien, b/c périphérique, p tube, s socket
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Droit</th>
+<th>Octal</th>
+<th>Sur un <strong>fichier</strong></th>
+<th>Sur un <strong>répertoire</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>r</strong> (lecture)</td>
+<td>4</td>
+<td>Lire le contenu (<code>cat</code>)</td>
+<td><strong>Lister</strong> le contenu (<code>ls</code>)</td>
+</tr>
+<tr>
+<td><strong>w</strong> (écriture)</td>
+<td>2</td>
+<td>Modifier le contenu</td>
+<td><strong>Créer, renommer, supprimer</strong> des fichiers dedans (<code>mkdir</code>, <code>cp</code>, <code>rm</code>)</td>
+</tr>
+<tr>
+<td><strong>x</strong> (exécution)</td>
+<td>1</td>
+<td>Exécuter (programme, script)</td>
+<td><strong>Traverser</strong> le dossier, y accéder (<code>cd</code>)</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Piège</p>
+<p>Avec <code>w</code> sur un <strong>répertoire</strong>, on peut supprimer ou renommer les fichiers qu'il contient <strong>même s'ils appartiennent à quelqu'un d'autre</strong>. D'où le sticky bit sur <code>/tmp</code> (voir plus bas).</p>
+</div>
+<p>Le droit octal est la <strong>somme</strong> : <code>rwx</code> = 4+2+1 = <strong>7</strong>, <code>r-x</code> = 5, <code>rw-</code> = 6, <code>r--</code> = 4. Donc <code>rwxr-xr--</code> = <strong>754</strong>.</p>
+<h3 id="91-modifier-les-droits-et-les-propriétaires">9.1 Modifier les droits et les propriétaires</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># chmod 770 /data/commun            # notation octale (absolue)</span>
+<span class="c1"># chmod g+w,o-rx /data/commun       # notation symbolique (relative : + ajoute, - retire, = fixe)</span>
+<span class="c1"># chmod -R 770 /data/commun         # -R : récursif (à utiliser avec réflexion)</span>
+<span class="c1"># chown penthium:users /data        # changer propriétaire ET groupe</span>
+<span class="c1"># chown :users /data/commun         # changer seulement le groupe</span>
+</code></pre></div>
+<p>Symboles : <code>u g o a</code> (a = tous), <code>r w x</code>, et <code>X</code> (exécution seulement pour les répertoires ou fichiers déjà exécutables).</p>
+<h3 id="92-umask--les-droits-par-défaut-à-la-création">9.2 umask : les droits par défaut à la création</h3>
+<p>L'<strong>umask</strong> est <strong>soustrait</strong> des droits maximaux : <strong>666</strong> pour un fichier, <strong>777</strong> pour un répertoire.</p>
+<table>
+<thead>
+<tr>
+<th>umask</th>
+<th>Fichier créé</th>
+<th>Répertoire créé</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>022</code> (root, comptes de service)</td>
+<td>666 − 022 = <strong>644</strong></td>
+<td>777 − 022 = <strong>755</strong></td>
+</tr>
+<tr>
+<td><code>002</code> (utilisateurs standards RHEL)</td>
+<td>666 − 002 = <strong>664</strong></td>
+<td>777 − 002 = <strong>775</strong></td>
+</tr>
+<tr>
+<td><code>007</code></td>
+<td><strong>660</strong></td>
+<td><strong>770</strong></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">umask</span><span class="w">            </span><span class="c1"># afficher le masque courant</span>
+$<span class="w"> </span><span class="nb">umask</span><span class="w"> </span><span class="m">0007</span><span class="w">       </span><span class="c1"># le modifier (pour la session)</span>
+</code></pre></div>
+<p>Pour le rendre permanent, on ajoute la commande <code>umask</code> dans <code>~/.bashrc</code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Astuce</p>
+<p>Les fichiers n'ont jamais le droit <code>x</code> à la création : c'est pour ça que le maximum est 666 et pas 777.</p>
+</div>
+<h3 id="93-droits-spéciaux">9.3 Droits spéciaux</h3>
+<table>
+<thead>
+<tr>
+<th>Droit</th>
+<th>Octal</th>
+<th>Sur un fichier</th>
+<th>Sur un répertoire</th>
+<th>Symbole</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>SetUID</strong></td>
+<td>4---</td>
+<td>S'exécute avec les droits du <strong>propriétaire</strong> (ex : <code>/usr/bin/passwd</code>)</td>
+<td>Non utilisé</td>
+<td><code>s</code> dans la colonne user (<code>S</code> si pas de <code>x</code>)</td>
+</tr>
+<tr>
+<td><strong>SetGID</strong></td>
+<td>2---</td>
+<td>S'exécute avec les droits du <strong>groupe</strong></td>
+<td>Les fichiers créés <strong>héritent du groupe du dossier</strong> (projets partagés)</td>
+<td><code>s</code> dans la colonne group</td>
+</tr>
+<tr>
+<td><strong>Sticky bit</strong></td>
+<td>1---</td>
+<td>(usage historique, ignoré)</td>
+<td>Chacun ne peut supprimer <strong>que ses propres fichiers</strong> (et root) : ex <code>/tmp</code></td>
+<td><code>t</code> dans la colonne others (<code>T</code> si pas de <code>x</code>)</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="c1"># chmod 2770 /data/projet       # SetGID + rwxrwx---</span>
+<span class="c1"># chmod +t /data/depot          # sticky bit</span>
+<span class="c1"># chmod u+s /usr/local/bin/x    # SetUID</span>
+</code></pre></div>
+<p>Majuscule (<code>S</code>, <code>T</code>) = le droit spécial est posé <strong>mais sans <code>x</code></strong> en dessous.</p>
+<hr />
+<h2 id="10-services-et-journaux">10. Services et journaux</h2>
+<h3 id="101-gérer-les-services-avec-systemctl">10.1 Gérer les services avec <code>systemctl</code></h3>
+<p>Un <strong>service</strong> (ou <em>démon</em>) est un programme qui tourne en arrière-plan. <code>systemctl</code> pilote les <strong>unités</strong> systemd.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># systemctl status crond          # état + derniers logs (q pour quitter)</span>
+<span class="c1"># systemctl start crond           # démarrer maintenant</span>
+<span class="c1"># systemctl stop crond            # arrêter maintenant</span>
+<span class="c1"># systemctl restart crond         # arrêter puis redémarrer</span>
+<span class="c1"># systemctl enable crond          # démarrer AUTOMATIQUEMENT au boot</span>
+<span class="c1"># systemctl disable crond         # ne plus démarrer au boot</span>
+$<span class="w"> </span>systemctl<span class="w"> </span>is-enabled<span class="w"> </span>crond<span class="w">      </span><span class="c1"># enabled / disabled</span>
+<span class="c1"># systemctl enable --now crond    # enable + start en une commande</span>
+$<span class="w"> </span>systemctl<span class="w"> </span>list-units<span class="w">            </span><span class="c1"># lister les unités chargées (--all pour toutes)</span>
+</code></pre></div>
+<pre class="mermaid"><code>flowchart LR
+    subgraph MAINTENANT
+    A["start / stop"]
+    end
+    subgraph AU_BOOT["AU PROCHAIN DÉMARRAGE"]
+    B["enable / disable"]
+    end
+    A -. "n'affecte pas" .-&gt; B</code></pre>
+<div class="admonition warning">
+<p class="admonition-title">Piège : <code>start</code> ≠ <code>enable</code></p>
+<ul>
+<li><code>start</code> / <code>stop</code> agissent <strong>maintenant</strong>, mais sont oubliés au redémarrage.</li>
+<li><code>enable</code> / <code>disable</code> agissent <strong>au prochain démarrage</strong> (création/suppression d'un lien dans <code>/etc/systemd/system/multi-user.target.wants/</code>) mais <strong>ne démarrent ni n'arrêtent</strong> le service tout de suite.</li>
+</ul>
+</div>
+<h3 id="102-retrouver-les-éléments-dun-service-atelier-4">10.2 Retrouver les éléments d'un service (atelier 4)</h3>
+<p>Exemple avec le service SSH (sous Oracle Linux, il s'appelle <strong><code>sshd</code></strong>, pas <code>ssh</code>) :</p>
+<table>
+<thead>
+<tr>
+<th>Élément</th>
+<th>Où le trouver</th>
+<th>Pour <code>sshd</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Fichier de configuration systemd</strong></td>
+<td><code>systemctl status sshd</code> (ligne <code>Loaded:</code>) ou <code>systemctl show -p FragmentPath sshd</code></td>
+<td><code>/usr/lib/systemd/system/sshd.service</code></td>
+</tr>
+<tr>
+<td><strong>Binaire exécuté</strong></td>
+<td>Ligne <code>ExecStart=</code> du fichier ci-dessus (<code>systemctl cat sshd</code>)</td>
+<td><code>/usr/sbin/sshd</code></td>
+</tr>
+<tr>
+<td><strong>Fichier de configuration du démon</strong></td>
+<td><code>rpm -qc openssh-server</code>, <code>man sshd</code> (section FILES), ou <code>ls /etc/ssh/</code></td>
+<td><code>/etc/ssh/sshd_config</code></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><code>sshd_config</code> configure le <strong>serveur</strong> ; <code>ssh_config</code> configure le <strong>client</strong>.</li>
+<li>Pour <strong>modifier</strong> le fichier systemd, on le copie dans <code>/etc/systemd/system/sshd.service</code> (prioritaire), ou on utilise <code>systemctl edit --full sshd</code>.</li>
+</ul>
+<p><strong>Service cron</strong> (planification de tâches), nom : <strong><code>crond</code></strong>. Sujet de l'atelier : vérifier <code>systemctl is-enabled crond</code>, désactiver <code>systemctl disable crond</code>, redémarrer et vérifier (<code>inactive</code>, <code>disabled</code>), puis restaurer avec <code>systemctl enable crond</code> (et <code>start</code>).</p>
+<h3 id="103-les-journaux-logs--deux-services">10.3 Les journaux (logs) : deux services</h3>
+<pre class="mermaid"><code>flowchart LR
+    S["Services, noyau,&lt;br/&gt;programmes"] --&gt; J["journald&lt;br/&gt;base de données&lt;br/&gt;volatile: /run/log/journal"]
+    J --&gt; R["rsyslog&lt;br/&gt;écrit dans des fichiers&lt;br/&gt;/var/log/..."]
+    J --&gt; JC["journalctl&lt;br/&gt;lire les logs"]
+    R --&gt; F["fichiers de log durables"]
+    R -. "ou envoi" .-&gt; SRV["autre serveur rsyslog"]</code></pre>
+<ul>
+<li><strong>journald</strong> (via systemd) : reçoit les logs de <strong>tout</strong> ce que systemd gère. <code>systemctl status &lt;service&gt;</code> en affiche les dernières lignes. Configuration : <code>/etc/systemd/journald.conf</code>. Par défaut la base est <strong>volatile</strong> (perdue au redémarrage).</li>
+<li><strong>rsyslog</strong> : reçoit les logs de journald et les <strong>conserve dans des fichiers</strong> (durable).</li>
+</ul>
+<h3 id="104-journalctl">10.4 <code>journalctl</code></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># journalctl                          # tout (navigation comme less)</span>
+<span class="c1"># journalctl -f                       # suivre en temps réel</span>
+<span class="c1"># journalctl -u sshd                  # logs d'un service (-u : unit)</span>
+<span class="c1"># journalctl _PID=1                   # logs d'un processus (PID)</span>
+<span class="c1"># journalctl /usr/sbin/sshd           # logs d'un programme (son chemin)</span>
+<span class="c1"># journalctl -p err                   # par priorité (et plus grave)</span>
+<span class="c1"># journalctl -f /usr/sbin/sshd -p info   # options cumulables</span>
+</code></pre></div>
+<p><strong>Priorités</strong>, de la plus grave à la moins grave : <code>emerg</code> (0), <code>alert</code>, <code>crit</code>, <code>err</code>, <code>warning</code>, <code>notice</code>, <code>info</code>, <code>debug</code> (7).</p>
+<div class="admonition tip">
+<p class="admonition-title">Bonus</p>
+<p><code>journalctl -b</code> n'affiche que les logs du <strong>démarrage en cours</strong> ; <code>journalctl -b -1</code> ceux du démarrage précédent (si les logs sont persistants).</p>
+</div>
+<h3 id="105-rsyslog--facilities-et-priorités">10.5 rsyslog : facilities et priorités</h3>
+<p>rsyslog trie les messages avec une <strong>facility</strong> (source) et une <strong>priorité</strong>, et déclenche une <strong>action</strong> (le plus souvent écrire dans un fichier) :</p>
+<table>
+<thead>
+<tr>
+<th>Facility</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>auth</code>, <code>authpriv</code></td>
+<td>Authentification, contrôle d'accès (SSH...)</td>
+</tr>
+<tr>
+<td><code>daemon</code></td>
+<td>Processus système et applicatifs</td>
+</tr>
+<tr>
+<td><code>kern</code></td>
+<td>Noyau</td>
+</tr>
+<tr>
+<td><code>mail</code></td>
+<td>Services de messagerie</td>
+</tr>
+<tr>
+<td><code>user</code></td>
+<td>Par défaut</td>
+</tr>
+<tr>
+<td><code>local0</code> à <code>local7</code></td>
+<td>Libres, pour des programmes</td>
+</tr>
+<tr>
+<td><code>*</code> / <code>none</code></td>
+<td>Toutes / aucune</td>
+</tr>
+</tbody>
+</table>
+<p>Règles dans <code>/etc/rsyslog.conf</code> : <code>facility.priorité   fichier</code></p>
+<div class="highlight"><pre><span></span><code>auth,authpriv.*                 /var/log/auth.log
+*.*;auth,authpriv.none          -/var/log/syslog
+kern.*                          -/var/log/kern.log
+</code></pre></div>
+<p>Le <code>-</code> devant un chemin rend l'écriture <strong>asynchrone</strong>.</p>
+<p><strong>Tester avec <code>logger</code></strong> : <code># logger -p cron.info "message de test"</code> envoie un message à journald et rsyslog.</p>
+<h3 id="106-conserver-et-limiter-les-logs">10.6 Conserver et limiter les logs</h3>
+<ul>
+<li><strong>Rendre journald durable</strong> : créer le dossier <code>/var/log/journal</code> (puis redémarrer <code>systemd-journald</code> pour être sûr qu'il le prenne en compte).</li>
+<li><strong>Limiter l'espace</strong> : dans <code>/etc/systemd/journald.conf</code>, <code>SystemMaxUse=</code> (taille maximale totale) et <code>SystemMaxFileSize=</code> (taille par fichier). Par défaut, journald utilise <strong>10 %</strong> du système de fichiers.</li>
+<li>Si on garde tout dans journald, on peut arrêter rsyslog pour éviter les <strong>doublons</strong> : <code>systemctl disable rsyslog</code>.</li>
+<li>Certaines informations doivent être conservées un temps légal (ex : logs d'activité Internet en France).</li>
+</ul>
+<hr />
+<h2 id="11-analyser-le-système">11. Analyser le système</h2>
+<table>
+<thead>
+<tr>
+<th>Besoin</th>
+<th>Commande</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Version du système</td>
+<td><code>cat /etc/redhat-release</code></td>
+</tr>
+<tr>
+<td>Version du noyau et architecture</td>
+<td><code>uname -a</code></td>
+</tr>
+<tr>
+<td>Type de processeur</td>
+<td><code>lscpu</code></td>
+</tr>
+<tr>
+<td>Périphériques PCI / USB</td>
+<td><code>lspci</code> / <code>lsusb</code></td>
+</tr>
+<tr>
+<td>Disques, LVM, systèmes de fichiers</td>
+<td><code>fdisk -l</code>, <code>pvs</code>, <code>vgs</code>, <code>lvs</code>, <code>df -h</code>, <code>lsblk</code>, <code>blkid</code></td>
+</tr>
+<tr>
+<td>Taille d'un répertoire</td>
+<td><code>du -hs /chemin</code></td>
+</tr>
+<tr>
+<td>Détail d'un fichier / <strong>nature</strong> d'un fichier</td>
+<td><code>ls -l fichier</code> / <code>file fichier</code></td>
+</tr>
+<tr>
+<td>Qui utilise les fichiers d'un dossier</td>
+<td><code>lsof /chemin</code></td>
+</tr>
+<tr>
+<td>Processus en <strong>temps réel</strong></td>
+<td><code>top</code> (natif) ; <code>htop</code>, <code>atop</code>, <code>glances</code> (à installer)</td>
+</tr>
+<tr>
+<td>Lister les processus</td>
+<td><code>ps -ef</code></td>
+</tr>
+<tr>
+<td>Chercher un processus par nom (regex)</td>
+<td><code>pgrep -l &lt;motif&gt;</code></td>
+</tr>
+<tr>
+<td>Mémoire RAM et swap</td>
+<td><code>free -h</code></td>
+</tr>
+</tbody>
+</table>
+<p>Les outils <strong>proactifs</strong> surveillent en continu (top, atop, glances) ; les outils <strong>réactifs</strong> servent après un incident (lecture des logs).</p>
+<p>Lecture rapide de <strong><code>top</code></strong> : la 1re ligne donne le nombre de tâches ; <code>%Cpu(s)</code> la charge processeur (<code>id</code> = idle, inoccupé) ; <code>KiB Mem</code> / <code>KiB Swap</code> la mémoire ; en dessous, la liste des processus par consommation.</p>
+<hr />
+<h2 id="12-aide-mémoire-final-et-auto-évaluation">12. Aide-mémoire final et auto-évaluation</h2>
+<h3 id="121-fichiers-importants">12.1 Fichiers importants</h3>
+<table>
+<thead>
+<tr>
+<th>Fichier</th>
+<th>Rôle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/etc/default/grub</code></td>
+<td>Paramètres de GRUB (à modifier)</td>
+</tr>
+<tr>
+<td><code>/boot/grub2/grub.cfg</code></td>
+<td>Config GRUB générée (<strong>ne pas éditer</strong>)</td>
+</tr>
+<tr>
+<td><code>/boot/loader/entries/</code></td>
+<td>Entrées du menu GRUB</td>
+</tr>
+<tr>
+<td><code>/usr/lib/systemd/system/</code></td>
+<td>Fichiers de services d'origine</td>
+</tr>
+<tr>
+<td><code>/etc/systemd/system/</code></td>
+<td>Fichiers de services personnalisés (<strong>prioritaires</strong>), <code>default.target</code></td>
+</tr>
+<tr>
+<td><code>/etc/fstab</code></td>
+<td>Montages automatiques</td>
+</tr>
+<tr>
+<td><code>/etc/passwd</code>, <code>/etc/shadow</code></td>
+<td>Utilisateurs / mots de passe hachés</td>
+</tr>
+<tr>
+<td><code>/etc/group</code>, <code>/etc/gshadow</code></td>
+<td>Groupes</td>
+</tr>
+<tr>
+<td><code>/etc/sudoers</code></td>
+<td>Droits sudo (groupe <code>wheel</code>)</td>
+</tr>
+<tr>
+<td><code>/etc/resolv.conf</code></td>
+<td>Serveurs DNS</td>
+</tr>
+<tr>
+<td><code>/etc/yum.conf</code>, <code>/etc/yum.repos.d/</code></td>
+<td>Configuration de dnf, fichiers <code>.repo</code></td>
+</tr>
+<tr>
+<td><code>/etc/rsyslog.conf</code></td>
+<td>Règles de journalisation</td>
+</tr>
+<tr>
+<td><code>/etc/systemd/journald.conf</code></td>
+<td>Configuration de journald</td>
+</tr>
+<tr>
+<td><code>/etc/ssh/sshd_config</code></td>
+<td>Configuration du serveur SSH</td>
+</tr>
+<tr>
+<td><code>/etc/default/useradd</code>, <code>/etc/skel</code></td>
+<td>Défauts de <code>useradd</code>, modèle de répertoire personnel</td>
+</tr>
+</tbody>
+</table>
+<h3 id="122-auto-évaluation">12.2 Auto-évaluation</h3>
+<p>Essaie de répondre <strong>avant</strong> d'ouvrir la réponse.</p>
+<details class="question">
+<summary>1. Pourquoi ne faut-il pas modifier <code>/boot/grub2/grub.cfg</code> directement ?</summary>
+<p>Il est <strong>régénéré automatiquement</strong> (mise à jour du noyau, par exemple). On modifie <code>/etc/default/grub</code> (ou <code>/etc/grub.d/</code>) puis on lance <code>grub2-mkconfig -o /boot/grub2/grub.cfg</code>.</p>
+</details>
+<details class="question">
+<summary>2. Quelle différence entre <code>systemctl set-default</code> et <code>systemctl isolate</code> ?</summary>
+<p><code>set-default</code> change la cible utilisée à <strong>chaque démarrage</strong> ; <code>isolate</code> change de cible <strong>immédiatement</strong> mais n'est <strong>pas conservé</strong> au redémarrage.</p>
+</details>
+<details class="question">
+<summary>3. Comment démarrer en mode maintenance sans connaître le mot de passe root ?</summary>
+<p>Dans GRUB (touche <code>e</code>), remplacer <code>rhgb quiet</code> par <code>init=/bin/bash</code>, <code>Ctrl+x</code>, puis <code>mount -o remount,rw /</code>. Pense à <code>load_policy -i</code>, <code>touch /.autorelabel</code> et <code>sync</code>, puis extinction forcée.</p>
+</details>
+<details class="question">
+<summary>4. Pourquoi faut-il <code>mount -o remount,rw /</code> dans ce mode ?</summary>
+<p>Parce que la racine est montée en <strong>lecture seule</strong> (<code>ro</code> sur la ligne du noyau).</p>
+</details>
+<details class="question">
+<summary>5. Quelle est la différence entre un PV, un VG et un LV ?</summary>
+<p><strong>PV</strong> : partition/disque intégré à LVM. <strong>VG</strong> : réserve d'espace regroupant des PV. <strong>LV</strong> : « partition » découpée dans le VG, qu'on formate et monte.</p>
+</details>
+<details class="question">
+<summary>6. Tu as agrandi un LV avec <code>lvextend</code>, mais <code>df -h</code> montre toujours l'ancienne taille. Pourquoi ?</summary>
+<p>Le <strong>système de fichiers</strong> n'a pas été agrandi : <code>resize2fs</code> pour ext4, <code>xfs_growfs</code> pour XFS.</p>
+</details>
+<details class="question">
+<summary>7. Comment vérifier un système de fichiers XFS ?</summary>
+<p>Avec <strong><code>xfs_repair</code></strong> : <code>fsck.xfs</code> ne fait rien.</p>
+</details>
+<details class="question">
+<summary>8. Comment tester une nouvelle ligne de <code>/etc/fstab</code> sans risque ?</summary>
+<p><code>mount /point/de/montage</code> (uniquement ce point). Le cours déconseille <code>mount -a</code>, qui tente tout.</p>
+</details>
+<details class="question">
+<summary>9. Quelle est la différence entre <code>dnf</code> et <code>rpm</code> ?</summary>
+<p><code>dnf</code> <strong>télécharge</strong> depuis les dépôts et <strong>résout les dépendances</strong>, puis appelle <code>rpm</code>. <code>rpm</code> installe un fichier local et <strong>ne télécharge pas</strong> les dépendances.</p>
+</details>
+<details class="question">
+<summary>10. Que signifie <code>!</code> au début du hash dans <code>/etc/shadow</code> ?</summary>
+<p>Le mot de passe est <strong>verrouillé</strong> (<code>usermod -L</code> / <code>passwd -l</code>).</p>
+</details>
+<details class="question">
+<summary>11. Tu veux ajouter <code>alice</code> au groupe <code>compta</code> sans lui retirer ses autres groupes secondaires. Quelle commande ?</summary>
+<p><code>usermod -aG compta alice</code> (sans <code>-a</code>, les autres groupes secondaires seraient remplacés).</p>
+</details>
+<details class="question">
+<summary>12. Quels droits (en octal) donnent <code>rwxr-x---</code> ? Et quel umask produit ces droits sur un répertoire ?</summary>
+<p><strong>750</strong>. Sur un répertoire, 777 − 027 = 750 : umask <strong>027</strong>.</p>
+</details>
+<details class="question">
+<summary>13. À quoi sert le sticky bit sur un répertoire comme <code>/tmp</code> ?</summary>
+<p>Chacun ne peut supprimer/renommer que <strong>ses propres fichiers</strong> (et root), même si le répertoire est accessible en écriture à tous.</p>
+</details>
+<details class="question">
+<summary>14. Quelle différence entre <code>systemctl start crond</code> et <code>systemctl enable crond</code> ?</summary>
+<p><code>start</code> le lance <strong>maintenant</strong> ; <code>enable</code> le fera démarrer <strong>automatiquement au boot</strong>. Les deux sont indépendants (<code>enable --now</code> fait les deux).</p>
+</details>
+<details class="question">
+<summary>15. Où sont conservés les logs de journald par défaut, et comment les rendre durables ?</summary>
+<p>Dans <code>/run/log/journal</code> (volatile, perdus au redémarrage). Pour les conserver : créer <code>/var/log/journal</code>.</p>
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

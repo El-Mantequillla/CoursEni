@@ -1,0 +1,1738 @@
+
+<!doctype html>
+<html lang="fr" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../tp2-installation-serveur/">
+      
+      
+        <link rel="next" href="../tp4-demarrage-et-services/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>TP3 : Configurer GRUB et démarrer en mode maintenance - Mes notes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#tp3--configurer-grub-et-démarrer-en-mode-maintenance" class="md-skip">
+          Aller au contenu
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="En-tête">
+    <a href="../../.." title="Mes notes" class="md-header__button md-logo" aria-label="Mes notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Mes notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              TP3 : Configurer GRUB et démarrer en mode maintenance
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Rechercher" placeholder="Rechercher" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Recherche">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Effacer" aria-label="Effacer" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initialisation de la recherche
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Mes notes" class="md-nav__button md-logo" aria-label="Mes notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Mes notes
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cours et TP ENI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Administration Linux
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Administration Linux
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cours-admin-linux/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Administration Linux : fiche de révision
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../memo-chmod/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mémo : chmod, les droits sous Linux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../memo-commandes-stockage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mémo commandes : stockage, LVM, montage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../memo-systeme-fichiers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mémo : le système de fichiers sous Linux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../memo-types-volumes-partitions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mémo : partitions, LVM, systèmes de fichiers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    TP
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index%20%281%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tutos Administration Linux (M02)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tp1-installation-graphique/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP1 : Installer Oracle Linux avec bureau GNOME (srvclient)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tp10-gestion-logs%20%281%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP10 : Gestion des logs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tp11-analyse-systeme%20%281%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP11 : Analyse du système
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tp2-installation-serveur/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP2 : Installer Oracle Linux en mode serveur, sans interface graphique (serveur)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP3 : Configurer GRUB et démarrer en mode maintenance
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP3 : Configurer GRUB et démarrer en mode maintenance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#partie-1--afficher-le-menu-grub-au-moins-3-secondes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Partie 1 : afficher le menu GRUB au moins 3 secondes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#partie-2--démarrer-en-mode-maintenance-temporaire" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Partie 2 : démarrer en mode maintenance (temporaire)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#partie-3--intervenir-sans-connaître-le-mot-de-passe-root" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Partie 3 : intervenir sans connaître le mot de passe root
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Partie 3 : intervenir sans connaître le mot de passe root">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#étape-1--modifier-la-ligne-du-noyau" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 1 : modifier la ligne du noyau
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#étape-2--remonter-la-racine-en-écriture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 2 : remonter la racine en écriture
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#étape-3--créer-un-fichier-dans-root" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 3 : créer un fichier dans /root
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#étape-4--terminer-proprement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 4 : terminer proprement
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#étape-5--redémarrer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 5 : redémarrer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#les-deux-questions-de-lénoncé" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Les deux questions de l'énoncé
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#si-tu-arrives-dans--entering-emergency-mode-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Si tu arrives dans « Entering emergency mode »
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#à-retenir" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        À retenir
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tp4-demarrage-et-services/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP4 : Gestion du démarrage et des services
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tp5-gestion-reseau/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP5 : Gestion réseau
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tp6-depots-mises-a-jour/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP6 : Dépôts, mises à jour et installation de logiciels
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tp7-gestion-stockage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP7 : Gestion du stockage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tp8-gestion-utilisateurs%20%281%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP8 : Gestion des utilisateurs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tp9-gestion-permissions%20%281%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP9 : Gestion des permissions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Administration Windows
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Administration Windows
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Administration-Windows/fiche-revision-windows-ad/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fiche de révision — Administration Windows et Active Directory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Administration-Windows/raccourcis-claviers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Raccourcis clavier Windows / Windows Server — Administration système et réseau
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    TP
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Administration-Windows/TP/tp01-creation-infrastructure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP1 — Création de l'infrastructure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Administration-Windows/TP/tp02-creation-domaine-ad/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP2 — Création d'un domaine Active Directory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Administration-Windows/TP/tp03-gestion-domaine-ad/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP3 — Gestion d'un domaine Active Directory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Administration-Windows/TP/tp04-gestion-ressources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP4 — Gestion de ressources
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Administration-Windows/TP/tp05-strategies-de-groupe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP5 — Les stratégies de groupe (GPO)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#partie-1--afficher-le-menu-grub-au-moins-3-secondes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Partie 1 : afficher le menu GRUB au moins 3 secondes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#partie-2--démarrer-en-mode-maintenance-temporaire" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Partie 2 : démarrer en mode maintenance (temporaire)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#partie-3--intervenir-sans-connaître-le-mot-de-passe-root" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Partie 3 : intervenir sans connaître le mot de passe root
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Partie 3 : intervenir sans connaître le mot de passe root">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#étape-1--modifier-la-ligne-du-noyau" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 1 : modifier la ligne du noyau
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#étape-2--remonter-la-racine-en-écriture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 2 : remonter la racine en écriture
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#étape-3--créer-un-fichier-dans-root" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 3 : créer un fichier dans /root
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#étape-4--terminer-proprement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 4 : terminer proprement
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#étape-5--redémarrer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 5 : redémarrer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#les-deux-questions-de-lénoncé" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Les deux questions de l'énoncé
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#si-tu-arrives-dans--entering-emergency-mode-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Si tu arrives dans « Entering emergency mode »
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#à-retenir" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        À retenir
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="tp3--configurer-grub-et-démarrer-en-mode-maintenance">TP3 : Configurer GRUB et démarrer en mode maintenance</h1>
+<div class="admonition abstract">
+<p class="admonition-title">En bref</p>
+<p><strong>Objectifs</strong> : gérer le chargeur d'amorçage <strong>GRUB</strong> et le démarrage du système.
+<strong>Prérequis</strong> : avoir terminé les TP1 et 2.
+<strong>Machine</strong> : la VM graphique (nommée <code>srv-gui</code> dans l'énoncé, c'est ton <code>srvclient</code>).
+<strong>Durée</strong> : 30 à 45 min.</p>
+</div>
+<p>Ce TP a <strong>trois parties</strong> :</p>
+<pre class="mermaid"><code>flowchart LR
+    A["Partie 1&lt;br/&gt;Configurer GRUB&lt;br/&gt;(permanent)"] --&gt; B["Partie 2&lt;br/&gt;Mode maintenance&lt;br/&gt;avec mot de passe&lt;br/&gt;(temporaire)"]
+    B --&gt; C["Partie 3&lt;br/&gt;Mode maintenance&lt;br/&gt;sans mot de passe&lt;br/&gt;(init=/bin/bash)"]</code></pre>
+<div class="admonition info">
+<p class="admonition-title">Rappel : le chemin du démarrage</p>
+<p>BIOS/UEFI, puis <strong>GRUB</strong>, puis le <strong>noyau</strong> (vmlinuz + initramfs), puis <strong>systemd</strong> (PID 1), puis une <strong>cible</strong> (graphical, multi-user...).</p>
+</div>
+<hr />
+<h2 id="partie-1--afficher-le-menu-grub-au-moins-3-secondes">Partie 1 : afficher le menu GRUB au moins 3 secondes</h2>
+<p><strong>Consigne</strong> : le menu de GRUB doit apparaître obligatoirement à chaque redémarrage pendant au moins 3 secondes.</p>
+<p><strong>Méthode du cours</strong> (chapitre 4.1-4.2) : le cours dit bien que l'affichage du menu se <strong>paramètre</strong>, et que ça se fait dans <code>/etc/default/grub</code>, <strong>jamais</strong> dans <code>/boot/grub2/grub.cfg</code> (ce dernier est régénéré automatiquement) — mais il ne donne pas le <strong>nom exact</strong> du paramètre à modifier pour la durée d'affichage.</p>
+<div class="admonition info">
+<p class="admonition-title">Les noms de paramètres ci-dessous ne sont pas dans le cours</p>
+<p><code>GRUB_TIMEOUT</code> et <code>GRUB_TIMEOUT_STYLE</code> sont les vrais paramètres GRUB2 à utiliser (connaissance générale GRUB), mais ton cours ne les nomme pas explicitement : il se contente de dire que « selon la configuration de GRUB, il est possible de paramétrer l'affichage du menu », sans détailler la syntaxe. La logique (modifier <code>/etc/default/grub</code>, pas <code>grub.cfg</code>) vient bien du cours ; les noms de variables précis sont une connaissance technique en plus.</p>
+</div>
+<ol>
+<li>Passe root : <code>$ su -</code></li>
+<li>Ouvre le fichier :</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># vi /etc/default/grub</span>
+</code></pre></div>
+<ol>
+<li>Vérifie ou ajoute ces deux lignes :</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="na">GRUB_TIMEOUT</span><span class="o">=</span><span class="s">5</span>
+<span class="na">GRUB_TIMEOUT_STYLE</span><span class="o">=</span><span class="s">menu</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Ligne</th>
+<th>Rôle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GRUB_TIMEOUT=5</code></td>
+<td>Le menu reste affiché 5 secondes (au moins 3 requises)</td>
+</tr>
+<tr>
+<td><code>GRUB_TIMEOUT_STYLE=menu</code></td>
+<td>Force l'affichage du menu (au lieu de le cacher)</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Le menu s'affichait peut-être déjà</p>
+<p>Sur Oracle Linux 8, le menu s'affiche par défaut avec <code>GRUB_TIMEOUT=5</code>. Ajouter <code>GRUB_TIMEOUT_STYLE=menu</code> <strong>garantit</strong> simplement le comportement demandé. Ne touche pas à <code>GRUB_DISABLE_SUBMENU</code> : il n'a rien à voir avec la consigne.</p>
+</div>
+<ol>
+<li><strong>Enregistre</strong> (dans <code>vi</code> : <code>Échap</code>, puis <code>:wq</code>, puis Entrée ; dans <code>nano</code> : <code>Ctrl+O</code>, Entrée, <code>Ctrl+X</code>).</li>
+<li><strong>Régénère</strong> la configuration :</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># grub2-mkconfig -o /boot/grub2/grub.cfg</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Piège : <code>grub2-mkconfig</code></p>
+<p>Le cours écrit <code>grub-mkconfig</code>, mais sur Oracle Linux / RHEL la commande est <strong><code>grub2-mkconfig</code></strong>. Ce chemin est valable en BIOS ; en UEFI, <code>grub.cfg</code> est sous <code>/boot/efi/EFI/...</code>.</p>
+</div>
+<ol>
+<li><strong>Vérifie</strong> (avant même de redémarrer) :</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1"># grep -E "^GRUB_TIMEOUT" /etc/default/grub</span>
+<span class="c1"># grep -E "timeout" /boot/grub2/grub.cfg</span>
+</code></pre></div>
+<ol>
+<li>Redémarre avec <code>reboot</code>.</li>
+</ol>
+<p><strong>Résultat attendu</strong> : un écran noir avec la liste des noyaux et, en bas, le décompte :</p>
+<div class="highlight"><pre><span></span><code>The selected entry will be started automatically in 5s.
+</code></pre></div>
+<hr />
+<h2 id="partie-2--démarrer-en-mode-maintenance-temporaire">Partie 2 : démarrer en mode maintenance (temporaire)</h2>
+<p><strong>Consigne</strong> : modifier interactivement le lancement du noyau pour démarrer directement en mode maintenance.</p>
+<p>« <strong>Interactivement</strong> » veut dire <strong>depuis le menu GRUB</strong>, avec la touche <code>e</code>. Cette modification n'est valable que pour <strong>ce démarrage</strong>.</p>
+<ol>
+<li>Redémarre la VM. Dès que le menu GRUB s'affiche, <strong>appuie sur une touche</strong> pour arrêter le décompte.</li>
+<li>Sélectionne l'entrée à démarrer (flèches <code>↑</code> <code>↓</code>), puis appuie sur <strong><code>e</code></strong> (edit).</li>
+<li>Repère la ligne qui commence par <strong><code>linux</code></strong> (elle est longue, elle passe sur plusieurs lignes à l'écran).</li>
+<li>À la <strong>fin</strong> de cette ligne :<ul>
+<li><strong>retire</strong> <code>rhgb quiet</code> (s'ils sont présents) ;</li>
+<li><strong>ajoute</strong> <code>single</code>.</li>
+</ul>
+</li>
+</ol>
+<div class="highlight"><pre><span></span><code>linux ($root)/vmlinuz-... root=/dev/mapper/ol-root ro crashkernel=auto resume=/dev/mapper/ol-swap rd.lvm.lv=ol/root rd.lvm.lv=ol/swap single
+</code></pre></div>
+<ol>
+<li>Appuie sur <strong><code>Ctrl+x</code></strong> pour démarrer avec cette ligne.</li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Piège : le clavier est en QWERTY</p>
+<p>À ce stade, le clavier est en QWERTY. Vérifie ce que tu tapes avant de lancer.</p>
+</div>
+<ol>
+<li>Le système démarre en mode maintenance (<code>rescue.target</code>) et demande le <strong>mot de passe root</strong> (« Give root password for maintenance »). Saisis-le.</li>
+</ol>
+<p><strong>Résultat attendu</strong> : un prompt <code>#</code> en mode texte, sans interface graphique, sans réseau ni services.</p>
+<ol>
+<li>Pour <strong>sortir</strong> du mode maintenance et reprendre le démarrage normal : <strong><code>Ctrl+d</code></strong>.</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Pour vérifier que la modification était bien temporaire</p>
+<p>Redémarre normalement : le système revient à <code>graphical.target</code> (<code>systemctl get-default</code>). La ligne du noyau n'a <strong>pas</strong> été modifiée définitivement.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Pourquoi <code>single</code> ?</p>
+<p>Le paramètre <code>single</code> indique au noyau de lancer systemd sur la cible de maintenance (<code>rescue.target</code>) au lieu de la cible par défaut.</p>
+</div>
+<hr />
+<h2 id="partie-3--intervenir-sans-connaître-le-mot-de-passe-root">Partie 3 : intervenir sans connaître le mot de passe root</h2>
+<p><strong>Scénario</strong> : tu ne connais <strong>aucun mot de passe</strong> de la VM. Le but est d'obtenir un accès pour modifier le système de fichiers racine <strong>sans mot de passe</strong>.</p>
+<p>La méthode <code>single</code> (partie 2) est <strong>impossible</strong> ici : elle demande le mot de passe root. On utilise la méthode « brutale » : remplacer le <strong>premier processus</strong> par un simple <strong>shell</strong>.</p>
+<pre class="mermaid"><code>flowchart LR
+    A["Noyau"] --&gt;|"normalement"| B["systemd (PID 1)"]
+    A --&gt;|"avec init=/bin/bash"| C["bash (PID 1)&lt;br/&gt;aucun mot de passe"]</code></pre>
+<h3 id="étape-1--modifier-la-ligne-du-noyau">Étape 1 : modifier la ligne du noyau</h3>
+<ol>
+<li>Redémarre, arrête le décompte GRUB, sélectionne l'entrée, touche <strong><code>e</code></strong>.</li>
+<li>Sur la ligne <code>linux ...</code>, <strong>retire</strong> <code>rhgb quiet</code> (ou au moins <code>quiet</code>) et <strong>ajoute</strong> à la fin :</li>
+</ol>
+<div class="highlight"><pre><span></span><code>init=/bin/bash
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Attention à l'orthographe</p>
+<p>Écris <strong>exactement</strong> <code>init=/bin/bash</code> : <code>init</code> en <strong>minuscules</strong>, avec le <code>/</code> devant <code>bin</code>. Avec <code>init=bin/bash</code> ou <code>INIT=/bin/bash</code>, le système ne trouve pas le shell et tombe dans le shell d'<strong>urgence</strong> de l'initramfs (voir plus bas).</p>
+</div>
+<ol>
+<li><strong><code>Ctrl+x</code></strong> pour démarrer, puis <strong>Entrée</strong> quand le démarrage est terminé pour obtenir le prompt.</li>
+</ol>
+<h3 id="étape-2--remonter-la-racine-en-écriture">Étape 2 : remonter la racine en écriture</h3>
+<p>Au départ, la racine est en <strong>lecture seule</strong> (<code>ro</code> sur la ligne du noyau). Sans cette étape, aucune écriture n'est possible.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># /usr/sbin/load_policy -i</span>
+<span class="c1"># mount -o remount,rw /</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Commande</th>
+<th>Rôle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>load_policy -i</code></td>
+<td>Charge la politique <strong>SELinux</strong> (sans systemd, elle n'est pas chargée) pour que les fichiers créés aient la bonne étiquette</td>
+</tr>
+<tr>
+<td><code>mount -o remount,rw /</code></td>
+<td>Remonte <code>/</code> en <strong>lecture-écriture</strong> sans le démonter</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Le tiret de l'énoncé</p>
+<p>L'énoncé écrit <code>mount –o remount,rw /</code> avec un tiret long copié-collé. Tape un tiret normal : <code>mount -o remount,rw /</code>.</p>
+</div>
+<h3 id="étape-3--créer-un-fichier-dans-root">Étape 3 : créer un fichier dans <code>/root</code></h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># touch /root/test.txt</span>
+<span class="c1"># ls -l /root</span>
+</code></pre></div>
+<p><code>ls -l /root</code> doit montrer <code>test.txt</code>.</p>
+<h3 id="étape-4--terminer-proprement">Étape 4 : terminer proprement</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># touch /.autorelabel</span>
+<span class="c1"># sync</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Commande</th>
+<th>Rôle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>touch /.autorelabel</code></td>
+<td>Demande à SELinux de <strong>recalculer les étiquettes</strong> de tout le système au prochain démarrage</td>
+</tr>
+<tr>
+<td><code>sync</code></td>
+<td><strong>Écrit sur le disque</strong> ce qui est encore dans le cache RAM</td>
+</tr>
+</tbody>
+</table>
+<h3 id="étape-5--redémarrer">Étape 5 : redémarrer</h3>
+<p>Comme systemd n'est pas lancé, <code>reboot</code> ne fonctionne pas normalement. Comme l'indique le cours : <strong>extinction forcée</strong> de la VM depuis l'hyperviseur, puis redémarrage normal.</p>
+<div class="admonition info">
+<p class="admonition-title">Le premier démarrage est plus long</p>
+<p>À cause de <code>/.autorelabel</code>, SELinux <strong>relabellise</strong> tout le disque, puis la machine redémarre <strong>toute seule</strong> une seconde fois. Laisse-la faire.</p>
+</div>
+<h3 id="les-deux-questions-de-lénoncé">Les deux questions de l'énoncé</h3>
+<p><strong>« Cela a-t-il fonctionné ? »</strong> Juste après <code>touch</code>, <code>ls -l /root</code> montre le fichier : oui, l'écriture a réussi. Mais le fichier n'est <strong>réellement sur le disque</strong> que si <code>sync</code> a été fait avant l'extinction forcée.</p>
+<p><strong>« Pouvez-vous afficher le fichier créé, en tant que root ? »</strong> Connecte-toi normalement en root (<code>su -</code> ou connexion root) et lance :</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># ls -l /root</span>
+<span class="c1"># ls -Z /root/test.txt</span>
+</code></pre></div>
+<p>Si tu as fait <code>sync</code>, le fichier est là. Sans <code>sync</code>, il risque d'avoir disparu : c'est ce que l'énoncé veut te faire constater.</p>
+<h3 id="si-tu-arrives-dans--entering-emergency-mode-">Si tu arrives dans « Entering emergency mode »</h3>
+<p>Prompt <code>:/#</code>, message « Entering emergency mode. Exit the shell to continue » et <code>touch: command not found</code> : tu es dans le shell d'<strong>urgence de l'initramfs</strong>, pas dans le vrai système. La ligne <code>init=</code> était sûrement mal écrite.</p>
+<p>Solution rapide (la vraie racine est dans <code>/sysroot</code>) :</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># ls /sysroot</span>
+<span class="c1"># mount -o remount,rw /sysroot</span>
+<span class="c1"># chroot /sysroot</span>
+<span class="c1"># touch /root/test.txt</span>
+<span class="c1"># touch /.autorelabel</span>
+<span class="c1"># exit</span>
+</code></pre></div>
+<p>Sinon, redémarre et relis bien la ligne dans l'éditeur GRUB avant <code>Ctrl+x</code>.</p>
+<h2 id="à-retenir">À retenir</h2>
+<ul>
+<li>On modifie <strong><code>/etc/default/grub</code></strong>, puis on régénère avec <strong><code>grub2-mkconfig</code></strong>. Jamais <code>grub.cfg</code> à la main.</li>
+<li>Touche <strong><code>e</code></strong> dans GRUB : modification <strong>temporaire</strong> de la ligne du noyau (<code>Ctrl+x</code> pour démarrer).</li>
+<li><strong><code>single</code></strong> : mode maintenance avec mot de passe root. <strong><code>init=/bin/bash</code></strong> : accès sans mot de passe.</li>
+<li>Après <code>init=/bin/bash</code> : <code>mount -o remount,rw /</code>, puis <code>sync</code>, et extinction forcée.</li>
+<li>Sans mot de passe root dans GRUB, n'importe qui avec un accès <strong>physique</strong> à la machine peut la prendre en main : c'est pour ça que l'accès physique est un enjeu de sécurité.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

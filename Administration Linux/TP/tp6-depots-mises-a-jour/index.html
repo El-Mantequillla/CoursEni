@@ -1,0 +1,2319 @@
+
+<!doctype html>
+<html lang="fr" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../tp5-gestion-reseau/">
+      
+      
+        <link rel="next" href="../tp7-gestion-stockage/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>TP6 : Dépôts, mises à jour et installation de logiciels - Mes notes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#tp6--dépôts-mises-à-jour-et-installation-de-logiciels" class="md-skip">
+          Aller au contenu
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="En-tête">
+    <a href="../../.." title="Mes notes" class="md-header__button md-logo" aria-label="Mes notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Mes notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              TP6 : Dépôts, mises à jour et installation de logiciels
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Rechercher" placeholder="Rechercher" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Recherche">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Effacer" aria-label="Effacer" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initialisation de la recherche
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Mes notes" class="md-nav__button md-logo" aria-label="Mes notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Mes notes
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cours et TP ENI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Administration Linux
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Administration Linux
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cours-admin-linux/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Administration Linux : fiche de révision
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../memo-chmod/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mémo : chmod, les droits sous Linux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../memo-commandes-stockage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mémo commandes : stockage, LVM, montage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../memo-systeme-fichiers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mémo : le système de fichiers sous Linux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../memo-types-volumes-partitions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mémo : partitions, LVM, systèmes de fichiers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    TP
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index%20%281%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tutos Administration Linux (M02)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tp1-installation-graphique/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP1 : Installer Oracle Linux avec bureau GNOME (srvclient)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tp10-gestion-logs%20%281%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP10 : Gestion des logs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tp11-analyse-systeme%20%281%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP11 : Analyse du système
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tp2-installation-serveur/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP2 : Installer Oracle Linux en mode serveur, sans interface graphique (serveur)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tp3-grub-mode-maintenance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP3 : Configurer GRUB et démarrer en mode maintenance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tp4-demarrage-et-services/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP4 : Gestion du démarrage et des services
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tp5-gestion-reseau/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP5 : Gestion réseau
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP6 : Dépôts, mises à jour et installation de logiciels
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP6 : Dépôts, mises à jour et installation de logiciels
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-faire-pointer-les-dépôts-vers-lurl-par-défaut-pas-les-miroirs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Faire pointer les dépôts vers l'URL par défaut (pas les miroirs)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Faire pointer les dépôts vers l&#39;URL par défaut (pas les miroirs)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#comprendre-la-différence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comprendre la différence
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#où-regarder" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Où regarder
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-trouver-de-quel-dépôt-vient-firefox" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Trouver de quel dépôt vient firefox
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-mettre-à-jour-uniquement-le-noyau-puis-redémarrer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Mettre à jour uniquement le noyau, puis redémarrer
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Mettre à jour uniquement le noyau, puis redémarrer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#avant-de-commencer--noter-la-version-actuelle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Avant de commencer : noter la version actuelle
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mettre-à-jour-seulement-le-noyau" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mettre à jour seulement le noyau
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#redémarrer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Redémarrer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#répondre-aux-questions-de-lénoncé" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Répondre aux questions de l'énoncé
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-quel-paquet-fournit-dayjpg--peut-il-être-mis-à-jour-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Quel paquet fournit day.jpg ? Peut-il être mis à jour ?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Quel paquet fournit day.jpg ? Peut-il être mis à jour ?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#comprendre-la-sortie-souvent-longue-et-déroutante" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comprendre la sortie (souvent longue et déroutante)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#peut-il-être-mis-à-jour-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Peut-il être mis à jour ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-mettre-à-jour-tout-le-système" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Mettre à jour tout le système
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Mettre à jour tout le système">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#compter-les-paquets-mis-à-jour" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Compter les paquets mis à jour
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bonus-1--compiler-vim-depuis-les-sources-sans-linstaller" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bonus 1 : compiler VIM depuis les sources (sans l'installer)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Bonus 1 : compiler VIM depuis les sources (sans l&#39;installer)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pourquoi-ces-étapes-et-comment-les-retrouver-soi-même" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pourquoi ces étapes, et comment les retrouver soi-même
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#étape-1--récupérer-les-sources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 1 : récupérer les sources
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#étape-2--installer-les-outils-de-compilation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 2 : installer les outils de compilation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#étape-3--configurer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 3 : configurer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#étape-4--compiler" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 4 : compiler
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#étape-5--vérifier-sans-installer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 5 : vérifier, sans installer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#et-make-test-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Et make test ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bonus-2--installer-turbovnc-depuis-un-paquet-rpm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bonus 2 : installer TurboVNC depuis un paquet RPM
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Bonus 2 : installer TurboVNC depuis un paquet RPM">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#étape-1--trouver-le-fichier-rpm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 1 : trouver le fichier RPM
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#étape-2--télécharger-sur-la-vm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 2 : télécharger sur la VM
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#étape-3--installer-avec-rpm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 3 : installer avec rpm
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#étape-4--vérifier-que-vncviewer-fonctionne" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 4 : vérifier que vncviewer fonctionne
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#étape-5--si-la-commande-nest-pas-trouvée" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 5 : si la commande n'est pas trouvée
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#à-retenir" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        À retenir
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tp7-gestion-stockage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP7 : Gestion du stockage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tp8-gestion-utilisateurs%20%281%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP8 : Gestion des utilisateurs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tp9-gestion-permissions%20%281%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP9 : Gestion des permissions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Administration Windows
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Administration Windows
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Administration-Windows/fiche-revision-windows-ad/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fiche de révision — Administration Windows et Active Directory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Administration-Windows/raccourcis-claviers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Raccourcis clavier Windows / Windows Server — Administration système et réseau
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    TP
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Administration-Windows/TP/tp01-creation-infrastructure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP1 — Création de l'infrastructure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Administration-Windows/TP/tp02-creation-domaine-ad/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP2 — Création d'un domaine Active Directory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Administration-Windows/TP/tp03-gestion-domaine-ad/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP3 — Gestion d'un domaine Active Directory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Administration-Windows/TP/tp04-gestion-ressources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP4 — Gestion de ressources
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Administration-Windows/TP/tp05-strategies-de-groupe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP5 — Les stratégies de groupe (GPO)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-faire-pointer-les-dépôts-vers-lurl-par-défaut-pas-les-miroirs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Faire pointer les dépôts vers l'URL par défaut (pas les miroirs)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Faire pointer les dépôts vers l&#39;URL par défaut (pas les miroirs)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#comprendre-la-différence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comprendre la différence
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#où-regarder" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Où regarder
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-trouver-de-quel-dépôt-vient-firefox" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Trouver de quel dépôt vient firefox
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-mettre-à-jour-uniquement-le-noyau-puis-redémarrer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Mettre à jour uniquement le noyau, puis redémarrer
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Mettre à jour uniquement le noyau, puis redémarrer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#avant-de-commencer--noter-la-version-actuelle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Avant de commencer : noter la version actuelle
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mettre-à-jour-seulement-le-noyau" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mettre à jour seulement le noyau
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#redémarrer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Redémarrer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#répondre-aux-questions-de-lénoncé" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Répondre aux questions de l'énoncé
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-quel-paquet-fournit-dayjpg--peut-il-être-mis-à-jour-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Quel paquet fournit day.jpg ? Peut-il être mis à jour ?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Quel paquet fournit day.jpg ? Peut-il être mis à jour ?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#comprendre-la-sortie-souvent-longue-et-déroutante" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comprendre la sortie (souvent longue et déroutante)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#peut-il-être-mis-à-jour-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Peut-il être mis à jour ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-mettre-à-jour-tout-le-système" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Mettre à jour tout le système
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Mettre à jour tout le système">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#compter-les-paquets-mis-à-jour" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Compter les paquets mis à jour
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bonus-1--compiler-vim-depuis-les-sources-sans-linstaller" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bonus 1 : compiler VIM depuis les sources (sans l'installer)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Bonus 1 : compiler VIM depuis les sources (sans l&#39;installer)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pourquoi-ces-étapes-et-comment-les-retrouver-soi-même" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pourquoi ces étapes, et comment les retrouver soi-même
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#étape-1--récupérer-les-sources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 1 : récupérer les sources
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#étape-2--installer-les-outils-de-compilation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 2 : installer les outils de compilation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#étape-3--configurer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 3 : configurer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#étape-4--compiler" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 4 : compiler
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#étape-5--vérifier-sans-installer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 5 : vérifier, sans installer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#et-make-test-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Et make test ?
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bonus-2--installer-turbovnc-depuis-un-paquet-rpm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bonus 2 : installer TurboVNC depuis un paquet RPM
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Bonus 2 : installer TurboVNC depuis un paquet RPM">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#étape-1--trouver-le-fichier-rpm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 1 : trouver le fichier RPM
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#étape-2--télécharger-sur-la-vm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 2 : télécharger sur la VM
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#étape-3--installer-avec-rpm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 3 : installer avec rpm
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#étape-4--vérifier-que-vncviewer-fonctionne" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 4 : vérifier que vncviewer fonctionne
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#étape-5--si-la-commande-nest-pas-trouvée" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 5 : si la commande n'est pas trouvée
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#à-retenir" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        À retenir
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="tp6--dépôts-mises-à-jour-et-installation-de-logiciels">TP6 : Dépôts, mises à jour et installation de logiciels</h1>
+<div class="admonition abstract">
+<p class="admonition-title">En bref</p>
+<p><strong>Objectifs</strong> : configurer les dépôts dnf, identifier l'origine de paquets, mettre à jour le noyau seul puis tout le système, et (en bonus) installer un logiciel par compilation et par RPM.
+<strong>Prérequis</strong> : avoir terminé l'atelier 5.
+<strong>Durée</strong> : 45 min à 1 h, bonus compris.</p>
+</div>
+<p>Ce TP mélange plusieurs notions déjà vues séparément (chapitre 6 de la fiche de révision : dnf, rpm, dépôts). Ici on les combine, avec des pièges concrets rencontrés en TP.</p>
+<pre class="mermaid"><code>flowchart LR
+    A["1. Config dépôts&lt;br/&gt;baseurl vs mirrorlist"] --&gt; B["2. D'où vient firefox ?"]
+    B --&gt; C["3. MAJ noyau seul&lt;br/&gt;+ reboot"]
+    C --&gt; D["4. D'où vient day.jpg ?"]
+    D --&gt; E["5. MAJ complète&lt;br/&gt;du système"]
+    E --&gt; F["Bonus : compiler VIM&lt;br/&gt;+ installer via RPM"]</code></pre>
+<hr />
+<h2 id="1-faire-pointer-les-dépôts-vers-lurl-par-défaut-pas-les-miroirs">1. Faire pointer les dépôts vers l'URL par défaut (pas les miroirs)</h2>
+<h3 id="comprendre-la-différence">Comprendre la différence</h3>
+<p>Un dépôt dnf peut être interrogé de deux façons, jamais les deux en même temps dans un même fichier :</p>
+<table>
+<thead>
+<tr>
+<th>Ligne dans le <code>.repo</code></th>
+<th>Rôle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mirrorlist=...</code></td>
+<td>Pointe vers une <strong>liste</strong> de serveurs miroirs ; dnf en choisit un</td>
+</tr>
+<tr>
+<td><code>baseurl=...</code></td>
+<td>Pointe <strong>directement</strong> vers <strong>un</strong> serveur précis (l'« URL par défaut »)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="où-regarder">Où regarder</h3>
+<p>Les dépôts sont déclarés dans des fichiers <code>.repo</code> sous <code>/etc/yum.repos.d/</code>.</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>ls<span class="w"> </span>/etc/yum.repos.d/
+</code></pre></div>
+<p>Pour savoir lesquels utilisent encore <code>mirrorlist</code> :</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># grep -l mirrorlist /etc/yum.repos.d/*.repo</span>
+</code></pre></div>
+<ul>
+<li><strong>Si cette commande renvoie des noms de fichiers</strong> : ouvre chacun (<code>vi</code> ou <code>nano</code>), commente la ligne <code>mirrorlist=...</code> (ajoute un <code>#</code> devant) et vérifie/ajoute une ligne <code>baseurl=...</code> active en dessous.</li>
+<li><strong>Si elle ne renvoie rien</strong> (aucun résultat) : c'est que tes dépôts n'utilisent déjà <strong>que</strong> <code>baseurl</code>. Sur Oracle Linux, c'est le cas par défaut : les fichiers <code>oracle-linux-ol8.repo</code> etc. pointent nativement vers <code>baseurl=https://yum.oracle.com/...</code>. La consigne peut donc déjà être respectée sans rien changer.</li>
+</ul>
+<p>Pour vérifier concrètement le contenu d'un fichier avant de conclure quoi que ce soit :</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># cat /etc/yum.repos.d/oracle-linux-ol8.repo</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Piège : <code>grep -A1</code> regarde la mauvaise ligne</p>
+<p>Si tu essaies de vérifier avec <code>grep -A1 '^\[' fichier.repo | grep baseurl</code>, sache que <code>-A1</code> n'affiche que <strong>la ligne juste après</strong> chaque <code>[section]</code>, qui est en général <code>name=</code>, pas <code>baseurl=</code>. Pour chercher <code>baseurl</code> correctement dans tout le fichier, fais simplement :
+<div class="highlight"><pre><span></span><code><span class="c1"># grep -n baseurl /etc/yum.repos.d/oracle-linux-ol8.repo</span>
+</code></pre></div></p>
+</div>
+<p>Une fois les modifications faites (ou l'absence de modification confirmée), vide le cache et recharge la liste des dépôts pour vérifier qu'il n'y a pas d'erreur :</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># dnf clean all</span>
+<span class="c1"># dnf repolist</span>
+</code></pre></div>
+<div class="admonition danger">
+<p class="admonition-title">Piège vécu en TP : ne pas confondre <code>http</code> et <code>https</code></p>
+<p>La consigne parle de <code>mirrorlist</code> vers <code>baseurl</code>, <strong>pas</strong> de changer le protocole. Une commande comme :
+<div class="highlight"><pre><span></span><code><span class="c1"># sed -i 's/https:/http:/g' /etc/yum.repos.d/*.repo</span>
+</code></pre></div>
+change <strong>tous</strong> les <code>https:</code> en <code>http:</code> dans <strong>tous</strong> les fichiers <code>.repo</code>, ce qui n'a rien à voir avec la consigne et peut casser l'accès aux dépôts (serveur qui refuse le <code>http</code> non chiffré). Si tu as fait ça par erreur, reviens en arrière :
+<div class="highlight"><pre><span></span><code><span class="c1"># sed -i 's/http:/https:/g' /etc/yum.repos.d/*.repo</span>
+</code></pre></div>
+puis revérifie avec <code>dnf repolist</code>.</p>
+</div>
+<hr />
+<h2 id="2-trouver-de-quel-dépôt-vient-firefox">2. Trouver de quel dépôt vient <code>firefox</code></h2>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dnf<span class="w"> </span>info<span class="w"> </span>firefox
+</code></pre></div>
+<p>Cherche la ligne <strong><code>Dépôt</code></strong> (<code>Repo</code> en anglais) dans le résultat : c'est le nom du dépôt d'où provient ce paquet (par exemple <code>ol8_appstream</code>). Si <code>firefox</code> est déjà installé, la ligne peut s'appeler <code>From repo</code> à la place.</p>
+<hr />
+<h2 id="3-mettre-à-jour-uniquement-le-noyau-puis-redémarrer">3. Mettre à jour uniquement le noyau, puis redémarrer</h2>
+<h3 id="avant-de-commencer--noter-la-version-actuelle">Avant de commencer : noter la version actuelle</h3>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>uname<span class="w"> </span>-r
+</code></pre></div>
+<p><strong>Note cette valeur quelque part</strong> (papier, notes) : après le redémarrage sur le nouveau noyau, tu ne pourras plus la retrouver aussi simplement avec cette seule commande.</p>
+<h3 id="mettre-à-jour-seulement-le-noyau">Mettre à jour seulement le noyau</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># dnf upgrade kernel</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Piège : le nom du paquet peut être <code>kernel-uek</code></p>
+<p>Sur Oracle Linux, il existe deux familles de noyaux : le noyau <strong>UEK</strong> (<code>kernel-uek</code>, celui d'Oracle) et le noyau <strong>compatible RHEL</strong> (<code>kernel</code>). Si <code>dnf upgrade kernel</code> ne trouve rien à faire, vérifie lequel est utilisé :
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>rpm<span class="w"> </span>-qa<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span>kernel
+</code></pre></div>
+et adapte la commande (<code>dnf upgrade kernel-uek</code> si besoin).</p>
+</div>
+<h3 id="redémarrer">Redémarrer</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># reboot</span>
+</code></pre></div>
+<div class="admonition danger">
+<p class="admonition-title">Piège vécu en TP : le réseau peut tomber au redémarrage</p>
+<p>Si après le redémarrage <code>dnf</code> affiche une erreur de connexion aux dépôts, ce n'est <strong>pas forcément lié au noyau</strong> : vérifie d'abord l'état de la carte réseau.
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>nmcli<span class="w"> </span>device<span class="w"> </span>status
+$<span class="w"> </span>nmcli<span class="w"> </span>connection<span class="w"> </span>show
+</code></pre></div>
+Si la connexion est bien détectée mais ne s'active pas toute seule, regarde son paramètre <code>autoconnect</code> :
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>nmcli<span class="w"> </span>-f<span class="w"> </span>connection.autoconnect<span class="w"> </span>connection<span class="w"> </span>show<span class="w"> </span><span class="s2">"nom_de_la_connexion"</span>
+</code></pre></div>
+S'il est à <code>no</code>, la connexion ne se relance pas automatiquement au démarrage — c'est un réglage NetworkManager indépendant du noyau, qui peut passer inaperçu jusqu'à ce qu'un redémarrage (n'importe lequel, pas spécialement celui du noyau) le révèle. Corrige avec :
+<div class="highlight"><pre><span></span><code><span class="c1"># nmcli connection modify "nom_de_la_connexion" connection.autoconnect yes</span>
+<span class="c1"># nmcli connection up "nom_de_la_connexion"</span>
+</code></pre></div></p>
+</div>
+<h3 id="répondre-aux-questions-de-lénoncé">Répondre aux questions de l'énoncé</h3>
+<p><strong>« Quelle était la version du noyau original ? »</strong></p>
+<p>Si l'ancien noyau n'a pas été supprimé (le cas le plus courant, <code>dnf upgrade</code> garde les anciennes versions par sécurité), tu peux comparer directement :</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>rpm<span class="w"> </span>-qa<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span>kernel
+</code></pre></div>
+<p>Tu verras deux versions de la même famille, par exemple :</p>
+<div class="highlight"><pre><span></span><code>kernel-4.18.0-553.el8_10.x86_64            ← original (numéro de révision le plus bas)
+kernel-4.18.0-553.164.1.el8_10.x86_64      ← après mise à jour (revision .164.1 ajoutée)
+</code></pre></div>
+<p>Le nombre après le dernier point (<code>.164.1</code>) est un numéro de <strong>révision</strong> : plus il est élevé, plus la version est récente. La plus petite valeur est donc l'original.</p>
+<p><strong>« De quel dépôt venait-il ? »</strong></p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dnf<span class="w"> </span>list<span class="w"> </span>installed<span class="w"> </span>kernel-4.18.0-553.el8_10*
+</code></pre></div>
+<p>La dernière colonne indique la provenance. Elle affiche souvent <code>@anaconda</code>, ce qui signifie que ce paquet a été posé par <strong>l'installateur</strong> (Anaconda) au moment de l'installation du système, pas téléchargé depuis un dépôt dnf classique par la suite.</p>
+<hr />
+<h2 id="4-quel-paquet-fournit-dayjpg--peut-il-être-mis-à-jour-">4. Quel paquet fournit <code>day.jpg</code> ? Peut-il être mis à jour ?</h2>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dnf<span class="w"> </span>provides<span class="w"> </span><span class="s2">"*/day.jpg"</span>
+</code></pre></div>
+<h3 id="comprendre-la-sortie-souvent-longue-et-déroutante">Comprendre la sortie (souvent longue et déroutante)</h3>
+<p><code>dnf provides</code> liste <strong>toutes</strong> les versions du paquet concerné qu'il connaît, installées ou non :</p>
+<div class="highlight"><pre><span></span><code>oracle-backgrounds-84.5-1.0.2.el8.noarch : ...
+Dépôt : @System              ← c'est la version INSTALLÉE sur ta machine
+...
+oracle-backgrounds-84.5-1.0.2.el8.noarch : ...
+Dépôt : ol8_baseos_latest    ← la même version, DISPONIBLE dans le dépôt
+...
+oracle-backgrounds-80.5-1.0.3.el8.noarch : ...
+Dépôt : ol8_baseos_latest    ← une ANCIENNE version, non installée
+</code></pre></div>
+<ul>
+<li>La ligne avec <strong><code>Dépôt : @System</code></strong> te dit quelle version tu as <strong>actuellement</strong>.</li>
+<li>Toutes les autres lignes avec un nom de dépôt (<code>ol8_baseos_latest</code>...) montrent les versions <strong>disponibles</strong>, pas forcément installées.</li>
+</ul>
+<p>Le paquet qui fournit <code>day.jpg</code> est ici <strong><code>oracle-backgrounds</code></strong>.</p>
+<h3 id="peut-il-être-mis-à-jour-">Peut-il être mis à jour ?</h3>
+<p>Compare le numéro de ta version installée avec toutes celles listées : si c'est la <strong>plus grande</strong> de toutes, aucune mise à jour n'est possible. Vérifie-le directement :</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dnf<span class="w"> </span>check-upgrade<span class="w"> </span>oracle-backgrounds
+</code></pre></div>
+<div class="admonition success">
+<p class="admonition-title">Orthographe confirmée par le cours</p>
+<p>Ton cours utilise littéralement <code>dnf check-upgrade</code> (pas <code>check-update</code>, contrairement à ce que j'avais affirmé à tort plus tôt dans la conversation). <code>dnf</code> traite <code>update</code> et <code>upgrade</code> comme des synonymes sur la plupart de ses sous-commandes, donc les deux orthographes fonctionnent en pratique, mais retiens celle du cours pour rester cohérent.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Piège : vérifie le nom exact du paquet</p>
+<p>Si le nom du paquet est mal complété (par exemple <code>oracle-backgrounds-8</code> avec un chiffre en trop collé par une autocomplétion Tab malheureuse), corrige-le avant de conclure quoi que ce soit — la commande s'exécute sans erreur même sur un nom de paquet inexistant, elle affiche juste « aucune mise à jour » par défaut.</p>
+<p>Une absence totale de sortie après la ligne « Dernière vérification... » est normale et signifie : <strong>aucune mise à jour disponible</strong>.</p>
+</div>
+<hr />
+<h2 id="5-mettre-à-jour-tout-le-système">5. Mettre à jour tout le système</h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># dnf upgrade</span>
+</code></pre></div>
+<p>Confirme avec <code>o</code> (ou <code>y</code>) quand demandé. À la fin, dnf affiche un résumé :</p>
+<div class="highlight"><pre><span></span><code>Upgraded:
+  paquet1-1.2-3.el8.x86_64
+  paquet2-4.5-6.el8.x86_64
+  ...
+Complete!
+</code></pre></div>
+<h3 id="compter-les-paquets-mis-à-jour">Compter les paquets mis à jour</h3>
+<p>Compte directement les lignes sous <code>Upgraded:</code>, ou repasse par l'historique juste après :</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dnf<span class="w"> </span><span class="nb">history</span>
+</code></pre></div>
+<p>La transaction la plus récente en haut de liste indique le nombre d'actions effectuées. Pour le détail complet, paquet par paquet :</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dnf<span class="w"> </span><span class="nb">history</span><span class="w"> </span>info<span class="w"> </span>&lt;numéro_de_transaction&gt;
+</code></pre></div>
+<hr />
+<h2 id="bonus-1--compiler-vim-depuis-les-sources-sans-linstaller">Bonus 1 : compiler VIM depuis les sources (sans l'installer)</h2>
+<h3 id="pourquoi-ces-étapes-et-comment-les-retrouver-soi-même">Pourquoi ces étapes, et comment les retrouver soi-même</h3>
+<p>Le cours (chapitre 7.3.4.5) donne 4 étapes pour installer un logiciel depuis ses sources. On s'arrête à la 3ᵉ, car l'énoncé demande explicitement de <strong>ne pas installer</strong>.</p>
+<pre class="mermaid"><code>flowchart LR
+    A["1. Lire la doc&lt;br/&gt;dépendances, options"] --&gt; B["2. ./configure"]
+    B --&gt; C["3. make"]
+    C -.-&gt;|"à NE PAS faire"| D["4. make install"]</code></pre>
+<div class="admonition danger">
+<p class="admonition-title">Règle absolue du cours</p>
+<p>Toujours compiler avec un <strong>utilisateur normal</strong>, jamais en root. Seule l'étape <code>make install</code> (qu'on ne fait pas ici) se fait en root.</p>
+</div>
+<h3 id="étape-1--récupérer-les-sources">Étape 1 : récupérer les sources</h3>
+<p>VIM est un logiciel connu, dont le dépôt officiel se trouve sur GitHub (le cours cite justement GitHub et SourceForge comme sources possibles). <code>git</code> est l'outil universel pour télécharger (« cloner ») un dépôt GitHub, quel que soit le projet — ce n'est pas une commande spécifique à VIM.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># dnf install git</span>
+$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~
+$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/vim/vim.git
+$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>vim/src
+</code></pre></div>
+<p><code>cd vim/src</code> : <code>git clone</code> crée un dossier du nom du dépôt (<code>vim</code>) ; le code à compiler se trouve dans son sous-dossier <code>src</code>.</p>
+<h3 id="étape-2--installer-les-outils-de-compilation">Étape 2 : installer les outils de compilation</h3>
+<p>Deux catégories, décrites au chapitre 7.3.4.3-4.4 du cours :</p>
+<table>
+<thead>
+<tr>
+<th>Catégorie</th>
+<th>Rôle</th>
+<th>Exemple pour VIM</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Outils de compilation</strong></td>
+<td>Nécessaires pour compiler n'importe quel logiciel en C</td>
+<td><code>gcc</code> (compilateur), <code>make</code></td>
+</tr>
+<tr>
+<td><strong>Dépendances de compilation</strong></td>
+<td>Bibliothèques propres au logiciel, souvent nommées <code>xxx-devel</code></td>
+<td><code>ncurses-devel</code> (gestion de l'affichage terminal)</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code><span class="c1"># dnf install gcc make ncurses-devel</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Si tu ne connais pas ces noms à l'avance (le cas le plus honnête)</p>
+<p>Tu n'es pas censé les deviner. La vraie méthode est de lancer directement <code>./configure</code> sans rien installer, et de réagir aux erreurs qu'il affiche. Par exemple :
+<div class="highlight"><pre><span></span><code>configure: error: no acceptable C compiler found in $PATH
+</code></pre></div>
+Ce message dit clairement qu'il manque un <strong>compilateur C</strong> : tu sais alors qu'il faut <code>gcc</code>. Le cours décrit exactement ce processus (« le programme de compilation affichera des messages du type <em>Couldn't find superlib.so</em> ») : chaque message d'erreur oriente vers la dépendance suivante à installer, avec au besoin :
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>dnf<span class="w"> </span>provides<span class="w"> </span><span class="s2">"*/nom_du_fichier_manquant"</span>
+</code></pre></div>
+C'est normal de procéder par essais-erreurs successifs ; le cours dit lui-même que c'est « souvent nécessaire plusieurs fois par compilation ».</p>
+</div>
+<h3 id="étape-3--configurer">Étape 3 : configurer</h3>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>./configure
+</code></pre></div>
+<p>Vérifie l'architecture, la présence d'un compilateur et des bibliothèques nécessaires, puis génère un <code>Makefile</code>. Relance cette commande après chaque dépendance installée, jusqu'à ce qu'elle se termine sans erreur.</p>
+<h3 id="étape-4--compiler">Étape 4 : compiler</h3>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>make
+</code></pre></div>
+<p>C'est l'étape la plus longue : elle transforme le code source en exécutable. À la fin, un fichier <code>vim</code> doit exister dans le dossier courant (<code>vim/src</code>).</p>
+<h3 id="étape-5--vérifier-sans-installer">Étape 5 : vérifier, sans installer</h3>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>./vim<span class="w"> </span>--version
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Le <code>./</code> est indispensable</p>
+<p>Sans lui, le shell chercherait un <code>vim</code> déjà installé dans ton <code>$PATH</code>, pas celui que tu viens de compiler dans ce dossier précis.</p>
+</div>
+<div class="admonition danger">
+<p class="admonition-title">Ne pas faire <code>make install</code></p>
+<p>C'est la 4ᵉ étape du cours (copie des fichiers dans l'arborescence système, en root). L'énoncé demande de s'arrêter avant.</p>
+</div>
+<h3 id="et-make-test-">Et <code>make test</code> ?</h3>
+<p>Ce n'est <strong>pas une étape du cours</strong> ni demandée par l'énoncé. C'est une commande optionnelle de VIM qui fait tourner sa suite de tests internes.</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>make<span class="w"> </span><span class="nb">test</span>
+</code></pre></div>
+<p>Si elle échoue, ce n'est <strong>pas grave</strong> dans la plupart des cas, et ça ne remet pas en cause la compilation principale faite par <code>make</code>. Deux cas vécus en TP :</p>
+<ul>
+<li><code>libtool : commande introuvable</code> en testant <code>libvterm</code> (bibliothèque interne pour l'émulation de terminal) : outil manquant, sans rapport avec le cœur de VIM.</li>
+<li>Un seul test en échec sur plusieurs milliers, avec le message <code>Flaky test failed too often, giving up</code> (par exemple <code>Test_autocmd_SafeState</code>) : ce sont des tests connus pour être instables, sensibles au timing et à la vitesse de la machine (souvent le cas sur une VM). VIM lui-même réessaie plusieurs fois avant d'abandonner. Une poignée d'échecs de ce type sur un très grand nombre de tests réussis (des milliers) n'indique pas un problème de compilation.</li>
+</ul>
+<p>Vérifie simplement que le binaire existe :</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>ls<span class="w"> </span>-l<span class="w"> </span>vim
+$<span class="w"> </span>./vim<span class="w"> </span>--version
+</code></pre></div>
+<p>Si les deux répondent correctement, l'objectif du bonus est atteint, que <code>make test</code> passe entièrement ou non.</p>
+<hr />
+<h2 id="bonus-2--installer-turbovnc-depuis-un-paquet-rpm">Bonus 2 : installer TurboVNC depuis un paquet RPM</h2>
+<h3 id="étape-1--trouver-le-fichier-rpm">Étape 1 : trouver le fichier RPM</h3>
+<p>Ton cours ne connaît pas TurboVNC nommément : il faut chercher toi-même son site (une recherche « TurboVNC download » suffit), en général hébergé sur SourceForge. TurboVNC ne propose qu'<strong>un seul</strong> fichier <code>.rpm</code> pour toutes les distributions basées sur RPM (RHEL, Oracle Linux, Fedora...) : il n'y a pas de version spécifique par distribution, contrairement à ce qu'on pourrait imaginer.</p>
+<div class="highlight"><pre><span></span><code>turbovnc-3.1.x86_64.rpm
+</code></pre></div>
+<h3 id="étape-2--télécharger-sur-la-vm">Étape 2 : télécharger sur la VM</h3>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~
+$<span class="w"> </span>wget<span class="w"> </span>https://sourceforge.net/projects/turbovnc/files/3.1/turbovnc-3.1.x86_64.rpm/download<span class="w"> </span>-O<span class="w"> </span>turbovnc-3.1.x86_64.rpm
+</code></pre></div>
+<p>Le <code>-O turbovnc-3.1.x86_64.rpm</code> fixe le nom du fichier téléchargé, car SourceForge redirige parfois vers une URL moins lisible.</p>
+<p>(<code># dnf install wget</code> si la commande n'existe pas encore.)</p>
+<div class="admonition tip">
+<p class="admonition-title">Si <code>srv-gui</code> n'a pas encore accès à Internet, ou si tu préfères passer par ton navigateur habituel</p>
+<p>Télécharge le fichier depuis ton PC hôte, puis transfère-le vers la VM : dossier partagé de l'hyperviseur, ou <code>scp</code> si <code>srv-gui</code> a une IP fixe (TP5) :
+<div class="highlight"><pre><span></span><code><span class="n">scp</span> <span class="n">turbovnc</span><span class="p">-</span><span class="n">3</span><span class="p">.</span><span class="n">1</span><span class="p">.</span><span class="n">x86_64</span><span class="p">.</span><span class="n">rpm</span> <span class="n">utilisateur</span><span class="nv">@10</span><span class="p">.</span><span class="n">y</span><span class="p">.</span><span class="n">x</span><span class="p">.</span><span class="n">1</span><span class="p">:/</span><span class="n">home</span><span class="p">/</span><span class="n">utilisateur</span><span class="p">/</span>
+</code></pre></div></p>
+</div>
+<h3 id="étape-3--installer-avec-rpm">Étape 3 : installer avec <code>rpm</code></h3>
+<p>C'est ici qu'on applique directement la méthode du cours (chapitre 7.3.3.3.1) :</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># rpm -Uvh turbovnc-3.1.x86_64.rpm</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Rôle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-U</code></td>
+<td>Installe <strong>ou</strong> met à jour (recommandé par Red Hat plutôt que <code>-i</code>)</td>
+</tr>
+<tr>
+<td><code>-v</code></td>
+<td>Mode détaillé</td>
+</tr>
+<tr>
+<td><code>-h</code></td>
+<td>Barre de progression</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">L'ordre des lettres n'a pas d'importance</p>
+<p><code>rpm -Uvh</code> et <code>rpm -vUh</code> (celui écrit dans le cours) sont <strong>strictement équivalents</strong> : ce sont les mêmes options, juste dans un ordre différent après le tiret.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Si des dépendances manquent</p>
+<p><code>rpm</code>, contrairement à <code>dnf</code>, <strong>ne télécharge rien</strong> : il affiche seulement ce qui manque.
+<div class="highlight"><pre><span></span><code>error: Failed dependencies:
+    libXext.so.6()(64bit) is needed by turbovnc-...
+</code></pre></div>
+Trouve le paquet correspondant et installe-le via <code>dnf</code>, puis relance la commande <code>rpm</code> :
+<div class="highlight"><pre><span></span><code><span class="c1"># dnf provides "*/libXext.so.6"</span>
+<span class="c1"># dnf install &lt;nom_du_paquet_trouvé&gt;</span>
+<span class="c1"># rpm -Uvh turbovnc-3.1.x86_64.rpm</span>
+</code></pre></div></p>
+</div>
+<h3 id="étape-4--vérifier-que-vncviewer-fonctionne">Étape 4 : vérifier que <code>vncviewer</code> fonctionne</h3>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>which<span class="w"> </span>vncviewer
+$<span class="w"> </span>vncviewer<span class="w"> </span>-help
+</code></pre></div>
+<h3 id="étape-5--si-la-commande-nest-pas-trouvée">Étape 5 : si la commande n'est pas trouvée</h3>
+<p>Le paquet est installé, mais son dossier n'est pas dans ton <code>$PATH</code> (la liste des dossiers où le shell cherche les commandes). Retrouve où le binaire a été placé :</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>rpm<span class="w"> </span>-ql<span class="w"> </span>turbovnc<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>bin
+</code></pre></div>
+<p>Deux solutions, selon le chemin trouvé (souvent <code>/opt/TurboVNC/bin</code>) :</p>
+<ul>
+<li><strong>Temporaire</strong> (le temps de la session) :
+  <div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:/opt/TurboVNC/bin
+</code></pre></div></li>
+<li><strong>Permanente</strong>, via un lien vers un dossier déjà dans le <code>$PATH</code> :
+  <div class="highlight"><pre><span></span><code><span class="c1"># ln -s /opt/TurboVNC/bin/vncviewer /usr/local/bin/vncviewer</span>
+</code></pre></div></li>
+</ul>
+<p>Refais <code>which vncviewer</code> pour confirmer.</p>
+<hr />
+<h2 id="à-retenir">À retenir</h2>
+<ul>
+<li>Un dépôt utilise <strong><code>mirrorlist</code> OU <code>baseurl</code></strong>, jamais les deux en même temps.</li>
+<li><strong><code>dnf info &lt;paquet&gt;</code></strong> donne le dépôt d'origine (ligne <code>Dépôt</code>/<code>Repo</code>).</li>
+<li><strong><code>dnf upgrade &lt;paquet&gt;</code></strong> cible un seul paquet ; sur Oracle Linux, le noyau peut s'appeler <code>kernel</code> ou <code>kernel-uek</code>.</li>
+<li><code>dnf upgrade</code> <strong>garde l'ancien noyau</strong> par défaut : compare les versions avec <code>rpm -qa | grep kernel</code> plutôt que de chercher une trace disparue.</li>
+<li><strong><code>dnf provides "*/fichier"</code></strong> retrouve le paquet propriétaire d'un fichier ; la ligne <code>@System</code> dans le résultat indique la version installée.</li>
+<li>Compiler depuis les sources : <strong>lire la doc → dépendances → <code>./configure</code> → <code>make</code></strong>, jamais en root ; <code>make install</code> (en root) est la seule étape à faire à part, et <code>make test</code> reste optionnel.</li>
+<li>Installer un <code>.rpm</code> : <strong><code>rpm -Uvh fichier.rpm</code></strong> ; en cas de dépendance manquante, l'installer via <code>dnf</code> puis relancer <code>rpm</code>.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

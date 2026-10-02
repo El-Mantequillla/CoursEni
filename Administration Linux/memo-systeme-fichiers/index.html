@@ -1,0 +1,1579 @@
+
+<!doctype html>
+<html lang="fr" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../memo-commandes-stockage/">
+      
+      
+        <link rel="next" href="../memo-types-volumes-partitions/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Mémo : le système de fichiers sous Linux - Mes notes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#mémo--le-système-de-fichiers-sous-linux" class="md-skip">
+          Aller au contenu
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="En-tête">
+    <a href="../.." title="Mes notes" class="md-header__button md-logo" aria-label="Mes notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Mes notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Mémo : le système de fichiers sous Linux
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Rechercher" placeholder="Rechercher" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Recherche">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Effacer" aria-label="Effacer" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initialisation de la recherche
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Mes notes" class="md-nav__button md-logo" aria-label="Mes notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Mes notes
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cours et TP ENI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Administration Linux
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Administration Linux
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cours-admin-linux/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Administration Linux : fiche de révision
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../memo-chmod/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mémo : chmod, les droits sous Linux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../memo-commandes-stockage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mémo commandes : stockage, LVM, montage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mémo : le système de fichiers sous Linux
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mémo : le système de fichiers sous Linux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#partie-1--comment-un-système-de-fichiers-fonctionne-ton-cours-ch-83" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Partie 1 : comment un système de fichiers fonctionne (ton cours, ch. 8.3)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#partie-2--du-disque-au-dossier-utilisable-montage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Partie 2 : du disque au dossier utilisable (montage)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#partie-3--où-chercher-dans-larborescence-hors-cours" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Partie 3 : où chercher dans l'arborescence (hors cours)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Partie 3 : où chercher dans l&#39;arborescence (hors cours)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#le-tableau-à-garder-sous-la-main" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Le tableau à garder sous la main
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#le-réflexe-à-avoir-pour-trouver-un-fichier-de-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Le réflexe à avoir pour trouver un fichier de configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#à-retenir" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        À retenir
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../memo-types-volumes-partitions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mémo : partitions, LVM, systèmes de fichiers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    TP
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TP/index%20%281%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tutos Administration Linux (M02)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TP/tp1-installation-graphique/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP1 : Installer Oracle Linux avec bureau GNOME (srvclient)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TP/tp10-gestion-logs%20%281%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP10 : Gestion des logs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TP/tp11-analyse-systeme%20%281%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP11 : Analyse du système
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TP/tp2-installation-serveur/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP2 : Installer Oracle Linux en mode serveur, sans interface graphique (serveur)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TP/tp3-grub-mode-maintenance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP3 : Configurer GRUB et démarrer en mode maintenance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TP/tp4-demarrage-et-services/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP4 : Gestion du démarrage et des services
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TP/tp5-gestion-reseau/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP5 : Gestion réseau
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TP/tp6-depots-mises-a-jour/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP6 : Dépôts, mises à jour et installation de logiciels
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TP/tp7-gestion-stockage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP7 : Gestion du stockage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TP/tp8-gestion-utilisateurs%20%281%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP8 : Gestion des utilisateurs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TP/tp9-gestion-permissions%20%281%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP9 : Gestion des permissions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Administration Windows
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Administration Windows
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration-Windows/fiche-revision-windows-ad/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fiche de révision — Administration Windows et Active Directory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration-Windows/raccourcis-claviers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Raccourcis clavier Windows / Windows Server — Administration système et réseau
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    TP
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration-Windows/TP/tp01-creation-infrastructure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP1 — Création de l'infrastructure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration-Windows/TP/tp02-creation-domaine-ad/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP2 — Création d'un domaine Active Directory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration-Windows/TP/tp03-gestion-domaine-ad/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP3 — Gestion d'un domaine Active Directory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration-Windows/TP/tp04-gestion-ressources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP4 — Gestion de ressources
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration-Windows/TP/tp05-strategies-de-groupe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP5 — Les stratégies de groupe (GPO)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#partie-1--comment-un-système-de-fichiers-fonctionne-ton-cours-ch-83" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Partie 1 : comment un système de fichiers fonctionne (ton cours, ch. 8.3)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#partie-2--du-disque-au-dossier-utilisable-montage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Partie 2 : du disque au dossier utilisable (montage)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#partie-3--où-chercher-dans-larborescence-hors-cours" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Partie 3 : où chercher dans l'arborescence (hors cours)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Partie 3 : où chercher dans l&#39;arborescence (hors cours)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#le-tableau-à-garder-sous-la-main" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Le tableau à garder sous la main
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#le-réflexe-à-avoir-pour-trouver-un-fichier-de-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Le réflexe à avoir pour trouver un fichier de configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#à-retenir" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        À retenir
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="mémo--le-système-de-fichiers-sous-linux">Mémo : le système de fichiers sous Linux</h1>
+<div class="admonition info">
+<p class="admonition-title">Deux choses différentes dans cette fiche</p>
+<ol>
+<li><strong>Le principe technique</strong> d'un système de fichiers (superbloc, inodes...) — ça vient de ton cours, chapitre 8.3.</li>
+<li><strong>Où chercher</strong> dans l'arborescence (<code>/etc</code>, <code>/var</code>, <code>/home</code>...) — ton cours ne l'explique <strong>pas du tout</strong> ; c'est une convention Linux générale, à connaître par la pratique.</li>
+</ol>
+</div>
+<hr />
+<h2 id="partie-1--comment-un-système-de-fichiers-fonctionne-ton-cours-ch-83">Partie 1 : comment un système de fichiers fonctionne (ton cours, ch. 8.3)</h2>
+<p>Avant de pouvoir stocker quoi que ce soit, un disque/une partition doit être <strong>formaté</strong> (<code>mkfs.xfs</code>, <code>mkfs.ext4</code>...). Le formatage installe une structure interne faite de trois éléments :</p>
+<pre class="mermaid"><code>flowchart TB
+    S["Superbloc&lt;br/&gt;infos vitales du système de fichiers&lt;br/&gt;(dupliqué par sécurité)"] --&gt; T["Table des inodes"]
+    T --&gt; I["Un inode par fichier&lt;br/&gt;type, droits, UID/GID, dates, taille,&lt;br/&gt;adresses des blocs de données"]
+    I --&gt; B["Blocs de données&lt;br/&gt;le contenu réel du fichier"]
+    R["Répertoire"] -.-&gt;|"contient le NOM&lt;br/&gt;+ pointe vers"| I</code></pre>
+<table>
+<thead>
+<tr>
+<th>Élément</th>
+<th>Rôle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Superbloc</strong></td>
+<td>Les informations vitales du système de fichiers (taille des blocs, pointeur vers l'inode racine...). Dupliqué à plusieurs endroits, pour pouvoir le récupérer en cas de corruption</td>
+</tr>
+<tr>
+<td><strong>Inode</strong></td>
+<td>Une fiche d'identité par fichier : type, droits, propriétaire/groupe, dates (<code>atime</code>/<code>ctime</code>/<code>mtime</code>), taille, et les adresses des blocs où se trouvent les vraies données</td>
+</tr>
+<tr>
+<td><strong>Bloc de données</strong></td>
+<td>Le contenu réel du fichier</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition danger">
+<p class="admonition-title">Le point le plus important à retenir</p>
+<p><strong>Le nom du fichier n'est pas dans l'inode.</strong> Il est stocké dans le <strong>répertoire</strong> qui contient le fichier, sous forme d'un lien vers un numéro d'inode. C'est pour ça qu'un même fichier peut avoir plusieurs noms (liens physiques), et qu'un fichier n'est vraiment supprimé que lorsque son dernier lien disparaît.</p>
+</div>
+<p><strong>Pour consulter ces informations toi-même :</strong></p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>tune2fs<span class="w"> </span>-l<span class="w"> </span>/dev/sdXn<span class="w">      </span><span class="c1"># affiche le superbloc (ext2/3/4)</span>
+$<span class="w"> </span>ls<span class="w"> </span>-i<span class="w"> </span>fichier<span class="w">              </span><span class="c1"># affiche le numéro d'inode d'un fichier</span>
+$<span class="w"> </span>stat<span class="w"> </span>fichier<span class="w">                </span><span class="c1"># affiche TOUT le contenu de l'inode d'un fichier</span>
+</code></pre></div>
+<hr />
+<h2 id="partie-2--du-disque-au-dossier-utilisable-montage">Partie 2 : du disque au dossier utilisable (montage)</h2>
+<p>Un système de fichiers fraîchement formaté n'est <strong>pas automatiquement accessible</strong>. Il faut le <strong>monter</strong> sur un dossier existant, qui devient alors le <strong>point d'entrée</strong> vers son contenu.</p>
+<pre class="mermaid"><code>flowchart LR
+    A["Disque/partition&lt;br/&gt;formaté (xfs, ext4...)"] --&gt;|"mount"| B["Point de montage&lt;br/&gt;(un dossier)"]
+    B --&gt; C["Accessible normalement,&lt;br/&gt;comme n'importe quel dossier"]</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1"># mount /dev/sdb1 /mnt          # montage manuel (temporaire)</span>
+<span class="c1"># umount /mnt                   # démonter</span>
+$<span class="w"> </span>findmnt<span class="w">                        </span><span class="c1"># voir tout ce qui est monté, sous forme d'arbre</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Piège du cours : le contenu du dossier devient invisible pendant le montage</p>
+<p>Si tu montes un périphérique sur un dossier qui contenait déjà des fichiers, ces fichiers ne sont <strong>pas supprimés</strong>, mais deviennent <strong>inaccessibles</strong> tant que le montage est actif. Utilise toujours un dossier vide pour monter quelque chose.</p>
+</div>
+<p><strong>Rendre un montage permanent</strong> : une ligne dans <code>/etc/fstab</code>, lue par systemd au démarrage (déjà vu dans la fiche de révision et le TP7) :</p>
+<div class="highlight"><pre><span></span><code>UUID=xxxx-xxxx   /point/de/montage   xfs   defaults   0   0
+</code></pre></div>
+<hr />
+<h2 id="partie-3--où-chercher-dans-larborescence-hors-cours">Partie 3 : où chercher dans l'arborescence (hors cours)</h2>
+<p>C'est la partie qui répond à « je ne sais jamais où chercher ». Sous Linux, <strong>tout part d'une seule racine (<code>/</code>)</strong> — contrairement à Windows avec ses lettres de lecteur (<code>C:</code>, <code>D:</code>...). Chaque dossier a un <strong>rôle standardisé</strong>, respecté par (presque) toutes les distributions.</p>
+<pre class="mermaid"><code>flowchart TB
+    R["/"] --&gt; ETC["/etc&lt;br/&gt;configuration"]
+    R --&gt; VAR["/var&lt;br/&gt;logs, données"]
+    R --&gt; HOME["/home&lt;br/&gt;utilisateurs"]
+    R --&gt; BOOT["/boot&lt;br/&gt;démarrage"]
+
+    R -.-&gt; USR["/usr&lt;br/&gt;programmes"]
+    R -.-&gt; SRV["/srv&lt;br/&gt;partages"]
+    R -.-&gt; TMP["/tmp&lt;br/&gt;temporaire"]
+    R -.-&gt; DEV["/dev&lt;br/&gt;périphériques"]</code></pre>
+<p>Les quatre premiers (<code>/etc</code>, <code>/var</code>, <code>/home</code>, <code>/boot</code>) sont ceux que tu croises le plus souvent en TP. Les quatre suivants (en pointillés) complètent l'essentiel : <code>/usr</code> pour les programmes installés, <code>/srv</code> pour les partages (comme <code>documentation</code>/<code>depot</code> du TP9), <code>/tmp</code> pour le temporaire, <code>/dev</code> pour les périphériques.</p>
+<div class="admonition tip">
+<p class="admonition-title">D'autres dossiers existent</p>
+<p><code>/root</code> (personnel de root), <code>/opt</code> (logiciels tiers), <code>/bin</code>/<code>/sbin</code> (commandes de base), <code>/proc</code>/<code>/sys</code> (infos noyau en temps réel), <code>/mnt</code>/<code>/media</code> (montages ponctuels). Le tableau ci-dessous les couvre tous.</p>
+</div>
+<h3 id="le-tableau-à-garder-sous-la-main">Le tableau à garder sous la main</h3>
+<table>
+<thead>
+<tr>
+<th>Dossier</th>
+<th>Je cherche...</th>
+<th>Exemples concrets vus en TP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><code>/etc</code></strong></td>
+<td>La <strong>configuration</strong> de tout le système et des services</td>
+<td><code>/etc/fstab</code>, <code>/etc/passwd</code>, <code>/etc/ssh/sshd_config</code>, <code>/etc/yum.repos.d/</code>, <code>/etc/default/grub</code></td>
+</tr>
+<tr>
+<td><strong><code>/var</code></strong></td>
+<td>Des données qui <strong>changent/grossissent</strong> au fil du temps</td>
+<td><code>/var/log/</code> (tous les journaux), <code>/var/log/cron</code>, <code>/var/spool/</code></td>
+</tr>
+<tr>
+<td><strong><code>/home</code></strong></td>
+<td>Le répertoire personnel de <strong>chaque utilisateur humain</strong></td>
+<td><code>/home/pierre</code>, <code>/home/jjacques</code></td>
+</tr>
+<tr>
+<td><strong><code>/root</code></strong></td>
+<td>Le répertoire personnel de <strong>root uniquement</strong> (pas dans <code>/home</code>)</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong><code>/usr</code></strong></td>
+<td>Les <strong>programmes et bibliothèques</strong> installés (la plus grosse partie du système)</td>
+<td><code>/usr/bin</code>, <code>/usr/sbin</code>, <code>/usr/lib/systemd/system/</code> (fichiers de service d'origine)</td>
+</tr>
+<tr>
+<td><strong><code>/bin</code>, <code>/sbin</code></strong></td>
+<td>Les commandes <strong>essentielles</strong>, disponibles même en mode minimal</td>
+<td>(souvent des liens vers <code>/usr/bin</code>, <code>/usr/sbin</code> sur les systèmes récents)</td>
+</tr>
+<tr>
+<td><strong><code>/opt</code></strong></td>
+<td>Des logiciels <strong>tiers</strong>, installés en dehors du gestionnaire de paquets</td>
+<td>Un logiciel compilé à la main, par exemple</td>
+</tr>
+<tr>
+<td><strong><code>/tmp</code></strong></td>
+<td>Des fichiers <strong>temporaires</strong>, effacés au redémarrage, accessibles en écriture à tous (sticky bit)</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong><code>/boot</code></strong></td>
+<td>Tout ce qui sert au <strong>démarrage</strong> : noyau, initramfs, GRUB</td>
+<td><code>vmlinuz-...</code>, <code>initramfs-...</code>, <code>/boot/grub2/grub.cfg</code></td>
+</tr>
+<tr>
+<td><strong><code>/dev</code></strong></td>
+<td>Les <strong>périphériques</strong> du système, représentés comme des fichiers</td>
+<td><code>/dev/sda</code>, <code>/dev/nvme0n1</code>, <code>/dev/null</code></td>
+</tr>
+<tr>
+<td><strong><code>/proc</code>, <code>/sys</code></strong></td>
+<td>Des informations <strong>virtuelles</strong> sur le noyau et le matériel, générées à la volée (pas de vrais fichiers sur disque)</td>
+<td><code>/proc/cpuinfo</code>, <code>/proc/meminfo</code></td>
+</tr>
+<tr>
+<td><strong><code>/srv</code></strong></td>
+<td>Des données <strong>servies</strong> par le système à ses utilisateurs (partages, sites web...)</td>
+<td><code>/srv/data</code>, <code>/srv/documentation</code> (vus en TP7/TP9)</td>
+</tr>
+<tr>
+<td><strong><code>/mnt</code>, <code>/media</code></strong></td>
+<td>Des points de montage <strong>temporaires</strong>, pour tester ou brancher quelque chose ponctuellement</td>
+<td><code>/mnt</code> (vu en TP7, montage manuel)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="le-réflexe-à-avoir-pour-trouver-un-fichier-de-configuration">Le réflexe à avoir pour trouver un fichier de configuration</h3>
+<p>Trois façons de <strong>retrouver</strong> où chercher, sans tout connaître par cœur (déjà vues dans les TP précédents) :</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>rpm<span class="w"> </span>-qc<span class="w"> </span>&lt;paquet&gt;<span class="w">         </span><span class="c1"># fichiers de CONFIGURATION d'un paquet installé</span>
+$<span class="w"> </span>rpm<span class="w"> </span>-ql<span class="w"> </span>&lt;paquet&gt;<span class="w">         </span><span class="c1"># TOUS les fichiers d'un paquet</span>
+$<span class="w"> </span>man<span class="w"> </span>&lt;commande&gt;<span class="w">           </span><span class="c1"># section FILES en bas de page, souvent très utile</span>
+$<span class="w"> </span>rpm<span class="w"> </span>-qf<span class="w"> </span>/chemin/fichier<span class="w">  </span><span class="c1"># à quel paquet appartient ce fichier ?</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Exemple concret</p>
+<p>Tu ne te souviens plus où se trouve la config d'un service ? <code>rpm -qc &lt;nom-du-paquet&gt;</code> te le dit directement, sans deviner. C'est la méthode qu'on a utilisée pour retrouver <code>/etc/ssh/sshd_config</code> au TP4.</p>
+</div>
+<hr />
+<h2 id="à-retenir">À retenir</h2>
+<ul>
+<li><strong>Inode</strong> = fiche d'identité d'un fichier (droits, dates, emplacement des données) ; le <strong>nom</strong> est dans le dossier, pas dans l'inode.</li>
+<li><strong>Monter</strong> = rendre un système de fichiers formaté accessible via un dossier ; <code>/etc/fstab</code> automatise ça au démarrage.</li>
+<li>L'arborescence Linux a un <strong>rôle standard par dossier</strong> : <code>/etc</code> = config, <code>/var</code> = données qui changent, <code>/home</code> = utilisateurs, <code>/usr</code> = programmes, <code>/boot</code> = démarrage.</li>
+<li>Pas besoin de tout mémoriser : <code>rpm -qc</code>, <code>rpm -ql</code>, <code>rpm -qf</code> et <code>man &lt;commande&gt;</code> (section FILES) retrouvent l'emplacement exact à ta place.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

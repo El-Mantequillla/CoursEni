@@ -1,0 +1,1844 @@
+
+<!doctype html>
+<html lang="fr" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../tp10-gestion-logs%20%281%29/">
+      
+      
+        <link rel="next" href="../tp2-installation-serveur/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>TP11 : Analyse du système - Mes notes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#tp11--analyse-du-système" class="md-skip">
+          Aller au contenu
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="En-tête">
+    <a href="../../.." title="Mes notes" class="md-header__button md-logo" aria-label="Mes notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Mes notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              TP11 : Analyse du système
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Rechercher" placeholder="Rechercher" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Recherche">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Effacer" aria-label="Effacer" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initialisation de la recherche
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Mes notes" class="md-nav__button md-logo" aria-label="Mes notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Mes notes
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cours et TP ENI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Administration Linux
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Administration Linux
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cours-admin-linux/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Administration Linux : fiche de révision
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../memo-chmod/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mémo : chmod, les droits sous Linux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../memo-commandes-stockage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mémo commandes : stockage, LVM, montage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../memo-systeme-fichiers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mémo : le système de fichiers sous Linux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../memo-types-volumes-partitions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mémo : partitions, LVM, systèmes de fichiers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    TP
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../index%20%281%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tutos Administration Linux (M02)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tp1-installation-graphique/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP1 : Installer Oracle Linux avec bureau GNOME (srvclient)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tp10-gestion-logs%20%281%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP10 : Gestion des logs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP11 : Analyse du système
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP11 : Analyse du système
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#distribution-linux-type-et-version" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Distribution Linux (type et version)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nom-dhôte" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nom d'hôte
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#carte-graphique-détectée" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Carte graphique détectée
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mémoire-vive-disponible" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mémoire vive disponible
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#type-de-processeur-détecté" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Type de processeur détecté
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#version-du-noyau-linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Version du noyau Linux
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nombre-de-disques-physiques" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nombre de disques physiques
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#volumes-logiques-présents-sur-le-système" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Volumes logiques présents sur le système
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nombre-dinterfaces-réseau" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nombre d'interfaces réseau
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#espace-libre-des-systèmes-de-fichiers-montés" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Espace libre des systèmes de fichiers montés
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comptes-utilisateurs-standards-présents-sur-le-système" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comptes utilisateurs standards présents sur le système
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sauvegarder-la-liste-des-paquets-installés-dans-rootlistepaquets-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sauvegarder la liste des paquets installés dans /root/ListePaquets-&lt;DateDuJour&gt;
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#processus-démons-nom-finissant-par--d--avec-pid-et-nom" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Processus démons (nom finissant par « d ») avec PID et nom
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#temps-depuis-le-dernier-redémarrage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Temps depuis le dernier redémarrage
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#à-retenir" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        À retenir
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tp2-installation-serveur/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP2 : Installer Oracle Linux en mode serveur, sans interface graphique (serveur)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tp3-grub-mode-maintenance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP3 : Configurer GRUB et démarrer en mode maintenance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tp4-demarrage-et-services/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP4 : Gestion du démarrage et des services
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tp5-gestion-reseau/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP5 : Gestion réseau
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tp6-depots-mises-a-jour/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP6 : Dépôts, mises à jour et installation de logiciels
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tp7-gestion-stockage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP7 : Gestion du stockage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tp8-gestion-utilisateurs%20%281%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP8 : Gestion des utilisateurs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tp9-gestion-permissions%20%281%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP9 : Gestion des permissions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Administration Windows
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Administration Windows
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Administration-Windows/fiche-revision-windows-ad/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fiche de révision — Administration Windows et Active Directory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Administration-Windows/raccourcis-claviers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Raccourcis clavier Windows / Windows Server — Administration système et réseau
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    TP
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Administration-Windows/TP/tp01-creation-infrastructure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP1 — Création de l'infrastructure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Administration-Windows/TP/tp02-creation-domaine-ad/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP2 — Création d'un domaine Active Directory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Administration-Windows/TP/tp03-gestion-domaine-ad/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP3 — Gestion d'un domaine Active Directory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Administration-Windows/TP/tp04-gestion-ressources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP4 — Gestion de ressources
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Administration-Windows/TP/tp05-strategies-de-groupe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP5 — Les stratégies de groupe (GPO)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#distribution-linux-type-et-version" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Distribution Linux (type et version)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nom-dhôte" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nom d'hôte
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#carte-graphique-détectée" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Carte graphique détectée
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mémoire-vive-disponible" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mémoire vive disponible
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#type-de-processeur-détecté" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Type de processeur détecté
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#version-du-noyau-linux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Version du noyau Linux
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nombre-de-disques-physiques" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nombre de disques physiques
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#volumes-logiques-présents-sur-le-système" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Volumes logiques présents sur le système
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nombre-dinterfaces-réseau" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nombre d'interfaces réseau
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#espace-libre-des-systèmes-de-fichiers-montés" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Espace libre des systèmes de fichiers montés
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comptes-utilisateurs-standards-présents-sur-le-système" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comptes utilisateurs standards présents sur le système
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sauvegarder-la-liste-des-paquets-installés-dans-rootlistepaquets-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sauvegarder la liste des paquets installés dans /root/ListePaquets-&lt;DateDuJour&gt;
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#processus-démons-nom-finissant-par--d--avec-pid-et-nom" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Processus démons (nom finissant par « d ») avec PID et nom
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#temps-depuis-le-dernier-redémarrage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Temps depuis le dernier redémarrage
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#à-retenir" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        À retenir
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="tp11--analyse-du-système">TP11 : Analyse du système</h1>
+<div class="admonition abstract">
+<p class="admonition-title">En bref</p>
+<p><strong>Objectifs</strong> : trouver la bonne commande pour relever chaque information système demandée.
+<strong>Machine</strong> : <code>srv-cli</code>.
+<strong>Durée</strong> : 20 à 30 min (c'est un TP de type « questions-réponses », pas de manipulation lourde).</p>
+</div>
+<p>Ce TP correspond directement au chapitre <strong>11.4.1 « Prise d'information sur le système »</strong> de ton cours, qui donne la quasi-totalité des commandes nécessaires. Pour chaque question, je donne d'abord <strong>la méthode du cours</strong>, puis, quand c'est utile, une piste <strong>pour aller plus loin</strong> (pas dans le cours, mais qui répond plus précisément à la question posée).</p>
+<table>
+<thead>
+<tr>
+<th>Élément à rechercher</th>
+<th>Commande du cours</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Distribution Linux (type et version)</td>
+<td><code>cat /etc/redhat-release</code></td>
+</tr>
+<tr>
+<td>Nom d'hôte</td>
+<td><em>(non couvert explicitement, voir plus bas)</em></td>
+</tr>
+<tr>
+<td>Carte graphique détectée</td>
+<td><code>lspci</code></td>
+</tr>
+<tr>
+<td>Mémoire vive disponible</td>
+<td><code>free -h</code></td>
+</tr>
+<tr>
+<td>Type de processeur</td>
+<td><code>lscpu</code></td>
+</tr>
+<tr>
+<td>Version du noyau</td>
+<td><code>uname -a</code></td>
+</tr>
+<tr>
+<td>Nombre de disques physiques</td>
+<td><code>lsblk</code> / <code>fdisk -l</code></td>
+</tr>
+<tr>
+<td>Volumes logiques présents</td>
+<td><code>lvs</code></td>
+</tr>
+<tr>
+<td>Nombre d'interfaces réseau</td>
+<td><code>ip a</code></td>
+</tr>
+<tr>
+<td>Espace libre des systèmes de fichiers montés</td>
+<td><code>df -h</code></td>
+</tr>
+<tr>
+<td>Comptes utilisateurs standards</td>
+<td><em>(déduit du seuil UID du cours, voir plus bas)</em></td>
+</tr>
+<tr>
+<td>Sauvegarder la liste des paquets installés</td>
+<td><code>rpm -q...</code> (famille rpm)</td>
+</tr>
+<tr>
+<td>Processus démons (nom finissant par « d ») avec PID</td>
+<td><code>pgrep -l</code></td>
+</tr>
+<tr>
+<td>Temps depuis le dernier redémarrage</td>
+<td><em>(non couvert, voir plus bas)</em></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="distribution-linux-type-et-version">Distribution Linux (type et version)</h2>
+<p><strong>Méthode du cours</strong> (11.4.1.1) :</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>cat<span class="w"> </span>/etc/redhat-release
+</code></pre></div>
+<p>Donne une seule ligne, par exemple <code>Red Hat Enterprise Linux release 8.3 (Ootpa)</code> (ou l'équivalent Oracle Linux sur ta VM).</p>
+<div class="admonition tip">
+<p class="admonition-title">Pour aller plus loin</p>
+<p><div class="highlight"><pre><span></span><code>$<span class="w"> </span>cat<span class="w"> </span>/etc/os-release
+</code></pre></div>
+Donne plus de détails (nom exact, version, identifiant court <code>ID=</code>), répartis sur plusieurs variables plutôt qu'une seule ligne. Utile si tu veux scripter une détection automatique de la distribution.</p>
+</div>
+<hr />
+<h2 id="nom-dhôte">Nom d'hôte</h2>
+<p>Le cours ne donne pas de commande dédiée pour cette question précise. Dans sa commande <code>uname -a</code> (vue juste après pour le noyau), le <strong>nom d'hôte apparaît déjà</strong> au milieu de la ligne (ex : <code>localhost.localdomain</code>) : si tu as déjà lancé cette commande pour la question suivante, tu as techniquement déjà la réponse.</p>
+<div class="admonition tip">
+<p class="admonition-title">Pour aller plus loin</p>
+<p>Une commande dédiée, plus directe :
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>hostname
+</code></pre></div>
+ou, avec plus de contexte (type de machine, architecture, version du noyau en prime) :
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>hostnamectl
+</code></pre></div></p>
+</div>
+<hr />
+<h2 id="carte-graphique-détectée">Carte graphique détectée</h2>
+<p><strong>Méthode du cours</strong> (11.4.1.4) :</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>lspci
+</code></pre></div>
+<p>Liste tous les périphériques PCI de la machine. Dans l'exemple du cours, la ligne recherchée ressemble à :</p>
+<div class="highlight"><pre><span></span><code>00:0f.0 VGA compatible controller: VMware SVGA II Adapter
+</code></pre></div>
+<p>Il faut parcourir la liste pour repérer la ligne contenant « VGA ».</p>
+<div class="admonition tip">
+<p class="admonition-title">Pour aller plus loin</p>
+<p>Pour isoler directement cette ligne sans tout parcourir à l'œil :
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>lspci<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span>vga
+</code></pre></div></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Sur une VM sans bureau, attends-toi à une carte « virtuelle »</p>
+<p><code>srv-cli</code> n'a pas d'environnement graphique installé, mais l'hyperviseur fournit presque toujours un adaptateur graphique de base, comme dans l'exemple du cours. C'est normal : la question porte sur le matériel détecté par le noyau, pas sur un bureau installé.</p>
+</div>
+<hr />
+<h2 id="mémoire-vive-disponible">Mémoire vive disponible</h2>
+<p><strong>Méthode du cours</strong> (11.4.1.8.2.2) :</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>free<span class="w"> </span>-h
+</code></pre></div>
+<p>Exemple du cours :</p>
+<div class="highlight"><pre><span></span><code>              total         used         free      shared buff/cache        available
+Mem:           1,9G         668M         651M        9,8M       665M             1,1G
+Swap:          2,0G           0B         2,0G
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Pour aller plus loin : quelle colonne regarder</p>
+<p>Le cours affiche la commande sans préciser quelle colonne lire. Pour répondre précisément à « combien de mémoire est <strong>encore disponible</strong> », la colonne à retenir est <strong><code>available</code></strong>, pas <code>free</code> : elle tient compte du cache que le noyau peut libérer immédiatement si besoin, contrairement à <code>free</code> qui l'ignore et sous-estime donc la mémoire réellement utilisable.</p>
+</div>
+<hr />
+<h2 id="type-de-processeur-détecté">Type de processeur détecté</h2>
+<p><strong>Méthode du cours</strong> (11.4.1.3) :</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>lscpu
+</code></pre></div>
+<p>La ligne à retenir dans la sortie est <strong><code>Nom de modèle</code></strong> (<code>Model name</code>), qui donne le modèle exact détecté.</p>
+<hr />
+<h2 id="version-du-noyau-linux">Version du noyau Linux</h2>
+<p><strong>Méthode du cours</strong> (11.4.1.2) :</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>uname<span class="w"> </span>-a
+</code></pre></div>
+<p>Exemple du cours :</p>
+<div class="highlight"><pre><span></span><code>Linux localhost.localdomain 5.4.17-2036.103.3.1.el8uek.x86_64 #2 SMP ... x86_64 x86_64 x86_64 GNU/Linux
+</code></pre></div>
+<p>La version du noyau est le deuxième « mot » après le nom d'hôte.</p>
+<div class="admonition tip">
+<p class="admonition-title">Pour aller plus loin</p>
+<p>Si tu veux uniquement la version, sans le reste de la ligne :
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>uname<span class="w"> </span>-r
+</code></pre></div></p>
+</div>
+<hr />
+<h2 id="nombre-de-disques-physiques">Nombre de disques physiques</h2>
+<p><strong>Méthode du cours</strong> (11.4.1.6, qui renvoie vers les commandes déjà vues au chapitre stockage) :</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>lsblk
+</code></pre></div>
+<p>ou</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>fdisk<span class="w"> </span>-l
+</code></pre></div>
+<p>Compte les lignes de premier niveau (type <code>disk</code>), en ignorant les partitions et volumes logiques en dessous.</p>
+<div class="admonition tip">
+<p class="admonition-title">Pour aller plus loin</p>
+<p>Pour ne lister que les disques, sans leurs partitions en dessous (plus rapide à lire) :
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>lsblk<span class="w"> </span>-d
+</code></pre></div></p>
+</div>
+<hr />
+<h2 id="volumes-logiques-présents-sur-le-système">Volumes logiques présents sur le système</h2>
+<p><strong>Méthode du cours</strong> (11.4.1.6) :</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>lvs
+</code></pre></div>
+<p>Liste directement tous les volumes logiques avec leur nom, leur groupe de volumes et leur taille.</p>
+<hr />
+<h2 id="nombre-dinterfaces-réseau">Nombre d'interfaces réseau</h2>
+<p><strong>Méthode du cours</strong> : le cours utilise <code>ip a</code> pour la configuration réseau (chapitre réseau), qui liste aussi toutes les interfaces présentes.</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>ip<span class="w"> </span>a
+</code></pre></div>
+<p>Compte le nombre d'interfaces listées (chacune commence par un numéro, ex : <code>1: lo</code>, <code>2: ens33</code>...).</p>
+<div class="admonition tip">
+<p class="admonition-title">Pour aller plus loin</p>
+<p>Pour obtenir directement un chiffre sans compter à la main :
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>ip<span class="w"> </span>-o<span class="w"> </span>link<span class="w"> </span>show<span class="w"> </span><span class="p">|</span><span class="w"> </span>wc<span class="w"> </span>-l
+</code></pre></div>
+<code>-o</code> force une ligne par interface, <code>wc -l</code> compte les lignes. Ce total inclut <code>lo</code> (boucle locale, toujours présente) ; retire 1 si la question ne vise que les interfaces physiques/réseau réelles.</p>
+</div>
+<hr />
+<h2 id="espace-libre-des-systèmes-de-fichiers-montés">Espace libre des systèmes de fichiers montés</h2>
+<p><strong>Méthode du cours</strong> (11.4.1.6) :</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>df<span class="w"> </span>-h
+</code></pre></div>
+<p>La colonne <strong><code>Use%</code></strong> répond directement à « ont-ils encore suffisamment d'espace ? ».</p>
+<hr />
+<h2 id="comptes-utilisateurs-standards-présents-sur-le-système">Comptes utilisateurs standards présents sur le système</h2>
+<p>Le cours ne donne pas de commande dédiée pour cette question dans ce chapitre, mais il fixe ailleurs (chapitre sur les utilisateurs, à propos de l'umask) le seuil qui distingue les comptes :</p>
+<blockquote>
+<p>« Il est important que l'umask de root et des utilisateurs de service (<strong>UID &lt; 1000</strong>) reste à 0022. »</p>
+</blockquote>
+<p>Un compte <strong>standard</strong> (humain) est donc un compte avec un <strong>UID ≥ 1000</strong>, par opposition à root (UID 0) et aux comptes de service (UID &lt; 1000).</p>
+<div class="admonition tip">
+<p class="admonition-title">Pour aller plus loin : appliquer ce seuil automatiquement</p>
+<p><div class="highlight"><pre><span></span><code>$<span class="w"> </span>awk<span class="w"> </span>-F:<span class="w"> </span><span class="s1">'$3&gt;=1000 &amp;&amp; $3&lt;65534 {print $1}'</span><span class="w"> </span>/etc/passwd
+</code></pre></div>
+Découpe chaque ligne de <code>/etc/passwd</code> sur <code>:</code> et garde les comptes dont le 3ᵉ champ (UID) est dans cette plage. La borne haute <code>65534</code> exclut le compte <code>nobody</code>, qui n'est pas un compte humain.
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>grep<span class="w"> </span>UID_MIN<span class="w"> </span>/etc/login.defs
+</code></pre></div>
+Confirme la vraie valeur seuil configurée sur ta VM (normalement <code>1000</code>), plutôt que de se fier uniquement à la phrase du cours.</p>
+</div>
+<hr />
+<h2 id="sauvegarder-la-liste-des-paquets-installés-dans-rootlistepaquets-">Sauvegarder la liste des paquets installés dans <code>/root/ListePaquets-&lt;DateDuJour&gt;</code></h2>
+<p><strong>Méthode du cours</strong> : le cours couvre la famille de commandes <code>rpm -q</code> (interroger un paquet), <code>rpm -qi</code> (infos détaillées) et <code>rpm -qp</code> (interroger un fichier <code>.rpm</code> non installé), mais pas directement la variante qui liste <strong>tous</strong> les paquets installés.</p>
+<div class="admonition tip">
+<p class="admonition-title">Pour aller plus loin : la variante qui liste tout</p>
+<p><div class="highlight"><pre><span></span><code>$<span class="w"> </span>rpm<span class="w"> </span>-qa<span class="w"> </span>&gt;<span class="w"> </span>/root/ListePaquets-<span class="k">$(</span>date<span class="w"> </span>+%Y-%m-%d<span class="k">)</span>
+</code></pre></div>
+<code>-qa</code> (<em>query all</em>) est la même famille de commande que celles du cours, juste sans préciser de paquet : elle les liste tous. <code>$(date +%Y-%m-%d)</code> est une <strong>substitution de commande</strong> : le shell exécute <code>date</code> d'abord et insère son résultat directement dans le nom du fichier.</p>
+</div>
+<p>Vérifie :</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>ls<span class="w"> </span>-l<span class="w"> </span>/root/ListePaquets-*
+</code></pre></div>
+<hr />
+<h2 id="processus-démons-nom-finissant-par--d--avec-pid-et-nom">Processus démons (nom finissant par « d ») avec PID et nom</h2>
+<p><strong>Méthode du cours</strong> (11.4.1.8.2.1) :</p>
+<blockquote>
+<p>« La commande <code>pgrep</code> permet de rechercher des processus à l'aide de regex. »</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>pgrep<span class="w"> </span>-l<span class="w"> </span><span class="s1">'d$'</span>
+</code></pre></div>
+<p><code>pgrep -l</code> affiche directement le <strong>PID et le nom</strong> de chaque processus dont le nom correspond au motif donné — exactement ce que demande l'énoncé. <code>'d$'</code> est une expression régulière : <code>$</code> signifie « fin de la chaîne », donc ce motif ne retient que les processus dont le nom <strong>se termine</strong> par <code>d</code>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Pour aller plus loin : variante avec <code>ps</code>, si tu veux comparer</p>
+<p><div class="highlight"><pre><span></span><code>$<span class="w"> </span>ps<span class="w"> </span>-eo<span class="w"> </span>pid,comm<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-E<span class="w"> </span><span class="s1">'d$'</span>
+</code></pre></div>
+Reprend <code>ps -ef</code> (vu dans le cours juste avant <code>pgrep</code>), mais en choisissant les colonnes affichées (<code>-o pid,comm</code>) pour ne garder que PID et nom, puis filtre avec <code>grep -E 'd$'</code> de la même façon.</p>
+</div>
+<hr />
+<h2 id="temps-depuis-le-dernier-redémarrage">Temps depuis le dernier redémarrage</h2>
+<p>Cette question n'est pas couverte par le cours. Voici la commande standard pour y répondre :</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>uptime<span class="w"> </span>-p
+</code></pre></div>
+<p><code>-p</code> (<em>pretty</em>) affiche une phrase lisible, par exemple « up 2 hours, 15 minutes ».</p>
+<div class="admonition tip">
+<p class="admonition-title">Pour aller plus loin</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>who<span class="w"> </span>-b<span class="w">        </span><span class="c1"># date/heure exacte du dernier démarrage</span>
+$<span class="w"> </span>uptime<span class="w"> </span>-s<span class="w">     </span><span class="c1"># même info, format machine</span>
+$<span class="w"> </span>uptime<span class="w">         </span><span class="c1"># format compact, avec en plus la charge système (load average)</span>
+</code></pre></div>
+</div>
+<hr />
+<h2 id="à-retenir">À retenir</h2>
+<ul>
+<li>Le chapitre <strong>11.4.1</strong> du cours couvre presque toutes les réponses de ce TP : <code>cat /etc/redhat-release</code>, <code>uname -a</code>, <code>lscpu</code>, <code>lspci</code>, <code>free -h</code>, <code>lsblk</code>/<code>fdisk -l</code>/<code>pvs</code>/<code>vgs</code>/<code>lvs</code>/<code>df -h</code>/<code>blkid</code>, <code>ps -ef</code>, <code>pgrep</code>.</li>
+<li>Trois questions sortent du cadre strict du cours : le nom d'hôte, le temps depuis le dernier redémarrage, et la variante « lister tous les paquets » de <code>rpm</code>.</li>
+<li>Quand une commande du cours donne une réponse générale (<code>lspci</code>, <code>uname -a</code>), il est souvent possible de la préciser avec <code>grep</code> ou une option supplémentaire pour isoler directement l'information demandée.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
