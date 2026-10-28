@@ -1,0 +1,2814 @@
+
+<!doctype html>
+<html lang="fr" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../python-bases/">
+      
+      
+        <link rel="next" href="../tuto_script_matching/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+    
+    
+      
+        <title>Tuto : retrouver un numéro client avec une base Excel (fuzzy matching) - Mes notes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#tuto--retrouver-un-numéro-client-avec-une-base-excel-fuzzy-matching" class="md-skip">
+          Aller au contenu
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="En-tête">
+    <a href="../.." title="Mes notes" class="md-header__button md-logo" aria-label="Mes notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Mes notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Tuto : retrouver un numéro client avec une base Excel (fuzzy matching)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Rechercher" placeholder="Rechercher" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Recherche">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Effacer" aria-label="Effacer" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initialisation de la recherche
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Mes notes" class="md-nav__button md-logo" aria-label="Mes notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Mes notes
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cours et TP ENI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Administration Linux
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Administration Linux
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration%20Linux/cours-admin-linux/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Administration Linux : fiche de révision
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration%20Linux/fiche-acl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fiche — Les ACL sous Linux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration%20Linux/memo-acl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mémo — Les ACL sous Linux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration%20Linux/memo-chmod/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mémo : chmod, les droits sous Linux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration%20Linux/memo-commandes-stockage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mémo commandes : stockage, LVM, montage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration%20Linux/memo-systeme-fichiers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mémo : le système de fichiers sous Linux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration%20Linux/memo-types-volumes-partitions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mémo : partitions, LVM, systèmes de fichiers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_8" id="__nav_2_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    TP
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration%20Linux/TP/index%20%281%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tutos Administration Linux (M02)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration%20Linux/TP/tp1-installation-graphique/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP1 : Installer Oracle Linux avec bureau GNOME (srvclient)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration%20Linux/TP/tp10-gestion-logs%20%281%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP10 : Gestion des logs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration%20Linux/TP/tp11-analyse-systeme%20%281%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP11 : Analyse du système
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration%20Linux/TP/tp2-installation-serveur/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP2 : Installer Oracle Linux en mode serveur, sans interface graphique (serveur)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration%20Linux/TP/tp3-grub-mode-maintenance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP3 : Configurer GRUB et démarrer en mode maintenance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration%20Linux/TP/tp4-demarrage-et-services/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP4 : Gestion du démarrage et des services
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration%20Linux/TP/tp5-gestion-reseau/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP5 : Gestion réseau
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration%20Linux/TP/tp6-depots-mises-a-jour/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP6 : Dépôts, mises à jour et installation de logiciels
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration%20Linux/TP/tp7-gestion-stockage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP7 : Gestion du stockage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration%20Linux/TP/tp8-gestion-utilisateurs%20%281%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP8 : Gestion des utilisateurs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration%20Linux/TP/tp9-gestion-permissions%20%281%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP9 : Gestion des permissions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Administration Windows
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Administration Windows
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration-Windows/fiche-revision-windows-ad/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fiche de révision — Administration Windows et Active Directory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration-Windows/raccourcis-claviers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Raccourcis clavier Windows / Windows Server — Administration système et réseau
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    TP
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration-Windows/TP/tp01-creation-infrastructure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP1 — Création de l'infrastructure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration-Windows/TP/tp02-creation-domaine-ad/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP2 — Création d'un domaine Active Directory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration-Windows/TP/tp03-gestion-domaine-ad/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP3 — Gestion d'un domaine Active Directory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration-Windows/TP/tp04-gestion-ressources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP4 — Gestion de ressources
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration-Windows/TP/tp05-strategies-de-groupe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP5 — Les stratégies de groupe (GPO)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Python
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python-bases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python : les bases pour débuter
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tuto : retrouver un numéro client avec une base Excel (fuzzy matching)
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tuto : retrouver un numéro client avec une base Excel (fuzzy matching)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#sommaire" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sommaire
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-objectif-et-résultat-attendu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Objectif et résultat attendu
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-le-principe--le-fuzzy-matching" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Le principe : le fuzzy matching
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Le principe : le fuzzy matching">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#les-algorithmes-de-ressemblance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Les algorithmes de ressemblance
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#le-seuil" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Le seuil
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-mise-en-place" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Mise en place
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Mise en place">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-installer-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Installer Python
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-installer-visual-studio-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Installer Visual Studio Code
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-préparer-le-dossier-du-projet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 Préparer le dossier du projet
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-installer-les-bibliothèques" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 Installer les bibliothèques
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-le-fichier-excel-attendu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Le fichier Excel attendu
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-le-script-complet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Le script complet
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-explication-du-script-bloc-par-bloc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Explication du script, bloc par bloc
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Explication du script, bloc par bloc">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bloc-1--les-imports" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bloc 1 : les imports
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bloc-2--trouver-le-dossier-du-programme" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bloc 2 : trouver le dossier du programme
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bloc-3--lire-lexcel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bloc 3 : lire l'Excel
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bloc-4--fabriquer-une-colonne-de-texte-à-comparer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bloc 4 : fabriquer une colonne de texte à comparer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bloc-5--la-fonction-de-recherche" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bloc 5 : la fonction de recherche
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bloc-6--la-boucle-de-saisie" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bloc 6 : la boucle de saisie
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#le-déroulement-complet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Le déroulement complet
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-lancer-et-tester" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Lancer et tester
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Lancer et tester">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#jeu-dessai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Jeu d'essai
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-régler-le-seuil" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Régler le seuil
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-créer-lexécutable-exe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Créer l'exécutable .exe
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-dépannage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Dépannage
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-limites-et-améliorations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Limites et améliorations
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. Limites et améliorations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#limites-à-connaître" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Limites à connaître
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#améliorations-possibles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Améliorations possibles
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-aide-mémoire" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Aide-mémoire
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tuto_script_matching/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tuto : comprendre le script matcher_passages.py
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#sommaire" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sommaire
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-objectif-et-résultat-attendu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Objectif et résultat attendu
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-le-principe--le-fuzzy-matching" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Le principe : le fuzzy matching
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Le principe : le fuzzy matching">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#les-algorithmes-de-ressemblance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Les algorithmes de ressemblance
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#le-seuil" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Le seuil
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-mise-en-place" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Mise en place
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Mise en place">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-installer-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Installer Python
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-installer-visual-studio-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Installer Visual Studio Code
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-préparer-le-dossier-du-projet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 Préparer le dossier du projet
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-installer-les-bibliothèques" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 Installer les bibliothèques
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-le-fichier-excel-attendu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Le fichier Excel attendu
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-le-script-complet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Le script complet
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-explication-du-script-bloc-par-bloc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Explication du script, bloc par bloc
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Explication du script, bloc par bloc">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bloc-1--les-imports" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bloc 1 : les imports
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bloc-2--trouver-le-dossier-du-programme" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bloc 2 : trouver le dossier du programme
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bloc-3--lire-lexcel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bloc 3 : lire l'Excel
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bloc-4--fabriquer-une-colonne-de-texte-à-comparer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bloc 4 : fabriquer une colonne de texte à comparer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bloc-5--la-fonction-de-recherche" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bloc 5 : la fonction de recherche
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bloc-6--la-boucle-de-saisie" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bloc 6 : la boucle de saisie
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#le-déroulement-complet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Le déroulement complet
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-lancer-et-tester" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Lancer et tester
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Lancer et tester">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#jeu-dessai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Jeu d'essai
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-régler-le-seuil" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Régler le seuil
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-créer-lexécutable-exe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Créer l'exécutable .exe
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-dépannage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Dépannage
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-limites-et-améliorations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Limites et améliorations
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. Limites et améliorations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#limites-à-connaître" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Limites à connaître
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#améliorations-possibles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Améliorations possibles
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-aide-mémoire" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Aide-mémoire
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="tuto--retrouver-un-numéro-client-avec-une-base-excel-fuzzy-matching">Tuto : retrouver un numéro client avec une base Excel (fuzzy matching)</h1>
+<blockquote>
+<p>Ce tuto explique pas à pas un script Python qui demande un nom, un prénom et une adresse (éventuellement mal orthographiés) et renvoie le numéro du client correspondant dans un fichier Excel. Il s'appuie sur la fiche <a href="../python-bases/">Python : les bases</a>.</p>
+</blockquote>
+<p><strong>Niveau :</strong> débutant · <strong>Outils :</strong> Python 3.14, Visual Studio Code, bibliothèques <code>pandas</code>, <code>openpyxl</code>, <code>rapidfuzz</code></p>
+<h2 id="sommaire">Sommaire</h2>
+<ol>
+<li>Objectif et résultat attendu</li>
+<li>Le principe : le fuzzy matching</li>
+<li>Mise en place</li>
+<li>Le fichier Excel attendu</li>
+<li>Le script complet</li>
+<li>Explication du script, bloc par bloc</li>
+<li>Lancer et tester</li>
+<li>Régler le seuil</li>
+<li>Créer l'exécutable <code>.exe</code></li>
+<li>Dépannage</li>
+<li>Limites et améliorations</li>
+<li>Aide-mémoire</li>
+</ol>
+<hr />
+<h2 id="1-objectif-et-résultat-attendu">1. Objectif et résultat attendu</h2>
+<p>Un utilisateur saisit des informations client avec des fautes de frappe ou des abréviations. Le programme les compare à la base Excel et renvoie le <strong>numéro client</strong> le plus proche, ou « aucun match » si rien ne ressemble assez.</p>
+<p>Exemple de session :</p>
+<div class="highlight"><pre><span></span><code>Nom (vide pour quitter) : Dupond
+Prénom : Eloise
+Rue : 12 r. Victor Hugo
+Ville : Lyon
+Code postal : 69003
+Numéro client : 1001
+</code></pre></div>
+<p>Dans la base, le client s'appelle <code>Dupont Éloïse</code>, <code>12 rue Victor Hugo</code>. Malgré le <code>d</code> au lieu du <code>t</code>, l'accent manquant et le <code>r.</code> au lieu de <code>rue</code>, le programme retrouve le bon client.</p>
+<hr />
+<h2 id="2-le-principe--le-fuzzy-matching">2. Le principe : le fuzzy matching</h2>
+<p>Une comparaison classique (<code>==</code>) est <strong>exacte</strong> : <code>"Dupond" == "Dupont"</code> donne <code>False</code>. Le <strong>fuzzy matching</strong> (correspondance floue) mesure à quel point deux textes se <strong>ressemblent</strong>, avec un <strong>score de 0 à 100</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Score</th>
+<th>Signification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>100</td>
+<td>Textes identiques (ou considérés comme tels)</td>
+</tr>
+<tr>
+<td>80 à 99</td>
+<td>Très proches : fautes de frappe, abréviations</td>
+</tr>
+<tr>
+<td>Moins de 60</td>
+<td>Peu de rapport</td>
+</tr>
+</tbody>
+</table>
+<h3 id="les-algorithmes-de-ressemblance">Les algorithmes de ressemblance</h3>
+<table>
+<thead>
+<tr>
+<th>Algorithme</th>
+<th>Idée</th>
+<th>Utile pour</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Levenshtein</strong></td>
+<td>Compte le nombre minimal de modifications (ajout, suppression, remplacement d'une lettre) pour passer d'un texte à l'autre</td>
+<td>Adresses, textes longs</td>
+</tr>
+<tr>
+<td><strong>Jaro-Winkler</strong></td>
+<td>Favorise les textes qui commencent de la même façon</td>
+<td>Noms et prénoms courts</td>
+</tr>
+<tr>
+<td><strong><code>token_set_ratio</code></strong> (rapidfuzz)</td>
+<td>Découpe en <strong>mots</strong>, ignore l'ordre et les doublons, puis compare</td>
+<td>Adresses dont l'ordre des mots varie</td>
+</tr>
+</tbody>
+</table>
+<p>Ce script utilise <strong><code>token_set_ratio</code></strong> sur un texte unique contenant toutes les informations (nom, prénom, rue, ville, code postal).</p>
+<h3 id="le-seuil">Le seuil</h3>
+<p>Le <strong>seuil</strong> est le score minimum pour accepter un match. Dans le script : <code>seuil=80</code>. En dessous, le résultat est « aucun match ». Il se règle par essais sur de vraies données (voir la section 8 plus bas).</p>
+<hr />
+<h2 id="3-mise-en-place">3. Mise en place</h2>
+<h3 id="31-installer-python">3.1 Installer Python</h3>
+<ol>
+<li>Sur <code>python.org/downloads</code>, choisis la dernière version <strong>stable</strong> de la branche 3.14 (évite la toute dernière branche, dont les bibliothèques ne sont pas toujours prêtes).</li>
+<li>Sous Windows, python.org propose le <strong>Python install manager</strong>. Lance-le, puis dans un <strong>nouveau</strong> terminal :</li>
+</ol>
+<div class="highlight"><pre><span></span><code>py install 3.14
+py -3.14 --version
+</code></pre></div>
+<ol>
+<li>Réponds <code>N</code> aux questions sur les chemins longs et le PATH : elles sont inutiles ici.</li>
+</ol>
+<blockquote>
+<p><strong>À retenir</strong>
+Avec l'install manager, la commande <code>pip</code> seule n'existe pas. On utilise toujours <code>py -m pip ...</code>.</p>
+</blockquote>
+<h3 id="32-installer-visual-studio-code">3.2 Installer Visual Studio Code</h3>
+<ol>
+<li>Télécharge VS Code sur <code>code.visualstudio.com</code>, installe avec les options par défaut.</li>
+<li>Ouvre l'onglet <strong>Extensions</strong> (<code>Ctrl+Maj+X</code>), cherche <strong>Python</strong> (Microsoft) et clique sur <em>Install</em>.</li>
+</ol>
+<h3 id="33-préparer-le-dossier-du-projet">3.3 Préparer le dossier du projet</h3>
+<ol>
+<li>Crée un dossier, par exemple <code>C:\MATCHER</code>.</li>
+<li>Dans VS Code : <strong>Fichier &gt; Ouvrir le dossier</strong> et choisis ce dossier.</li>
+<li>Crée le fichier <code>matcher.py</code> (icône <em>Nouveau fichier</em> dans l'Explorateur).</li>
+<li>Copie le fichier Excel dans le <strong>même dossier</strong> que <code>matcher.py</code>.</li>
+</ol>
+<h3 id="34-installer-les-bibliothèques">3.4 Installer les bibliothèques</h3>
+<p>Dans le terminal de VS Code (<strong>Terminal &gt; Nouveau terminal</strong>) :</p>
+<div class="highlight"><pre><span></span><code>py -m pip install pandas openpyxl rapidfuzz
+</code></pre></div>
+<p>À faire une seule fois. L'avertissement jaune sur le « PATH » à la fin de l'installation est sans conséquence.</p>
+<table>
+<thead>
+<tr>
+<th>Bibliothèque</th>
+<th>Rôle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pandas</code></td>
+<td>Manipuler des tableaux de données</td>
+</tr>
+<tr>
+<td><code>openpyxl</code></td>
+<td>Permet à pandas de lire les fichiers <code>.xlsx</code></td>
+</tr>
+<tr>
+<td><code>rapidfuzz</code></td>
+<td>Calculer les scores de ressemblance</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="4-le-fichier-excel-attendu">4. Le fichier Excel attendu</h2>
+<p>Le fichier s'appelle <code>CLIEN_TOP10.xlsx</code>. Les <strong>en-têtes</strong> (noms de colonnes) doivent être sur la <strong>première ligne de la première feuille</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Colonne Excel</th>
+<th>Contenu</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>CLIEN</code></td>
+<td>Numéro client (la valeur à retrouver)</td>
+</tr>
+<tr>
+<td><code>NOM</code></td>
+<td>Nom de famille</td>
+</tr>
+<tr>
+<td><code>PRENO</code></td>
+<td>Prénom</td>
+</tr>
+<tr>
+<td><code>RUE1</code></td>
+<td>Rue</td>
+</tr>
+<tr>
+<td><code>VILLE</code></td>
+<td>Ville</td>
+</tr>
+<tr>
+<td><code>CODPO</code></td>
+<td>Code postal</td>
+</tr>
+</tbody>
+</table>
+<p>L'ordre des colonnes n'a pas d'importance (le script les lit par leur <strong>nom</strong>). Les colonnes supplémentaires sont ignorées.</p>
+<blockquote>
+<p><strong>Avant de lancer :</strong> ferme le fichier dans Excel, sinon la lecture peut échouer (<code>PermissionError</code>).</p>
+</blockquote>
+<hr />
+<h2 id="5-le-script-complet">5. Le script complet</h2>
+<p>Fichier <code>matcher.py</code> :</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">os</span><span class="o">,</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rapidfuzz</span><span class="w"> </span><span class="kn">import</span> <span class="n">process</span><span class="p">,</span> <span class="n">fuzz</span>
+
+<span class="c1"># Cherche CLIEN_TOP10.xlsx à côté de l'exécutable (ou du script)</span>
+<span class="n">dossier</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">executable</span> <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">sys</span><span class="p">,</span> <span class="s2">"frozen"</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span> <span class="k">else</span> <span class="vm">__file__</span><span class="p">)</span>
+<span class="n">base</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dossier</span><span class="p">,</span> <span class="s2">"CLIEN_TOP10.xlsx"</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">str</span><span class="p">)</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s2">""</span><span class="p">)</span>
+<span class="n">base</span><span class="p">[</span><span class="s2">"texte"</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">base</span><span class="p">[</span><span class="s2">"NOM"</span><span class="p">]</span> <span class="o">+</span> <span class="s2">" "</span> <span class="o">+</span> <span class="n">base</span><span class="p">[</span><span class="s2">"PRENO"</span><span class="p">]</span> <span class="o">+</span> <span class="s2">" "</span> <span class="o">+</span> <span class="n">base</span><span class="p">[</span><span class="s2">"RUE1"</span><span class="p">]</span> <span class="o">+</span> <span class="s2">" "</span> <span class="o">+</span> <span class="n">base</span><span class="p">[</span><span class="s2">"VILLE"</span><span class="p">]</span> <span class="o">+</span> <span class="s2">" "</span> <span class="o">+</span> <span class="n">base</span><span class="p">[</span><span class="s2">"CODPO"</span><span class="p">])</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">trouver_client</span><span class="p">(</span><span class="n">nom</span><span class="p">,</span> <span class="n">prenom</span><span class="p">,</span> <span class="n">rue</span><span class="p">,</span> <span class="n">ville</span><span class="p">,</span> <span class="n">code_postal</span><span class="p">,</span> <span class="n">seuil</span><span class="o">=</span><span class="mi">80</span><span class="p">):</span>
+    <span class="n">saisie</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">nom</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">prenom</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">rue</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">ville</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">code_postal</span><span class="si">}</span><span class="s2">"</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">process</span><span class="o">.</span><span class="n">extractOne</span><span class="p">(</span><span class="n">saisie</span><span class="p">,</span> <span class="n">base</span><span class="p">[</span><span class="s2">"texte"</span><span class="p">],</span> <span class="n">scorer</span><span class="o">=</span><span class="n">fuzz</span><span class="o">.</span><span class="n">token_set_ratio</span><span class="p">,</span> <span class="n">score_cutoff</span><span class="o">=</span><span class="n">seuil</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">base</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">res</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="s2">"CLIEN"</span><span class="p">]</span> <span class="k">if</span> <span class="n">res</span> <span class="k">else</span> <span class="kc">None</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">nom</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">Nom (vide pour quitter) : "</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">nom</span><span class="p">:</span>
+        <span class="k">break</span>
+    <span class="n">prenom</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">"Prénom : "</span><span class="p">)</span>
+    <span class="n">rue</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">"Rue : "</span><span class="p">)</span>
+    <span class="n">ville</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">"Ville : "</span><span class="p">)</span>
+    <span class="n">code_postal</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">"Code postal : "</span><span class="p">)</span>
+    <span class="n">num</span> <span class="o">=</span> <span class="n">trouver_client</span><span class="p">(</span><span class="n">nom</span><span class="p">,</span> <span class="n">prenom</span><span class="p">,</span> <span class="n">rue</span><span class="p">,</span> <span class="n">ville</span><span class="p">,</span> <span class="n">code_postal</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Numéro client :"</span><span class="p">,</span> <span class="n">num</span> <span class="k">if</span> <span class="n">num</span> <span class="k">else</span> <span class="s2">"aucun match"</span><span class="p">)</span>
+</code></pre></div>
+<blockquote>
+<p><strong>Attention à l'indentation :</strong> le code doit être collé avec ses retours à la ligne et ses espaces de début de ligne. Sur une seule ligne, il ne fonctionne pas.</p>
+</blockquote>
+<hr />
+<h2 id="6-explication-du-script-bloc-par-bloc">6. Explication du script, bloc par bloc</h2>
+<h3 id="bloc-1--les-imports">Bloc 1 : les imports</h3>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">os</span><span class="o">,</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rapidfuzz</span><span class="w"> </span><span class="kn">import</span> <span class="n">process</span><span class="p">,</span> <span class="n">fuzz</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Ligne</th>
+<th>Explication</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>import os, sys</code></td>
+<td>Charge deux modules de la bibliothèque standard : <code>os</code> (chemins de fichiers) et <code>sys</code> (informations sur Python)</td>
+</tr>
+<tr>
+<td><code>import pandas as pd</code></td>
+<td>Charge <code>pandas</code>, qu'on appellera <code>pd</code> pour écrire moins</td>
+</tr>
+<tr>
+<td><code>from rapidfuzz import process, fuzz</code></td>
+<td>Charge deux outils de <code>rapidfuzz</code> : <code>process</code> (chercher le meilleur candidat dans une liste) et <code>fuzz</code> (calculer un score)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="bloc-2--trouver-le-dossier-du-programme">Bloc 2 : trouver le dossier du programme</h3>
+<div class="highlight"><pre><span></span><code><span class="n">dossier</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">executable</span> <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">sys</span><span class="p">,</span> <span class="s2">"frozen"</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span> <span class="k">else</span> <span class="vm">__file__</span><span class="p">)</span>
+</code></pre></div>
+<p>Cette ligne retrouve <strong>le dossier où se trouve le programme</strong>, pour y chercher le fichier Excel.</p>
+<ul>
+<li><code>__file__</code> est le chemin du script <code>matcher.py</code> lorsqu'on le lance avec Python.</li>
+<li>Une fois transformé en <code>.exe</code> par PyInstaller, <code>__file__</code> ne convient plus : c'est <code>sys.executable</code> (le chemin du <code>.exe</code>) qu'il faut utiliser.</li>
+<li><code>getattr(sys, "frozen", False)</code> répond à la question « est-on dans un <code>.exe</code> ? » (<code>True</code> si oui, <code>False</code> sinon).</li>
+<li><code>A if condition else B</code> est une <strong>expression conditionnelle</strong> : « prends <code>A</code> si la condition est vraie, sinon <code>B</code> ».</li>
+<li><code>os.path.dirname(...)</code> garde uniquement le dossier d'un chemin complet (<code>C:\MATCHER\matcher.py</code> devient <code>C:\MATCHER</code>).</li>
+</ul>
+<p>Résultat : que tu lances le script ou le <code>.exe</code>, le programme cherche l'Excel <strong>à côté de lui</strong>.</p>
+<h3 id="bloc-3--lire-lexcel">Bloc 3 : lire l'Excel</h3>
+<div class="highlight"><pre><span></span><code><span class="n">base</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dossier</span><span class="p">,</span> <span class="s2">"CLIEN_TOP10.xlsx"</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">str</span><span class="p">)</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s2">""</span><span class="p">)</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Élément</th>
+<th>Explication</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>os.path.join(dossier, "CLIEN_TOP10.xlsx")</code></td>
+<td>Construit le chemin complet du fichier Excel</td>
+</tr>
+<tr>
+<td><code>pd.read_excel(...)</code></td>
+<td>Lit le fichier et renvoie un <strong>tableau pandas</strong> (un <em>DataFrame</em>)</td>
+</tr>
+<tr>
+<td><code>dtype=str</code></td>
+<td>Force <strong>toutes</strong> les colonnes en texte : sinon pandas transformerait <code>01000</code> en <code>1000</code> (le zéro initial d'un code postal serait perdu)</td>
+</tr>
+<tr>
+<td><code>.fillna("")</code></td>
+<td>Remplace les cases vides (<code>NaN</code>, « pas de valeur ») par un texte vide, pour ne pas planter lors de l'assemblage</td>
+</tr>
+</tbody>
+</table>
+<p>Le résultat est rangé dans la variable <code>base</code>. Un <strong>DataFrame</strong> est un tableau avec des lignes et des colonnes nommées ; <code>base["NOM"]</code> donne toute la colonne <code>NOM</code>.</p>
+<h3 id="bloc-4--fabriquer-une-colonne-de-texte-à-comparer">Bloc 4 : fabriquer une colonne de texte à comparer</h3>
+<div class="highlight"><pre><span></span><code><span class="n">base</span><span class="p">[</span><span class="s2">"texte"</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">base</span><span class="p">[</span><span class="s2">"NOM"</span><span class="p">]</span> <span class="o">+</span> <span class="s2">" "</span> <span class="o">+</span> <span class="n">base</span><span class="p">[</span><span class="s2">"PRENO"</span><span class="p">]</span> <span class="o">+</span> <span class="s2">" "</span> <span class="o">+</span> <span class="n">base</span><span class="p">[</span><span class="s2">"RUE1"</span><span class="p">]</span> <span class="o">+</span> <span class="s2">" "</span> <span class="o">+</span> <span class="n">base</span><span class="p">[</span><span class="s2">"VILLE"</span><span class="p">]</span> <span class="o">+</span> <span class="s2">" "</span> <span class="o">+</span> <span class="n">base</span><span class="p">[</span><span class="s2">"CODPO"</span><span class="p">])</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+</code></pre></div>
+<p>Cette ligne crée une <strong>nouvelle colonne</strong> <code>texte</code> dans le tableau. Pour chaque client, elle colle nom, prénom, rue, ville et code postal en un seul texte, en minuscules.</p>
+<p>Avec pandas, une opération sur des colonnes se fait <strong>ligne par ligne automatiquement</strong> : pas besoin de boucle.</p>
+<table>
+<thead>
+<tr>
+<th>Client dans l'Excel</th>
+<th>Valeur de <code>texte</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dupont / Éloïse / 12 rue Victor Hugo / Lyon / 69003</td>
+<td><code>dupont éloïse 12 rue victor hugo lyon 69003</code></td>
+</tr>
+</tbody>
+</table>
+<p><code>.str.lower()</code> applique <code>.lower()</code> à chaque texte de la colonne (le préfixe <code>.str</code> est nécessaire avec pandas).</p>
+<h3 id="bloc-5--la-fonction-de-recherche">Bloc 5 : la fonction de recherche</h3>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">trouver_client</span><span class="p">(</span><span class="n">nom</span><span class="p">,</span> <span class="n">prenom</span><span class="p">,</span> <span class="n">rue</span><span class="p">,</span> <span class="n">ville</span><span class="p">,</span> <span class="n">code_postal</span><span class="p">,</span> <span class="n">seuil</span><span class="o">=</span><span class="mi">80</span><span class="p">):</span>
+    <span class="n">saisie</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">nom</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">prenom</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">rue</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">ville</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">code_postal</span><span class="si">}</span><span class="s2">"</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">process</span><span class="o">.</span><span class="n">extractOne</span><span class="p">(</span><span class="n">saisie</span><span class="p">,</span> <span class="n">base</span><span class="p">[</span><span class="s2">"texte"</span><span class="p">],</span> <span class="n">scorer</span><span class="o">=</span><span class="n">fuzz</span><span class="o">.</span><span class="n">token_set_ratio</span><span class="p">,</span> <span class="n">score_cutoff</span><span class="o">=</span><span class="n">seuil</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">base</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">res</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="s2">"CLIEN"</span><span class="p">]</span> <span class="k">if</span> <span class="n">res</span> <span class="k">else</span> <span class="kc">None</span>
+</code></pre></div>
+<p><strong>Ligne <code>def</code></strong> : définit une fonction <code>trouver_client</code> qui reçoit les 5 informations saisies et un <code>seuil</code> (80 par défaut).</p>
+<p><strong>Ligne <code>saisie</code></strong> : assemble la saisie de l'utilisateur de la même façon que la colonne <code>texte</code>, en minuscules. Les deux textes comparés ont ainsi le même format.</p>
+<p><strong>Ligne <code>res</code></strong> : <code>process.extractOne</code> compare <code>saisie</code> à <strong>chaque</strong> texte de <code>base["texte"]</code> et renvoie le meilleur.</p>
+<table>
+<thead>
+<tr>
+<th>Paramètre</th>
+<th>Rôle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>saisie</code></td>
+<td>Ce qu'on cherche</td>
+</tr>
+<tr>
+<td><code>base["texte"]</code></td>
+<td>Où on cherche (la colonne de textes)</td>
+</tr>
+<tr>
+<td><code>scorer=fuzz.token_set_ratio</code></td>
+<td>La méthode de calcul du score</td>
+</tr>
+<tr>
+<td><code>score_cutoff=seuil</code></td>
+<td>Score minimum : en dessous, rien n'est renvoyé</td>
+</tr>
+</tbody>
+</table>
+<p><code>res</code> vaut soit <code>None</code> (aucun candidat au-dessus du seuil), soit un triplet :</p>
+<div class="highlight"><pre><span></span><code>("dupont éloïse 12 rue victor hugo lyon 69003", 95.2, 0)
+   texte trouvé                                  score  numéro de ligne
+</code></pre></div>
+<p><strong>Ligne <code>return</code></strong> : si <code>res</code> existe (<code>if res</code>), on prend <code>res[2]</code>, le <strong>numéro de ligne</strong> du meilleur candidat, puis <code>base.loc[ligne, "CLIEN"]</code> va lire la valeur de la colonne <code>CLIEN</code> à cette ligne. Sinon, on renvoie <code>None</code>.</p>
+<p><code>base.loc[ligne, colonne]</code> signifie : « dans le tableau <code>base</code>, donne-moi la case à cette ligne et cette colonne ».</p>
+<h3 id="bloc-6--la-boucle-de-saisie">Bloc 6 : la boucle de saisie</h3>
+<div class="highlight"><pre><span></span><code><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">nom</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">Nom (vide pour quitter) : "</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">nom</span><span class="p">:</span>
+        <span class="k">break</span>
+    <span class="n">prenom</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">"Prénom : "</span><span class="p">)</span>
+    <span class="n">rue</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">"Rue : "</span><span class="p">)</span>
+    <span class="n">ville</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">"Ville : "</span><span class="p">)</span>
+    <span class="n">code_postal</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">"Code postal : "</span><span class="p">)</span>
+    <span class="n">num</span> <span class="o">=</span> <span class="n">trouver_client</span><span class="p">(</span><span class="n">nom</span><span class="p">,</span> <span class="n">prenom</span><span class="p">,</span> <span class="n">rue</span><span class="p">,</span> <span class="n">ville</span><span class="p">,</span> <span class="n">code_postal</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Numéro client :"</span><span class="p">,</span> <span class="n">num</span> <span class="k">if</span> <span class="n">num</span> <span class="k">else</span> <span class="s2">"aucun match"</span><span class="p">)</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Ligne</th>
+<th>Explication</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>while True:</code></td>
+<td>Boucle infinie : le programme redemande une saisie après chaque recherche</td>
+</tr>
+<tr>
+<td><code>input("\nNom ... : ")</code></td>
+<td>Pose la question ; <code>\n</code> ajoute une ligne vide avant pour aérer</td>
+</tr>
+<tr>
+<td><code>if not nom: break</code></td>
+<td>Si rien n'est tapé (texte vide), <code>break</code> sort de la boucle : le programme se termine</td>
+</tr>
+<tr>
+<td><code>prenom = input(...)</code>...</td>
+<td>Récupère les autres informations</td>
+</tr>
+<tr>
+<td><code>num = trouver_client(...)</code></td>
+<td>Appelle la fonction et garde le numéro renvoyé (ou <code>None</code>)</td>
+</tr>
+<tr>
+<td><code>num if num else "aucun match"</code></td>
+<td>Affiche le numéro s'il existe, sinon le message</td>
+</tr>
+</tbody>
+</table>
+<h3 id="le-déroulement-complet">Le déroulement complet</h3>
+<ol>
+<li>Python charge les bibliothèques.</li>
+<li>Il repère son dossier et lit l'Excel dans <code>base</code>.</li>
+<li>Il construit la colonne <code>texte</code>.</li>
+<li>Il définit la fonction <code>trouver_client</code> (rien n'est exécuté à ce stade).</li>
+<li>La boucle demande la saisie, appelle la fonction et affiche le résultat, jusqu'à ce qu'on tape un nom vide.</li>
+</ol>
+<hr />
+<h2 id="7-lancer-et-tester">7. Lancer et tester</h2>
+<p>Dans le terminal de VS Code, depuis le dossier du projet :</p>
+<div class="highlight"><pre><span></span><code>py matcher.py
+</code></pre></div>
+<p>Ou clique sur le triangle ▶ en haut à droite de l'éditeur.</p>
+<h3 id="jeu-dessai">Jeu d'essai</h3>
+<p>Adapte les valeurs à ton fichier. Le principe : saisir des variantes fautives d'un client qui existe.</p>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Saisie</th>
+<th>Résultat attendu</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Saisie exacte</td>
+<td>Données identiques à une ligne de l'Excel</td>
+<td>Le numéro de ce client</td>
+</tr>
+<tr>
+<td>Faute de frappe</td>
+<td><code>Dupond</code> au lieu de <code>Dupont</code></td>
+<td>Le numéro de ce client</td>
+</tr>
+<tr>
+<td>Abréviation</td>
+<td><code>r.</code> au lieu de <code>rue</code>, <code>av</code> au lieu de <code>avenue</code></td>
+<td>Le numéro de ce client</td>
+</tr>
+<tr>
+<td>Accent manquant</td>
+<td><code>Eloise</code> au lieu de <code>Éloïse</code></td>
+<td>Le numéro de ce client (score un peu plus bas)</td>
+</tr>
+<tr>
+<td>Client inconnu</td>
+<td>Valeurs inventées</td>
+<td><code>aucun match</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="8-régler-le-seuil">8. Régler le seuil</h2>
+<p>Le seuil est le paramètre à ajuster en premier : dans <code>def trouver_client(..., seuil=80)</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Seuil</th>
+<th>Effet</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Trop bas</strong> (ex. 60)</td>
+<td>Faux positifs : un mauvais client est renvoyé</td>
+</tr>
+<tr>
+<td><strong>Trop haut</strong> (ex. 95)</td>
+<td>Faux négatifs : des clients existants ne sont pas retrouvés</td>
+</tr>
+<tr>
+<td><strong>Autour de 80</strong></td>
+<td>Bon point de départ</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Méthode :</strong> prépare une dizaine de saisies dont tu connais la bonne réponse, testes-les, puis monte ou baisse le seuil jusqu'à ce que les résultats soient corrects. Pour voir le score réel d'une recherche, affiche-le temporairement :</p>
+<div class="highlight"><pre><span></span><code><span class="n">res</span> <span class="o">=</span> <span class="n">process</span><span class="o">.</span><span class="n">extractOne</span><span class="p">(</span><span class="n">saisie</span><span class="p">,</span> <span class="n">base</span><span class="p">[</span><span class="s2">"texte"</span><span class="p">],</span> <span class="n">scorer</span><span class="o">=</span><span class="n">fuzz</span><span class="o">.</span><span class="n">token_set_ratio</span><span class="p">,</span> <span class="n">score_cutoff</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+</code></pre></div>
+<p>Avec <code>score_cutoff=0</code>, le meilleur candidat est toujours renvoyé, avec son score.</p>
+<hr />
+<h2 id="9-créer-lexécutable-exe">9. Créer l'exécutable <code>.exe</code></h2>
+<p>Un <code>.exe</code> permet d'utiliser le programme <strong>sans installer Python</strong> (ni VS Code) sur un PC Windows.</p>
+<div class="highlight"><pre><span></span><code>py -m pip install pyinstaller
+py -m PyInstaller --onefile matcher.py
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Élément</th>
+<th>Explication</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pyinstaller</code></td>
+<td>Outil qui emballe le script, ses bibliothèques et Python dans un programme autonome</td>
+</tr>
+<tr>
+<td><code>--onefile</code></td>
+<td>Regroupe tout dans <strong>un seul</strong> fichier</td>
+</tr>
+<tr>
+<td>Résultat</td>
+<td><code>dist\matcher.exe</code> (le <code>P</code> et le <code>I</code> de <code>PyInstaller</code> sont en majuscules)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Utilisation :</strong> copie <code>matcher.exe</code> dans un dossier de travail avec <code>CLIEN_TOP10.xlsx</code> <strong>à côté</strong>, puis double-clique.</p>
+<div class="highlight"><pre><span></span><code>C:\Clients\
+    matcher.exe
+    CLIEN_TOP10.xlsx
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Situation</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>La base change (nouveaux clients)</td>
+<td>Remplacer l'Excel : <strong>pas de recompilation</strong></td>
+</tr>
+<tr>
+<td>Tu modifies le script (seuil, colonnes, questions)</td>
+<td><strong>Recompiler</strong> : relancer la commande <code>PyInstaller</code> (ferme d'abord le <code>.exe</code> s'il est ouvert)</td>
+</tr>
+</tbody>
+</table>
+<p>Informations utiles :</p>
+<ul>
+<li>Le fichier fait 50 à 100 Mo (à cause de <code>pandas</code>) et le premier lancement prend quelques secondes.</li>
+<li>Certains antivirus signalent à tort les <code>.exe</code> créés avec PyInstaller : ajouter une exception.</li>
+<li>Les dossiers <code>build</code>, <code>dist</code> et le fichier <code>matcher.spec</code> sont des fichiers de travail, sans intérêt une fois le <code>.exe</code> copié ailleurs.</li>
+</ul>
+<hr />
+<h2 id="10-dépannage">10. Dépannage</h2>
+<table>
+<thead>
+<tr>
+<th>Problème</th>
+<th>Cause</th>
+<th>Solution</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pip</code> n'est pas reconnu</td>
+<td>L'install manager ne crée pas <code>pip</code> seul</td>
+<td><code>py -m pip install ...</code></td>
+</tr>
+<tr>
+<td><code>Failed to find a suitable install for 'pyinstaller'</code></td>
+<td><code>py install</code> sert à installer <strong>Python</strong>, pas des bibliothèques</td>
+<td><code>py -m pip install pyinstaller</code></td>
+</tr>
+<tr>
+<td><code>ModuleNotFoundError: No module named 'pandas'</code></td>
+<td>Bibliothèque non installée</td>
+<td><code>py -m pip install pandas openpyxl rapidfuzz</code></td>
+</tr>
+<tr>
+<td><code>FileNotFoundError: ... CLIEN_TOP10.xlsx</code></td>
+<td>Fichier absent du dossier du script, ou nom différent</td>
+<td>Placer l'Excel à côté de <code>matcher.py</code>, vérifier nom <strong>et extension</strong></td>
+</tr>
+<tr>
+<td><code>KeyError: 'PRENO'</code> (ou autre)</td>
+<td>Nom de colonne différent dans l'Excel, espace cachée, casse différente</td>
+<td>Afficher <code>print(base.columns.tolist())</code> après <code>read_excel</code> et recopier les noms exacts</td>
+</tr>
+<tr>
+<td><code>PermissionError</code></td>
+<td>Excel est ouvert</td>
+<td>Fermer le fichier dans Excel</td>
+</tr>
+<tr>
+<td><code>IndentationError</code></td>
+<td>Espaces de début de ligne perdus au collage</td>
+<td>Recoller le code avec ses retours à la ligne</td>
+</tr>
+<tr>
+<td>Le triangle ▶ n'apparaît pas</td>
+<td>Extension Python absente, ou fichier non enregistré en <code>.py</code></td>
+<td>Installer l'extension, vérifier l'extension du fichier</td>
+</tr>
+<tr>
+<td>Le <code>.exe</code> plante au lancement</td>
+<td>Excel absent du dossier du <code>.exe</code>, ou <code>.exe</code> compilé avec un ancien script</td>
+<td>Placer l'Excel à côté, recompiler</td>
+</tr>
+<tr>
+<td><code>.xls</code> au lieu de <code>.xlsx</code></td>
+<td>Ancien format Excel</td>
+<td><code>py -m pip install xlrd</code> et écrire <code>CLIEN_TOP10.xls</code> dans le script</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="11-limites-et-améliorations">11. Limites et améliorations</h2>
+<h3 id="limites-à-connaître">Limites à connaître</h3>
+<ul>
+<li><strong>Les accents ne sont pas gérés</strong> : <code>Éloïse</code> et <code>Eloise</code> sont considérés comme différents (le score baisse légèrement, mais le match reste possible).</li>
+<li><strong>Un seul candidat renvoyé</strong> : si deux clients ont un score très proche (homonymes), le programme prend le premier.</li>
+<li><strong><code>token_set_ratio</code> est indulgent</strong> : si la saisie contient moins de mots qu'une ligne de la base, le score peut atteindre 100 même si la saisie est très incomplète. Une saisie vide ou trop courte peut donc matcher n'importe qui : le contrôle humain reste nécessaire.</li>
+<li><strong>Tous les champs comptent pareil</strong> : le code postal pèse autant que la rue dans le score.</li>
+</ul>
+<h3 id="améliorations-possibles">Améliorations possibles</h3>
+<p><strong>1. Supprimer les accents</strong> avant la comparaison :</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">unicodedata</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">sans_accents</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">unicodedata</span><span class="o">.</span><span class="n">normalize</span><span class="p">(</span><span class="s2">"NFKD"</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">"ascii"</span><span class="p">,</span> <span class="s2">"ignore"</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
+</code></pre></div>
+<p>Il faut ensuite appliquer <code>sans_accents</code> à la saisie <strong>et</strong> à la colonne <code>texte</code>.</p>
+<p><strong>2. Afficher les 3 meilleurs candidats</strong> pour validation humaine, avec <code>process.extract(..., limit=3)</code> au lieu de <code>extractOne</code>.</p>
+<p><strong>3. Un score par champ</strong> (Jaro-Winkler pour le nom et le prénom, <code>token_set_ratio</code> pour l'adresse) avec une moyenne pondérée, pour donner plus de poids aux champs fiables.</p>
+<p><strong>4. Traiter un fichier entier de saisies</strong> : lire un second Excel de saisies avec <code>pd.read_excel</code>, appeler <code>trouver_client</code> pour chaque ligne et écrire le résultat avec <code>.to_excel(...)</code>.</p>
+<hr />
+<h2 id="12-aide-mémoire">12. Aide-mémoire</h2>
+<table>
+<thead>
+<tr>
+<th>Besoin</th>
+<th>Commande ou ligne</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Installer les bibliothèques</td>
+<td><code>py -m pip install pandas openpyxl rapidfuzz</code></td>
+</tr>
+<tr>
+<td>Lancer le script</td>
+<td><code>py matcher.py</code></td>
+</tr>
+<tr>
+<td>Créer le <code>.exe</code></td>
+<td><code>py -m PyInstaller --onefile matcher.py</code></td>
+</tr>
+<tr>
+<td>Voir les colonnes de l'Excel</td>
+<td><code>print(base.columns.tolist())</code></td>
+</tr>
+<tr>
+<td>Changer le nom du fichier Excel</td>
+<td>Dans <code>pd.read_excel(...)</code></td>
+</tr>
+<tr>
+<td>Changer un nom de colonne</td>
+<td>Les <code>base["..."]</code> et <code>base.loc[res[2], "..."]</code></td>
+</tr>
+<tr>
+<td>Changer la tolérance</td>
+<td><code>seuil=80</code> dans <code>def trouver_client</code></td>
+</tr>
+<tr>
+<td>Quitter le programme</td>
+<td>Taper un nom vide + Entrée</td>
+</tr>
+<tr>
+<td>Arrêter un programme bloqué</td>
+<td><code>Ctrl+C</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>Voir aussi :</strong> <a href="../python-bases/">Python : les bases</a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
+      
+    
+  </body>
+</html>

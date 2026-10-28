@@ -1,0 +1,3047 @@
+
+<!doctype html>
+<html lang="fr" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../cours-admin-linux/">
+      
+      
+        <link rel="next" href="../memo-acl/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+    
+    
+      
+        <title>Fiche — Les ACL sous Linux - Mes notes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#fiche--les-acl-sous-linux" class="md-skip">
+          Aller au contenu
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="En-tête">
+    <a href="../.." title="Mes notes" class="md-header__button md-logo" aria-label="Mes notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Mes notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Fiche — Les ACL sous Linux
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Rechercher" placeholder="Rechercher" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Recherche">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Effacer" aria-label="Effacer" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initialisation de la recherche
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Mes notes" class="md-nav__button md-logo" aria-label="Mes notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Mes notes
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cours et TP ENI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Administration Linux
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Administration Linux
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cours-admin-linux/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Administration Linux : fiche de révision
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fiche — Les ACL sous Linux
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fiche — Les ACL sous Linux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#sommaire" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sommaire
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-ce-que-dit-ton-cours--le-modèle-classique" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Ce que dit ton cours : le modèle classique
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-pourquoi-les-acl-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Pourquoi les ACL ?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Pourquoi les ACL ?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#le-problème" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Le problème
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#la-solution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        La solution
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-vérifier-que-les-acl-sont-disponibles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Vérifier que les ACL sont disponibles
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-lire-une-acl-avec-getfacl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Lire une ACL avec getfacl
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Lire une ACL avec getfacl">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#le-signe--dans-ls--l" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Le signe + dans ls -l
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lire-le-résultat-de-getfacl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lire le résultat de getfacl
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#les-types-dentrées" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Les types d'entrées
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-poser-et-retirer-des-acl-avec-setfacl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Poser et retirer des ACL avec setfacl
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Poser et retirer des ACL avec setfacl">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#la-syntaxe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        La syntaxe
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#les-options-principales" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Les options principales
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exemples-commentés" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exemples commentés
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#appliquer-à-tout-un-dossier" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Appliquer à tout un dossier
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-le-masque--la-notion-la-plus-importante" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Le masque : la notion la plus importante
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Le masque : la notion la plus importante">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#le-principe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Le principe
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exemple" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exemple
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#le-piège--chmod-modifie-le-masque" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Le piège : chmod modifie le masque
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-les-acl-par-défaut--lhéritage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Les ACL par défaut : l'héritage
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Les ACL par défaut : l&#39;héritage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#le-problème_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Le problème
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#la-solution--lacl-par-défaut" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        La solution : l'ACL par défaut
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-dans-quel-ordre-linux-vérifie-les-droits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Dans quel ordre Linux vérifie les droits
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-copier-déplacer-et-sauvegarder-des-acl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Copier, déplacer et sauvegarder des ACL
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-cas-pratique-complet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Cas pratique complet
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Cas pratique complet">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#étape-1--préparer-les-groupes-et-les-utilisateurs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 1 — Préparer les groupes et les utilisateurs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#étape-2--créer-le-dossier-avec-les-droits-classiques-méthode-du-cours" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 2 — Créer le dossier avec les droits classiques (méthode du cours)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#étape-3--ajouter-les-acl-hors-cours" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 3 — Ajouter les ACL (hors cours)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#étape-4--tester-avec-chaque-utilisateur" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 4 — Tester avec chaque utilisateur
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#étape-5--nettoyer-si-besoin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 5 — Nettoyer (si besoin)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-comparaison-avec-les-acl-ntfs-de-windows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Comparaison avec les ACL NTFS de Windows
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-les-pièges-à-éviter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Les pièges à éviter
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-mémo-des-commandes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. Mémo des commandes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-exercices-corrigés" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. Exercices corrigés
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-testez-vous" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15. Testez-vous
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../memo-acl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mémo — Les ACL sous Linux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../memo-chmod/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mémo : chmod, les droits sous Linux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../memo-commandes-stockage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mémo commandes : stockage, LVM, montage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../memo-systeme-fichiers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mémo : le système de fichiers sous Linux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../memo-types-volumes-partitions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mémo : partitions, LVM, systèmes de fichiers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_8" id="__nav_2_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    TP
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TP/index%20%281%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tutos Administration Linux (M02)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TP/tp1-installation-graphique/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP1 : Installer Oracle Linux avec bureau GNOME (srvclient)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TP/tp10-gestion-logs%20%281%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP10 : Gestion des logs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TP/tp11-analyse-systeme%20%281%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP11 : Analyse du système
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TP/tp2-installation-serveur/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP2 : Installer Oracle Linux en mode serveur, sans interface graphique (serveur)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TP/tp3-grub-mode-maintenance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP3 : Configurer GRUB et démarrer en mode maintenance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TP/tp4-demarrage-et-services/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP4 : Gestion du démarrage et des services
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TP/tp5-gestion-reseau/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP5 : Gestion réseau
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TP/tp6-depots-mises-a-jour/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP6 : Dépôts, mises à jour et installation de logiciels
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TP/tp7-gestion-stockage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP7 : Gestion du stockage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TP/tp8-gestion-utilisateurs%20%281%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP8 : Gestion des utilisateurs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../TP/tp9-gestion-permissions%20%281%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP9 : Gestion des permissions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Administration Windows
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Administration Windows
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration-Windows/fiche-revision-windows-ad/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fiche de révision — Administration Windows et Active Directory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration-Windows/raccourcis-claviers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Raccourcis clavier Windows / Windows Server — Administration système et réseau
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    TP
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration-Windows/TP/tp01-creation-infrastructure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP1 — Création de l'infrastructure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration-Windows/TP/tp02-creation-domaine-ad/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP2 — Création d'un domaine Active Directory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration-Windows/TP/tp03-gestion-domaine-ad/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP3 — Gestion d'un domaine Active Directory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration-Windows/TP/tp04-gestion-ressources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP4 — Gestion de ressources
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration-Windows/TP/tp05-strategies-de-groupe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP5 — Les stratégies de groupe (GPO)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Python
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/python-bases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python : les bases pour débuter
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/tuto-matcher/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tuto : retrouver un numéro client avec une base Excel (fuzzy matching)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/tuto_script_matching/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tuto : comprendre le script matcher_passages.py
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#sommaire" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sommaire
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-ce-que-dit-ton-cours--le-modèle-classique" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Ce que dit ton cours : le modèle classique
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-pourquoi-les-acl-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Pourquoi les ACL ?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Pourquoi les ACL ?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#le-problème" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Le problème
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#la-solution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        La solution
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-vérifier-que-les-acl-sont-disponibles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Vérifier que les ACL sont disponibles
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-lire-une-acl-avec-getfacl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Lire une ACL avec getfacl
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Lire une ACL avec getfacl">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#le-signe--dans-ls--l" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Le signe + dans ls -l
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lire-le-résultat-de-getfacl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lire le résultat de getfacl
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#les-types-dentrées" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Les types d'entrées
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-poser-et-retirer-des-acl-avec-setfacl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Poser et retirer des ACL avec setfacl
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Poser et retirer des ACL avec setfacl">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#la-syntaxe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        La syntaxe
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#les-options-principales" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Les options principales
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exemples-commentés" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exemples commentés
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#appliquer-à-tout-un-dossier" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Appliquer à tout un dossier
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-le-masque--la-notion-la-plus-importante" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Le masque : la notion la plus importante
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Le masque : la notion la plus importante">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#le-principe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Le principe
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exemple" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exemple
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#le-piège--chmod-modifie-le-masque" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Le piège : chmod modifie le masque
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-les-acl-par-défaut--lhéritage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Les ACL par défaut : l'héritage
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Les ACL par défaut : l&#39;héritage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#le-problème_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Le problème
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#la-solution--lacl-par-défaut" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        La solution : l'ACL par défaut
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-dans-quel-ordre-linux-vérifie-les-droits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Dans quel ordre Linux vérifie les droits
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-copier-déplacer-et-sauvegarder-des-acl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Copier, déplacer et sauvegarder des ACL
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-cas-pratique-complet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Cas pratique complet
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Cas pratique complet">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#étape-1--préparer-les-groupes-et-les-utilisateurs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 1 — Préparer les groupes et les utilisateurs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#étape-2--créer-le-dossier-avec-les-droits-classiques-méthode-du-cours" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 2 — Créer le dossier avec les droits classiques (méthode du cours)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#étape-3--ajouter-les-acl-hors-cours" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 3 — Ajouter les ACL (hors cours)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#étape-4--tester-avec-chaque-utilisateur" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 4 — Tester avec chaque utilisateur
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#étape-5--nettoyer-si-besoin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Étape 5 — Nettoyer (si besoin)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-comparaison-avec-les-acl-ntfs-de-windows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Comparaison avec les ACL NTFS de Windows
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-les-pièges-à-éviter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Les pièges à éviter
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-mémo-des-commandes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. Mémo des commandes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-exercices-corrigés" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. Exercices corrigés
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-testez-vous" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15. Testez-vous
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="fiche--les-acl-sous-linux">Fiche — Les ACL sous Linux</h1>
+<blockquote>
+<p><strong>Module M02 Administration Linux</strong> (Oracle Linux / RHEL) · Comprendre, lire et poser des ACL POSIX avec <code>getfacl</code> et <code>setfacl</code>.</p>
+<p>⚠️ <strong>À savoir avant de commencer</strong> : ton mémo de cours <em>« chmod, les droits sous Linux »</em> <strong>ne traite pas les ACL</strong>. La partie 1 reprend ce que dit ton cours ; <strong>tout le reste de la fiche est hors cours</strong>. Si ton support ENI du module M02 a un chapitre sur les ACL, colle-le moi et j'alignerai la fiche dessus.</p>
+</blockquote>
+<hr />
+<h2 id="sommaire">Sommaire</h2>
+<ol>
+<li><a href="#1-ce-que-dit-ton-cours--le-modèle-classique">Ce que dit ton cours : le modèle classique</a></li>
+<li><a href="#2-pourquoi-les-acl-">Pourquoi les ACL ?</a></li>
+<li><a href="#3-vérifier-que-les-acl-sont-disponibles">Vérifier que les ACL sont disponibles</a></li>
+<li><a href="#4-lire-une-acl-avec-getfacl">Lire une ACL avec getfacl</a></li>
+<li><a href="#5-poser-et-retirer-des-acl-avec-setfacl">Poser et retirer des ACL avec setfacl</a></li>
+<li><a href="#6-le-masque--la-notion-la-plus-importante">Le masque : la notion la plus importante</a></li>
+<li><a href="#7-les-acl-par-défaut--lhéritage">Les ACL par défaut : l'héritage</a></li>
+<li><a href="#8-dans-quel-ordre-linux-vérifie-les-droits">Dans quel ordre Linux vérifie les droits</a></li>
+<li><a href="#9-copier-déplacer-et-sauvegarder-des-acl">Copier, déplacer et sauvegarder des ACL</a></li>
+<li><a href="#10-cas-pratique-complet">Cas pratique complet</a></li>
+<li><a href="#11-comparaison-avec-les-acl-ntfs-de-windows">Comparaison avec les ACL NTFS de Windows</a></li>
+<li><a href="#12-les-pièges-à-éviter">Les pièges à éviter</a></li>
+<li><a href="#13-mémo-des-commandes">Mémo des commandes</a></li>
+<li><a href="#14-exercices-corrigés">Exercices corrigés</a></li>
+<li><a href="#15-testez-vous">Testez-vous</a></li>
+</ol>
+<hr />
+<h2 id="1-ce-que-dit-ton-cours--le-modèle-classique">1. Ce que dit ton cours : le modèle classique</h2>
+<blockquote>
+<p>📘 <strong>Méthode du cours</strong> : sections <em>« Les 10 caractères de ls -l »</em>, <em>« Notation octale »</em>, <em>« Notation symbolique »</em>, <em>« chown »</em> et <em>« Les droits spéciaux »</em> de ton mémo.</p>
+</blockquote>
+<p>Le modèle de droits classique de Linux repose sur <strong>3 catégories</strong> :</p>
+<table>
+<thead>
+<tr>
+<th>Catégorie</th>
+<th>Lettre</th>
+<th>Qui ?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>user</strong></td>
+<td><code>u</code></td>
+<td>Le <strong>propriétaire</strong> du fichier (un seul)</td>
+</tr>
+<tr>
+<td><strong>group</strong></td>
+<td><code>g</code></td>
+<td>Le <strong>groupe propriétaire</strong> du fichier (un seul)</td>
+</tr>
+<tr>
+<td><strong>others</strong></td>
+<td><code>o</code></td>
+<td><strong>Tous les autres</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Chacune reçoit les droits <code>r</code> (4), <code>w</code> (2), <code>x</code> (1) :</p>
+<div class="highlight"><pre><span></span><code>-rw-r-----  1  root  compta  1200  oct. 28 10:00  budget.ods
+ └┬┘└┬┘└┬┘      └┬─┘  └─┬──┘
+  u  g  o     proprio  groupe
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>chmod<span class="w"> </span><span class="m">640</span><span class="w"> </span>budget.ods<span class="w">            </span><span class="c1"># notation octale : u=rw, g=r, o=rien</span>
+chmod<span class="w"> </span>g+w<span class="w"> </span>budget.ods<span class="w">            </span><span class="c1"># notation symbolique : ajoute w au groupe</span>
+chown<span class="w"> </span>root:compta<span class="w"> </span>budget.ods<span class="w">    </span><span class="c1"># change le propriétaire et le groupe</span>
+</code></pre></div>
+<p>Ton cours rappelle aussi qu'<strong>un fichier n'a qu'un seul groupe propriétaire</strong>. C'est justement cette limite que les ACL viennent lever.</p>
+<hr />
+<blockquote>
+<p>🔵 <strong>Hors cours</strong> : à partir d'ici, tout le contenu est un <strong>complément</strong> qui n'est pas dans ton mémo.</p>
+</blockquote>
+<hr />
+<h2 id="2-pourquoi-les-acl-">2. Pourquoi les ACL ?</h2>
+<h3 id="le-problème">Le problème</h3>
+<p>Le service Comptabilité a un dossier <code>/srv/compta</code>, qui appartient au groupe <code>compta</code> :</p>
+<div class="highlight"><pre><span></span><code>drwxrwx---  root  compta  /srv/compta
+</code></pre></div>
+<p>On te demande ensuite :
+- que le groupe <strong><code>rh</code></strong> puisse <strong>lire</strong> ce dossier, sans le modifier ;
+- que l'utilisatrice <strong><code>alice</code></strong>, qui n'est pas comptable, puisse <strong>modifier</strong> les fichiers.</p>
+<p><strong>Avec le modèle classique, c'est impossible.</strong> Il n'y a qu'<strong>un seul</strong> groupe propriétaire (<code>compta</code>). Si tu ouvres les droits aux <code>others</code>, tu les ouvres à <strong>tout le monde</strong>.</p>
+<h3 id="la-solution">La solution</h3>
+<p>Une <strong>ACL</strong> (<em>Access Control List</em>, liste de contrôle d'accès) permet d'ajouter des droits pour <strong>autant d'utilisateurs et de groupes que tu veux</strong>, en plus du propriétaire, du groupe et des autres.</p>
+<pre class="mermaid"><code>flowchart LR
+    subgraph CLASSIQUE["Modèle classique (ton cours)"]
+        A1["👤 1 propriétaire"]
+        A2["👥 1 groupe"]
+        A3["🌍 les autres"]
+    end
+    subgraph ACL["Avec une ACL (hors cours)"]
+        B1["👤 1 propriétaire"]
+        B2["👥 1 groupe"]
+        B3["🌍 les autres"]
+        B4["➕ alice : rw-"]
+        B5["➕ groupe rh : r-x"]
+        B6["➕ autant d'entrées&lt;br/&gt;que nécessaire"]
+    end
+    CLASSIQUE ==&gt;|"setfacl"| ACL</code></pre>
+<blockquote>
+<p>💡 Les ACL <strong>complètent</strong> les droits classiques, elles ne les remplacent pas. <code>chmod</code>, <code>chown</code> et tout ce que tu as vu en cours restent valables.</p>
+</blockquote>
+<hr />
+<h2 id="3-vérifier-que-les-acl-sont-disponibles">3. Vérifier que les ACL sont disponibles</h2>
+<p>Sur <strong>Oracle Linux / RHEL</strong>, tout est prêt par défaut :
+- le système de fichiers par défaut, <strong>XFS</strong>, gère les ACL nativement ;
+- le paquet <strong><code>acl</code></strong>, qui fournit <code>getfacl</code> et <code>setfacl</code>, est installé de base.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Vérifie que le paquet acl est installé</span>
+rpm<span class="w"> </span>-q<span class="w"> </span>acl
+
+<span class="c1"># S'il manque (rare), installe-le</span>
+dnf<span class="w"> </span>install<span class="w"> </span>acl
+</code></pre></div>
+<hr />
+<h2 id="4-lire-une-acl-avec-getfacl">4. Lire une ACL avec getfacl</h2>
+<h3 id="le-signe--dans-ls--l">Le signe <code>+</code> dans ls -l</h3>
+<p>Quand un fichier ou un dossier a une ACL, <code>ls -l</code> affiche un <strong><code>+</code></strong> juste après les droits :</p>
+<div class="highlight"><pre><span></span><code>drwxrwx---+  2  root  compta  6  oct. 28 10:00  compta
+          ↑
+          une ACL est présente : ls -l ne montre pas tout !
+</code></pre></div>
+<blockquote>
+<p>⚠️ Le <code>+</code> signifie que <code>ls -l</code> <strong>ne suffit plus</strong> pour connaître les droits réels. Il faut utiliser <code>getfacl</code>.</p>
+</blockquote>
+<h3 id="lire-le-résultat-de-getfacl">Lire le résultat de getfacl</h3>
+<div class="highlight"><pre><span></span><code>getfacl<span class="w"> </span>/srv/compta
+</code></pre></div>
+<div class="highlight"><pre><span></span><code># file: srv/compta
+# owner: root
+# group: compta
+user::rwx
+user:alice:rw-
+group::rwx
+group:rh:r-x
+mask::rwx
+other::---
+</code></pre></div>
+<blockquote>
+<p>💡 Le message <code>getfacl: Removing leading '/' from absolute path names</code> est normal : il indique juste que le <code>/</code> du début est retiré de l'affichage.</p>
+</blockquote>
+<h3 id="les-types-dentrées">Les types d'entrées</h3>
+<table>
+<thead>
+<tr>
+<th>Entrée</th>
+<th>Signification</th>
+<th>Équivalent dans ton cours</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>user::rwx</code></td>
+<td>Le <strong>propriétaire</strong> (rien entre les <code>::</code>)</td>
+<td><code>u</code></td>
+</tr>
+<tr>
+<td><code>user:alice:rw-</code></td>
+<td>Un <strong>utilisateur nommé</strong> : alice</td>
+<td>— <em>(nouveau)</em></td>
+</tr>
+<tr>
+<td><code>group::rwx</code></td>
+<td>Le <strong>groupe propriétaire</strong></td>
+<td><code>g</code></td>
+</tr>
+<tr>
+<td><code>group:rh:r-x</code></td>
+<td>Un <strong>groupe nommé</strong> : rh</td>
+<td>— <em>(nouveau)</em></td>
+</tr>
+<tr>
+<td><code>mask::rwx</code></td>
+<td>Le <strong>masque</strong> : droits <strong>maximum</strong> des entrées nommées et du groupe</td>
+<td>— <em>(nouveau, voir section 6)</em></td>
+</tr>
+<tr>
+<td><code>other::---</code></td>
+<td>Les <strong>autres</strong></td>
+<td><code>o</code></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>🧠 <strong>Astuce de lecture</strong> : <code>user::</code> avec <strong>rien</strong> entre les deux-points = le propriétaire. <code>user:alice:</code> avec <strong>un nom</strong> = un utilisateur ajouté par ACL. Même logique pour <code>group</code>.</p>
+</blockquote>
+<hr />
+<h2 id="5-poser-et-retirer-des-acl-avec-setfacl">5. Poser et retirer des ACL avec setfacl</h2>
+<h3 id="la-syntaxe">La syntaxe</h3>
+<div class="highlight"><pre><span></span><code>setfacl  OPTION  TYPE:NOM:DROITS  FICHIER
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Abréviation</th>
+<th>Exemple</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>user</code></td>
+<td><code>u</code></td>
+<td><code>u:alice:rw</code></td>
+</tr>
+<tr>
+<td><code>group</code></td>
+<td><code>g</code></td>
+<td><code>g:rh:rx</code></td>
+</tr>
+<tr>
+<td><code>mask</code></td>
+<td><code>m</code></td>
+<td><code>m::rx</code></td>
+</tr>
+<tr>
+<td><code>other</code></td>
+<td><code>o</code></td>
+<td><code>o::-</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="les-options-principales">Les options principales</h3>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Effet</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-m</code></td>
+<td><strong>Ajouter ou modifier</strong> une entrée (<em>modify</em>)</td>
+</tr>
+<tr>
+<td><code>-x</code></td>
+<td><strong>Retirer</strong> une entrée (<em>remove</em>)</td>
+</tr>
+<tr>
+<td><code>-b</code></td>
+<td><strong>Retirer toutes</strong> les ACL, pour revenir aux droits classiques</td>
+</tr>
+<tr>
+<td><code>-R</code></td>
+<td><strong>Récursif</strong> : le dossier et tout son contenu</td>
+</tr>
+<tr>
+<td><code>-d</code></td>
+<td>Agir sur l'ACL <strong>par défaut</strong> d'un dossier (voir section 7)</td>
+</tr>
+<tr>
+<td><code>-k</code></td>
+<td>Retirer l'ACL par défaut</td>
+</tr>
+</tbody>
+</table>
+<h3 id="exemples-commentés">Exemples commentés</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Donner lecture + écriture à l'utilisatrice alice sur un fichier</span>
+setfacl<span class="w"> </span>-m<span class="w"> </span>u:alice:rw<span class="w"> </span>budget.ods
+
+<span class="c1"># Donner lecture + traversée au groupe rh sur un dossier</span>
+<span class="c1"># (rappel du cours : sur un dossier, r sans x ne sert presque à rien)</span>
+setfacl<span class="w"> </span>-m<span class="w"> </span>g:rh:rx<span class="w"> </span>/srv/compta
+
+<span class="c1"># Plusieurs entrées en une seule commande, séparées par des virgules</span>
+setfacl<span class="w"> </span>-m<span class="w"> </span>u:alice:rw,g:rh:r<span class="w"> </span>budget.ods
+
+<span class="c1"># Retirer l'entrée d'alice</span>
+setfacl<span class="w"> </span>-x<span class="w"> </span>u:alice<span class="w"> </span>budget.ods
+
+<span class="c1"># Retirer toutes les ACL du fichier</span>
+setfacl<span class="w"> </span>-b<span class="w"> </span>budget.ods
+
+<span class="c1"># Vérifier le résultat</span>
+getfacl<span class="w"> </span>budget.ods
+</code></pre></div>
+<blockquote>
+<p>⚠️ <strong>Avec <code>-x</code>, on ne met pas de droits</strong> : <code>setfacl -x u:alice</code> et non <code>setfacl -x u:alice:rw</code>.</p>
+</blockquote>
+<h3 id="appliquer-à-tout-un-dossier">Appliquer à tout un dossier</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Donne au groupe rh la lecture sur le dossier ET tout son contenu</span>
+<span class="c1"># X majuscule : x seulement sur les dossiers (et les fichiers déjà exécutables)</span>
+setfacl<span class="w"> </span>-R<span class="w"> </span>-m<span class="w"> </span>g:rh:rX<span class="w"> </span>/srv/compta
+</code></pre></div>
+<blockquote>
+<p>💡 <strong>Le <code>X</code> majuscule</strong> évite de rendre exécutables tous les fichiers texte. Il donne <code>x</code> aux <strong>dossiers</strong> (pour pouvoir les traverser) et aux fichiers qui étaient <strong>déjà</strong> exécutables.</p>
+<p>⚠️ Comme pour <code>chmod -R</code> dans ton cours, sois <strong>prudent avec <code>-R</code></strong> : teste d'abord sur un dossier de test.</p>
+</blockquote>
+<hr />
+<h2 id="6-le-masque--la-notion-la-plus-importante">6. Le masque : la notion la plus importante</h2>
+<h3 id="le-principe">Le principe</h3>
+<p>Le <strong>masque</strong> (<code>mask</code>) fixe les droits <strong>maximum</strong> que peuvent avoir :
+- les <strong>utilisateurs nommés</strong> (<code>user:alice:</code>) ;
+- le <strong>groupe propriétaire</strong> (<code>group::</code>) ;
+- les <strong>groupes nommés</strong> (<code>group:rh:</code>).</p>
+<p>Il ne s'applique <strong>pas</strong> au propriétaire ni aux autres.</p>
+<pre class="mermaid"><code>flowchart LR
+    E["Droits de l'entrée&lt;br/&gt;user:alice:rw-"] --&gt; F{"🔒 Masque&lt;br/&gt;mask::r--"}
+    F --&gt; R["✅ Droits effectifs&lt;br/&gt;r-- seulement"]</code></pre>
+<p><strong>Droit effectif = droits de l'entrée ET masque.</strong> Un droit n'est accordé que s'il est <strong>à la fois</strong> dans l'entrée <strong>et</strong> dans le masque.</p>
+<h3 id="exemple">Exemple</h3>
+<div class="highlight"><pre><span></span><code>user:alice:rw-          #effective:r--
+group::rwx              #effective:r-x
+group:rh:r-x
+mask::r-x
+</code></pre></div>
+<p>alice a <code>rw-</code> dans son entrée, mais le masque ne contient pas <code>w</code>. <strong>Elle ne peut que lire.</strong> <code>getfacl</code> l'indique avec <code>#effective</code> (droits effectifs).</p>
+<h3 id="le-piège--chmod-modifie-le-masque">Le piège : chmod modifie le masque</h3>
+<blockquote>
+<p>🚨 <strong>Piège n°1 des ACL.</strong> Quand un fichier a une ACL, la partie <strong>group</strong> de <code>ls -l</code> (les caractères 5 à 7) <strong>n'affiche plus le groupe propriétaire, mais le masque</strong>. Et <code>chmod g...</code> <strong>modifie le masque</strong>.</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code>setfacl<span class="w"> </span>-m<span class="w"> </span>u:alice:rw<span class="w"> </span>budget.ods<span class="w">   </span><span class="c1"># alice peut écrire</span>
+chmod<span class="w"> </span>g-w<span class="w"> </span>budget.ods<span class="w">               </span><span class="c1"># on croit retirer l'écriture au groupe…</span>
+getfacl<span class="w"> </span>budget.ods<span class="w">                 </span><span class="c1"># … mais alice a perdu l'écriture aussi !</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>user:alice:rw-          #effective:r--
+mask::r--
+</code></pre></div>
+<p>Un <code>chmod 640</code> ou <code>chmod 750</code> sur un fichier avec ACL peut donc <strong>brider sans prévenir</strong> les droits que tu as donnés par ACL.</p>
+<p><strong>Comment s'en sortir :</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Remettre le masque à la valeur voulue</span>
+setfacl<span class="w"> </span>-m<span class="w"> </span>m::rwx<span class="w"> </span>budget.ods
+</code></pre></div>
+<blockquote>
+<p>💡 <strong>Bonne nouvelle</strong> : <code>setfacl -m</code> <strong>recalcule automatiquement</strong> le masque pour qu'il couvre toutes les entrées. Tant que tu passes par <code>setfacl</code> et non par <code>chmod g...</code>, le masque reste cohérent.</p>
+</blockquote>
+<hr />
+<h2 id="7-les-acl-par-défaut--lhéritage">7. Les ACL par défaut : l'héritage</h2>
+<h3 id="le-problème_1">Le problème</h3>
+<p>Une ACL posée sur un dossier <strong>ne s'applique pas</strong> aux fichiers créés <strong>ensuite</strong> dedans. Si alice crée un nouveau fichier dans <code>/srv/compta</code>, le groupe <code>rh</code> ne pourra pas le lire.</p>
+<h3 id="la-solution--lacl-par-défaut">La solution : l'ACL par défaut</h3>
+<p>Une <strong>ACL par défaut</strong> (option <code>-d</code>) se pose <strong>sur un dossier</strong>. Elle est <strong>copiée automatiquement</strong> sur tout ce qui sera <strong>créé</strong> dedans.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Tout nouveau fichier ou dossier créé dans /srv/compta</span>
+<span class="c1"># donnera la lecture au groupe rh</span>
+setfacl<span class="w"> </span>-d<span class="w"> </span>-m<span class="w"> </span>g:rh:rX<span class="w"> </span>/srv/compta
+</code></pre></div>
+<div class="highlight"><pre><span></span><code># getfacl /srv/compta
+...
+default:user::rwx
+default:group::rwx
+default:group:rh:r-x
+default:mask::rwx
+default:other::---
+</code></pre></div>
+<pre class="mermaid"><code>flowchart TD
+    D["📂 /srv/compta&lt;br/&gt;ACL par défaut : g:rh:rX"] --&gt;|"création d'un fichier"| F1["📄 nouveau.ods&lt;br/&gt;hérite : group:rh&lt;br/&gt;(lecture)"]
+    D --&gt;|"création d'un dossier"| F2["📂 2026&lt;br/&gt;hérite : group:rh:r-x&lt;br/&gt;+ la même ACL par défaut"]
+    X["📄 ancien.ods&lt;br/&gt;(existait avant)"] -.-&gt;|"❌ non concerné"| D</code></pre>
+<blockquote>
+<p>⚠️ <strong>L'ACL par défaut ne touche que les éléments créés APRÈS.</strong> Pour traiter aussi ce qui <strong>existe déjà</strong>, il faut les deux commandes :</p>
+<div class="highlight"><pre><span></span><code>setfacl<span class="w"> </span>-R<span class="w"> </span>-m<span class="w"> </span>g:rh:rX<span class="w"> </span>/srv/compta<span class="w">      </span><span class="c1"># 1. le contenu existant</span>
+setfacl<span class="w"> </span>-d<span class="w"> </span>-m<span class="w"> </span>g:rh:rX<span class="w"> </span>/srv/compta<span class="w">      </span><span class="c1"># 2. le contenu futur</span>
+</code></pre></div>
+<p>📘 <strong>Lien avec ton cours</strong> (section <em>« Les droits spéciaux »</em>) : le <strong>SetGID</strong> sur un dossier fait hériter le <strong>groupe propriétaire</strong>. L'ACL par défaut fait hériter des <strong>droits supplémentaires</strong>. Les deux se combinent très bien sur un dossier partagé.</p>
+</blockquote>
+<hr />
+<h2 id="8-dans-quel-ordre-linux-vérifie-les-droits">8. Dans quel ordre Linux vérifie les droits</h2>
+<p>Linux ne <strong>cumule pas</strong> toutes les entrées. Il teste les catégories <strong>dans l'ordre</strong> et <strong>s'arrête à la première qui correspond</strong>.</p>
+<pre class="mermaid"><code>flowchart TD
+    S["👤 Un utilisateur accède au fichier"] --&gt; Q1{"Est-il le&lt;br/&gt;propriétaire ?"}
+    Q1 --&gt;|"Oui"| R1["Droits de user::&lt;br/&gt;(pas de masque)"]
+    Q1 --&gt;|"Non"| Q2{"A-t-il une entrée&lt;br/&gt;user:nom: ?"}
+    Q2 --&gt;|"Oui"| R2["Droits de son entrée&lt;br/&gt;limités par le masque"]
+    Q2 --&gt;|"Non"| Q3{"Est-il dans le groupe propriétaire&lt;br/&gt;ou un groupe nommé ?"}
+    Q3 --&gt;|"Oui"| R3["Droits de ses groupes&lt;br/&gt;limités par le masque"]
+    Q3 --&gt;|"Non"| R4["Droits de other::"]</code></pre>
+<p><strong>Conséquence importante :</strong> une entrée nommée à <code>---</code> <strong>bloque</strong> un utilisateur, même s'il est dans un groupe autorisé :</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># bob est dans le groupe compta (rwx), mais on lui retire tout accès</span>
+setfacl<span class="w"> </span>-m<span class="w"> </span>u:bob:---<span class="w"> </span>/srv/compta
+</code></pre></div>
+<p>bob a une entrée <code>user:bob:</code>, donc Linux s'arrête là : <strong>aucun accès</strong>, et les droits du groupe <code>compta</code> ne sont même pas regardés.</p>
+<blockquote>
+<p>💡 C'est la façon de faire un <strong>« refus »</strong> avec les ACL Linux, qui n'ont pas de vrai mot-clé <em>refuser</em> comme Windows.</p>
+</blockquote>
+<hr />
+<h2 id="9-copier-déplacer-et-sauvegarder-des-acl">9. Copier, déplacer et sauvegarder des ACL</h2>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Les ACL sont-elles conservées ?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mv</code> dans le même système de fichiers</td>
+<td>✅ Oui</td>
+</tr>
+<tr>
+<td><code>cp fichier destination</code></td>
+<td>❌ Non : le fichier copié prend les droits par défaut</td>
+</tr>
+<tr>
+<td><code>cp -a</code> ou <code>cp --preserve=all</code></td>
+<td>✅ Oui</td>
+</tr>
+<tr>
+<td><code>tar</code></td>
+<td>⚠️ Seulement avec l'option <code>--acls</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Sauvegarder et restaurer les ACL d'une arborescence :</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Sauvegarde toutes les ACL de /srv/compta dans un fichier texte</span>
+getfacl<span class="w"> </span>-R<span class="w"> </span>/srv/compta<span class="w"> </span>&gt;<span class="w"> </span>/root/acl_compta.txt
+
+<span class="c1"># Les restaure plus tard (après une erreur, par exemple)</span>
+<span class="c1"># ⚠️ se placer d'abord à la racine : la sauvegarde contient des chemins</span>
+<span class="c1">#    sans le "/" du début (srv/compta), lus depuis le dossier courant</span>
+<span class="nb">cd</span><span class="w"> </span>/
+setfacl<span class="w"> </span>--restore<span class="o">=</span>/root/acl_compta.txt
+</code></pre></div>
+<blockquote>
+<p>💡 Fais toujours cette sauvegarde <strong>avant</strong> une modification récursive (<code>setfacl -R</code>, <code>chmod -R</code>).</p>
+</blockquote>
+<hr />
+<h2 id="10-cas-pratique-complet">10. Cas pratique complet</h2>
+<p><strong>Objectif</strong> : sur ta VM serveur, en <strong>root</strong>, créer un dossier partagé <code>/srv/compta</code> où :</p>
+<table>
+<thead>
+<tr>
+<th>Qui</th>
+<th>Droits voulus</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Groupe <strong><code>compta</code></strong> (propriétaire)</td>
+<td>Lecture + écriture</td>
+</tr>
+<tr>
+<td>Groupe <strong><code>rh</code></strong></td>
+<td>Lecture seule</td>
+</tr>
+<tr>
+<td>Utilisatrice <strong><code>alice</code></strong> (hors compta)</td>
+<td>Lecture + écriture</td>
+</tr>
+<tr>
+<td>Utilisateur <strong><code>bob</code></strong> (membre de compta)</td>
+<td><strong>Aucun accès</strong></td>
+</tr>
+<tr>
+<td>Tous les autres</td>
+<td>Aucun accès</td>
+</tr>
+</tbody>
+</table>
+<h3 id="étape-1--préparer-les-groupes-et-les-utilisateurs">Étape 1 — Préparer les groupes et les utilisateurs</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Crée les groupes</span>
+groupadd<span class="w"> </span>compta
+groupadd<span class="w"> </span>rh
+
+<span class="c1"># Crée les utilisateurs</span>
+useradd<span class="w"> </span>-G<span class="w"> </span>compta<span class="w"> </span>claire<span class="w">     </span><span class="c1"># claire : comptable</span>
+useradd<span class="w"> </span>-G<span class="w"> </span>compta<span class="w"> </span>bob<span class="w">        </span><span class="c1"># bob : comptable, mais à bloquer</span>
+useradd<span class="w"> </span>-G<span class="w"> </span>rh<span class="w">     </span>romain<span class="w">     </span><span class="c1"># romain : ressources humaines</span>
+useradd<span class="w"> </span>alice<span class="w">                </span><span class="c1"># alice : dans aucun de ces groupes</span>
+
+<span class="c1"># Vérifie les groupes de chacun</span>
+id<span class="w"> </span>claire<span class="p">;</span><span class="w"> </span>id<span class="w"> </span>bob<span class="p">;</span><span class="w"> </span>id<span class="w"> </span>romain<span class="p">;</span><span class="w"> </span>id<span class="w"> </span>alice
+</code></pre></div>
+<h3 id="étape-2--créer-le-dossier-avec-les-droits-classiques-méthode-du-cours">Étape 2 — Créer le dossier avec les droits classiques (méthode du cours)</h3>
+<div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>/srv/compta
+
+<span class="c1"># Propriétaire root, groupe compta</span>
+chown<span class="w"> </span>root:compta<span class="w"> </span>/srv/compta
+
+<span class="c1"># 2770 : SetGID (2) + rwx pour root, rwx pour compta, rien pour les autres</span>
+<span class="c1"># Le SetGID fait hériter le groupe compta aux fichiers créés dedans</span>
+chmod<span class="w"> </span><span class="m">2770</span><span class="w"> </span>/srv/compta
+</code></pre></div>
+<h3 id="étape-3--ajouter-les-acl-hors-cours">Étape 3 — Ajouter les ACL (hors cours)</h3>
+<div class="highlight"><pre><span></span><code><span class="c1"># Accès pour le contenu existant</span>
+setfacl<span class="w"> </span>-m<span class="w"> </span>g:rh:rx,u:alice:rwx,u:bob:---<span class="w"> </span>/srv/compta
+
+<span class="c1"># Héritage pour le contenu futur</span>
+setfacl<span class="w"> </span>-d<span class="w"> </span>-m<span class="w"> </span>g:compta:rwx,g:rh:rX,u:alice:rwX,u:bob:---<span class="w"> </span>/srv/compta
+
+<span class="c1"># Vérification</span>
+getfacl<span class="w"> </span>/srv/compta
+</code></pre></div>
+<h3 id="étape-4--tester-avec-chaque-utilisateur">Étape 4 — Tester avec chaque utilisateur</h3>
+<p>En root, <code>su nom -c "commande"</code> lance une commande sous l'identité d'un autre utilisateur, sans mot de passe :</p>
+<div class="highlight"><pre><span></span><code>su<span class="w"> </span>claire<span class="w"> </span>-c<span class="w"> </span><span class="s2">"touch /srv/compta/test.txt"</span><span class="w">     </span><span class="c1"># ✅ doit réussir</span>
+su<span class="w"> </span>romain<span class="w"> </span>-c<span class="w"> </span><span class="s2">"ls /srv/compta"</span><span class="w">                 </span><span class="c1"># ✅ doit réussir (lecture)</span>
+su<span class="w"> </span>romain<span class="w"> </span>-c<span class="w"> </span><span class="s2">"touch /srv/compta/rh.txt"</span><span class="w">       </span><span class="c1"># ❌ Permission non accordée</span>
+su<span class="w"> </span>alice<span class="w">  </span>-c<span class="w"> </span><span class="s2">"touch /srv/compta/alice.txt"</span><span class="w">    </span><span class="c1"># ✅ doit réussir</span>
+su<span class="w"> </span>bob<span class="w">    </span>-c<span class="w"> </span><span class="s2">"ls /srv/compta"</span><span class="w">                 </span><span class="c1"># ❌ Permission non accordée</span>
+</code></pre></div>
+<p>Vérifie l'héritage sur le fichier créé par claire :</p>
+<div class="highlight"><pre><span></span><code>getfacl<span class="w"> </span>/srv/compta/test.txt
+</code></pre></div>
+<p>Résultat obtenu (testé) :</p>
+<div class="highlight"><pre><span></span><code># file: srv/compta/test.txt
+# owner: claire
+# group: compta
+user::rw-
+user:bob:---
+user:alice:rwx          #effective:rw-
+group::rwx              #effective:rw-
+group:compta:rwx        #effective:rw-
+group:rh:r-x            #effective:r--
+mask::rw-
+other::---
+</code></pre></div>
+<blockquote>
+<p>💡 <strong>Ce qu'il faut remarquer :</strong></p>
+<ul>
+<li>le groupe est bien <code>compta</code> grâce au <strong>SetGID</strong> du dossier ;</li>
+<li>les entrées sont héritées de l'ACL par défaut ;</li>
+<li>le <strong>masque</strong> vaut <code>rw-</code> : un fichier créé par <code>touch</code> n'est jamais exécutable, donc le masque retire le <code>x</code>. romain (groupe <code>rh</code>) a donc un droit <strong>effectif</strong> de lecture seule, c'est exactement ce qu'on voulait.</li>
+</ul>
+<p>Sur le dossier, <code>getfacl</code> affiche aussi une ligne <code># flags: -s-</code> : c'est le <strong>SetGID</strong>.</p>
+</blockquote>
+<h3 id="étape-5--nettoyer-si-besoin">Étape 5 — Nettoyer (si besoin)</h3>
+<div class="highlight"><pre><span></span><code>rm<span class="w"> </span>-rf<span class="w"> </span>/srv/compta
+userdel<span class="w"> </span>-r<span class="w"> </span>claire<span class="p">;</span><span class="w"> </span>userdel<span class="w"> </span>-r<span class="w"> </span>bob<span class="p">;</span><span class="w"> </span>userdel<span class="w"> </span>-r<span class="w"> </span>romain<span class="p">;</span><span class="w"> </span>userdel<span class="w"> </span>-r<span class="w"> </span>alice
+groupdel<span class="w"> </span>compta<span class="p">;</span><span class="w"> </span>groupdel<span class="w"> </span>rh
+</code></pre></div>
+<hr />
+<h2 id="11-comparaison-avec-les-acl-ntfs-de-windows">11. Comparaison avec les ACL NTFS de Windows</h2>
+<p>Tu as déjà manipulé des ACL au <strong>TP4 Windows</strong> (onglet Sécurité, <code>icacls</code>). Le principe est le même : une liste qui dit <strong>qui</strong> a <strong>quels droits</strong>.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><strong>Linux (ACL POSIX)</strong></th>
+<th><strong>Windows (ACL NTFS)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Commandes</td>
+<td><code>getfacl</code> / <code>setfacl</code></td>
+<td><code>icacls</code>, onglet <strong>Sécurité</strong></td>
+</tr>
+<tr>
+<td>Droits</td>
+<td><code>r</code>, <code>w</code>, <code>x</code></td>
+<td>Lecture, Écriture, Modification, Contrôle total + droits avancés</td>
+</tr>
+<tr>
+<td>Refus explicite</td>
+<td>❌ Pas de mot-clé : on met une entrée nommée à <code>---</code></td>
+<td>✅ <strong>Refuser</strong>, prioritaire</td>
+</tr>
+<tr>
+<td>Héritage</td>
+<td>Seulement avec une <strong>ACL par défaut</strong> (<code>-d</code>)</td>
+<td><strong>Automatique</strong> par défaut (désactivable)</td>
+</tr>
+<tr>
+<td>Masque</td>
+<td>✅ Oui, limite les entrées nommées et le groupe</td>
+<td>❌ Pas de masque</td>
+</tr>
+<tr>
+<td>Cumul</td>
+<td>❌ Ordre de vérification, la 1re catégorie qui correspond gagne</td>
+<td>✅ Les droits des groupes <strong>s'additionnent</strong></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>🧠 <strong>Le piège quand on passe de Windows à Linux</strong> : sous Windows, si tu es dans 2 groupes, tes droits <strong>s'additionnent</strong>. Sous Linux, une entrée <code>user:toi:</code> <strong>remplace</strong> tes droits de groupe. Elle ne s'y ajoute pas.</p>
+</blockquote>
+<hr />
+<h2 id="12-les-pièges-à-éviter">12. Les pièges à éviter</h2>
+<table>
+<thead>
+<tr>
+<th>Piège</th>
+<th>Ce qui se passe</th>
+<th>Solution</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Lire les droits avec <code>ls -l</code></td>
+<td>Le <code>+</code> signale que <code>ls -l</code> ne montre pas tout</td>
+<td>Toujours <code>getfacl</code></td>
+</tr>
+<tr>
+<td><code>chmod g...</code> sur un fichier avec ACL</td>
+<td>Modifie le <strong>masque</strong> et peut brider toutes les ACL</td>
+<td>Utiliser <code>setfacl</code>, ou remettre le masque avec <code>setfacl -m m::rwx</code></td>
+</tr>
+<tr>
+<td>ACL sur le dossier seulement</td>
+<td>Les nouveaux fichiers n'en profitent pas</td>
+<td>Ajouter une <strong>ACL par défaut</strong> (<code>-d</code>)</td>
+</tr>
+<tr>
+<td>ACL par défaut seulement</td>
+<td>Les fichiers <strong>existants</strong> ne sont pas concernés</td>
+<td>Combiner <code>-R -m</code> et <code>-d -m</code></td>
+</tr>
+<tr>
+<td><code>r</code> sans <code>x</code> sur un dossier</td>
+<td>On ne peut pas entrer dans le dossier (déjà dans ton cours)</td>
+<td>Toujours <code>rx</code> (ou <code>rX</code>) sur un dossier</td>
+</tr>
+<tr>
+<td><code>-x</code> avec des droits</td>
+<td><code>setfacl -x u:alice:rw</code> est une erreur de syntaxe</td>
+<td><code>setfacl -x u:alice</code></td>
+</tr>
+<tr>
+<td><code>cp</code> sans option</td>
+<td>La copie perd les ACL</td>
+<td><code>cp -a</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="13-mémo-des-commandes">13. Mémo des commandes</h2>
+<table>
+<thead>
+<tr>
+<th>Commande</th>
+<th>Effet</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>getfacl fichier</code></td>
+<td>Afficher l'ACL</td>
+</tr>
+<tr>
+<td><code>getfacl -R dossier &gt; sauvegarde.txt</code></td>
+<td>Sauvegarder les ACL d'une arborescence</td>
+</tr>
+<tr>
+<td><code>setfacl --restore=sauvegarde.txt</code></td>
+<td>Restaurer les ACL</td>
+</tr>
+<tr>
+<td><code>setfacl -m u:alice:rw fichier</code></td>
+<td>Donner <code>rw</code> à l'utilisatrice alice</td>
+</tr>
+<tr>
+<td><code>setfacl -m g:rh:rx dossier</code></td>
+<td>Donner <code>rx</code> au groupe rh</td>
+</tr>
+<tr>
+<td><code>setfacl -m u:bob:--- dossier</code></td>
+<td>Bloquer bob</td>
+</tr>
+<tr>
+<td><code>setfacl -m m::rwx fichier</code></td>
+<td>Remettre le masque à <code>rwx</code></td>
+</tr>
+<tr>
+<td><code>setfacl -R -m g:rh:rX dossier</code></td>
+<td>Appliquer à tout le contenu existant</td>
+</tr>
+<tr>
+<td><code>setfacl -d -m g:rh:rX dossier</code></td>
+<td>ACL par défaut (héritage pour le contenu futur)</td>
+</tr>
+<tr>
+<td><code>setfacl -x u:alice fichier</code></td>
+<td>Retirer l'entrée d'alice</td>
+</tr>
+<tr>
+<td><code>setfacl -k dossier</code></td>
+<td>Retirer l'ACL par défaut</td>
+</tr>
+<tr>
+<td><code>setfacl -b fichier</code></td>
+<td>Retirer toutes les ACL</td>
+</tr>
+<tr>
+<td><code>cp -a source destination</code></td>
+<td>Copier en conservant les ACL</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="14-exercices-corrigés">14. Exercices corrigés</h2>
+<p><strong>Exercice 1 — Lire une ACL.</strong> Que peut faire <code>paul</code> sur ce fichier ?</p>
+<div class="highlight"><pre><span></span><code># file: rapport.txt
+# owner: root
+# group: direction
+user::rw-
+user:paul:rw-          #effective:r--
+group::r--
+mask::r--
+other::---
+</code></pre></div>
+<blockquote>
+<p>✅ <strong>Corrigé</strong> : paul a <code>rw-</code> dans son entrée, mais le masque vaut <code>r--</code>. Son droit effectif est <strong><code>r--</code></strong> : il peut seulement <strong>lire</strong>.</p>
+</blockquote>
+<p><strong>Exercice 2 — Le piège du chmod.</strong> Un fichier a l'ACL <code>user:alice:rw-</code> et le masque <code>rw-</code>. Tu fais <code>chmod 640 fichier</code>. Qu'arrive-t-il à alice ?</p>
+<blockquote>
+<p>✅ <strong>Corrigé</strong> : <code>640</code> met la partie group à <code>r--</code>, donc le <strong>masque</strong> passe à <code>r--</code>. alice ne peut plus que <strong>lire</strong>. Pour lui rendre l'écriture : <code>setfacl -m m::rw fichier</code>.</p>
+</blockquote>
+<p><strong>Exercice 3 — Écrire la commande.</strong> Donne au groupe <code>direction</code> la lecture sur <code>/srv/compta</code>, sur ce qui existe déjà <strong>et</strong> sur ce qui sera créé.</p>
+<blockquote>
+<p>✅ <strong>Corrigé</strong> :</p>
+<div class="highlight"><pre><span></span><code>setfacl<span class="w"> </span>-R<span class="w"> </span>-m<span class="w"> </span>g:direction:rX<span class="w"> </span>/srv/compta
+setfacl<span class="w"> </span>-d<span class="w"> </span>-m<span class="w"> </span>g:direction:rX<span class="w"> </span>/srv/compta
+</code></pre></div>
+</blockquote>
+<p><strong>Exercice 4 — L'ordre de vérification.</strong> <code>marc</code> est membre du groupe <code>compta</code>, qui a <code>rwx</code> sur un dossier. Tu ajoutes <code>setfacl -m u:marc:r-x dossier</code>. Peut-il encore créer des fichiers ?</p>
+<blockquote>
+<p>✅ <strong>Corrigé</strong> : <strong>Non</strong>. marc a maintenant une entrée nommée <code>user:marc:</code>. Linux s'arrête dessus et ne regarde plus ses groupes. Il n'a que <code>r-x</code> : il peut lire et entrer, mais pas créer de fichiers.</p>
+</blockquote>
+<p><strong>Exercice 5 — Le <code>+</code>.</strong> Tu vois <code>-rw-rw----+</code> dans <code>ls -l</code>. Que signifie le <code>+</code>, et que représente le <code>rw-</code> du milieu ?</p>
+<blockquote>
+<p>✅ <strong>Corrigé</strong> : le <code>+</code> indique qu'une <strong>ACL</strong> est présente. Le <code>rw-</code> du milieu n'est plus le droit du groupe propriétaire : c'est le <strong>masque</strong>. Pour voir les vrais droits : <code>getfacl</code>.</p>
+</blockquote>
+<hr />
+<h2 id="15-testez-vous">15. Testez-vous</h2>
+<p>Essaie de répondre de tête avant de lire la réponse.</p>
+<p><strong>1. Quelle limite du modèle classique les ACL viennent-elles lever ?</strong></p>
+<blockquote>
+<p>✅ <strong>Réponse</strong> : un fichier n'a qu'<strong>un seul propriétaire</strong> et <strong>un seul groupe</strong>. Les ACL permettent de donner des droits à <strong>d'autres utilisateurs et groupes</strong>, sans ouvrir aux <code>others</code>.</p>
+</blockquote>
+<p><strong>2. Quelles sont les deux commandes des ACL et à quoi servent-elles ?</strong></p>
+<blockquote>
+<p>✅ <strong>Réponse</strong> : <code>getfacl</code> pour <strong>lire</strong> une ACL, <code>setfacl</code> pour la <strong>modifier</strong>.</p>
+</blockquote>
+<p><strong>3. Quelle est la différence entre <code>user::rwx</code> et <code>user:alice:rwx</code> ?</strong></p>
+<blockquote>
+<p>✅ <strong>Réponse</strong> : <code>user::</code> (rien entre les deux-points) désigne le <strong>propriétaire</strong>. <code>user:alice:</code> désigne un <strong>utilisateur nommé</strong> ajouté par ACL.</p>
+</blockquote>
+<p><strong>4. À quoi sert le masque ?</strong></p>
+<blockquote>
+<p>✅ <strong>Réponse</strong> : il fixe les droits <strong>maximum</strong> des utilisateurs nommés, du groupe propriétaire et des groupes nommés. Droit effectif = entrée <strong>ET</strong> masque.</p>
+</blockquote>
+<p><strong>5. Pourquoi faut-il éviter <code>chmod g...</code> sur un fichier qui a une ACL ?</strong></p>
+<blockquote>
+<p>✅ <strong>Réponse</strong> : parce que la partie group de <code>chmod</code> modifie alors le <strong>masque</strong>, ce qui peut réduire les droits de <strong>toutes</strong> les entrées ACL.</p>
+</blockquote>
+<p><strong>6. Une ACL posée sur un dossier s'applique-t-elle aux fichiers créés ensuite ?</strong></p>
+<blockquote>
+<p>✅ <strong>Réponse</strong> : <strong>Non</strong>. Il faut une <strong>ACL par défaut</strong> : <code>setfacl -d -m …</code>.</p>
+</blockquote>
+<p><strong>7. Comment bloquer un utilisateur membre d'un groupe autorisé ?</strong></p>
+<blockquote>
+<p>✅ <strong>Réponse</strong> : en lui donnant une entrée nommée vide, <code>setfacl -m u:bob:--- dossier</code>. Linux s'arrête sur son entrée personnelle et ne regarde pas ses groupes.</p>
+</blockquote>
+<p><strong>8. Quelle commande copie un fichier en conservant ses ACL ?</strong></p>
+<blockquote>
+<p>✅ <strong>Réponse</strong> : <code>cp -a</code> (ou <code>cp --preserve=all</code>).</p>
+</blockquote>
+<p><strong>9. Comment retirer toutes les ACL d'un fichier ?</strong></p>
+<blockquote>
+<p>✅ <strong>Réponse</strong> : <code>setfacl -b fichier</code>.</p>
+</blockquote>
+<p><strong>10. Sous Windows, les droits de deux groupes s'additionnent. Est-ce pareil avec les ACL Linux ?</strong></p>
+<blockquote>
+<p>✅ <strong>Réponse</strong> : <strong>Pas toujours</strong>. Entre plusieurs <strong>groupes</strong>, Linux accorde l'accès si l'un d'eux le permet. Mais une entrée <strong>utilisateur nommée</strong> passe <strong>avant</strong> les groupes et remplace leurs droits.</p>
+</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
+      
+    
+  </body>
+</html>
