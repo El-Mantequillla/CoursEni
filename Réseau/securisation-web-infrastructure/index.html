@@ -1,0 +1,4347 @@
+
+<!doctype html>
+<html lang="fr" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../../Python/tuto_script_matching/">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
+    
+    
+      
+        <title>Sécurisation web et fonctionnement d'une infrastructure réseau - Mes notes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#sécurisation-web-et-fonctionnement-dune-infrastructure-réseau" class="md-skip">
+          Aller au contenu
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="En-tête">
+    <a href="../.." title="Mes notes" class="md-header__button md-logo" aria-label="Mes notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Mes notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Sécurisation web et fonctionnement d'une infrastructure réseau
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Rechercher" placeholder="Rechercher" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Recherche">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Effacer" aria-label="Effacer" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initialisation de la recherche
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Mes notes" class="md-nav__button md-logo" aria-label="Mes notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Mes notes
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cours et TP ENI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Administration Linux
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Administration Linux
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration%20Linux/cours-admin-linux/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Administration Linux : fiche de révision
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration%20Linux/fiche-acl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fiche — Les ACL sous Linux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration%20Linux/memo-acl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mémo — Les ACL sous Linux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration%20Linux/memo-chmod/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mémo : chmod, les droits sous Linux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration%20Linux/memo-commandes-stockage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mémo commandes : stockage, LVM, montage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration%20Linux/memo-systeme-fichiers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mémo : le système de fichiers sous Linux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration%20Linux/memo-types-volumes-partitions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mémo : partitions, LVM, systèmes de fichiers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_8" id="__nav_2_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    TP
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration%20Linux/TP/index%20%281%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tutos Administration Linux (M02)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration%20Linux/TP/tp1-installation-graphique/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP1 : Installer Oracle Linux avec bureau GNOME (srvclient)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration%20Linux/TP/tp10-gestion-logs%20%281%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP10 : Gestion des logs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration%20Linux/TP/tp11-analyse-systeme%20%281%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP11 : Analyse du système
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration%20Linux/TP/tp2-installation-serveur/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP2 : Installer Oracle Linux en mode serveur, sans interface graphique (serveur)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration%20Linux/TP/tp3-grub-mode-maintenance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP3 : Configurer GRUB et démarrer en mode maintenance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration%20Linux/TP/tp4-demarrage-et-services/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP4 : Gestion du démarrage et des services
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration%20Linux/TP/tp5-gestion-reseau/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP5 : Gestion réseau
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration%20Linux/TP/tp6-depots-mises-a-jour/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP6 : Dépôts, mises à jour et installation de logiciels
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration%20Linux/TP/tp7-gestion-stockage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP7 : Gestion du stockage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration%20Linux/TP/tp8-gestion-utilisateurs%20%281%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP8 : Gestion des utilisateurs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration%20Linux/TP/tp9-gestion-permissions%20%281%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP9 : Gestion des permissions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Administration Windows
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Administration Windows
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration-Windows/fiche-revision-windows-ad/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fiche de révision — Administration Windows et Active Directory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration-Windows/raccourcis-claviers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Raccourcis clavier Windows / Windows Server — Administration système et réseau
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    TP
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration-Windows/TP/tp01-creation-infrastructure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP1 — Création de l'infrastructure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration-Windows/TP/tp02-creation-domaine-ad/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP2 — Création d'un domaine Active Directory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration-Windows/TP/tp03-gestion-domaine-ad/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP3 — Gestion d'un domaine Active Directory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration-Windows/TP/tp04-gestion-ressources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP4 — Gestion de ressources
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration-Windows/TP/tp05-strategies-de-groupe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP5 — Les stratégies de groupe (GPO)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Python
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/python-bases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python : les bases pour débuter
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/tuto-matcher/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tuto : retrouver un numéro client avec une base Excel (fuzzy matching)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/tuto_script_matching/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tuto : comprendre le script matcher_passages.py
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Réseau
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Réseau
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sécurisation web et fonctionnement d'une infrastructure réseau
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sécurisation web et fonctionnement d'une infrastructure réseau
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#comment-lire-cette-fiche" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comment lire cette fiche
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-vue-densemble--le-voyage-dune-requête-web" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Vue d'ensemble : le voyage d'une requête web
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-rappels-réseau-indispensables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Rappels réseau indispensables
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Rappels réseau indispensables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-les-modèles-en-couches" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Les modèles en couches
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-adresses-ip--publiques-et-privées" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Adresses IP : publiques et privées
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-les-ports" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 Les ports
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-le-nat-traduction-dadresses" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 Le NAT (traduction d'adresses)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-le-dns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5 Le DNS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#26-routage-et-vlan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.6 Routage et VLAN
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-le-pare-feu-firewall" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Le pare-feu (firewall)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Le pare-feu (firewall)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-principe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Principe
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32--notions-de-base" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 📘 Notions de base
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-exemple-de-règles-lisible" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 Exemple de règles lisible
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34--hors-cours--exemple-en-ligne-de-commande-linux-nftables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 🚀 Hors cours : exemple en ligne de commande (Linux, nftables)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-la-dmz-zone-démilitarisée" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. La DMZ (zone démilitarisée)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. La DMZ (zone démilitarisée)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-définition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Définition
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-les-trois-zones" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Les trois zones
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43--les-règles-de-flux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 📘 Les règles de flux
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44--les-deux-architectures" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 📘 Les deux architectures
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45-exemple-dadressage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.5 Exemple d'adressage
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#46-ce-quon-met-ou-pas-en-dmz" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.6 Ce qu'on met (ou pas) en DMZ
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#47-publier-un-service--le-dnat-en-pratique" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.7 Publier un service : le DNAT en pratique
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-le-proxy-forward-proxy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Le proxy (forward proxy)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Le proxy (forward proxy)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-principe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Principe
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52--fonctions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 📘 Fonctions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-modes-de-déploiement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 Modes de déploiement
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54--hors-cours--linspection-https" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4 🚀 Hors cours : l'inspection HTTPS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#55-outils-et-ports" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.5 Outils et ports
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#56--hors-cours--exemple-squid-minimal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.6 🚀 Hors cours : exemple Squid minimal
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#57-limites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.7 Limites
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-le-reverse-proxy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Le reverse proxy
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Le reverse proxy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-principe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Principe
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62--fonctions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 📘 Fonctions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-outils" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 Outils
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64--hors-cours--exemple-nginx-minimal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4 🚀 Hors cours : exemple Nginx minimal
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#65-limites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.5 Limites
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-le-waf-web-application-firewall" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Le WAF (Web Application Firewall)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Le WAF (Web Application Firewall)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-principe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 Principe
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-les-attaques-ciblées-top-10-owasp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 Les attaques ciblées (Top 10 OWASP)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73--méthodes-de-détection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 📘 Méthodes de détection
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74-modes-de-déploiement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4 Modes de déploiement
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#75-outils" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.5 Outils
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#76-mode-détection-puis-mode-blocage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.6 Mode détection puis mode blocage
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#77--hors-cours--tester-une-injection-sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.7 🚀 Hors cours : tester une injection SQL
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#78-limites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.8 Limites
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-tls--https-en-résumé" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. TLS / HTTPS en résumé
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-assembler-le-tout--linfrastructure-complète" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Assembler le tout : l'infrastructure complète
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Assembler le tout : l&#39;infrastructure complète">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91-le-rôle-de-chaque-brique" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1 Le rôle de chaque brique
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92-le-scénario-complet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2 Le scénario complet
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-les-confusions-fréquentes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Les confusions fréquentes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-bonnes-pratiques-de-sécurité" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Bonnes pratiques de sécurité
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-aller-plus-loin-hors-cours" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Aller plus loin (hors cours)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-exercices-pratiques" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. Exercices pratiques
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13. Exercices pratiques">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tp-1--dessiner-une-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TP 1 : Dessiner une architecture
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tp-2--écrire-les-règles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TP 2 : Écrire les règles
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tp-3--monter-une-maquette-machines-virtuelles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TP 3 : Monter une maquette (machines virtuelles)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tp-4--squid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TP 4 : Squid
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tp-5--modsecurity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TP 5 : ModSecurity
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-auto-évaluation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. Auto-évaluation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-glossaire" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15. Glossaire
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-à-retenir" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16. À retenir
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#comment-lire-cette-fiche" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comment lire cette fiche
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-vue-densemble--le-voyage-dune-requête-web" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Vue d'ensemble : le voyage d'une requête web
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-rappels-réseau-indispensables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Rappels réseau indispensables
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Rappels réseau indispensables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-les-modèles-en-couches" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Les modèles en couches
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-adresses-ip--publiques-et-privées" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Adresses IP : publiques et privées
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-les-ports" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 Les ports
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-le-nat-traduction-dadresses" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 Le NAT (traduction d'adresses)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25-le-dns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5 Le DNS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#26-routage-et-vlan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.6 Routage et VLAN
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-le-pare-feu-firewall" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Le pare-feu (firewall)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Le pare-feu (firewall)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-principe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Principe
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32--notions-de-base" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 📘 Notions de base
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-exemple-de-règles-lisible" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 Exemple de règles lisible
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34--hors-cours--exemple-en-ligne-de-commande-linux-nftables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 🚀 Hors cours : exemple en ligne de commande (Linux, nftables)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-la-dmz-zone-démilitarisée" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. La DMZ (zone démilitarisée)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. La DMZ (zone démilitarisée)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-définition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Définition
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-les-trois-zones" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Les trois zones
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43--les-règles-de-flux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 📘 Les règles de flux
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44--les-deux-architectures" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 📘 Les deux architectures
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45-exemple-dadressage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.5 Exemple d'adressage
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#46-ce-quon-met-ou-pas-en-dmz" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.6 Ce qu'on met (ou pas) en DMZ
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#47-publier-un-service--le-dnat-en-pratique" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.7 Publier un service : le DNAT en pratique
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-le-proxy-forward-proxy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Le proxy (forward proxy)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Le proxy (forward proxy)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-principe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Principe
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52--fonctions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 📘 Fonctions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-modes-de-déploiement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 Modes de déploiement
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54--hors-cours--linspection-https" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4 🚀 Hors cours : l'inspection HTTPS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#55-outils-et-ports" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.5 Outils et ports
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#56--hors-cours--exemple-squid-minimal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.6 🚀 Hors cours : exemple Squid minimal
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#57-limites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.7 Limites
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-le-reverse-proxy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Le reverse proxy
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Le reverse proxy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-principe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Principe
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62--fonctions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 📘 Fonctions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-outils" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 Outils
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64--hors-cours--exemple-nginx-minimal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4 🚀 Hors cours : exemple Nginx minimal
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#65-limites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.5 Limites
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-le-waf-web-application-firewall" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Le WAF (Web Application Firewall)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Le WAF (Web Application Firewall)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-principe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 Principe
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-les-attaques-ciblées-top-10-owasp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 Les attaques ciblées (Top 10 OWASP)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73--méthodes-de-détection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 📘 Méthodes de détection
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74-modes-de-déploiement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4 Modes de déploiement
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#75-outils" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.5 Outils
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#76-mode-détection-puis-mode-blocage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.6 Mode détection puis mode blocage
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#77--hors-cours--tester-une-injection-sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.7 🚀 Hors cours : tester une injection SQL
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#78-limites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.8 Limites
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-tls--https-en-résumé" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. TLS / HTTPS en résumé
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-assembler-le-tout--linfrastructure-complète" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Assembler le tout : l'infrastructure complète
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. Assembler le tout : l&#39;infrastructure complète">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91-le-rôle-de-chaque-brique" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1 Le rôle de chaque brique
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92-le-scénario-complet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2 Le scénario complet
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-les-confusions-fréquentes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Les confusions fréquentes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-bonnes-pratiques-de-sécurité" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Bonnes pratiques de sécurité
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-aller-plus-loin-hors-cours" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Aller plus loin (hors cours)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-exercices-pratiques" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. Exercices pratiques
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13. Exercices pratiques">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tp-1--dessiner-une-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TP 1 : Dessiner une architecture
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tp-2--écrire-les-règles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TP 2 : Écrire les règles
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tp-3--monter-une-maquette-machines-virtuelles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TP 3 : Monter une maquette (machines virtuelles)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tp-4--squid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TP 4 : Squid
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tp-5--modsecurity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        TP 5 : ModSecurity
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-auto-évaluation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. Auto-évaluation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-glossaire" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15. Glossaire
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-à-retenir" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16. À retenir
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="sécurisation-web-et-fonctionnement-dune-infrastructure-réseau">Sécurisation web et fonctionnement d'une infrastructure réseau</h1>
+<blockquote>
+<p>Fiche de cours ASR : DMZ, pare-feu, proxy, reverse proxy, WAF, et comment tout s'assemble.</p>
+</blockquote>
+<hr />
+<p><strong>Sommaire</strong></p>
+<ol>
+<li><a href="#1-vue-densemble-le-voyage-dune-requete-web">Vue d'ensemble : le voyage d'une requête web</a></li>
+<li><a href="#2-rappels-reseau-indispensables">Rappels réseau indispensables</a></li>
+<li><a href="#3-le-pare-feu-firewall">Le pare-feu (firewall)</a></li>
+<li><a href="#4-la-dmz-zone-demilitarisee">La DMZ (zone démilitarisée)</a></li>
+<li><a href="#5-le-proxy-forward-proxy">Le proxy (forward proxy)</a></li>
+<li><a href="#6-le-reverse-proxy">Le reverse proxy</a></li>
+<li><a href="#7-le-waf-web-application-firewall">Le WAF (Web Application Firewall)</a></li>
+<li><a href="#8-tls-https-en-resume">TLS / HTTPS en résumé</a></li>
+<li><a href="#9-assembler-le-tout-linfrastructure-complete">Assembler le tout : l'infrastructure complète</a></li>
+<li><a href="#10-les-confusions-frequentes">Les confusions fréquentes</a></li>
+<li><a href="#11-bonnes-pratiques-de-securite">Bonnes pratiques de sécurité</a></li>
+<li><a href="#12-aller-plus-loin-hors-cours">Aller plus loin (hors cours)</a></li>
+<li><a href="#13-exercices-pratiques">Exercices pratiques</a></li>
+<li><a href="#14-auto-evaluation">Auto-évaluation</a></li>
+<li><a href="#15-glossaire">Glossaire</a></li>
+<li><a href="#16-a-retenir">À retenir</a></li>
+</ol>
+<hr />
+<h2 id="comment-lire-cette-fiche">Comment lire cette fiche</h2>
+<table>
+<thead>
+<tr>
+<th>Repère</th>
+<th>Signification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>📘</td>
+<td><strong>Notion de base</strong> : la méthode « classique », celle qu'on attend en cours</td>
+</tr>
+<tr>
+<td>🚀</td>
+<td><strong>Hors cours</strong> : technique plus récente ou plus efficace, signalée comme un ajout</td>
+</tr>
+<tr>
+<td>💡</td>
+<td>Astuce / à retenir</td>
+</tr>
+<tr>
+<td>⚠️</td>
+<td>Piège fréquent</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition info">
+<p class="admonition-title">À compléter avec ton cours</p>
+<p>Chaque grande partie contient un encart <strong>« Dans mon cours »</strong>. Remplis-y le chapitre et les outils vus en TP (pfSense, iptables, Squid...) pour que la fiche colle exactement à ton programme.</p>
+</div>
+<hr />
+<h2 id="1-vue-densemble--le-voyage-dune-requête-web">1. Vue d'ensemble : le voyage d'une requête web</h2>
+<p>Quand tu tapes <code>https://www.exemple.fr</code> dans ton navigateur, il se passe beaucoup de choses avant l'affichage de la page.</p>
+<div class="highlight"><pre><span></span><code> Client                 Internet                Entreprise
+┌────────┐   (1) DNS   ┌──────────┐
+│Navigat.│────────────►│ Serveur  │  « www.exemple.fr = 203.0.113.10 »
+│        │◄────────────│   DNS    │
+│        │             └──────────┘
+│        │   (2) TCP + (3) TLS + (4) HTTP
+│        │──────────────────────────► [Pare-feu] ─► [Reverse proxy + WAF] ─► [Serveur web] ─► [BDD]
+│        │◄────────────────────────── réponse (page HTML)
+└────────┘
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Étape</th>
+<th>Ce qui se passe</th>
+<th>Protocole</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Le nom est traduit en adresse IP</td>
+<td><strong>DNS</strong> (UDP/TCP 53)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Le client ouvre une connexion avec le serveur (poignée de main en 3 temps : SYN, SYN-ACK, ACK)</td>
+<td><strong>TCP</strong></td>
+</tr>
+<tr>
+<td>3</td>
+<td>Négociation du chiffrement, vérification du certificat</td>
+<td><strong>TLS</strong></td>
+</tr>
+<tr>
+<td>4</td>
+<td>Le client envoie sa requête (<code>GET /index.html</code>), le serveur répond</td>
+<td><strong>HTTP/HTTPS</strong> (port 443)</td>
+</tr>
+</tbody>
+</table>
+<p>💡 Toute la sécurité web consiste à <strong>placer des contrôles à chaque étape de ce chemin</strong>. Chaque notion de cette fiche (pare-feu, DMZ, proxy, WAF) est une « porte » sur ce trajet.</p>
+<hr />
+<h2 id="2-rappels-réseau-indispensables">2. Rappels réseau indispensables</h2>
+<div class="admonition info">
+<p class="admonition-title">Dans mon cours</p>
+<p>Chapitre : <em>à compléter</em></p>
+</div>
+<h3 id="21-les-modèles-en-couches">2.1 Les modèles en couches</h3>
+<table>
+<thead>
+<tr>
+<th>Couche OSI</th>
+<th>Nom</th>
+<th>Exemple</th>
+<th>Qui travaille ici ?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>7</td>
+<td>Application</td>
+<td>HTTP, DNS, SMTP</td>
+<td><strong>Proxy, reverse proxy, WAF</strong></td>
+</tr>
+<tr>
+<td>6</td>
+<td>Présentation</td>
+<td>Chiffrement, encodage</td>
+<td>TLS (souvent classé ici)</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Session</td>
+<td>Gestion des sessions</td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td>Transport</td>
+<td>TCP, UDP, <strong>ports</strong></td>
+<td><strong>Pare-feu</strong></td>
+</tr>
+<tr>
+<td>3</td>
+<td>Réseau</td>
+<td>IP, routage</td>
+<td><strong>Pare-feu, routeur</strong></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Liaison</td>
+<td>Ethernet, MAC, <strong>VLAN</strong></td>
+<td>Switch</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Physique</td>
+<td>Câbles, Wi-Fi</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>💡 <strong>Règle simple</strong> : plus on monte dans les couches, plus l'équipement « comprend » le contenu (un pare-feu réseau voit des IP et des ports, un WAF lit le contenu des requêtes web).</p>
+<h3 id="22-adresses-ip--publiques-et-privées">2.2 Adresses IP : publiques et privées</h3>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Plages</th>
+<th>Routable sur Internet ?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Privée</strong></td>
+<td><code>10.0.0.0/8</code>, <code>172.16.0.0/12</code>, <code>192.168.0.0/16</code></td>
+<td>Non</td>
+</tr>
+<tr>
+<td><strong>Publique</strong></td>
+<td>Tout le reste</td>
+<td>Oui</td>
+</tr>
+</tbody>
+</table>
+<p>Les machines d'une entreprise ont des adresses <strong>privées</strong>. Seul le pare-feu / routeur a une adresse <strong>publique</strong>, partagée grâce au NAT.</p>
+<h3 id="23-les-ports">2.3 Les ports</h3>
+<p>Un <strong>port</strong> identifie un service sur une machine. L'IP dit <em>quelle machine</em>, le port dit <em>quel service</em>.</p>
+<table>
+<thead>
+<tr>
+<th>Port</th>
+<th>Service</th>
+<th>Protocole</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>22</td>
+<td>SSH</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td>25</td>
+<td>SMTP (mail)</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td>53</td>
+<td>DNS</td>
+<td>UDP/TCP</td>
+</tr>
+<tr>
+<td>80</td>
+<td>HTTP</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td>443</td>
+<td>HTTPS</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td>3389</td>
+<td>RDP</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td>3306</td>
+<td>MySQL / MariaDB</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td>1433</td>
+<td>SQL Server</td>
+<td>TCP</td>
+</tr>
+<tr>
+<td>3128 / 8080</td>
+<td>Proxy (Squid...)</td>
+<td>TCP</td>
+</tr>
+</tbody>
+</table>
+<h3 id="24-le-nat-traduction-dadresses">2.4 Le NAT (traduction d'adresses)</h3>
+<p>Le <strong>NAT</strong> remplace des adresses IP dans les paquets qui traversent le pare-feu.</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Rôle</th>
+<th>Exemple</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>SNAT / PAT</strong> (masquerade)</td>
+<td>Permet aux machines privées de <strong>sortir</strong> sur Internet avec l'IP publique</td>
+<td><code>192.168.1.20</code> → <code>203.0.113.10</code></td>
+</tr>
+<tr>
+<td><strong>DNAT</strong> (redirection de port)</td>
+<td>Permet à Internet d'<strong>entrer</strong> vers un serveur interne</td>
+<td><code>203.0.113.10:443</code> → <code>172.16.0.10:443</code></td>
+</tr>
+</tbody>
+</table>
+<p>⚠️ Le NAT <strong>n'est pas un pare-feu</strong>. Il masque les adresses, mais c'est le filtrage qui autorise ou interdit les flux.</p>
+<h3 id="25-le-dns">2.5 Le DNS</h3>
+<p>Le DNS traduit un <strong>nom</strong> (<code>www.exemple.fr</code>) en <strong>adresse IP</strong>. Enregistrements courants : <code>A</code> (IPv4), <code>AAAA</code> (IPv6), <code>CNAME</code> (alias), <code>MX</code> (serveur mail), <code>NS</code> (serveur de noms).</p>
+<p>💡 Avec un reverse proxy, le DNS public renvoie l'IP <strong>du reverse proxy</strong>, jamais celle des serveurs réels.</p>
+<h3 id="26-routage-et-vlan">2.6 Routage et VLAN</h3>
+<ul>
+<li><strong>Routeur</strong> : relie des réseaux différents et décide par où passe un paquet (table de routage).</li>
+<li><strong>VLAN</strong> : découpe <strong>logiquement</strong> un switch en plusieurs réseaux isolés (ex. VLAN 10 = LAN, VLAN 20 = DMZ). Les VLAN sont souvent utilisés pour construire les zones d'une infrastructure.</li>
+</ul>
+<hr />
+<h2 id="3-le-pare-feu-firewall">3. Le pare-feu (firewall)</h2>
+<div class="admonition info">
+<p class="admonition-title">Dans mon cours</p>
+<p>Chapitre : <em>à compléter</em> · Outil vu en TP : <em>à compléter</em></p>
+</div>
+<h3 id="31-principe">3.1 Principe</h3>
+<p>Un <strong>pare-feu</strong> filtre le trafic entre des réseaux selon des <strong>règles</strong>. Il décide pour chaque flux : <strong>autoriser</strong> (accept), <strong>refuser</strong> (drop/reject).</p>
+<h3 id="32--notions-de-base">3.2 📘 Notions de base</h3>
+<table>
+<thead>
+<tr>
+<th>Notion</th>
+<th>Explication</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Règle</strong></td>
+<td>Critères (IP source, IP destination, protocole, port) + action (accepter / refuser)</td>
+</tr>
+<tr>
+<td><strong>Ordre des règles</strong></td>
+<td>Lues <strong>de haut en bas</strong>, la première qui correspond s'applique</td>
+</tr>
+<tr>
+<td><strong>Politique par défaut</strong></td>
+<td>Ce qui arrive si aucune règle ne correspond. En sécurité : <strong>tout refuser</strong> (<em>deny all</em>), puis autoriser au cas par cas</td>
+</tr>
+<tr>
+<td><strong>DROP / REJECT</strong></td>
+<td>DROP jette le paquet en silence, REJECT renvoie un refus explicite</td>
+</tr>
+<tr>
+<td><strong>Filtrage sans état (stateless)</strong></td>
+<td>Chaque paquet est jugé seul</td>
+</tr>
+<tr>
+<td><strong>Filtrage avec état (stateful)</strong></td>
+<td>Le pare-feu mémorise les connexions : la réponse à une connexion autorisée passe automatiquement</td>
+</tr>
+</tbody>
+</table>
+<p>💡 Le principe du <strong>moindre privilège</strong> : on autorise <strong>le strict nécessaire</strong>, rien de plus.</p>
+<h3 id="33-exemple-de-règles-lisible">3.3 Exemple de règles lisible</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Source</th>
+<th>Destination</th>
+<th>Port</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Internet</td>
+<td><code>172.16.0.10</code> (web DMZ)</td>
+<td>TCP 443</td>
+<td>✅ Accepter</td>
+</tr>
+<tr>
+<td>2</td>
+<td>LAN</td>
+<td>DMZ</td>
+<td>TCP 22</td>
+<td>✅ Accepter (administration)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>DMZ</td>
+<td><code>192.168.1.50</code> (BDD)</td>
+<td>TCP 3306</td>
+<td>✅ Accepter (un seul flux)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>DMZ</td>
+<td>LAN</td>
+<td>tous</td>
+<td>❌ Refuser</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Tous</td>
+<td>Tous</td>
+<td>tous</td>
+<td>❌ Refuser (règle finale)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="34--hors-cours--exemple-en-ligne-de-commande-linux-nftables">3.4 🚀 Hors cours : exemple en ligne de commande (Linux, nftables)</h3>
+<div class="admonition warning">
+<p class="admonition-title">Hors cours</p>
+<p><code>iptables</code> est l'ancienne méthode, <strong>nftables</strong> est son successeur sur les distributions récentes. À titre de culture.</p>
+</div>
+<div class="highlight"><pre><span></span><code><span class="c1"># Politique par défaut : tout refuser en entrée et en transit</span>
+nft<span class="w"> </span>add<span class="w"> </span>table<span class="w"> </span>inet<span class="w"> </span>filtre
+nft<span class="w"> </span>add<span class="w"> </span>chain<span class="w"> </span>inet<span class="w"> </span>filtre<span class="w"> </span>forward<span class="w"> </span><span class="s1">'{ type filter hook forward priority 0 ; policy drop ; }'</span>
+
+<span class="c1"># Autoriser les connexions déjà établies (stateful)</span>
+nft<span class="w"> </span>add<span class="w"> </span>rule<span class="w"> </span>inet<span class="w"> </span>filtre<span class="w"> </span>forward<span class="w"> </span>ct<span class="w"> </span>state<span class="w"> </span>established,related<span class="w"> </span>accept
+
+<span class="c1"># Internet -&gt; serveur web DMZ en HTTPS uniquement</span>
+nft<span class="w"> </span>add<span class="w"> </span>rule<span class="w"> </span>inet<span class="w"> </span>filtre<span class="w"> </span>forward<span class="w"> </span>ip<span class="w"> </span>daddr<span class="w"> </span><span class="m">172</span>.16.0.10<span class="w"> </span>tcp<span class="w"> </span>dport<span class="w"> </span><span class="m">443</span><span class="w"> </span>accept
+</code></pre></div>
+<hr />
+<h2 id="4-la-dmz-zone-démilitarisée">4. La DMZ (zone démilitarisée)</h2>
+<div class="admonition info">
+<p class="admonition-title">Dans mon cours</p>
+<p>Chapitre : <em>à compléter</em> · Schéma vu en TP : <em>à compléter</em></p>
+</div>
+<h3 id="41-définition">4.1 Définition</h3>
+<p>Une <strong>DMZ</strong> est un <strong>sous-réseau intermédiaire</strong>, isolé d'Internet <strong>et</strong> du LAN, qui héberge les serveurs devant être <strong>accessibles depuis l'extérieur</strong>.</p>
+<p><strong>Objectif</strong> : si un serveur exposé est piraté, l'attaquant reste <strong>bloqué dans la DMZ</strong> et ne peut pas rebondir vers le réseau interne (AD, fichiers, postes, sauvegardes).</p>
+<h3 id="42-les-trois-zones">4.2 Les trois zones</h3>
+<table>
+<thead>
+<tr>
+<th>Zone</th>
+<th>Confiance</th>
+<th>Contenu typique</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Internet (WAN)</strong></td>
+<td>Nulle</td>
+<td>Le reste du monde</td>
+</tr>
+<tr>
+<td><strong>DMZ</strong></td>
+<td>Faible / moyenne</td>
+<td>Serveurs publics (web, mail, reverse proxy, DNS public)</td>
+</tr>
+<tr>
+<td><strong>LAN</strong></td>
+<td>Élevée</td>
+<td>Postes, Active Directory, serveurs de fichiers, bases de données</td>
+</tr>
+</tbody>
+</table>
+<h3 id="43--les-règles-de-flux">4.3 📘 Les règles de flux</h3>
+<p><em>Plus on va vers une zone de confiance, plus c'est restrictif.</em></p>
+<table>
+<thead>
+<tr>
+<th>Source → Destination</th>
+<th>Politique</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Internet → DMZ</td>
+<td>Autorisé <strong>uniquement</strong> sur les ports des services publiés (80/443...)</td>
+</tr>
+<tr>
+<td>Internet → LAN</td>
+<td>❌ <strong>Interdit</strong></td>
+</tr>
+<tr>
+<td>LAN → DMZ</td>
+<td>Autorisé selon les besoins (administration SSH/RDP, accès aux services)</td>
+</tr>
+<tr>
+<td>LAN → Internet</td>
+<td>Autorisé (souvent via proxy)</td>
+</tr>
+<tr>
+<td><strong>DMZ → LAN</strong></td>
+<td>❌ <strong>Interdit par défaut</strong>, ou limité au strict nécessaire (une IP, un port)</td>
+</tr>
+<tr>
+<td>DMZ → Internet</td>
+<td>Très limité (mises à jour, relais mail)</td>
+</tr>
+</tbody>
+</table>
+<p>💡 <strong>La règle la plus importante : DMZ → LAN interdit.</strong> C'est elle qui empêche le rebond.</p>
+<h3 id="44--les-deux-architectures">4.4 📘 Les deux architectures</h3>
+<p><strong>a) Un seul pare-feu à trois interfaces</strong></p>
+<div class="highlight"><pre><span></span><code>Internet ──── [ Pare-feu ] ──── LAN
+                  │
+                 DMZ
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Avantages</th>
+<th>Inconvénients</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Simple, peu coûteux</td>
+<td><strong>Point unique de défaillance</strong> : un seul équipement à compromettre</td>
+</tr>
+</tbody>
+</table>
+<p><strong>b) Double pare-feu (sous-réseau filtré / <em>screened subnet</em>)</strong></p>
+<div class="highlight"><pre><span></span><code>Internet ── [ FW externe ] ── DMZ ── [ FW interne ] ── LAN
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Avantages</th>
+<th>Inconvénients</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>L'attaquant doit franchir <strong>deux</strong> équipements</td>
+<td>Plus cher, plus complexe</td>
+</tr>
+<tr>
+<td>Idéalement deux <strong>marques différentes</strong> (une même faille ne touche pas les deux)</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="45-exemple-dadressage">4.5 Exemple d'adressage</h3>
+<table>
+<thead>
+<tr>
+<th>Zone</th>
+<th>Réseau</th>
+<th>Passerelle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>WAN</td>
+<td>IP publique (ex. <code>203.0.113.10</code>)</td>
+<td>Routeur du FAI</td>
+</tr>
+<tr>
+<td>DMZ</td>
+<td><code>172.16.0.0/24</code></td>
+<td><code>172.16.0.1</code></td>
+</tr>
+<tr>
+<td>LAN</td>
+<td><code>192.168.1.0/24</code></td>
+<td><code>192.168.1.1</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="46-ce-quon-met-ou-pas-en-dmz">4.6 Ce qu'on met (ou pas) en DMZ</h3>
+<table>
+<thead>
+<tr>
+<th>✅ En DMZ</th>
+<th>❌ Jamais en DMZ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Serveur web, reverse proxy</td>
+<td>Contrôleur de domaine / <strong>Active Directory</strong></td>
+</tr>
+<tr>
+<td>Relais SMTP</td>
+<td>Bases de données sensibles</td>
+</tr>
+<tr>
+<td>DNS public</td>
+<td>Postes utilisateurs</td>
+</tr>
+<tr>
+<td>VPN gateway, SFTP public</td>
+<td>Sauvegardes</td>
+</tr>
+</tbody>
+</table>
+<h3 id="47-publier-un-service--le-dnat-en-pratique">4.7 Publier un service : le DNAT en pratique</h3>
+<ol>
+<li>Le client Internet envoie une requête vers <code>203.0.113.10:443</code>.</li>
+<li>Le pare-feu applique un <strong>DNAT</strong> : <code>203.0.113.10:443</code> → <code>172.16.0.10:443</code>.</li>
+<li>Une règle de filtrage autorise ce flux précis.</li>
+<li>La réponse repart par le même chemin (suivi d'état).</li>
+</ol>
+<hr />
+<h2 id="5-le-proxy-forward-proxy">5. Le proxy (forward proxy)</h2>
+<div class="admonition info">
+<p class="admonition-title">Dans mon cours</p>
+<p>Chapitre : <em>à compléter</em> · Outil vu en TP : <em>à compléter</em></p>
+</div>
+<h3 id="51-principe">5.1 Principe</h3>
+<p>Les postes du LAN ne sortent pas directement sur Internet : ils passent par le <strong>proxy</strong>, qui fait la requête <strong>à leur place</strong>.</p>
+<div class="highlight"><pre><span></span><code>Poste client ──► [ Proxy ] ──► Internet
+ 192.168.1.20      │          (le site voit l'IP du proxy)
+                   └─ filtre, journalise, met en cache
+</code></pre></div>
+<p><strong>Le proxy travaille pour les clients</strong> et protège l'entreprise.</p>
+<h3 id="52--fonctions">5.2 📘 Fonctions</h3>
+<table>
+<thead>
+<tr>
+<th>Fonction</th>
+<th>Rôle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Filtrage</strong></td>
+<td>Listes noires / blanches de sites, catégories (réseaux sociaux, jeux...)</td>
+</tr>
+<tr>
+<td><strong>Authentification</strong></td>
+<td>Savoir <em>qui</em> navigue (comptes AD / LDAP)</td>
+</tr>
+<tr>
+<td><strong>Journalisation</strong></td>
+<td>Qui a visité quoi, quand (logs conservés, obligation légale)</td>
+</tr>
+<tr>
+<td><strong>Cache</strong></td>
+<td>Un contenu déjà téléchargé est servi localement : gain de bande passante</td>
+</tr>
+<tr>
+<td><strong>Anonymisation</strong></td>
+<td>Le site distant ne voit que l'IP du proxy</td>
+</tr>
+<tr>
+<td><strong>Antivirus</strong></td>
+<td>Analyse des fichiers téléchargés</td>
+</tr>
+</tbody>
+</table>
+<h3 id="53-modes-de-déploiement">5.3 Modes de déploiement</h3>
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>Fonctionnement</th>
+<th>Remarque</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Explicite</strong></td>
+<td>Le navigateur est configuré avec l'adresse du proxy (GPO, fichier PAC)</td>
+<td>Le plus courant</td>
+</tr>
+<tr>
+<td><strong>Transparent</strong></td>
+<td>Le pare-feu redirige 80/443 vers le proxy, sans configuration côté client</td>
+<td>Pratique, délicat avec HTTPS</td>
+</tr>
+</tbody>
+</table>
+<h3 id="54--hors-cours--linspection-https">5.4 🚀 Hors cours : l'inspection HTTPS</h3>
+<p>Le proxy peut <strong>déchiffrer</strong> le HTTPS, l'analyser, puis le rechiffrer. Cela demande de déployer un <strong>certificat d'autorité</strong> sur tous les postes. Efficace, mais sensible sur la vie privée et la réglementation.</p>
+<h3 id="55-outils-et-ports">5.5 Outils et ports</h3>
+<table>
+<thead>
+<tr>
+<th>Outil</th>
+<th>Remarque</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Squid</strong></td>
+<td>Référence open source sous Linux (port <strong>3128</strong>)</td>
+</tr>
+<tr>
+<td>SquidGuard / E2Guardian</td>
+<td>Filtrage d'URL avec Squid</td>
+</tr>
+<tr>
+<td>Solutions commerciales</td>
+<td>Zscaler, Forcepoint, Fortinet</td>
+</tr>
+<tr>
+<td><strong>SOCKS5</strong></td>
+<td>Proxy plus générique, pas limité au web</td>
+</tr>
+</tbody>
+</table>
+<h3 id="56--hors-cours--exemple-squid-minimal">5.6 🚀 Hors cours : exemple Squid minimal</h3>
+<div class="highlight"><pre><span></span><code># /etc/squid/squid.conf (extrait)
+http_port 3128
+
+acl reseau_local src 192.168.1.0/24
+acl sites_interdits dstdomain .facebook.com .tiktok.com
+
+http_access deny sites_interdits
+http_access allow reseau_local
+http_access deny all
+</code></pre></div>
+<h3 id="57-limites">5.7 Limites</h3>
+<ul>
+<li><strong>Point unique de défaillance</strong> (prévoir de la redondance).</li>
+<li><strong>Contournable</strong> (VPN, tunnels) si le pare-feu n'interdit pas la sortie web directe.</li>
+<li>⚠️ Ce n'est <strong>pas</strong> un pare-feu : le pare-feu doit interdire la sortie web <strong>sauf depuis le proxy</strong>.</li>
+</ul>
+<hr />
+<h2 id="6-le-reverse-proxy">6. Le reverse proxy</h2>
+<div class="admonition info">
+<p class="admonition-title">Dans mon cours</p>
+<p>Chapitre : <em>à compléter</em> · Outil vu en TP : <em>à compléter</em></p>
+</div>
+<h3 id="61-principe">6.1 Principe</h3>
+<p>Le reverse proxy se place <strong>devant un ou plusieurs serveurs</strong> et reçoit les requêtes d'Internet <strong>à leur place</strong>. Le client ne sait pas qu'il y a des serveurs derrière.</p>
+<div class="highlight"><pre><span></span><code>Client Internet ──► [ Reverse proxy ] ──► Serveur web 1
+                     (DMZ, IP publique) ├─► Serveur web 2
+                                        └─► Serveur applicatif
+</code></pre></div>
+<p><strong>Le reverse proxy travaille pour les serveurs</strong> et les protège.</p>
+<h3 id="62--fonctions">6.2 📘 Fonctions</h3>
+<table>
+<thead>
+<tr>
+<th>Fonction</th>
+<th>Rôle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Sécurité</strong></td>
+<td>Les serveurs réels ne sont jamais exposés, un seul point d'entrée à durcir</td>
+</tr>
+<tr>
+<td><strong>Terminaison TLS</strong></td>
+<td>Gère le HTTPS et les certificats en un seul endroit</td>
+</tr>
+<tr>
+<td><strong>Répartition de charge</strong></td>
+<td>Distribue les requêtes entre plusieurs serveurs, retire ceux en panne (<em>health checks</em>)</td>
+</tr>
+<tr>
+<td><strong>Routage par nom / chemin</strong></td>
+<td>Un seul IP et un seul port 443 pour plusieurs services</td>
+</tr>
+<tr>
+<td><strong>Cache / compression</strong></td>
+<td>Soulage les serveurs</td>
+</tr>
+<tr>
+<td><strong>Haute disponibilité</strong></td>
+<td>Maintenance d'un serveur sans coupure visible</td>
+</tr>
+</tbody>
+</table>
+<p>Exemple de routage :</p>
+<table>
+<thead>
+<tr>
+<th>URL demandée</th>
+<th>Serveur réel</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>site.exemple.fr</code></td>
+<td>Serveur A</td>
+</tr>
+<tr>
+<td><code>webmail.exemple.fr</code></td>
+<td>Serveur B</td>
+</tr>
+<tr>
+<td><code>exemple.fr/api</code></td>
+<td>Serveur C</td>
+</tr>
+</tbody>
+</table>
+<h3 id="63-outils">6.3 Outils</h3>
+<table>
+<thead>
+<tr>
+<th>Outil</th>
+<th>Remarque</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Nginx</strong></td>
+<td>Très répandu, simple, performant</td>
+</tr>
+<tr>
+<td><strong>Apache</strong> (<code>mod_proxy</code>)</td>
+<td>Modulaire, familier sous Linux</td>
+</tr>
+<tr>
+<td><strong>HAProxy</strong></td>
+<td>Spécialisé load balancing</td>
+</tr>
+<tr>
+<td><strong>IIS + ARR</strong></td>
+<td>Côté Windows Server</td>
+</tr>
+<tr>
+<td><strong>Traefik</strong></td>
+<td>Adapté aux conteneurs</td>
+</tr>
+<tr>
+<td>Cloud</td>
+<td>Cloudflare, CloudFront...</td>
+</tr>
+</tbody>
+</table>
+<h3 id="64--hors-cours--exemple-nginx-minimal">6.4 🚀 Hors cours : exemple Nginx minimal</h3>
+<div class="highlight"><pre><span></span><code><span class="k">server</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="mi">443</span><span class="w"> </span><span class="s">ssl</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">server_name</span><span class="w"> </span><span class="s">www.exemple.fr</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kn">ssl_certificate</span><span class="w">     </span><span class="s">/etc/ssl/certs/exemple.crt</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">ssl_certificate_key</span><span class="w"> </span><span class="s">/etc/ssl/private/exemple.key</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kn">proxy_pass</span><span class="w"> </span><span class="s">http://172.16.0.10:8080</span><span class="p">;</span><span class="w">          </span><span class="c1"># serveur réel</span>
+<span class="w">        </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">Host</span><span class="w"> </span><span class="nv">$host</span><span class="p">;</span>
+<span class="w">        </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">X-Real-IP</span><span class="w"> </span><span class="nv">$remote_addr</span><span class="p">;</span><span class="w">     </span><span class="c1"># IP réelle du client</span>
+<span class="w">        </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">X-Forwarded-For</span><span class="w"> </span><span class="nv">$proxy_add_x_forwarded_for</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>💡 Sans <code>X-Forwarded-For</code> / <code>X-Real-IP</code>, les logs du serveur n'afficheraient que l'IP du reverse proxy.</p>
+<h3 id="65-limites">6.5 Limites</h3>
+<ul>
+<li>Point unique de défaillance si non redondé (paire avec Keepalived / VRRP).</li>
+<li>Une mauvaise configuration peut exposer des services internes.</li>
+<li>Ajoute de la latence et un composant à maintenir.</li>
+</ul>
+<hr />
+<h2 id="7-le-waf-web-application-firewall">7. Le WAF (Web Application Firewall)</h2>
+<div class="admonition info">
+<p class="admonition-title">Dans mon cours</p>
+<p>Chapitre : <em>à compléter</em></p>
+</div>
+<h3 id="71-principe">7.1 Principe</h3>
+<p>Un <strong>WAF</strong> est un pare-feu <strong>applicatif (couche 7)</strong> spécialisé dans le trafic web. Il analyse le <strong>contenu</strong> des requêtes (URL, en-têtes, cookies, paramètres, formulaires) pour <strong>bloquer les attaques</strong>.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Pare-feu réseau</th>
+<th>WAF</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Couche OSI</td>
+<td>3-4 (IP, ports)</td>
+<td><strong>7 (HTTP)</strong></td>
+</tr>
+<tr>
+<td>Regarde</td>
+<td>Adresses, ports, protocoles</td>
+<td>Le <strong>contenu</strong> des requêtes</td>
+</tr>
+<tr>
+<td>Question posée</td>
+<td>« Ce flux a-t-il le droit de passer ? »</td>
+<td>« Cette requête est-elle une attaque ? »</td>
+</tr>
+</tbody>
+</table>
+<p>⚠️ Un pare-feu réseau laisse passer une requête malveillante sur le port 443, puisque le port est autorisé. <strong>C'est là que le WAF intervient.</strong></p>
+<h3 id="72-les-attaques-ciblées-top-10-owasp">7.2 Les attaques ciblées (Top 10 OWASP)</h3>
+<table>
+<thead>
+<tr>
+<th>Attaque</th>
+<th>Exemple / principe</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Injection SQL</strong></td>
+<td><code>' OR 1=1 --</code> saisi dans un champ de formulaire pour contourner une requête SQL</td>
+</tr>
+<tr>
+<td><strong>XSS</strong> (Cross-Site Scripting)</td>
+<td>Injection de JavaScript dans une page vue par d'autres utilisateurs</td>
+</tr>
+<tr>
+<td><strong>Traversée de répertoires</strong></td>
+<td><code>../../etc/passwd</code> pour lire des fichiers du serveur</td>
+</tr>
+<tr>
+<td><strong>Injection de commandes</strong></td>
+<td>Faire exécuter une commande système par l'application</td>
+</tr>
+<tr>
+<td><strong>CSRF</strong></td>
+<td>Forcer un utilisateur connecté à effectuer une action à son insu</td>
+</tr>
+<tr>
+<td><strong>DoS applicatif / bots</strong></td>
+<td>Saturation par requêtes massives, scans automatiques</td>
+</tr>
+</tbody>
+</table>
+<h3 id="73--méthodes-de-détection">7.3 📘 Méthodes de détection</h3>
+<table>
+<thead>
+<tr>
+<th>Méthode</th>
+<th>Fonctionnement</th>
+<th>Limite</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Liste noire</strong> (signatures)</td>
+<td>Compare aux motifs d'attaques connus</td>
+<td>Contournable, faux positifs</td>
+</tr>
+<tr>
+<td><strong>Liste blanche</strong> (modèle positif)</td>
+<td>N'autorise que ce qui est défini comme normal</td>
+<td>Très sûr, long à configurer</td>
+</tr>
+<tr>
+<td><strong>Apprentissage</strong></td>
+<td>Apprend le trafic normal, repère les anomalies</td>
+<td>Phase de rodage nécessaire</td>
+</tr>
+</tbody>
+</table>
+<h3 id="74-modes-de-déploiement">7.4 Modes de déploiement</h3>
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Reverse proxy</strong></td>
+<td>Le WAF reçoit le trafic à la place du serveur (le plus courant)</td>
+</tr>
+<tr>
+<td><strong>Transparent / bridge</strong></td>
+<td>En coupure sur le réseau, sans changer l'adressage</td>
+</tr>
+<tr>
+<td><strong>Embarqué</strong></td>
+<td>Module du serveur web (ex. ModSecurity)</td>
+</tr>
+<tr>
+<td><strong>Cloud</strong></td>
+<td>Cloudflare, AWS WAF, Azure...</td>
+</tr>
+</tbody>
+</table>
+<h3 id="75-outils">7.5 Outils</h3>
+<table>
+<thead>
+<tr>
+<th>Outil</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ModSecurity</strong> + règles <strong>OWASP CRS</strong></td>
+<td>Open source, intégré à Apache / Nginx</td>
+</tr>
+<tr>
+<td><strong>Coraza</strong></td>
+<td>Open source, successeur moderne de ModSecurity</td>
+</tr>
+<tr>
+<td>FortiWeb, F5 ASM, Imperva</td>
+<td>Commerciaux</td>
+</tr>
+<tr>
+<td>Cloudflare WAF, AWS WAF, Azure WAF</td>
+<td>Cloud</td>
+</tr>
+</tbody>
+</table>
+<h3 id="76-mode-détection-puis-mode-blocage">7.6 Mode détection puis mode blocage</h3>
+<ol>
+<li><strong>Détection seule</strong> : le WAF journalise sans bloquer, pour repérer les <strong>faux positifs</strong> (requêtes légitimes bloquées à tort).</li>
+<li><strong>Ajustement</strong> des règles.</li>
+<li><strong>Blocage</strong> une fois les règles stabilisées.</li>
+</ol>
+<h3 id="77--hors-cours--tester-une-injection-sql">7.7 🚀 Hors cours : tester une injection SQL</h3>
+<p>Sur une application de test <strong>que tu administres</strong> (jamais sur un site tiers) :</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Requête normale</span>
+curl<span class="w"> </span><span class="s2">"http://serveur-test/produit.php?id=5"</span>
+
+<span class="c1"># Requête avec injection SQL : doit être bloquée (403) par le WAF en mode blocage</span>
+curl<span class="w"> </span><span class="s2">"http://serveur-test/produit.php?id=5' OR '1'='1"</span>
+</code></pre></div>
+<h3 id="78-limites">7.8 Limites</h3>
+<ul>
+<li><strong>Pas une protection complète</strong> : il ne remplace ni le code sécurisé ni les mises à jour (il peut servir de « patch virtuel » en attendant).</li>
+<li>Contournable par obfuscation si les règles sont basiques.</li>
+<li>Faux positifs et réglages à maintenir.</li>
+<li>Ne voit le HTTPS que s'il <strong>termine le TLS</strong> (d'où le couplage avec le reverse proxy).</li>
+</ul>
+<hr />
+<h2 id="8-tls--https-en-résumé">8. TLS / HTTPS en résumé</h2>
+<table>
+<thead>
+<tr>
+<th>Notion</th>
+<th>Explication</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Certificat</strong></td>
+<td>Carte d'identité numérique du serveur, signée par une <strong>autorité de certification (CA)</strong></td>
+</tr>
+<tr>
+<td><strong>Chiffrement</strong></td>
+<td>Les données entre client et serveur sont illisibles pour un tiers</td>
+</tr>
+<tr>
+<td><strong>Terminaison TLS</strong></td>
+<td>L'équipement (reverse proxy, WAF) qui déchiffre le HTTPS</td>
+</tr>
+<tr>
+<td><strong>Trafic derrière le reverse proxy</strong></td>
+<td>HTTP simple (confiance dans le réseau interne) ou <strong>re-chiffré</strong> (plus sûr)</td>
+</tr>
+</tbody>
+</table>
+<p>🚀 <em>Hors cours</em> : <strong>Let's Encrypt</strong> délivre des certificats gratuits renouvelés automatiquement ; <strong>HSTS</strong> force les navigateurs à n'utiliser que HTTPS.</p>
+<hr />
+<h2 id="9-assembler-le-tout--linfrastructure-complète">9. Assembler le tout : l'infrastructure complète</h2>
+<div class="highlight"><pre><span></span><code>                        INTERNET
+                            │
+                      ┌─────┴─────┐
+                      │ Pare-feu  │  filtrage réseau, DNAT 443 uniquement
+                      └─────┬─────┘
+                            │
+    ┌───────────────────────┴──────────────────────────┐
+    │                      DMZ                         │
+    │          [ Reverse proxy + WAF ]                 │
+    │                  │                               │
+    │         [ Serveur applicatif ]                   │
+    └───────────────────────┬──────────────────────────┘
+                            │  un seul flux : IP app → IP BDD, port 3306
+                      ┌─────┴─────┐
+                      │ Pare-feu  │  (interne)
+                      └─────┬─────┘
+                            │
+    ┌───────────────────────┴──────────────────────────┐
+    │                      LAN                         │
+    │   [ BDD ]  [ Active Directory ]  [ Postes ]      │
+    │                  │                               │
+    │           [ Proxy ] ──► Internet (sortie web)    │
+    └──────────────────────────────────────────────────┘
+</code></pre></div>
+<h3 id="91-le-rôle-de-chaque-brique">9.1 Le rôle de chaque brique</h3>
+<table>
+<thead>
+<tr>
+<th>Brique</th>
+<th>Question à laquelle elle répond</th>
+<th>Couche</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Pare-feu</strong></td>
+<td>Ce flux (IP/port) a-t-il le droit de passer ?</td>
+<td>3-4</td>
+</tr>
+<tr>
+<td><strong>DMZ</strong></td>
+<td>Où place-t-on ce qui est exposé ?</td>
+<td>Architecture</td>
+</tr>
+<tr>
+<td><strong>Reverse proxy</strong></td>
+<td>Comment publie-t-on le service sans exposer les serveurs ?</td>
+<td>7</td>
+</tr>
+<tr>
+<td><strong>WAF</strong></td>
+<td>Cette requête web est-elle une attaque ?</td>
+<td>7</td>
+</tr>
+<tr>
+<td><strong>Proxy</strong></td>
+<td>Comment contrôle-t-on la navigation des utilisateurs ?</td>
+<td>7</td>
+</tr>
+</tbody>
+</table>
+<h3 id="92-le-scénario-complet">9.2 Le scénario complet</h3>
+<p><strong>Un visiteur consulte le site de l'entreprise :</strong></p>
+<ol>
+<li>Le DNS renvoie l'IP publique du pare-feu.</li>
+<li>Le pare-feu autorise le flux TCP 443 et le redirige (DNAT) vers le reverse proxy en DMZ.</li>
+<li>Le reverse proxy termine le TLS, et le WAF inspecte la requête.</li>
+<li>La requête saine est relayée vers le serveur applicatif.</li>
+<li>Le serveur applicatif interroge la base de données dans le LAN (un seul flux autorisé).</li>
+<li>La réponse remonte le même chemin jusqu'au visiteur.</li>
+</ol>
+<p><strong>Si le serveur applicatif est piraté :</strong> l'attaquant ne peut joindre que la BDD sur un seul port. Il ne peut ni scanner le LAN, ni atteindre l'AD.</p>
+<p><strong>Un employé consulte un site web :</strong> sa requête passe par le <strong>proxy</strong> (authentification, filtrage, journalisation), le pare-feu n'autorisant la sortie web <strong>que depuis le proxy</strong>.</p>
+<hr />
+<h2 id="10-les-confusions-fréquentes">10. Les confusions fréquentes</h2>
+<table>
+<thead>
+<tr>
+<th>Question</th>
+<th>Réponse</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DMZ = reverse proxy ?</td>
+<td><strong>Non.</strong> La DMZ est une <strong>zone réseau</strong>, le reverse proxy est un <strong>service</strong> qu'on y place. On peut avoir l'un sans l'autre, mais ils se complètent</td>
+</tr>
+<tr>
+<td>Proxy = reverse proxy ?</td>
+<td><strong>Non.</strong> Le proxy protège les <strong>clients</strong> (sortie), le reverse proxy protège les <strong>serveurs</strong> (entrée)</td>
+</tr>
+<tr>
+<td>NAT = pare-feu ?</td>
+<td><strong>Non.</strong> Le NAT traduit des adresses, le pare-feu <strong>filtre</strong></td>
+</tr>
+<tr>
+<td>Pare-feu = WAF ?</td>
+<td><strong>Non.</strong> Le pare-feu regarde IP et ports, le WAF lit le <strong>contenu</strong> web</td>
+</tr>
+<tr>
+<td>Proxy = VPN ?</td>
+<td><strong>Non.</strong> Le proxy traite certains protocoles, le VPN chiffre et tunnelise <strong>tout</strong> le trafic</td>
+</tr>
+<tr>
+<td>Proxy = NAT ?</td>
+<td><strong>Non.</strong> Le proxy <strong>termine</strong> la connexion du client et en ouvre une nouvelle (il comprend HTTP)</td>
+</tr>
+<tr>
+<td>Le load balancer = reverse proxy ?</td>
+<td>Proches. Un load balancer répartit la charge (parfois couche 4), un reverse proxy fait aussi du routage applicatif (couche 7)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="11-bonnes-pratiques-de-sécurité">11. Bonnes pratiques de sécurité</h2>
+<table>
+<thead>
+<tr>
+<th>Pratique</th>
+<th>Pourquoi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Moindre privilège</strong> sur les règles : IP et ports précis, jamais <code>any/any</code></td>
+<td>Limite les chemins d'attaque</td>
+</tr>
+<tr>
+<td><strong>Politique par défaut = tout refuser</strong></td>
+<td>On n'ouvre que ce qui est justifié</td>
+</tr>
+<tr>
+<td><strong>Durcissement</strong> des serveurs de la DMZ (services inutiles désactivés, mises à jour, comptes minimaux)</td>
+<td>Réduit la surface d'attaque</td>
+</tr>
+<tr>
+<td><strong>Pas d'appartenance au domaine AD</strong> pour les serveurs de la DMZ</td>
+<td>Une compromission ne donne pas accès aux identifiants du domaine</td>
+</tr>
+<tr>
+<td><strong>Administration depuis le LAN uniquement</strong>, en canal chiffré (SSH, RDP via bastion)</td>
+<td>Évite d'exposer l'administration</td>
+</tr>
+<tr>
+<td><strong>Journalisation centralisée</strong> (logs vers un collecteur dans le LAN)</td>
+<td>Détecter, investiguer</td>
+</tr>
+<tr>
+<td><strong>Supervision</strong> (IDS/IPS)</td>
+<td>Détecter les comportements anormaux</td>
+</tr>
+<tr>
+<td><strong>Mises à jour régulières</strong></td>
+<td>Corriger les failles connues</td>
+</tr>
+<tr>
+<td><strong>Sauvegardes</strong> testées et isolées</td>
+<td>Se relever après un incident</td>
+</tr>
+<tr>
+<td><strong>Segmentation interne</strong> (VLAN)</td>
+<td>Limiter la propagation</td>
+</tr>
+</tbody>
+</table>
+<p>🚀 <em>Hors cours</em> : la <strong>défense en profondeur</strong> consiste à empiler plusieurs couches (pare-feu, DMZ, reverse proxy, WAF, durcissement, supervision) pour qu'aucune défaillance isolée ne suffise à compromettre le système.</p>
+<hr />
+<h2 id="12-aller-plus-loin-hors-cours">12. Aller plus loin (hors cours)</h2>
+<ul>
+<li><strong>Micro-segmentation</strong> : règles par machine plutôt que par zone.</li>
+<li><strong>Zero Trust</strong> : « ne jamais faire confiance, toujours vérifier », même à l'intérieur du LAN.</li>
+<li><strong>Cloud</strong> : les notions de DMZ, pare-feu et reverse proxy deviennent sous-réseaux publics/privés, groupes de sécurité, <em>load balancers</em> managés.</li>
+<li><strong>Bastion</strong> : serveur unique et durci par lequel passent toutes les connexions d'administration.</li>
+<li><strong>IDS / IPS</strong> : sondes qui détectent (IDS) ou bloquent (IPS) les comportements suspects (Snort, Suricata).</li>
+</ul>
+<hr />
+<h2 id="13-exercices-pratiques">13. Exercices pratiques</h2>
+<h3 id="tp-1--dessiner-une-architecture">TP 1 : Dessiner une architecture</h3>
+<p>Dessine le schéma complet d'une entreprise avec : Internet, pare-feu, DMZ (serveur web), LAN (AD, BDD, postes). Indique les adresses IP, puis les règles de flux entre chaque zone.</p>
+<h3 id="tp-2--écrire-les-règles">TP 2 : Écrire les règles</h3>
+<p>À partir du schéma du TP 1, écris le tableau des règles du pare-feu (source, destination, port, action) en respectant la politique « tout refuser par défaut ».</p>
+<h3 id="tp-3--monter-une-maquette-machines-virtuelles">TP 3 : Monter une maquette (machines virtuelles)</h3>
+<table>
+<thead>
+<tr>
+<th>VM</th>
+<th>Rôle</th>
+<th>Zone</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pfSense (ou routeur Linux)</td>
+<td>Pare-feu à 3 interfaces</td>
+<td>WAN / DMZ / LAN</td>
+</tr>
+<tr>
+<td>Debian + Nginx</td>
+<td>Reverse proxy</td>
+<td>DMZ</td>
+</tr>
+<tr>
+<td>Debian + Apache</td>
+<td>Serveur web</td>
+<td>DMZ</td>
+</tr>
+<tr>
+<td>Poste client</td>
+<td>Test</td>
+<td>LAN / WAN</td>
+</tr>
+</tbody>
+</table>
+<p>Objectifs : publier le site via le reverse proxy, vérifier que <strong>DMZ → LAN est bloqué</strong>, puis tester le flux Internet → DMZ.</p>
+<h3 id="tp-4--squid">TP 4 : Squid</h3>
+<p>Installer Squid sur une VM du LAN, filtrer un site, vérifier les logs dans <code>/var/log/squid/access.log</code>.</p>
+<h3 id="tp-5--modsecurity">TP 5 : ModSecurity</h3>
+<p>Activer ModSecurity avec les règles OWASP CRS en <strong>mode détection</strong>, déclencher une injection SQL sur une application de test, lire le journal, puis passer en <strong>mode blocage</strong>.</p>
+<hr />
+<h2 id="14-auto-évaluation">14. Auto-évaluation</h2>
+<details class="question">
+<summary>1. Quelle est la règle de flux la plus importante d'une DMZ ?</summary>
+<p><strong>DMZ → LAN interdit</strong> (ou limité au strict nécessaire). Elle empêche l'attaquant de rebondir vers le réseau interne après compromission d'un serveur exposé.</p>
+</details>
+<details class="question">
+<summary>2. Pourquoi un pare-feu réseau ne suffit-il pas à protéger un site web ?</summary>
+<p>Il filtre sur les IP et les ports. Une requête malveillante (injection SQL) sur le port 443 autorisé passe sans problème. Il faut un <strong>WAF</strong> qui lit le contenu.</p>
+</details>
+<details class="question">
+<summary>3. Quelle est la différence entre un proxy et un reverse proxy ?</summary>
+<p>Le <strong>proxy</strong> travaille pour les clients (contrôle de la sortie vers Internet), le <strong>reverse proxy</strong> pour les serveurs (publication et protection des services). Le client connaît son proxy, mais ignore l'existence du reverse proxy.</p>
+</details>
+<details class="question">
+<summary>4. Peut-on avoir une DMZ sans reverse proxy ? Et l'inverse ?</summary>
+<p>Oui dans les deux cas. La DMZ est une zone, le reverse proxy est un service. En entreprise, on les combine : le reverse proxy est placé <strong>dans</strong> la DMZ.</p>
+</details>
+<details class="question">
+<summary>5. Pourquoi ne met-on pas l'Active Directory en DMZ ?</summary>
+<p>Parce que la DMZ est une zone peu fiable, exposée à Internet. Une compromission donnerait accès aux identifiants et à l'annuaire du domaine. Le contrôleur de domaine reste dans le <strong>LAN</strong>.</p>
+</details>
+<details class="question">
+<summary>6. Quelle est la différence entre NAT et pare-feu ?</summary>
+<p>Le <strong>NAT</strong> traduit des adresses IP. Le <strong>pare-feu</strong> décide quels flux sont autorisés. Le NAT ne sécurise pas à lui seul.</p>
+</details>
+<details class="question">
+<summary>7. Que signifie « terminaison TLS » ?</summary>
+<p>L'équipement (souvent le reverse proxy ou le WAF) qui <strong>déchiffre</strong> le HTTPS. C'est ce qui lui permet d'inspecter le contenu.</p>
+</details>
+<details class="question">
+<summary>8. Pourquoi commence-t-on un WAF en mode détection ?</summary>
+<p>Pour repérer les <strong>faux positifs</strong> (requêtes légitimes bloquées à tort) avant de passer en blocage.</p>
+</details>
+<details class="question">
+<summary>9. Pourquoi deux pare-feu de marques différentes dans une architecture à double pare-feu ?</summary>
+<p>Pour qu'une <strong>même faille</strong> ne permette pas de franchir les deux équipements.</p>
+</details>
+<details class="question">
+<summary>10. Que voit le site distant quand un poste passe par un proxy ?</summary>
+<p>Uniquement l'<strong>adresse IP du proxy</strong>, pas celle du poste.</p>
+</details>
+<hr />
+<h2 id="15-glossaire">15. Glossaire</h2>
+<table>
+<thead>
+<tr>
+<th>Terme</th>
+<th>Définition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ACL</strong></td>
+<td>Liste de règles de contrôle d'accès</td>
+</tr>
+<tr>
+<td><strong>Bastion</strong></td>
+<td>Serveur durci servant de point de passage unique pour l'administration</td>
+</tr>
+<tr>
+<td><strong>Cache</strong></td>
+<td>Copie locale d'un contenu pour éviter de le retélécharger</td>
+</tr>
+<tr>
+<td><strong>CA</strong></td>
+<td>Autorité de certification, qui signe les certificats</td>
+</tr>
+<tr>
+<td><strong>CRS</strong></td>
+<td>Core Rule Set, jeu de règles OWASP pour ModSecurity</td>
+</tr>
+<tr>
+<td><strong>DMZ</strong></td>
+<td>Zone tampon entre Internet et le LAN</td>
+</tr>
+<tr>
+<td><strong>DNAT</strong></td>
+<td>Redirection de port entrante</td>
+</tr>
+<tr>
+<td><strong>Deny all</strong></td>
+<td>Politique de refus par défaut</td>
+</tr>
+<tr>
+<td><strong>Durcissement</strong></td>
+<td>Réduction de la surface d'attaque d'un système (<em>hardening</em>)</td>
+</tr>
+<tr>
+<td><strong>Faux positif</strong></td>
+<td>Requête légitime bloquée à tort</td>
+</tr>
+<tr>
+<td><strong>IDS / IPS</strong></td>
+<td>Système de détection / de prévention d'intrusion</td>
+</tr>
+<tr>
+<td><strong>Load balancing</strong></td>
+<td>Répartition de la charge entre plusieurs serveurs</td>
+</tr>
+<tr>
+<td><strong>LAN</strong></td>
+<td>Réseau local interne</td>
+</tr>
+<tr>
+<td><strong>Moindre privilège</strong></td>
+<td>N'accorder que les droits strictement nécessaires</td>
+</tr>
+<tr>
+<td><strong>NAT / PAT</strong></td>
+<td>Traduction d'adresses / de ports</td>
+</tr>
+<tr>
+<td><strong>OWASP</strong></td>
+<td>Organisation de référence en sécurité web (Top 10 des risques)</td>
+</tr>
+<tr>
+<td><strong>Proxy</strong></td>
+<td>Intermédiaire côté client pour la sortie vers Internet</td>
+</tr>
+<tr>
+<td><strong>Reverse proxy</strong></td>
+<td>Intermédiaire côté serveur pour les requêtes entrantes</td>
+</tr>
+<tr>
+<td><strong>Stateful</strong></td>
+<td>Filtrage qui mémorise l'état des connexions</td>
+</tr>
+<tr>
+<td><strong>TLS</strong></td>
+<td>Protocole de chiffrement des échanges (HTTPS)</td>
+</tr>
+<tr>
+<td><strong>VLAN</strong></td>
+<td>Réseau local virtuel, découpage logique d'un switch</td>
+</tr>
+<tr>
+<td><strong>WAF</strong></td>
+<td>Pare-feu applicatif web</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="16-à-retenir">16. À retenir</h2>
+<blockquote>
+<ul>
+<li>Une <strong>DMZ</strong> est un sous-réseau tampon qui héberge les services exposés pour qu'une compromission ne gagne pas le LAN.</li>
+<li>Un <strong>pare-feu</strong> filtre les flux (IP, ports) selon le principe du <strong>moindre privilège</strong> et de la politique <strong>tout refuser par défaut</strong>.</li>
+<li>Un <strong>proxy</strong> contrôle la <strong>sortie</strong> des utilisateurs, un <strong>reverse proxy</strong> publie et protège les <strong>serveurs</strong>.</li>
+<li>Un <strong>WAF</strong> lit le <strong>contenu</strong> des requêtes web et bloque les attaques que le pare-feu réseau laisse passer.</li>
+<li>La sécurité repose sur la <strong>défense en profondeur</strong> : on empile les couches, aucune n'est suffisante seule.</li>
+</ul>
+</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
+      
+    
+  </body>
+</html>
