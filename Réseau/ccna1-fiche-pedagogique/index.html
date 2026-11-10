@@ -1,0 +1,5467 @@
+
+<!doctype html>
+<html lang="fr" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../../Python/tuto_script_matching/">
+      
+      
+        <link rel="next" href="../conversion-hexadecimal/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
+    
+    
+      
+        <title>CCNA 1 : la fiche pédagogique complète - Mes notes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ccna-1--la-fiche-pédagogique-complète" class="md-skip">
+          Aller au contenu
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="En-tête">
+    <a href="../.." title="Mes notes" class="md-header__button md-logo" aria-label="Mes notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Mes notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              CCNA 1 : la fiche pédagogique complète
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Rechercher" placeholder="Rechercher" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Recherche">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Effacer" aria-label="Effacer" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initialisation de la recherche
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Mes notes" class="md-nav__button md-logo" aria-label="Mes notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Mes notes
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cours et TP ENI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Administration Linux
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Administration Linux
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration%20Linux/cours-admin-linux/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Administration Linux : fiche de révision
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration%20Linux/fiche-acl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fiche — Les ACL sous Linux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration%20Linux/memo-acl/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mémo — Les ACL sous Linux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration%20Linux/memo-chmod/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mémo : chmod, les droits sous Linux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration%20Linux/memo-commandes-stockage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mémo commandes : stockage, LVM, montage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration%20Linux/memo-systeme-fichiers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mémo : le système de fichiers sous Linux
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration%20Linux/memo-types-volumes-partitions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mémo : partitions, LVM, systèmes de fichiers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_8" id="__nav_2_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    TP
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration%20Linux/TP/index%20%281%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tutos Administration Linux (M02)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration%20Linux/TP/tp1-installation-graphique/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP1 : Installer Oracle Linux avec bureau GNOME (srvclient)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration%20Linux/TP/tp10-gestion-logs%20%281%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP10 : Gestion des logs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration%20Linux/TP/tp11-analyse-systeme%20%281%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP11 : Analyse du système
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration%20Linux/TP/tp2-installation-serveur/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP2 : Installer Oracle Linux en mode serveur, sans interface graphique (serveur)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration%20Linux/TP/tp3-grub-mode-maintenance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP3 : Configurer GRUB et démarrer en mode maintenance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration%20Linux/TP/tp4-demarrage-et-services/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP4 : Gestion du démarrage et des services
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration%20Linux/TP/tp5-gestion-reseau/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP5 : Gestion réseau
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration%20Linux/TP/tp6-depots-mises-a-jour/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP6 : Dépôts, mises à jour et installation de logiciels
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration%20Linux/TP/tp7-gestion-stockage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP7 : Gestion du stockage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration%20Linux/TP/tp8-gestion-utilisateurs%20%281%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP8 : Gestion des utilisateurs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration%20Linux/TP/tp9-gestion-permissions%20%281%29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP9 : Gestion des permissions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Administration Windows
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Administration Windows
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration-Windows/fiche-revision-windows-ad/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fiche de révision — Administration Windows et Active Directory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration-Windows/raccourcis-claviers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Raccourcis clavier Windows / Windows Server — Administration système et réseau
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    TP
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration-Windows/TP/tp01-creation-infrastructure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP1 — Création de l'infrastructure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration-Windows/TP/tp02-creation-domaine-ad/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP2 — Création d'un domaine Active Directory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration-Windows/TP/tp03-gestion-domaine-ad/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP3 — Gestion d'un domaine Active Directory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration-Windows/TP/tp04-gestion-ressources/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP4 — Gestion de ressources
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Administration-Windows/TP/tp05-strategies-de-groupe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP5 — Les stratégies de groupe (GPO)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Python
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/python-bases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python : les bases pour débuter
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/tuto-matcher/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tuto : retrouver un numéro client avec une base Excel (fuzzy matching)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python/tuto_script_matching/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tuto : comprendre le script matcher_passages.py
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Réseau
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Réseau
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CCNA 1 : la fiche pédagogique complète
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CCNA 1 : la fiche pédagogique complète
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#sommaire" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sommaire
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-les-réseaux-équipements-médias-et-topologies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Les réseaux, équipements, médias et topologies
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Les réseaux, équipements, médias et topologies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#équipements-terminaux-et-intermédiaires" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Équipements terminaux et intermédiaires
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#médias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Médias
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#topologies-physique-et-logique" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Topologies physique et logique
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#types-de-réseaux-lan-wan-internet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Types de réseaux, LAN, WAN, Internet
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#accéder-à-internet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Accéder à Internet
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#réseaux-fiables-les-4-caractéristiques" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Réseaux fiables, les 4 caractéristiques
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tendances-byod-cloud" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tendances, BYOD, cloud
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-les-protocoles-et-les-modèles-de-communication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Les protocoles et les modèles de communication
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Les protocoles et les modèles de communication">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#protocole-définition-et-exemples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Protocole, définition et exemples
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#le-modèle-osi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Le modèle OSI
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#le-modèle-tcpip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Le modèle TCP/IP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#osi-et-tcpip-côte-à-côte" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OSI et TCP/IP côte à côte
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-lencapsulation-et-la-décapsulation-la-clé-du-ccna" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. L'encapsulation et la décapsulation (la clé du CCNA)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. L&#39;encapsulation et la décapsulation (la clé du CCNA)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#le-principe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Le principe
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#les-pdu-données-segment-paquet-trame-bits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Les PDU, données, segment, paquet, trame, bits
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encapsulation-pas-à-pas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Encapsulation pas à pas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#décapsulation-le-chemin-inverse" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Décapsulation, le chemin inverse
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exemple-complet-un-pc-demande-une-page-web" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exemple complet, un PC demande une page web
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#qui-lit-quoi-hub-switch-routeur" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Qui lit quoi, hub, switch, routeur
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#les-trois-types-dadresses" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Les trois types d'adresses
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-systèmes-de-numération" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Systèmes de numération
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-la-couche-physique" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. La couche physique
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. La couche physique">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#débit-bande-passante-latence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Débit, bande passante, latence
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cuivre-fibre-sans-fil" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cuivre, fibre, sans fil
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#câbles-droit-croisé-console" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Câbles droit, croisé, console
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-la-couche-liaison-de-données-et-ethernet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. La couche liaison de données et Ethernet
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. La couche liaison de données et Ethernet">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#la-trame-ethernet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        La trame Ethernet
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ladresse-mac" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        L'adresse MAC
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#duplex-et-collisions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Duplex et collisions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comment-un-switch-fonctionne" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comment un switch fonctionne
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-la-couche-réseau-le-routage-et-la-résolution-dadresses" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. La couche réseau, le routage et la résolution d'adresses
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. La couche réseau, le routage et la résolution d&#39;adresses">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#le-paquet-ipv4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Le paquet IPv4
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hôte-passerelle-routeur" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hôte, passerelle, routeur
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#la-table-de-routage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        La table de routage
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#arp-retrouver-une-adresse-mac" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ARP, retrouver une adresse MAC
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#icmp-tests-et-messages-derreur" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ICMP, tests et messages d'erreur
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-ladressage-ipv4-et-les-sous-réseaux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. L'adressage IPv4 et les sous-réseaux
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. L&#39;adressage IPv4 et les sous-réseaux">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#structure-dune-adresse-ipv4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Structure d'une adresse IPv4
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adresses-spéciales" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Adresses spéciales
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#masques-et-notation-cidr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Masques et notation CIDR
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#méthode-de-découpage-en-sous-réseaux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Méthode de découpage en sous-réseaux
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vlsm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VLSM
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-ladressage-ipv6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. L'adressage IPv6
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-la-couche-transport-tcp-et-udp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. La couche transport, TCP et UDP
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-la-couche-application-et-les-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. La couche application et les services
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-la-sécurité-réseau" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. La sécurité réseau
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-configuration-cisco-ios-modes-sécurité-interfaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. Configuration Cisco IOS, modes, sécurité, interfaces
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13. Configuration Cisco IOS, modes, sécurité, interfaces">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#les-modes-ios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Les modes IOS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#navigation-et-aide" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Navigation et aide
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sécuriser-laccès" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sécuriser l'accès
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration-de-base-dun-switch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration de base d'un switch
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration-de-base-dun-routeur" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration de base d'un routeur
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sauvegarde-vérification-remise-à-zéro" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sauvegarde, vérification, remise à zéro
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interfaces-et-nommage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interfaces et nommage
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#séquence-type-dune-configuration-de-base" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Séquence type d'une configuration de base
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-tests-et-dépannage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. Tests et dépannage
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-tips-dexamen-et-pièges-fréquents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15. Tips d'examen et pièges fréquents
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-mémo-où-se-configure-quoi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16. Mémo, où se configure quoi
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../conversion-hexadecimal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Conversion hexadécimal ↔ décimal
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../securisation-web-infrastructure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sécurisation web et fonctionnement d'une infrastructure réseau
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#sommaire" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sommaire
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-les-réseaux-équipements-médias-et-topologies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Les réseaux, équipements, médias et topologies
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Les réseaux, équipements, médias et topologies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#équipements-terminaux-et-intermédiaires" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Équipements terminaux et intermédiaires
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#médias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Médias
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#topologies-physique-et-logique" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Topologies physique et logique
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#types-de-réseaux-lan-wan-internet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Types de réseaux, LAN, WAN, Internet
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#accéder-à-internet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Accéder à Internet
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#réseaux-fiables-les-4-caractéristiques" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Réseaux fiables, les 4 caractéristiques
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tendances-byod-cloud" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tendances, BYOD, cloud
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-les-protocoles-et-les-modèles-de-communication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Les protocoles et les modèles de communication
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Les protocoles et les modèles de communication">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#protocole-définition-et-exemples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Protocole, définition et exemples
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#le-modèle-osi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Le modèle OSI
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#le-modèle-tcpip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Le modèle TCP/IP
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#osi-et-tcpip-côte-à-côte" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OSI et TCP/IP côte à côte
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-lencapsulation-et-la-décapsulation-la-clé-du-ccna" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. L'encapsulation et la décapsulation (la clé du CCNA)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. L&#39;encapsulation et la décapsulation (la clé du CCNA)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#le-principe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Le principe
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#les-pdu-données-segment-paquet-trame-bits" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Les PDU, données, segment, paquet, trame, bits
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#encapsulation-pas-à-pas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Encapsulation pas à pas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#décapsulation-le-chemin-inverse" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Décapsulation, le chemin inverse
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exemple-complet-un-pc-demande-une-page-web" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exemple complet, un PC demande une page web
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#qui-lit-quoi-hub-switch-routeur" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Qui lit quoi, hub, switch, routeur
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#les-trois-types-dadresses" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Les trois types d'adresses
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-systèmes-de-numération" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Systèmes de numération
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-la-couche-physique" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. La couche physique
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. La couche physique">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#débit-bande-passante-latence" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Débit, bande passante, latence
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cuivre-fibre-sans-fil" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cuivre, fibre, sans fil
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#câbles-droit-croisé-console" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Câbles droit, croisé, console
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-la-couche-liaison-de-données-et-ethernet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. La couche liaison de données et Ethernet
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. La couche liaison de données et Ethernet">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#la-trame-ethernet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        La trame Ethernet
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ladresse-mac" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        L'adresse MAC
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#duplex-et-collisions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Duplex et collisions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comment-un-switch-fonctionne" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comment un switch fonctionne
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-la-couche-réseau-le-routage-et-la-résolution-dadresses" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. La couche réseau, le routage et la résolution d'adresses
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. La couche réseau, le routage et la résolution d&#39;adresses">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#le-paquet-ipv4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Le paquet IPv4
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hôte-passerelle-routeur" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hôte, passerelle, routeur
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#la-table-de-routage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        La table de routage
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#arp-retrouver-une-adresse-mac" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ARP, retrouver une adresse MAC
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#icmp-tests-et-messages-derreur" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ICMP, tests et messages d'erreur
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-ladressage-ipv4-et-les-sous-réseaux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. L'adressage IPv4 et les sous-réseaux
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. L&#39;adressage IPv4 et les sous-réseaux">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#structure-dune-adresse-ipv4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Structure d'une adresse IPv4
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adresses-spéciales" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Adresses spéciales
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#masques-et-notation-cidr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Masques et notation CIDR
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#méthode-de-découpage-en-sous-réseaux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Méthode de découpage en sous-réseaux
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vlsm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VLSM
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-ladressage-ipv6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. L'adressage IPv6
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-la-couche-transport-tcp-et-udp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. La couche transport, TCP et UDP
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-la-couche-application-et-les-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. La couche application et les services
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-la-sécurité-réseau" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. La sécurité réseau
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-configuration-cisco-ios-modes-sécurité-interfaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. Configuration Cisco IOS, modes, sécurité, interfaces
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="13. Configuration Cisco IOS, modes, sécurité, interfaces">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#les-modes-ios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Les modes IOS
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#navigation-et-aide" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Navigation et aide
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sécuriser-laccès" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sécuriser l'accès
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration-de-base-dun-switch" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration de base d'un switch
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuration-de-base-dun-routeur" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configuration de base d'un routeur
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sauvegarde-vérification-remise-à-zéro" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sauvegarde, vérification, remise à zéro
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interfaces-et-nommage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Interfaces et nommage
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#séquence-type-dune-configuration-de-base" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Séquence type d'une configuration de base
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-tests-et-dépannage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. Tests et dépannage
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-tips-dexamen-et-pièges-fréquents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15. Tips d'examen et pièges fréquents
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#16-mémo-où-se-configure-quoi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        16. Mémo, où se configure quoi
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="ccna-1--la-fiche-pédagogique-complète">CCNA 1 : la fiche pédagogique complète</h1>
+<p>Cette fiche explique tout le programme du CCNA 1 (Introduction aux réseaux, ITN) dans l'ordre où on le comprend le mieux : d'abord ce qu'est un réseau, ensuite comment les données voyagent (modèles, encapsulation), puis chaque couche, et enfin la configuration des équipements Cisco.</p>
+<p>Elle suit le découpage des modules NetAcad ITN v7. Si ton cours est organisé autrement, les notions restent les mêmes.</p>
+<p><strong>Comment l'utiliser</strong></p>
+<ul>
+<li>Les encadrés violets <strong>À retenir</strong> résument l'essentiel d'une partie : ce sont les phrases à connaître pour l'examen. Les encadrés jaunes signalent un piège, les verts une astuce, les bleus une précision hors programme.</li>
+<li>Les blocs de code sont des commandes Cisco IOS à taper telles quelles.</li>
+<li>Les parties 5, 6 et 7 sont les plus importantes pour comprendre le reste : l'encapsulation est la clé de tout le CCNA.</li>
+</ul>
+<h2 id="sommaire">Sommaire</h2>
+<ol>
+<li><a href="#1-les-réseaux-équipements-médias-et-topologies">Les réseaux, équipements, médias et topologies</a><ul>
+<li><a href="#équipements-terminaux-et-intermédiaires">Équipements terminaux et intermédiaires</a></li>
+<li><a href="#médias">Médias</a></li>
+<li><a href="#topologies-physique-et-logique">Topologies physique et logique</a></li>
+<li><a href="#types-de-réseaux-lan-wan-internet">Types de réseaux, LAN, WAN, Internet</a></li>
+<li><a href="#accéder-à-internet">Accéder à Internet</a></li>
+<li><a href="#réseaux-fiables-les-4-caractéristiques">Réseaux fiables, les 4 caractéristiques</a></li>
+<li><a href="#tendances-byod-cloud">Tendances, BYOD, cloud</a></li>
+</ul>
+</li>
+<li><a href="#2-les-protocoles-et-les-modèles-de-communication">Les protocoles et les modèles de communication</a><ul>
+<li><a href="#protocole-définition-et-exemples">Protocole, définition et exemples</a></li>
+<li><a href="#le-modèle-osi">Le modèle OSI</a></li>
+<li><a href="#le-modèle-tcpip">Le modèle TCP/IP</a></li>
+<li><a href="#osi-et-tcpip-côte-à-côte">OSI et TCP/IP côte à côte</a></li>
+</ul>
+</li>
+<li><a href="#3-lencapsulation-et-la-décapsulation-la-clé-du-ccna">L'encapsulation et la décapsulation (la clé du CCNA)</a><ul>
+<li><a href="#le-principe">Le principe</a></li>
+<li><a href="#les-pdu-données-segment-paquet-trame-bits">Les PDU, données, segment, paquet, trame, bits</a></li>
+<li><a href="#encapsulation-pas-à-pas">Encapsulation pas à pas</a></li>
+<li><a href="#décapsulation-le-chemin-inverse">Décapsulation, le chemin inverse</a></li>
+<li><a href="#exemple-complet-un-pc-demande-une-page-web">Exemple complet, un PC demande une page web</a></li>
+<li><a href="#qui-lit-quoi-hub-switch-routeur">Qui lit quoi, hub, switch, routeur</a></li>
+<li><a href="#les-trois-types-dadresses">Les trois types d'adresses</a></li>
+</ul>
+</li>
+<li><a href="#4-systèmes-de-numération">Systèmes de numération</a></li>
+<li><a href="#5-la-couche-physique">La couche physique</a><ul>
+<li><a href="#débit-bande-passante-latence">Débit, bande passante, latence</a></li>
+<li><a href="#cuivre-fibre-sans-fil">Cuivre, fibre, sans fil</a></li>
+<li><a href="#câbles-droit-croisé-console">Câbles droit, croisé, console</a></li>
+</ul>
+</li>
+<li><a href="#6-la-couche-liaison-de-données-et-ethernet">La couche liaison de données et Ethernet</a><ul>
+<li><a href="#la-trame-ethernet">La trame Ethernet</a></li>
+<li><a href="#ladresse-mac">L'adresse MAC</a></li>
+<li><a href="#duplex-et-collisions">Duplex et collisions</a></li>
+<li><a href="#comment-un-switch-fonctionne">Comment un switch fonctionne</a></li>
+</ul>
+</li>
+<li><a href="#7-la-couche-réseau-le-routage-et-la-résolution-dadresses">La couche réseau, le routage et la résolution d'adresses</a><ul>
+<li><a href="#le-paquet-ipv4">Le paquet IPv4</a></li>
+<li><a href="#hôte-passerelle-routeur">Hôte, passerelle, routeur</a></li>
+<li><a href="#la-table-de-routage">La table de routage</a></li>
+<li><a href="#arp-retrouver-une-adresse-mac">ARP, retrouver une adresse MAC</a></li>
+<li><a href="#icmp-tests-et-messages-derreur">ICMP, tests et messages d'erreur</a></li>
+</ul>
+</li>
+<li><a href="#8-ladressage-ipv4-et-les-sous-réseaux">L'adressage IPv4 et les sous-réseaux</a><ul>
+<li><a href="#structure-dune-adresse-ipv4">Structure d'une adresse IPv4</a></li>
+<li><a href="#adresses-spéciales">Adresses spéciales</a></li>
+<li><a href="#masques-et-notation-cidr">Masques et notation CIDR</a></li>
+<li><a href="#méthode-de-découpage-en-sous-réseaux">Méthode de découpage en sous-réseaux</a></li>
+<li><a href="#vlsm">VLSM</a></li>
+</ul>
+</li>
+<li><a href="#9-ladressage-ipv6">L'adressage IPv6</a></li>
+<li><a href="#10-la-couche-transport-tcp-et-udp">La couche transport, TCP et UDP</a></li>
+<li><a href="#11-la-couche-application-et-les-services">La couche application et les services</a></li>
+<li><a href="#12-la-sécurité-réseau">La sécurité réseau</a></li>
+<li><a href="#13-configuration-cisco-ios-modes-sécurité-interfaces">Configuration Cisco IOS, modes, sécurité, interfaces</a><ul>
+<li><a href="#les-modes-ios">Les modes IOS</a></li>
+<li><a href="#navigation-et-aide">Navigation et aide</a></li>
+<li><a href="#sécuriser-laccès">Sécuriser l'accès</a></li>
+<li><a href="#configuration-de-base-dun-switch">Configuration de base d'un switch</a></li>
+<li><a href="#configuration-de-base-dun-routeur">Configuration de base d'un routeur</a></li>
+<li><a href="#sauvegarde-vérification-remise-à-zéro">Sauvegarde, vérification, remise à zéro</a></li>
+<li><a href="#interfaces-et-nommage">Interfaces et nommage</a></li>
+<li><a href="#séquence-type-dune-configuration-de-base">Séquence type d'une configuration de base</a></li>
+</ul>
+</li>
+<li><a href="#14-tests-et-dépannage">Tests et dépannage</a></li>
+<li><a href="#15-tips-dexamen-et-pièges-fréquents">Tips d'examen et pièges fréquents</a></li>
+<li><a href="#16-mémo-où-se-configure-quoi">Mémo, où se configure quoi</a></li>
+</ol>
+<hr />
+<h2 id="1-les-réseaux-équipements-médias-et-topologies">1. Les réseaux, équipements, médias et topologies</h2>
+<p>Un réseau est un ensemble d'équipements reliés entre eux pour échanger des données et partager des ressources (fichiers, imprimantes, connexion Internet).</p>
+<h3 id="équipements-terminaux-et-intermédiaires">Équipements terminaux et intermédiaires</h3>
+<table>
+<thead>
+<tr>
+<th>Catégorie</th>
+<th>Rôle</th>
+<th>Exemples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Équipement terminal</strong> (hôte, end device)</td>
+<td>origine ou destination des données</td>
+<td>PC, serveur, smartphone, imprimante, caméra IP</td>
+</tr>
+<tr>
+<td><strong>Équipement intermédiaire</strong></td>
+<td>relie les terminaux et fait circuler les données</td>
+<td>switch, routeur, point d'accès Wi-Fi, pare-feu</td>
+</tr>
+</tbody>
+</table>
+<p>Les équipements intermédiaires :</p>
+<ul>
+<li>relient les terminaux entre eux (switch) ;</li>
+<li>relient des réseaux entre eux (routeur) ;</li>
+<li>peuvent filtrer le trafic (pare-feu) ;</li>
+<li>choisissent le meilleur chemin et retransmettent les données.</li>
+</ul>
+<blockquote>
+<p>[!IMPORTANT]
+<strong>À retenir</strong></p>
+<p>Un hôte a une adresse IP et envoie ou reçoit des données. Un équipement intermédiaire fait transiter les données des autres.</p>
+</blockquote>
+<h3 id="médias">Médias</h3>
+<p>Le média est le support qui transporte les signaux.</p>
+<table>
+<thead>
+<tr>
+<th>Média</th>
+<th>Principe</th>
+<th>Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Câble en cuivre</td>
+<td>signaux électriques</td>
+<td>réseaux locaux, courtes distances (100 m max)</td>
+</tr>
+<tr>
+<td>Fibre optique</td>
+<td>impulsions lumineuses</td>
+<td>longues distances, très haut débit</td>
+</tr>
+<tr>
+<td>Sans fil</td>
+<td>ondes radio</td>
+<td>mobilité, Wi-Fi, cellulaire</td>
+</tr>
+</tbody>
+</table>
+<h3 id="topologies-physique-et-logique">Topologies physique et logique</h3>
+<table>
+<thead>
+<tr>
+<th>Topologie</th>
+<th>Ce qu'elle montre</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Physique</strong></td>
+<td>l'emplacement des équipements, les câbles, quels terminaux sont reliés à quels équipements intermédiaires et avec quel média</td>
+</tr>
+<tr>
+<td><strong>Logique</strong></td>
+<td>comment les données circulent : adresses IP, noms d'interfaces, sous-réseaux, sans se soucier du câblage</td>
+</tr>
+</tbody>
+</table>
+<h3 id="types-de-réseaux-lan-wan-internet">Types de réseaux, LAN, WAN, Internet</h3>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Définition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>LAN</strong> (Local Area Network)</td>
+<td>réseau local, zone géographique limitée (maison, bureau, école), géré par une seule organisation</td>
+</tr>
+<tr>
+<td><strong>WAN</strong> (Wide Area Network)</td>
+<td>réseau étendu, relie des LAN éloignés, souvent via un fournisseur d'accès</td>
+</tr>
+<tr>
+<td><strong>Intranet</strong></td>
+<td>réseau privé d'une organisation, accessible à ses seuls membres</td>
+</tr>
+<tr>
+<td><strong>Extranet</strong></td>
+<td>accès contrôlé donné à des personnes extérieures (clients, partenaires)</td>
+</tr>
+<tr>
+<td><strong>Internet</strong></td>
+<td>ensemble mondial de réseaux interconnectés, sans propriétaire unique</td>
+</tr>
+</tbody>
+</table>
+<p>Autres sigles : <strong>SOHO</strong> (petit bureau ou bureau à domicile), <strong>WLAN</strong> (LAN sans fil).</p>
+<h3 id="accéder-à-internet">Accéder à Internet</h3>
+<table>
+<thead>
+<tr>
+<th>Avec connexion filaire jusqu'au bâtiment</th>
+<th>Sans câble dédié</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DSL (ligne téléphonique en cuivre), câble coaxial, fibre optique, ligne louée spécialisée, liaison commutée (dial-up)</td>
+<td>cellulaire (3G/4G/5G), satellite, WISP (fournisseur d'accès sans fil)</td>
+</tr>
+</tbody>
+</table>
+<p>Un <strong>WISP</strong> est recommandé pour une ferme dans une zone rurale sans accès filaire à large bande.</p>
+<h3 id="réseaux-fiables-les-4-caractéristiques">Réseaux fiables, les 4 caractéristiques</h3>
+<table>
+<thead>
+<tr>
+<th>Caractéristique</th>
+<th>Idée</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Tolérance aux pannes</strong></td>
+<td>le réseau continue de fonctionner si un équipement ou un lien tombe, grâce à la redondance</td>
+</tr>
+<tr>
+<td><strong>Extensibilité</strong> (scalability)</td>
+<td>le réseau s'agrandit (utilisateurs, applications) sans dégrader le service pour les utilisateurs existants ; il s'appuie sur des équipements modulaires</td>
+</tr>
+<tr>
+<td><strong>Qualité de service</strong> (QoS)</td>
+<td>le trafic sensible (voix, vidéo) est prioritaire sur le reste</td>
+</tr>
+<tr>
+<td><strong>Sécurité</strong></td>
+<td>confidentialité, intégrité, disponibilité des données</td>
+</tr>
+</tbody>
+</table>
+<h3 id="tendances-byod-cloud">Tendances, BYOD, cloud</h3>
+<ul>
+<li><strong>BYOD</strong> (Bring Your Own Device) : les utilisateurs se connectent avec leurs propres appareils. L'entreprise doit définir où et comment ces appareils peuvent accéder aux ressources, et renforcer sa sécurité.</li>
+<li><strong>Collaboration en ligne</strong> : visioconférence, messagerie, documents partagés.</li>
+<li><strong>Cloud computing</strong> : stockage et services hébergés chez un fournisseur, accessibles par Internet (cloud public, privé, hybride, communautaire).</li>
+<li><strong>Courant porteur en ligne</strong> : transmission de données par le réseau électrique.</li>
+</ul>
+<p><a href="#sommaire">Retour au sommaire</a></p>
+<hr />
+<h2 id="2-les-protocoles-et-les-modèles-de-communication">2. Les protocoles et les modèles de communication</h2>
+<h3 id="protocole-définition-et-exemples">Protocole, définition et exemples</h3>
+<p>Un <strong>protocole</strong> est un ensemble de règles que deux équipements respectent pour communiquer : format des messages, ordre des échanges, vérification, gestion des erreurs.</p>
+<p>Exemples : HTTP (pages web), TCP (transport fiable), IP (adressage et routage), Ethernet (liaison locale).</p>
+<p>Une <strong>suite de protocoles</strong> est un groupe de protocoles qui fonctionnent ensemble. TCP/IP est la suite utilisée partout aujourd'hui.</p>
+<h3 id="le-modèle-osi">Le modèle OSI</h3>
+<p>Le modèle OSI découpe la communication en <strong>7 couches</strong>. Chaque couche a un rôle précis et ne parle qu'à celle du dessus et à celle du dessous.</p>
+<table>
+<thead>
+<tr>
+<th>N°</th>
+<th>Couche</th>
+<th>Rôle</th>
+<th>PDU</th>
+<th>Exemples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>7</td>
+<td><strong>Application</strong></td>
+<td>interface entre l'utilisateur et le réseau</td>
+<td>données</td>
+<td>HTTP, DNS, SMTP</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>Présentation</strong></td>
+<td>format, chiffrement, compression</td>
+<td>données</td>
+<td>JPEG, TLS</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>Session</strong></td>
+<td>ouvre, gère, ferme les dialogues</td>
+<td>données</td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>Transport</strong></td>
+<td>découpe en segments, fiabilité, ports</td>
+<td><strong>segment</strong></td>
+<td>TCP, UDP</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Réseau</strong></td>
+<td>adresses logiques, choix du chemin</td>
+<td><strong>paquet</strong></td>
+<td>IP, ICMP</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Liaison de données</strong></td>
+<td>adresses MAC, accès au média</td>
+<td><strong>trame</strong></td>
+<td>Ethernet, Wi-Fi</td>
+</tr>
+<tr>
+<td>1</td>
+<td><strong>Physique</strong></td>
+<td>transmission des bits sur le média</td>
+<td><strong>bits</strong></td>
+<td>câbles, signaux</td>
+</tr>
+</tbody>
+</table>
+<p>Moyen mnémotechnique, de la couche 7 à la 1 (en anglais) : <em>All People Seem To Need Data Processing</em> (Application, Presentation, Session, Transport, Network, Data link, Physical).</p>
+<h3 id="le-modèle-tcpip">Le modèle TCP/IP</h3>
+<p>Le modèle TCP/IP n'a que <strong>4 couches</strong> et correspond à ce qui est réellement utilisé.</p>
+<table>
+<thead>
+<tr>
+<th>Couche TCP/IP</th>
+<th>Rôle</th>
+<th>Protocoles</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Application</strong></td>
+<td>services aux applications</td>
+<td>HTTP, HTTPS, FTP, DNS, DHCP, SMTP, SSH</td>
+</tr>
+<tr>
+<td><strong>Transport</strong></td>
+<td>communication de bout en bout</td>
+<td>TCP, UDP</td>
+</tr>
+<tr>
+<td><strong>Internet</strong></td>
+<td>adressage et routage</td>
+<td>IPv4, IPv6, ICMP, ARP</td>
+</tr>
+<tr>
+<td><strong>Accès réseau</strong></td>
+<td>accès au média local</td>
+<td>Ethernet, Wi-Fi</td>
+</tr>
+</tbody>
+</table>
+<h3 id="osi-et-tcpip-côte-à-côte">OSI et TCP/IP côte à côte</h3>
+<p><img alt="Modèles OSI et TCP/IP côte à côte : couches, PDU et protocoles" src="../images/osi-tcpip.svg" /></p>
+<blockquote>
+<p>[!IMPORTANT]
+<strong>À retenir</strong></p>
+<ul>
+<li>OSI est la référence théorique (7 couches), TCP/IP est le modèle réel (4 couches).</li>
+<li>Les couches 5, 6 et 7 d'OSI forment « Application » dans TCP/IP ; les couches 1 et 2 forment « Accès réseau ».</li>
+</ul>
+</blockquote>
+<p><a href="#sommaire">Retour au sommaire</a></p>
+<hr />
+<h2 id="3-lencapsulation-et-la-décapsulation-la-clé-du-ccna">3. L'encapsulation et la décapsulation (la clé du CCNA)</h2>
+<h3 id="le-principe">Le principe</h3>
+<p>Quand une application envoie des données, elles descendent les couches une à une. À chaque couche, le système <strong>ajoute une enveloppe</strong> (un en-tête, parfois aussi une fin) qui contient les informations dont cette couche a besoin. C'est l'<strong>encapsulation</strong>.</p>
+<p>À l'arrivée, c'est l'inverse : chaque couche lit son en-tête, le retire, et passe le contenu à la couche du dessus. C'est la <strong>décapsulation</strong>.</p>
+<p>Image : une lettre (données) mise dans une enveloppe (segment), elle-même glissée dans un colis avec une adresse (paquet), lui-même chargé dans un camion avec une plaque (trame). À l'arrivée, on ouvre le camion, puis le colis, puis l'enveloppe.</p>
+<h3 id="les-pdu-données-segment-paquet-trame-bits">Les PDU, données, segment, paquet, trame, bits</h3>
+<p>Une <strong>PDU</strong> (Protocol Data Unit) est le nom que prennent les données à chaque couche.</p>
+<table>
+<thead>
+<tr>
+<th>Couche</th>
+<th>Nom de la PDU</th>
+<th>Ce que la couche ajoute</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Application</td>
+<td><strong>Données</strong></td>
+<td>rien, c'est le message brut</td>
+</tr>
+<tr>
+<td>Transport</td>
+<td><strong>Segment</strong> (TCP) ou <strong>datagramme</strong> (UDP)</td>
+<td>en-tête TCP/UDP : ports source et destination, numéros de séquence</td>
+</tr>
+<tr>
+<td>Réseau</td>
+<td><strong>Paquet</strong></td>
+<td>en-tête IP : adresses IP source et destination, TTL</td>
+</tr>
+<tr>
+<td>Liaison de données</td>
+<td><strong>Trame</strong></td>
+<td>en-tête Ethernet : adresses MAC source et destination, type ; en fin : FCS</td>
+</tr>
+<tr>
+<td>Physique</td>
+<td><strong>Bits</strong></td>
+<td>aucun en-tête : signal électrique, lumineux ou radio</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>[!IMPORTANT]
+<strong>À retenir</strong></p>
+<p>De haut en bas : <strong>Données, Segment, Paquet, Trame, Bits</strong>. Segment = couche 4, paquet = couche 3, trame = couche 2.</p>
+</blockquote>
+<h3 id="encapsulation-pas-à-pas">Encapsulation pas à pas</h3>
+<p><img alt="Encapsulation : l'émetteur ajoute un en-tête à chaque couche, de Données à Bits" src="../images/encapsulation.svg" /></p>
+<p>Ce que contient chaque en-tête :</p>
+<table>
+<thead>
+<tr>
+<th>En-tête</th>
+<th>Informations principales</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>TCP / UDP</strong></td>
+<td>port source, port destination, (TCP : numéro de séquence, accusé de réception, fenêtre, drapeaux SYN/ACK/FIN)</td>
+</tr>
+<tr>
+<td><strong>IP</strong></td>
+<td>adresse IP source, adresse IP destination, TTL, protocole transporté</td>
+</tr>
+<tr>
+<td><strong>Ethernet</strong></td>
+<td>adresse MAC destination, adresse MAC source, type (ex. IPv4), puis FCS de contrôle à la fin</td>
+</tr>
+</tbody>
+</table>
+<h3 id="décapsulation-le-chemin-inverse">Décapsulation, le chemin inverse</h3>
+<p>Chez le destinataire, tout se lit de bas en haut :</p>
+<ol>
+<li>La <strong>couche physique</strong> reçoit les bits et les transmet à la couche liaison.</li>
+<li>La <strong>couche liaison</strong> lit la trame. Elle vérifie que l'adresse MAC de destination est la sienne, contrôle le FCS, retire l'en-tête Ethernet et passe le <strong>paquet</strong> à la couche réseau.</li>
+<li>La <strong>couche réseau</strong> lit l'en-tête IP, vérifie l'adresse IP de destination, retire l'en-tête et passe le <strong>segment</strong> à la couche transport.</li>
+<li>La <strong>couche transport</strong> lit l'en-tête TCP/UDP, regarde le <strong>port de destination</strong> pour savoir quelle application doit recevoir les données, retire l'en-tête et passe les <strong>données</strong> à l'application.</li>
+<li>L'<strong>application</strong> reçoit les données.</li>
+</ol>
+<p><img alt="Décapsulation : le récepteur retire un en-tête à chaque couche, de Bits à Données" src="../images/decapsulation.svg" /></p>
+<h3 id="exemple-complet-un-pc-demande-une-page-web">Exemple complet, un PC demande une page web</h3>
+<p>PC1 (<code>192.168.1.10</code>) veut afficher la page d'un serveur web (<code>10.0.0.5</code>), situé dans un autre réseau. Un routeur R1 (<code>192.168.1.1</code> côté PC1) les sépare.</p>
+<p><img alt="Trajet d'une requête web : les IP et les ports restent identiques, les MAC changent à chaque saut" src="../images/trajet-trame.svg" /></p>
+<p><strong>Chez PC1 (encapsulation)</strong></p>
+<ol>
+<li>Le navigateur crée une requête HTTP : ce sont les <strong>données</strong>.</li>
+<li>TCP ajoute son en-tête : port source <code>49152</code> (tiré au hasard), port destination <code>80</code> (HTTP). On obtient un <strong>segment</strong>.</li>
+<li>IP ajoute son en-tête : IP source <code>192.168.1.10</code>, IP destination <code>10.0.0.5</code>. On obtient un <strong>paquet</strong>.</li>
+<li>Le serveur n'est pas dans le même réseau, donc PC1 envoie la trame à sa <strong>passerelle</strong>. Il utilise ARP pour connaître l'adresse MAC de la passerelle. Ethernet ajoute : MAC source = MAC de PC1, <strong>MAC destination = MAC du routeur</strong>. On obtient une <strong>trame</strong>.</li>
+<li>La carte réseau envoie les <strong>bits</strong>.</li>
+</ol>
+<p><strong>Dans le switch</strong></p>
+<p>Le switch lit seulement la <strong>couche 2</strong> : il regarde la MAC de destination dans la trame, consulte sa table MAC, et fait sortir la trame par le bon port. Il ne regarde pas les adresses IP.</p>
+<p><strong>Dans le routeur R1</strong></p>
+<ol>
+<li>Il reçoit la trame, la décapsule jusqu'à la couche 3 et lit l'adresse IP de destination <code>10.0.0.5</code>.</li>
+<li>Il consulte sa table de routage pour savoir par quelle interface envoyer le paquet, et <strong>diminue le TTL de 1</strong>.</li>
+<li>Il réencapsule le paquet dans une <strong>nouvelle trame</strong> pour le prochain saut : nouvelle MAC source (celle de son interface de sortie), nouvelle MAC destination (celle du serveur ou du routeur suivant).</li>
+</ol>
+<p><strong>Chez le serveur (décapsulation)</strong></p>
+<p>La trame est décapsulée jusqu'aux données : couche 2 (MAC reconnue), couche 3 (IP reconnue), couche 4 (port 80, donc service web), couche 7 (le serveur HTTP traite la requête). La réponse repart dans l'autre sens, avec port source <code>80</code> et port destination <code>49152</code>.</p>
+<blockquote>
+<p>[!IMPORTANT]
+<strong>À retenir, la règle d'or</strong></p>
+<ul>
+<li>Les <strong>adresses IP</strong> (source et destination) et les <strong>ports</strong> restent les mêmes de bout en bout.</li>
+<li>Les <strong>adresses MAC</strong> changent à chaque saut, car elles ne servent que dans le réseau local.</li>
+</ul>
+</blockquote>
+<h3 id="qui-lit-quoi-hub-switch-routeur">Qui lit quoi, hub, switch, routeur</h3>
+<table>
+<thead>
+<tr>
+<th>Équipement</th>
+<th>Couche</th>
+<th>Il lit</th>
+<th>Il décide avec</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hub (concentrateur)</td>
+<td>1</td>
+<td>rien, il répète les bits sur tous les ports</td>
+<td>rien</td>
+</tr>
+<tr>
+<td><strong>Switch</strong></td>
+<td>2</td>
+<td>l'en-tête Ethernet</td>
+<td>l'<strong>adresse MAC</strong> de destination</td>
+</tr>
+<tr>
+<td><strong>Routeur</strong></td>
+<td>3</td>
+<td>l'en-tête IP</td>
+<td>l'<strong>adresse IP</strong> de destination et sa table de routage</td>
+</tr>
+<tr>
+<td>Pare-feu</td>
+<td>3 à 7</td>
+<td>selon le type</td>
+<td>règles de filtrage</td>
+</tr>
+</tbody>
+</table>
+<h3 id="les-trois-types-dadresses">Les trois types d'adresses</h3>
+<table>
+<thead>
+<tr>
+<th>Adresse</th>
+<th>Couche</th>
+<th>Taille</th>
+<th>Rôle</th>
+<th>Portée</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>MAC</strong></td>
+<td>2</td>
+<td>48 bits (12 hexa)</td>
+<td>identifie la carte réseau dans le réseau local</td>
+<td>locale, change à chaque saut</td>
+</tr>
+<tr>
+<td><strong>IP</strong></td>
+<td>3</td>
+<td>32 bits (IPv4) ou 128 bits (IPv6)</td>
+<td>identifie l'hôte dans un réseau, permet le routage</td>
+<td>de bout en bout</td>
+</tr>
+<tr>
+<td><strong>Port</strong></td>
+<td>4</td>
+<td>16 bits (0 à 65535)</td>
+<td>identifie l'application ou le service sur l'hôte</td>
+<td>de bout en bout</td>
+</tr>
+</tbody>
+</table>
+<p><a href="#sommaire">Retour au sommaire</a></p>
+<hr />
+<h2 id="4-systèmes-de-numération">4. Systèmes de numération</h2>
+<p>Les ordinateurs travaillent en binaire. Les adresses IP et MAC se lisent en décimal et en hexadécimal.</p>
+<p><strong>Binaire vers décimal</strong> : on additionne les valeurs des bits à 1.</p>
+<table>
+<thead>
+<tr>
+<th>Position</th>
+<th>128</th>
+<th>64</th>
+<th>32</th>
+<th>16</th>
+<th>8</th>
+<th>4</th>
+<th>2</th>
+<th>1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>192</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>168</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>255</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>192 = 128 + 64 ; 168 = 128 + 32 + 8.</p>
+<p><strong>Décimal vers binaire</strong> : on part de 128 et on soustrait. Si la valeur est contenue dans le reste, on met 1, sinon 0.</p>
+<p><strong>Hexadécimal</strong> : 16 symboles (0 à 9, puis A à F). Un chiffre hexa = 4 bits.</p>
+<table>
+<thead>
+<tr>
+<th>Décimal</th>
+<th>10</th>
+<th>11</th>
+<th>12</th>
+<th>13</th>
+<th>14</th>
+<th>15</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hexa</td>
+<td>A</td>
+<td>B</td>
+<td>C</td>
+<td>D</td>
+<td>E</td>
+<td>F</td>
+</tr>
+</tbody>
+</table>
+<p>Exemple : <code>FF</code> = 1111 1111 = 255. Une adresse MAC (6 octets) s'écrit avec 12 chiffres hexa : <code>00-1A-2B-3C-4D-5E</code>.</p>
+<blockquote>
+<p>[!IMPORTANT]
+<strong>À retenir</strong></p>
+<ul>
+<li>Un octet = 8 bits, valeurs de 0 à 255.</li>
+<li>L'hexadécimal compte de 0 à F : un chiffre = 4 bits, <code>FF</code> = 255.</li>
+<li>Une adresse MAC = 12 chiffres hexadécimaux.</li>
+</ul>
+</blockquote>
+<p><a href="#sommaire">Retour au sommaire</a></p>
+<hr />
+<h2 id="5-la-couche-physique">5. La couche physique</h2>
+<p>La couche physique transporte les <strong>bits</strong> sous forme de signaux sur le média. C'est la couche 1.</p>
+<h3 id="débit-bande-passante-latence">Débit, bande passante, latence</h3>
+<table>
+<thead>
+<tr>
+<th>Notion</th>
+<th>Définition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Bande passante</strong></td>
+<td>capacité théorique maximale d'un média (bits par seconde)</td>
+</tr>
+<tr>
+<td><strong>Débit</strong> (throughput)</td>
+<td>quantité réellement transférée, toujours inférieure à la bande passante</td>
+</tr>
+<tr>
+<td><strong>Débit utile</strong> (goodput)</td>
+<td>débit moins les en-têtes et la retransmission : les données utiles seules</td>
+</tr>
+<tr>
+<td><strong>Latence</strong></td>
+<td>délai d'acheminement d'un bit entre deux points</td>
+</tr>
+<tr>
+<td><strong>Gigue</strong></td>
+<td>variation de la latence</td>
+</tr>
+</tbody>
+</table>
+<p>Unités : 1 kb/s = 1 000 b/s ; 1 Mb/s = 1 000 kb/s ; 1 Gb/s = 1 000 Mb/s.</p>
+<h3 id="cuivre-fibre-sans-fil">Cuivre, fibre, sans fil</h3>
+<table>
+<thead>
+<tr>
+<th>Média</th>
+<th>Types</th>
+<th>Points clés</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Cuivre</strong></td>
+<td>UTP (paire torsadée non blindée), STP (blindée), coaxial</td>
+<td>100 m maximum, sensible aux interférences électromagnétiques (EMI) et à la diaphonie. Le torsadage des paires réduit les interférences</td>
+</tr>
+<tr>
+<td><strong>Fibre optique</strong></td>
+<td>monomode (cœur fin, laser, très longues distances), multimode (cœur large, LED, distances plus courtes)</td>
+<td>insensible aux interférences, très haut débit, plus chère</td>
+</tr>
+<tr>
+<td><strong>Sans fil</strong></td>
+<td>Wi-Fi (802.11), Bluetooth, cellulaire</td>
+<td>média partagé, sécurité à soigner, portée limitée</td>
+</tr>
+</tbody>
+</table>
+<p>Connecteurs : <strong>RJ-45</strong> pour le cuivre Ethernet. Catégories UTP : Cat5e (1 Gb/s), Cat6 et plus (haut débit).</p>
+<h3 id="câbles-droit-croisé-console">Câbles droit, croisé, console</h3>
+<table>
+<thead>
+<tr>
+<th>Liaison</th>
+<th>Câble</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PC vers switch</td>
+<td>droit (straight-through)</td>
+</tr>
+<tr>
+<td>Switch vers routeur</td>
+<td>droit</td>
+</tr>
+<tr>
+<td>Routeur vers serveur</td>
+<td>droit</td>
+</tr>
+<tr>
+<td>PC vers routeur (directement)</td>
+<td>croisé (crossover)</td>
+</tr>
+<tr>
+<td>PC vers PC</td>
+<td>croisé</td>
+</tr>
+<tr>
+<td>Switch vers switch</td>
+<td>croisé</td>
+</tr>
+<tr>
+<td>Routeur vers routeur</td>
+<td>croisé</td>
+</tr>
+<tr>
+<td>PC vers port console</td>
+<td>console (rollover)</td>
+</tr>
+</tbody>
+</table>
+<p>Règle : équipements de <strong>familles différentes</strong> = câble droit. Équipements de <strong>même famille</strong> = câble croisé. Les switchs modernes avec <strong>Auto-MDIX</strong> détectent le type de câble et s'adaptent.</p>
+<blockquote>
+<p>[!IMPORTANT]
+<strong>À retenir</strong></p>
+<ul>
+<li>Bande passante = capacité théorique, débit = ce qui est réellement transféré.</li>
+<li>Cuivre : 100 m maximum, sensible aux interférences. Fibre : longues distances, insensible aux interférences.</li>
+<li>Équipements de familles différentes = câble droit ; de même famille = câble croisé.</li>
+</ul>
+</blockquote>
+<p><a href="#sommaire">Retour au sommaire</a></p>
+<hr />
+<h2 id="6-la-couche-liaison-de-données-et-ethernet">6. La couche liaison de données et Ethernet</h2>
+<p>La couche 2 permet de communiquer entre deux équipements <strong>du même réseau local</strong> (même média, même lien). Elle utilise les adresses <strong>MAC</strong>.</p>
+<h3 id="la-trame-ethernet">La trame Ethernet</h3>
+<p><img alt="Structure d'une trame Ethernet" src="../images/trame-ethernet.svg" /></p>
+<table>
+<thead>
+<tr>
+<th>Champ</th>
+<th>Rôle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Préambule</td>
+<td>synchronise l'émetteur et le récepteur</td>
+</tr>
+<tr>
+<td>MAC destination / source</td>
+<td>adresses physiques</td>
+</tr>
+<tr>
+<td>Type</td>
+<td>protocole transporté (IPv4, IPv6, ARP)</td>
+</tr>
+<tr>
+<td>Données</td>
+<td>le paquet de la couche réseau</td>
+</tr>
+<tr>
+<td><strong>FCS</strong> (Frame Check Sequence)</td>
+<td>contrôle d'intégrité ; si le calcul ne correspond pas, la trame est jetée</td>
+</tr>
+</tbody>
+</table>
+<p>Taille d'une trame : minimum 64 octets, maximum 1518 octets. La <strong>MTU</strong> (taille maximale du contenu) est de 1500 octets.</p>
+<h3 id="ladresse-mac">L'adresse MAC</h3>
+<ul>
+<li>48 bits, écrits en 12 chiffres hexadécimaux (<code>00-1A-2B-3C-4D-5E</code> ou <code>00:1A:2B:3C:4D:5E</code>).</li>
+<li>Les 3 premiers octets forment l'<strong>OUI</strong> : identifiant du fabricant.</li>
+<li>Gravée dans la carte réseau (adresse « burned-in »).</li>
+<li><strong>Unicast</strong> : un destinataire. <strong>Broadcast</strong> : <code>FF-FF-FF-FF-FF-FF</code>, tous les hôtes. <strong>Multicast</strong> : un groupe.</li>
+</ul>
+<h3 id="duplex-et-collisions">Duplex et collisions</h3>
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>Fonctionnement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Half-duplex</strong></td>
+<td>émission et réception à tour de rôle ; collisions possibles, gérées par <strong>CSMA/CD</strong></td>
+</tr>
+<tr>
+<td><strong>Full-duplex</strong></td>
+<td>émission et réception en même temps ; pas de collision</td>
+</tr>
+</tbody>
+</table>
+<p>Un switch en full-duplex supprime les collisions. Les deux extrémités d'un lien doivent être réglées de façon cohérente (sinon : erreurs et lenteur, ce qu'on appelle un <em>duplex mismatch</em>).</p>
+<h3 id="comment-un-switch-fonctionne">Comment un switch fonctionne</h3>
+<p>Le switch construit une <strong>table d'adresses MAC</strong> (<code>show mac address-table</code>) en observant les trames. Pour chaque trame qui arrive :</p>
+<table>
+<thead>
+<tr>
+<th>Étape</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Apprendre</strong> (learn)</td>
+<td>il lit la MAC <strong>source</strong> et l'associe au port d'arrivée</td>
+</tr>
+<tr>
+<td><strong>Transférer</strong> (forward)</td>
+<td>si la MAC <strong>destination</strong> est dans sa table, il envoie la trame uniquement par le port correspondant</td>
+</tr>
+<tr>
+<td><strong>Inonder</strong> (flood)</td>
+<td>si la MAC destination est <strong>inconnue</strong> ou en broadcast, il envoie la trame sur tous les ports sauf celui d'arrivée</td>
+</tr>
+<tr>
+<td><strong>Filtrer</strong> (filter)</td>
+<td>si la destination est sur le même port que la source, il ne retransmet pas</td>
+</tr>
+</tbody>
+</table>
+<p>Méthodes de commutation :</p>
+<table>
+<thead>
+<tr>
+<th>Méthode</th>
+<th>Principe</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Store-and-forward</strong></td>
+<td>reçoit toute la trame, vérifie le FCS, puis transmet (méthode la plus fiable)</td>
+</tr>
+<tr>
+<td><strong>Cut-through</strong></td>
+<td>commence à transmettre dès que l'adresse de destination est lue (plus rapide, sans contrôle d'erreurs)</td>
+</tr>
+</tbody>
+</table>
+<p>Domaines :</p>
+<ul>
+<li><strong>Domaine de collision</strong> : chaque port d'un switch en est un (en full-duplex, plus aucune collision).</li>
+<li><strong>Domaine de broadcast</strong> : tous les équipements qui reçoivent un même broadcast. Un switch ne le sépare pas, <strong>un routeur oui</strong>.</li>
+</ul>
+<blockquote>
+<p>[!IMPORTANT]
+<strong>À retenir</strong></p>
+<ul>
+<li>Un switch <strong>apprend</strong> avec la MAC source et <strong>décide</strong> avec la MAC destination.</li>
+<li>MAC destination inconnue ou broadcast : le switch inonde tous les ports sauf celui d'arrivée.</li>
+<li>Un switch ne sépare pas les domaines de broadcast, un routeur oui.</li>
+</ul>
+</blockquote>
+<p><a href="#sommaire">Retour au sommaire</a></p>
+<hr />
+<h2 id="7-la-couche-réseau-le-routage-et-la-résolution-dadresses">7. La couche réseau, le routage et la résolution d'adresses</h2>
+<p>La couche 3 achemine les paquets <strong>d'un réseau à un autre</strong>, jusqu'à la destination finale. Elle utilise les adresses <strong>IP</strong>.</p>
+<h3 id="le-paquet-ipv4">Le paquet IPv4</h3>
+<p>L'en-tête IPv4 contient notamment :</p>
+<table>
+<thead>
+<tr>
+<th>Champ</th>
+<th>Rôle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Version</td>
+<td>4 pour IPv4</td>
+</tr>
+<tr>
+<td><strong>Adresse IP source</strong></td>
+<td>qui envoie</td>
+</tr>
+<tr>
+<td><strong>Adresse IP destination</strong></td>
+<td>qui doit recevoir</td>
+</tr>
+<tr>
+<td><strong>TTL</strong> (Time To Live)</td>
+<td>diminué de 1 à chaque routeur ; à 0, le paquet est détruit (évite les boucles infinies)</td>
+</tr>
+<tr>
+<td>Protocole</td>
+<td>ce que transporte le paquet : 6 = TCP, 17 = UDP, 1 = ICMP</td>
+</tr>
+<tr>
+<td>Longueur totale, identification, drapeaux, décalage de fragment</td>
+<td>gestion de la taille et de la fragmentation</td>
+</tr>
+<tr>
+<td>Somme de contrôle de l'en-tête</td>
+<td>détection d'erreurs dans l'en-tête</td>
+</tr>
+</tbody>
+</table>
+<p>Caractéristiques d'IP : <strong>sans connexion</strong> (aucune session préalable), <strong>au mieux</strong> (best effort, aucune garantie de livraison), <strong>indépendant du média</strong>.</p>
+<h3 id="hôte-passerelle-routeur">Hôte, passerelle, routeur</h3>
+<p>Quand un hôte envoie un paquet, il compare l'adresse de destination à son propre réseau :</p>
+<table>
+<thead>
+<tr>
+<th>Destination</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dans <strong>mon</strong> réseau (même sous-réseau)</td>
+<td>l'hôte envoie directement la trame à l'adresse MAC de la destination</td>
+</tr>
+<tr>
+<td>Dans <strong>un autre</strong> réseau</td>
+<td>l'hôte envoie la trame à sa <strong>passerelle par défaut</strong> (le routeur), qui s'occupe du reste</td>
+</tr>
+</tbody>
+</table>
+<p>La <strong>passerelle par défaut</strong> est l'adresse IP de l'interface du routeur dans le réseau local. Sans passerelle, un hôte ne peut parler qu'à son propre réseau.</p>
+<h3 id="la-table-de-routage">La table de routage</h3>
+<p>Le routeur compare l'adresse IP de destination aux réseaux de sa <strong>table de routage</strong> (<code>show ip route</code>) et choisit la route la plus précise (le plus long préfixe).</p>
+<table>
+<thead>
+<tr>
+<th>Origine de la route</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Réseaux directement connectés</strong></td>
+<td>automatiquement ajoutés quand une interface est configurée et active (code <code>C</code> et <code>L</code>)</td>
+</tr>
+<tr>
+<td><strong>Routes statiques</strong></td>
+<td>saisies à la main par l'administrateur</td>
+</tr>
+<tr>
+<td><strong>Routes dynamiques</strong></td>
+<td>apprises par un protocole de routage</td>
+</tr>
+<tr>
+<td><strong>Route par défaut</strong></td>
+<td><code>0.0.0.0/0</code>, utilisée quand aucune autre route ne correspond</td>
+</tr>
+</tbody>
+</table>
+<p>Le routeur <strong>sépare les domaines de broadcast</strong> : chacune de ses interfaces est un réseau différent. Une interface de routeur reçoit une adresse IP et doit être activée avec <code>no shutdown</code>.</p>
+<blockquote>
+<p>[!NOTE]
+<strong>Hors programme CCNA 1</strong></p>
+<p>Le routage statique et dynamique est approfondi en CCNA 2. Pour le CCNA 1, il faut comprendre la logique : un routeur décide avec l'adresse IP et réencapsule le paquet dans une nouvelle trame à chaque saut.</p>
+</blockquote>
+<h3 id="arp-retrouver-une-adresse-mac">ARP, retrouver une adresse MAC</h3>
+<p>Pour envoyer une trame, l'hôte doit connaître la <strong>MAC</strong> du destinataire (ou de la passerelle), mais il ne connaît que son <strong>IP</strong>. <strong>ARP</strong> fait le lien :</p>
+<ol>
+<li>L'hôte envoie une <strong>requête ARP</strong> en broadcast (<code>FF-FF-FF-FF-FF-FF</code>) : « Qui a l'adresse IP 192.168.1.1 ? ».</li>
+<li>L'hôte concerné répond en unicast avec sa MAC (<strong>réponse ARP</strong>).</li>
+<li>L'hôte garde la correspondance dans sa <strong>table ARP</strong> (<code>arp -a</code> sur Windows, <code>show arp</code> sur Cisco).</li>
+</ol>
+<p>En IPv6, ARP est remplacé par <strong>NDP</strong> (Neighbor Discovery Protocol, messages Neighbor Solicitation et Neighbor Advertisement).</p>
+<h3 id="icmp-tests-et-messages-derreur">ICMP, tests et messages d'erreur</h3>
+<p><strong>ICMP</strong> transporte des messages de contrôle et d'erreur. C'est le protocole utilisé par <code>ping</code> et <code>traceroute</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Message</th>
+<th>Utilité</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Echo Request / Echo Reply</td>
+<td><code>ping</code> : test d'accessibilité</td>
+</tr>
+<tr>
+<td>Destination Unreachable</td>
+<td>la destination ou le réseau est inaccessible</td>
+</tr>
+<tr>
+<td>Time Exceeded</td>
+<td>le TTL a atteint 0 ; c'est ce qu'exploite <code>traceroute</code></td>
+</tr>
+<tr>
+<td>Redirect</td>
+<td>indique un meilleur chemin</td>
+</tr>
+</tbody>
+</table>
+<p>En IPv6, <strong>ICMPv6</strong> ajoute les messages NDP et les annonces de routeur.</p>
+<blockquote>
+<p>[!IMPORTANT]
+<strong>À retenir</strong></p>
+<ul>
+<li>Même réseau : trame envoyée directement à la MAC de la destination. Autre réseau : trame envoyée à la passerelle.</li>
+<li>Le TTL diminue de 1 à chaque routeur ; à 0, le paquet est détruit.</li>
+<li>ARP : IP vers MAC. ICMP : <code>ping</code> et <code>traceroute</code>.</li>
+</ul>
+</blockquote>
+<p><a href="#sommaire">Retour au sommaire</a></p>
+<hr />
+<h2 id="8-ladressage-ipv4-et-les-sous-réseaux">8. L'adressage IPv4 et les sous-réseaux</h2>
+<h3 id="structure-dune-adresse-ipv4">Structure d'une adresse IPv4</h3>
+<ul>
+<li>32 bits, écrits en 4 octets en décimal pointé : <code>192.168.1.10</code>.</li>
+<li>Une adresse contient une partie <strong>réseau</strong> et une partie <strong>hôte</strong>. Le <strong>masque de sous-réseau</strong> indique où se situe la limite.</li>
+</ul>
+<p>Exemple : <code>192.168.1.10</code> avec le masque <code>255.255.255.0</code> (/24)</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Partie réseau</th>
+<th>Partie hôte</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Adresse</td>
+<td>192.168.1</td>
+<td>.10</td>
+</tr>
+<tr>
+<td>Adresse réseau</td>
+<td>192.168.1.0</td>
+<td></td>
+</tr>
+<tr>
+<td>Adresse de diffusion</td>
+<td>192.168.1.255</td>
+<td></td>
+</tr>
+<tr>
+<td>Hôtes utilisables</td>
+<td>192.168.1.1 à 192.168.1.254</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>On trouve l'adresse réseau en faisant un <strong>ET logique</strong> bit à bit entre l'adresse IP et le masque.</p>
+<h3 id="adresses-spéciales">Adresses spéciales</h3>
+<table>
+<thead>
+<tr>
+<th>Plage</th>
+<th>Rôle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>10.0.0.0/8</code>, <code>172.16.0.0/12</code>, <code>192.168.0.0/16</code></td>
+<td>adresses <strong>privées</strong> (RFC 1918), non routées sur Internet</td>
+</tr>
+<tr>
+<td><code>127.0.0.0/8</code></td>
+<td>boucle locale (loopback), <code>127.0.0.1</code> pour tester sa propre pile TCP/IP</td>
+</tr>
+<tr>
+<td><code>169.254.0.0/16</code></td>
+<td>adressage automatique <strong>APIPA</strong>, quand aucun serveur DHCP ne répond</td>
+</tr>
+<tr>
+<td><code>224.0.0.0</code> à <code>239.255.255.255</code></td>
+<td><strong>multidiffusion</strong> (multicast)</td>
+</tr>
+<tr>
+<td><code>255.255.255.255</code></td>
+<td>diffusion limitée (broadcast)</td>
+</tr>
+<tr>
+<td><code>0.0.0.0</code></td>
+<td>adresse par défaut / route par défaut</td>
+</tr>
+</tbody>
+</table>
+<p>Une adresse <strong>publique</strong> est routable sur Internet. Une adresse privée atteint Internet grâce au <strong>NAT</strong> (traduction d'adresses, vu en détail en CCNA 2).</p>
+<p>Classes historiques : A (1 à 126, /8), B (128 à 191, /16), C (192 à 223, /24), D (multicast, 224 à 239), E (réservée, 240 à 255). Aujourd'hui, on raisonne en <strong>CIDR</strong> (sans classe).</p>
+<p><strong>Types de communication</strong> : <strong>unicast</strong> (un vers un), <strong>broadcast</strong> (un vers tous), <strong>multicast</strong> (un vers un groupe).</p>
+<h3 id="masques-et-notation-cidr">Masques et notation CIDR</h3>
+<p>La notation <code>/n</code> indique le nombre de bits à 1 du masque.</p>
+<table>
+<thead>
+<tr>
+<th>CIDR</th>
+<th>Masque</th>
+<th>Bits d'hôtes</th>
+<th>Hôtes utilisables</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/8</td>
+<td>255.0.0.0</td>
+<td>24</td>
+<td>16 777 214</td>
+</tr>
+<tr>
+<td>/16</td>
+<td>255.255.0.0</td>
+<td>16</td>
+<td>65 534</td>
+</tr>
+<tr>
+<td>/24</td>
+<td>255.255.255.0</td>
+<td>8</td>
+<td>254</td>
+</tr>
+<tr>
+<td>/25</td>
+<td>255.255.255.128</td>
+<td>7</td>
+<td>126</td>
+</tr>
+<tr>
+<td>/26</td>
+<td>255.255.255.192</td>
+<td>6</td>
+<td>62</td>
+</tr>
+<tr>
+<td>/27</td>
+<td>255.255.255.224</td>
+<td>5</td>
+<td>30</td>
+</tr>
+<tr>
+<td>/28</td>
+<td>255.255.255.240</td>
+<td>4</td>
+<td>14</td>
+</tr>
+<tr>
+<td>/29</td>
+<td>255.255.255.248</td>
+<td>3</td>
+<td>6</td>
+</tr>
+<tr>
+<td>/30</td>
+<td>255.255.255.252</td>
+<td>2</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<p>Formules :</p>
+<div class="highlight"><pre><span></span><code>hôtes utilisables = 2^n - 2          (n = nombre de bits d'hôtes, bits à 0 du masque)
+sous-réseaux      = 2^m              (m = nombre de bits empruntés à la partie hôte)
+</code></pre></div>
+<p>On retire 2 adresses : celle du <strong>réseau</strong> (tous les bits d'hôtes à 0) et celle de <strong>diffusion</strong> (tous à 1).</p>
+<h3 id="méthode-de-découpage-en-sous-réseaux">Méthode de découpage en sous-réseaux</h3>
+<ol>
+<li>Compte les hôtes nécessaires. Trouve le plus petit <code>n</code> tel que 2^n − 2 couvre ce besoin.</li>
+<li>Le masque est <code>/(32 − n)</code>.</li>
+<li>Le <strong>pas</strong> est la valeur du dernier bit à 1 du masque, dans l'octet concerné (exemple : /26 → 192 → pas de 64).</li>
+<li>Les adresses réseau sont les multiples du pas. Le broadcast est l'adresse du réseau suivant moins 1. La plage utilisable va de réseau + 1 à broadcast − 1.</li>
+</ol>
+<blockquote>
+<p>[!TIP]
+<strong>Astuce</strong></p>
+<p>Le pas se calcule aussi par 256 − la valeur du masque dans l'octet concerné (exemple : 256 − 192 = 64).</p>
+</blockquote>
+<p><strong>Exemple</strong> : découper <code>192.168.1.0/24</code> en 4 sous-réseaux. Il faut emprunter 2 bits (2^2 = 4), donc le masque devient <code>/26</code> (255.255.255.192), pas de 64.</p>
+<table>
+<thead>
+<tr>
+<th>Sous-réseau</th>
+<th>Adresse réseau</th>
+<th>Plage utilisable</th>
+<th>Broadcast</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>192.168.1.0/26</td>
+<td>.1 à .62</td>
+<td>.63</td>
+</tr>
+<tr>
+<td>2</td>
+<td>192.168.1.64/26</td>
+<td>.65 à .126</td>
+<td>.127</td>
+</tr>
+<tr>
+<td>3</td>
+<td>192.168.1.128/26</td>
+<td>.129 à .190</td>
+<td>.191</td>
+</tr>
+<tr>
+<td>4</td>
+<td>192.168.1.192/26</td>
+<td>.193 à .254</td>
+<td>.255</td>
+</tr>
+</tbody>
+</table>
+<h3 id="vlsm">VLSM</h3>
+<p>Le <strong>VLSM</strong> (masque de longueur variable) permet d'utiliser des masques différents selon la taille de chaque réseau, pour ne pas gaspiller d'adresses. Méthode : on attribue les plus gros réseaux d'abord, puis les plus petits, en repartant de la première adresse libre. Une liaison point à point entre deux routeurs utilise un <code>/30</code>.</p>
+<blockquote>
+<p>[!IMPORTANT]
+<strong>À retenir</strong></p>
+<ul>
+<li>Hôtes utilisables = 2^n − 2 (n = bits d'hôtes).</li>
+<li>Privées : <code>10.0.0.0/8</code>, <code>172.16.0.0/12</code>, <code>192.168.0.0/16</code>. Loopback : <code>127.0.0.1</code>. APIPA : <code>169.254.0.0/16</code>.</li>
+<li>Une liaison point à point entre deux routeurs utilise un <code>/30</code>.</li>
+</ul>
+</blockquote>
+<p><a href="#sommaire">Retour au sommaire</a></p>
+<hr />
+<h2 id="9-ladressage-ipv6">9. L'adressage IPv6</h2>
+<p><strong>Pourquoi IPv6 ?</strong> L'espace IPv4 (environ 4,3 milliards d'adresses) est épuisé. IPv6 offre un espace pratiquement illimité.</p>
+<ul>
+<li>128 bits, écrits en 8 groupes de 4 chiffres hexadécimaux séparés par <code>:</code>.</li>
+<li>Pas de broadcast en IPv6 (il est remplacé par le multicast).</li>
+<li>Un préfixe <code>/64</code> sépare 64 bits de réseau et 64 bits d'identifiant d'interface.</li>
+</ul>
+<p><strong>Règles d'abréviation</strong></p>
+<ol>
+<li>On supprime les zéros de tête de chaque groupe : <code>0db8</code> devient <code>db8</code>.</li>
+<li>On remplace <strong>une seule</strong> suite de groupes à zéro par <code>::</code>.</li>
+</ol>
+<div class="highlight"><pre><span></span><code>2001:0db8:0000:0000:0000:0000:0000:0001   devient   2001:db8::1
+</code></pre></div>
+<p><strong>Types d'adresses</strong></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Préfixe</th>
+<th>Rôle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Global unicast</strong> (GUA)</td>
+<td><code>2000::/3</code></td>
+<td>adresse routable sur Internet</td>
+</tr>
+<tr>
+<td><strong>Link-local</strong> (LLA)</td>
+<td><code>fe80::/10</code></td>
+<td>communication sur le lien local, obligatoire sur chaque interface, non routée</td>
+</tr>
+<tr>
+<td><strong>Unique local</strong></td>
+<td><code>fc00::/7</code></td>
+<td>usage privé, équivalent des adresses privées IPv4</td>
+</tr>
+<tr>
+<td><strong>Multicast</strong></td>
+<td><code>ff00::/8</code></td>
+<td>groupes : <code>ff02::1</code> (tous les nœuds), <code>ff02::2</code> (tous les routeurs)</td>
+</tr>
+<tr>
+<td><strong>Loopback</strong></td>
+<td><code>::1</code></td>
+<td>test local</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Attribution d'une adresse IPv6</strong></p>
+<table>
+<thead>
+<tr>
+<th>Méthode</th>
+<th>Principe</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Statique</strong></td>
+<td>saisie à la main</td>
+</tr>
+<tr>
+<td><strong>SLAAC</strong></td>
+<td>l'hôte construit son adresse à partir du préfixe annoncé par le routeur</td>
+</tr>
+<tr>
+<td><strong>DHCPv6</strong></td>
+<td>un serveur DHCP attribue l'adresse</td>
+</tr>
+</tbody>
+</table>
+<p>L'identifiant d'interface peut être généré par <strong>EUI-64</strong> (à partir de la MAC) ou de façon aléatoire.</p>
+<blockquote>
+<p>[!IMPORTANT]
+<strong>À retenir</strong></p>
+<ul>
+<li>IPv6 : 128 bits, pas de broadcast.</li>
+<li>Abréviation : zéros de tête supprimés, un seul <code>::</code>.</li>
+<li>GUA <code>2000::/3</code> · link-local <code>fe80::/10</code> · unique local <code>fc00::/7</code> · multicast <code>ff00::/8</code>.</li>
+</ul>
+</blockquote>
+<p><a href="#sommaire">Retour au sommaire</a></p>
+<hr />
+<h2 id="10-la-couche-transport-tcp-et-udp">10. La couche transport, TCP et UDP</h2>
+<p>La couche 4 assure la communication <strong>entre applications</strong> (de processus à processus). Elle découpe les données, les identifie avec des <strong>ports</strong> et, selon le protocole, garantit leur livraison.</p>
+<table>
+<thead>
+<tr>
+<th>Rôle</th>
+<th>Explication</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Suivre</strong> les conversations</td>
+<td>plusieurs applications utilisent le réseau en même temps, les <strong>ports</strong> les distinguent</td>
+</tr>
+<tr>
+<td><strong>Segmenter</strong> et réassembler</td>
+<td>les données sont découpées en segments, puis remises dans l'ordre</td>
+</tr>
+<tr>
+<td><strong>Identifier</strong> l'application</td>
+<td>le <strong>port de destination</strong> désigne le service</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Ports</strong></p>
+<table>
+<thead>
+<tr>
+<th>Plage</th>
+<th>Nom</th>
+<th>Utilisation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0 à 1023</td>
+<td>ports connus (well-known)</td>
+<td>services standard</td>
+</tr>
+<tr>
+<td>1024 à 49151</td>
+<td>ports enregistrés</td>
+<td>applications</td>
+</tr>
+<tr>
+<td>49152 à 65535</td>
+<td>ports dynamiques / privés</td>
+<td>ports source temporaires côté client</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Ports à connaître</strong></p>
+<table>
+<thead>
+<tr>
+<th>Port</th>
+<th>Protocole</th>
+<th>Service</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>20 / 21</td>
+<td>TCP</td>
+<td>FTP (données / contrôle)</td>
+</tr>
+<tr>
+<td>22</td>
+<td>TCP</td>
+<td>SSH</td>
+</tr>
+<tr>
+<td>23</td>
+<td>TCP</td>
+<td>Telnet</td>
+</tr>
+<tr>
+<td>25</td>
+<td>TCP</td>
+<td>SMTP</td>
+</tr>
+<tr>
+<td>53</td>
+<td>UDP et TCP</td>
+<td>DNS</td>
+</tr>
+<tr>
+<td>67 / 68</td>
+<td>UDP</td>
+<td>DHCP (serveur / client)</td>
+</tr>
+<tr>
+<td>69</td>
+<td>UDP</td>
+<td>TFTP</td>
+</tr>
+<tr>
+<td>80</td>
+<td>TCP</td>
+<td>HTTP</td>
+</tr>
+<tr>
+<td>110</td>
+<td>TCP</td>
+<td>POP3</td>
+</tr>
+<tr>
+<td>143</td>
+<td>TCP</td>
+<td>IMAP</td>
+</tr>
+<tr>
+<td>443</td>
+<td>TCP</td>
+<td>HTTPS</td>
+</tr>
+</tbody>
+</table>
+<p><strong>TCP et UDP</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><strong>TCP</strong></th>
+<th><strong>UDP</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Connexion</td>
+<td>oui (établie avant l'échange)</td>
+<td>non</td>
+</tr>
+<tr>
+<td>Fiabilité</td>
+<td>oui : accusés de réception, retransmission</td>
+<td>non : « au mieux »</td>
+</tr>
+<tr>
+<td>Ordre des données</td>
+<td>garanti (numéros de séquence)</td>
+<td>non garanti</td>
+</tr>
+<tr>
+<td>Contrôle de flux</td>
+<td>oui (fenêtre)</td>
+<td>non</td>
+</tr>
+<tr>
+<td>En-tête</td>
+<td>plus lourd (20 octets minimum)</td>
+<td>léger (8 octets)</td>
+</tr>
+<tr>
+<td>Usage</td>
+<td>web, e-mail, transfert de fichiers</td>
+<td>voix, vidéo, DNS, jeux : rapidité avant tout</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Établissement d'une connexion TCP : la poignée de main en 3 temps</strong></p>
+<p><img alt="Poignée de main TCP en trois temps : SYN, SYN-ACK, ACK" src="../images/tcp-poignee-de-main.svg" /></p>
+<p>TCP numérote les segments (<strong>numéro de séquence</strong>), le récepteur confirme ce qu'il a reçu (<strong>accusé de réception</strong>) et annonce la quantité qu'il peut recevoir (<strong>taille de fenêtre</strong>). Si un segment n'est pas confirmé, il est retransmis.</p>
+<blockquote>
+<p>[!IMPORTANT]
+<strong>À retenir</strong></p>
+<ul>
+<li>TCP : fiable, avec connexion (SYN, SYN-ACK, ACK). UDP : rapide, sans connexion.</li>
+<li>Le <strong>port de destination</strong> désigne le service : 80 HTTP, 443 HTTPS, 53 DNS, 22 SSH, 23 Telnet.</li>
+</ul>
+</blockquote>
+<p><a href="#sommaire">Retour au sommaire</a></p>
+<hr />
+<h2 id="11-la-couche-application-et-les-services">11. La couche application et les services</h2>
+<p>La couche application est celle qui s'approche le plus de l'utilisateur. Elle fournit les protocoles des services réseau.</p>
+<table>
+<thead>
+<tr>
+<th>Service</th>
+<th>Protocole</th>
+<th>Rôle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Web</strong></td>
+<td>HTTP (80), HTTPS (443, chiffré)</td>
+<td>transfert des pages web</td>
+</tr>
+<tr>
+<td><strong>Noms</strong></td>
+<td><strong>DNS</strong> (53)</td>
+<td>traduit un nom (<code>www.exemple.fr</code>) en adresse IP</td>
+</tr>
+<tr>
+<td><strong>Adressage</strong></td>
+<td><strong>DHCP</strong> (67/68)</td>
+<td>attribue automatiquement IP, masque, passerelle, DNS</td>
+</tr>
+<tr>
+<td><strong>E-mail</strong></td>
+<td>SMTP (25) envoi, POP3 (110) et IMAP (143) réception</td>
+<td>messagerie</td>
+</tr>
+<tr>
+<td><strong>Fichiers</strong></td>
+<td>FTP (20/21), TFTP (69), SMB</td>
+<td>transfert et partage de fichiers</td>
+</tr>
+<tr>
+<td><strong>Accès distant</strong></td>
+<td>Telnet (23, en clair), SSH (22, chiffré)</td>
+<td>administration à distance</td>
+</tr>
+</tbody>
+</table>
+<p><strong>DHCP : le processus DORA</strong></p>
+<ol>
+<li><strong>D</strong>iscover : le client cherche un serveur DHCP (broadcast).</li>
+<li><strong>O</strong>ffer : le serveur propose une adresse.</li>
+<li><strong>R</strong>equest : le client demande cette adresse.</li>
+<li><strong>A</strong>cknowledge : le serveur confirme.</li>
+</ol>
+<p><img alt="Processus DHCP DORA : Discover, Offer, Request, Acknowledge" src="../images/dhcp-dora.svg" /></p>
+<p><strong>Modèles d'application</strong></p>
+<ul>
+<li><strong>Client-serveur</strong> : le client demande un service, le serveur le fournit (web, e-mail).</li>
+<li><strong>Poste à poste</strong> (peer-to-peer) : chaque hôte est à la fois client et serveur.</li>
+</ul>
+<p><strong>DNS en pratique</strong> : le client interroge son serveur DNS pour obtenir l'IP d'un nom, puis communique avec cette IP. Commande : <code>nslookup nom</code>.</p>
+<blockquote>
+<p>[!IMPORTANT]
+<strong>À retenir</strong></p>
+<ul>
+<li>DNS : nom vers adresse IP. DHCP : processus DORA, attribue IP, masque, passerelle et DNS.</li>
+<li>HTTPS et SSH chiffrent ; HTTP et Telnet envoient en clair.</li>
+</ul>
+</blockquote>
+<p><a href="#sommaire">Retour au sommaire</a></p>
+<hr />
+<h2 id="12-la-sécurité-réseau">12. La sécurité réseau</h2>
+<p><strong>Objectifs : la triade CIA</strong></p>
+<table>
+<thead>
+<tr>
+<th>Objectif</th>
+<th>Signification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Confidentialité</strong></td>
+<td>seuls les utilisateurs autorisés lisent les données</td>
+</tr>
+<tr>
+<td><strong>Intégrité</strong></td>
+<td>les données ne sont pas modifiées en cours de route</td>
+</tr>
+<tr>
+<td><strong>Disponibilité</strong></td>
+<td>le service reste accessible</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Menaces et attaques</strong></p>
+<table>
+<thead>
+<tr>
+<th>Catégorie</th>
+<th>Exemples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Logiciels malveillants</strong></td>
+<td>virus (s'attache à un fichier), ver (se propage seul par le réseau), cheval de Troie (déguisé en programme légitime), rançongiciel</td>
+</tr>
+<tr>
+<td><strong>Reconnaissance</strong></td>
+<td>scan de ports, recherche d'informations sur le réseau</td>
+</tr>
+<tr>
+<td><strong>Accès</strong></td>
+<td>attaque par mot de passe, ingénierie sociale, hameçonnage (phishing)</td>
+</tr>
+<tr>
+<td><strong>Déni de service</strong></td>
+<td><strong>DoS</strong> et <strong>DDoS</strong> : saturer un service pour le rendre indisponible</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Moyens de protection</strong></p>
+<table>
+<thead>
+<tr>
+<th>Mesure</th>
+<th>Rôle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mises à jour et correctifs</td>
+<td>corriger les failles connues</td>
+</tr>
+<tr>
+<td>Antivirus et anti-logiciels malveillants</td>
+<td>détecter et supprimer les logiciels malveillants</td>
+</tr>
+<tr>
+<td><strong>Pare-feu</strong></td>
+<td>filtre le trafic entrant et sortant</td>
+</tr>
+<tr>
+<td>Authentification, autorisation, traçabilité (<strong>AAA</strong>)</td>
+<td>qui est connecté, ce qu'il a le droit de faire, ce qu'il a fait</td>
+</tr>
+<tr>
+<td><strong>VPN</strong></td>
+<td>tunnel chiffré sur un réseau non sûr</td>
+</tr>
+<tr>
+<td>Politiques de sécurité, sensibilisation</td>
+<td>l'humain est souvent le maillon faible</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Sécurité des équipements Cisco</strong> : mot de passe <code>enable secret</code>, mots de passe de console et VTY avec <code>login</code>, <code>service password-encryption</code>, bannière d'avertissement, SSH à la place de Telnet (détails dans la partie 13).</p>
+<blockquote>
+<p>[!IMPORTANT]
+<strong>À retenir</strong></p>
+<ul>
+<li>Triade CIA : confidentialité, intégrité, disponibilité.</li>
+<li>Protection en couches : pare-feu, antivirus, correctifs, AAA, VPN. L'humain est souvent le maillon faible.</li>
+</ul>
+</blockquote>
+<p><a href="#sommaire">Retour au sommaire</a></p>
+<hr />
+<h2 id="13-configuration-cisco-ios-modes-sécurité-interfaces">13. Configuration Cisco IOS, modes, sécurité, interfaces</h2>
+<h3 id="les-modes-ios">Les modes IOS</h3>
+<p>L'IOS a trois niveaux principaux : utilisateur, privilégié, configuration. L'invite (prompt) indique toujours où tu es.</p>
+<p><img alt="Les modes de l'IOS : utilisateur, privilégié, configuration globale et sous-modes" src="../images/modes-ios.svg" /></p>
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>Invite</th>
+<th>Pour y entrer</th>
+<th>Pour en sortir</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Exécution utilisateur</td>
+<td><code>S1&gt;</code></td>
+<td>par défaut à la connexion</td>
+<td><code>exit</code></td>
+</tr>
+<tr>
+<td>Exécution privilégié</td>
+<td><code>S1#</code></td>
+<td><code>enable</code></td>
+<td><code>disable</code></td>
+</tr>
+<tr>
+<td>Configuration globale</td>
+<td><code>S1(config)#</code></td>
+<td><code>configure terminal</code> (<code>conf t</code>)</td>
+<td><code>exit</code>, <code>end</code> ou Ctrl+Z</td>
+</tr>
+<tr>
+<td>Configuration de ligne</td>
+<td><code>S1(config-line)#</code></td>
+<td><code>line console 0</code> ou <code>line vty 0 15</code></td>
+<td><code>exit</code></td>
+</tr>
+<tr>
+<td>Configuration d'interface</td>
+<td><code>S1(config-if)#</code></td>
+<td><code>interface fa0/1</code> ou <code>interface vlan 1</code></td>
+<td><code>exit</code></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Je veux...</th>
+<th>Mode</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Voir l'état (<code>show</code>), tester (<code>ping</code>), sauvegarder, redémarrer, régler l'heure</td>
+<td>Privilégié <code>S1#</code></td>
+</tr>
+<tr>
+<td>Nom, mot de passe enable, bannière, chiffrement, passerelle du switch, SSH, domaine</td>
+<td>Config globale <code>S1(config)#</code></td>
+</tr>
+<tr>
+<td>Mot de passe et <code>login</code> de la console ou des accès distants</td>
+<td>Config de ligne <code>S1(config-line)#</code></td>
+</tr>
+<tr>
+<td>IP, <code>no shutdown</code>, description, vitesse, duplex d'un port</td>
+<td>Config d'interface <code>S1(config-if)#</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="navigation-et-aide">Navigation et aide</h3>
+<table>
+<thead>
+<tr>
+<th>Commande / touche</th>
+<th>Effet</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>exit</code></td>
+<td>remonte d'un niveau</td>
+</tr>
+<tr>
+<td><code>end</code> ou Ctrl+Z</td>
+<td>retour direct au mode privilégié</td>
+</tr>
+<tr>
+<td><code>do show run</code></td>
+<td>lance une commande de mode privilégié depuis la configuration</td>
+</tr>
+<tr>
+<td><code>no &lt;commande&gt;</code></td>
+<td>annule la commande</td>
+</tr>
+<tr>
+<td><code>?</code></td>
+<td>liste les commandes disponibles dans le mode</td>
+</tr>
+<tr>
+<td><code>cl?</code></td>
+<td>commandes commençant par <code>cl</code> (sans espace)</td>
+</tr>
+<tr>
+<td><code>clock ?</code></td>
+<td>ce que la commande attend ensuite (avec espace)</td>
+</tr>
+<tr>
+<td>Tab</td>
+<td>complète la commande</td>
+</tr>
+<tr>
+<td>Flèche haut / Ctrl+P</td>
+<td>rappelle la commande précédente</td>
+</tr>
+<tr>
+<td>Ctrl+A / Ctrl+E</td>
+<td>début / fin de ligne</td>
+</tr>
+<tr>
+<td>Ctrl+C</td>
+<td>quitte le mode de configuration en cours</td>
+</tr>
+<tr>
+<td>Ctrl+Maj+6</td>
+<td>interrompt un <code>ping</code> ou un <code>traceroute</code></td>
+</tr>
+<tr>
+<td><code>--More--</code> : Espace / Entrée / q</td>
+<td>page suivante / ligne suivante / quitter</td>
+</tr>
+</tbody>
+</table>
+<p>Messages d'erreur :</p>
+<ul>
+<li><code>% Incomplete command.</code> : il manque un mot, tape <code>?</code> après la commande.</li>
+<li><code>% Invalid input detected at '^' marker.</code> : faute de frappe à l'endroit du <code>^</code>, ou mauvais mode.</li>
+<li><code>% Ambiguous command.</code> : l'abréviation correspond à plusieurs commandes.</li>
+</ul>
+<p>Les abréviations sont acceptées si elles sont sans ambiguïté : <code>conf t</code>, <code>en</code>, <code>sh run</code>, <code>copy run start</code>.</p>
+<blockquote>
+<p>[!TIP]
+<strong>Astuce</strong></p>
+<p>En cas de doute sur une commande, tape <code>?</code> : l'aide contextuelle liste les commandes du mode actuel, ou ce que la commande attend ensuite (<code>clock ?</code>).</p>
+</blockquote>
+<h3 id="sécuriser-laccès">Sécuriser l'accès</h3>
+<p>Trois accès à protéger : le mode privilégié, la console (physique) et les lignes VTY (distant). Sans la commande <code>login</code>, le mot de passe d'une ligne n'est jamais demandé.</p>
+<div class="highlight"><pre><span></span><code>S1&gt; enable
+S1# configure terminal
+
+! Mode privilégié (mot de passe haché)
+S1(config)# enable secret class
+
+! Console
+S1(config)# line console 0
+S1(config-line)# password cisco
+S1(config-line)# login
+S1(config-line)# exit
+
+! Accès distant (VTY)
+S1(config)# line vty 0 15
+S1(config-line)# password cisco
+S1(config-line)# login
+S1(config-line)# exit
+
+! Chiffrer faiblement les mots de passe en clair
+S1(config)# service password-encryption
+
+! Bannière de connexion (avertissement, pas un message d'accueil)
+S1(config)# banner motd #Acces reserve aux personnes autorisees#
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Commande</th>
+<th>Rôle</th>
+<th>À retenir</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>enable secret mdp</code></td>
+<td>protège le mode privilégié</td>
+<td>mot de passe <strong>haché</strong>, plus sûr</td>
+</tr>
+<tr>
+<td><code>enable password mdp</code></td>
+<td>protège le mode privilégié</td>
+<td>stocké en <strong>clair</strong>, ignoré si <code>enable secret</code> existe</td>
+</tr>
+<tr>
+<td><code>password mdp</code></td>
+<td>mot de passe d'une ligne</td>
+<td>dans <code>config-line</code></td>
+</tr>
+<tr>
+<td><code>login</code></td>
+<td>active la demande du mot de passe</td>
+<td>sans elle, aucune authentification</td>
+</tr>
+<tr>
+<td><code>service password-encryption</code></td>
+<td>chiffre les mots de passe en clair de la config</td>
+<td>chiffrement faible, réversible</td>
+</tr>
+<tr>
+<td><code>banner motd #texte#</code></td>
+<td>message affiché à la connexion</td>
+<td>le délimiteur <code>#</code> ne doit pas figurer dans le texte</td>
+</tr>
+<tr>
+<td><code>line vty 0 15</code></td>
+<td>configure les 16 lignes d'accès distant</td>
+<td>sur certains modèles : <code>0 4</code></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>[!WARNING]
+<strong>Attention</strong></p>
+<ul>
+<li>Sans la commande <code>login</code>, le mot de passe d'une ligne n'est jamais demandé.</li>
+<li><code>enable password</code> est stocké en clair : utilise <code>enable secret</code>. Pour retirer un <code>enable password</code> saisi par erreur : <code>no enable password</code>.</li>
+</ul>
+</blockquote>
+<p><strong>Accès in-band et out-of-band</strong></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Moyens</th>
+<th>Particularités</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Out-of-band</strong> (hors réseau)</td>
+<td>console (câble direct), port AUX (modem)</td>
+<td>indépendant du réseau, pour la configuration initiale et le dépannage</td>
+</tr>
+<tr>
+<td><strong>In-band</strong> (via le réseau)</td>
+<td>Telnet, SSH</td>
+<td>exige une IP sur l'équipement ; SSH chiffre la session, Telnet envoie tout en clair</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Activer SSH</strong></p>
+<div class="highlight"><pre><span></span><code>S1(config)# hostname S1
+S1(config)# ip domain-name exemple.local
+S1(config)# crypto key generate rsa
+S1(config)# username admin secret motdepasse
+S1(config)# line vty 0 15
+S1(config-line)# transport input ssh
+S1(config-line)# login local
+</code></pre></div>
+<p>Pour que <code>crypto key generate rsa</code> fonctionne, il faut un <code>hostname</code> autre que <code>Switch</code> et un <code>ip domain-name</code>.</p>
+<p><strong>Connexion console</strong> : câble console du PC vers le port Console, logiciel de terminal (PuTTY, Tera Term) avec 9600 bauds, 8 bits, aucune parité, 1 bit d'arrêt, aucun contrôle de flux.</p>
+<h3 id="configuration-de-base-dun-switch">Configuration de base d'un switch</h3>
+<p>Un switch de couche 2 commute avec les MAC et n'a pas besoin d'IP pour fonctionner. On lui donne une adresse IP sur une interface virtuelle, la <strong>SVI</strong> (VLAN 1 par défaut), uniquement pour l'<strong>administrer</strong> à distance.</p>
+<div class="highlight"><pre><span></span><code>S1(config)# hostname S1
+S1(config)# interface vlan 1
+S1(config-if)# ip address 192.168.1.2 255.255.255.0
+S1(config-if)# no shutdown
+S1(config-if)# exit
+S1(config)# ip default-gateway 192.168.1.1
+</code></pre></div>
+<p>La passerelle du switch sert uniquement à le joindre depuis un autre réseau.</p>
+<p><strong>Configurer un port</strong></p>
+<div class="highlight"><pre><span></span><code>S1(config)# interface fa0/1
+S1(config-if)# description Lien vers PC1
+S1(config-if)# speed 100
+S1(config-if)# duplex full
+S1(config-if)# shutdown
+</code></pre></div>
+<p>Les ports d'un switch sont <strong>actifs par défaut</strong>. <code>shutdown</code> les désactive, <code>no shutdown</code> les réactive.</p>
+<p><strong>Plusieurs ports d'un coup</strong></p>
+<div class="highlight"><pre><span></span><code>S1(config)# interface range fa0/1 - 24
+S1(config-if-range)# description Ports utilisateurs
+</code></pre></div>
+<h3 id="configuration-de-base-dun-routeur">Configuration de base d'un routeur</h3>
+<p>Un routeur reçoit une adresse IP <strong>sur chaque interface</strong>, et ses interfaces sont <strong>désactivées par défaut</strong> : il faut <code>no shutdown</code>.</p>
+<p><strong>Interface LAN</strong></p>
+<div class="highlight"><pre><span></span><code>R1(config)# hostname R1
+R1(config)# interface g0/0/0
+R1(config-if)# description Reseau LAN 192.168.1.0/24
+R1(config-if)# ip address 192.168.1.1 255.255.255.0
+R1(config-if)# no shutdown
+</code></pre></div>
+<p><strong>Interface série (liaison WAN, selon le matériel)</strong></p>
+<div class="highlight"><pre><span></span><code>R1(config)# interface s0/0/0
+R1(config-if)# ip address 10.0.0.1 255.255.255.252
+R1(config-if)# clock rate 128000
+R1(config-if)# no shutdown
+</code></pre></div>
+<p><code>clock rate</code> se configure uniquement côté <strong>DCE</strong> du câble série, jamais côté DTE.</p>
+<p><strong>Interface IPv6</strong></p>
+<div class="highlight"><pre><span></span><code>R1(config)# ipv6 unicast-routing
+R1(config)# interface g0/0/0
+R1(config-if)# ipv6 address 2001:db8:acad:1::1/64
+R1(config-if)# ipv6 address fe80::1 link-local
+R1(config-if)# no shutdown
+</code></pre></div>
+<blockquote>
+<p>[!NOTE]
+<strong>Hors programme CCNA 1 (vu en CCNA 2)</strong></p>
+<p>Routes statiques, routage dynamique, VLAN et trunks.</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code>R1(config)# ip route 0.0.0.0 0.0.0.0 10.0.0.2
+</code></pre></div>
+<h3 id="sauvegarde-vérification-remise-à-zéro">Sauvegarde, vérification, remise à zéro</h3>
+<p>La configuration en cours (<strong>running-config</strong>) est en RAM et disparaît au redémarrage. Seule la configuration de démarrage (<strong>startup-config</strong>, en NVRAM) survit : pense à sauvegarder.</p>
+<blockquote>
+<p>[!WARNING]
+<strong>Attention</strong></p>
+<p>Les modifications sont <strong>appliquées immédiatement</strong> à la running-config (RAM). Sans <code>copy run start</code>, elles sont perdues au redémarrage.</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code>S1# copy running-config startup-config
+Destination filename [startup-config]? [Entrée]
+Building configuration...
+[OK]
+</code></pre></div>
+<p>Version courte : <code>copy run start</code>.</p>
+<p><strong>Remise à zéro d'un switch</strong></p>
+<div class="highlight"><pre><span></span><code>S1# erase startup-config
+S1# delete vlan.dat
+S1# reload
+</code></pre></div>
+<p>Pour un routeur : <code>erase startup-config</code>, puis <code>reload</code>. Réponds <code>no</code> si l'IOS propose de sauvegarder avant de redémarrer.</p>
+<p><strong>Mémoires de l'équipement</strong></p>
+<table>
+<thead>
+<tr>
+<th>Mémoire</th>
+<th>Contenu</th>
+<th>Persiste après redémarrage ?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>RAM</strong></td>
+<td>running-config, tables ARP et de routage</td>
+<td><strong>non</strong></td>
+</tr>
+<tr>
+<td><strong>NVRAM</strong></td>
+<td>startup-config</td>
+<td>oui</td>
+</tr>
+<tr>
+<td><strong>Flash</strong></td>
+<td>image de l'IOS</td>
+<td>oui</td>
+</tr>
+<tr>
+<td><strong>ROM</strong></td>
+<td>programme de démarrage (POST, bootstrap)</td>
+<td>oui</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Commandes <code>show</code></strong></p>
+<table>
+<thead>
+<tr>
+<th>Commande</th>
+<th>Ce qu'elle affiche</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>show running-config</code> (<code>show run</code>)</td>
+<td>configuration en cours (RAM)</td>
+</tr>
+<tr>
+<td><code>show startup-config</code> (<code>show start</code>)</td>
+<td>configuration sauvegardée (NVRAM)</td>
+</tr>
+<tr>
+<td><code>show version</code></td>
+<td>version de l'IOS, modèle, mémoire, uptime</td>
+</tr>
+<tr>
+<td><code>show interfaces [fa0/1]</code></td>
+<td>détails, MAC, erreurs, débit</td>
+</tr>
+<tr>
+<td><code>show ip interface brief</code></td>
+<td>une ligne par interface : IP, statut, protocole</td>
+</tr>
+<tr>
+<td><code>show ipv6 interface brief</code></td>
+<td>idem en IPv6</td>
+</tr>
+<tr>
+<td><code>show mac address-table</code></td>
+<td>table MAC du switch</td>
+</tr>
+<tr>
+<td><code>show ip route</code></td>
+<td>table de routage</td>
+</tr>
+<tr>
+<td><code>show arp</code></td>
+<td>table ARP</td>
+</tr>
+<tr>
+<td><code>show flash:</code></td>
+<td>fichiers en flash</td>
+</tr>
+<tr>
+<td><code>show clock</code></td>
+<td>date et heure</td>
+</tr>
+<tr>
+<td><code>show history</code></td>
+<td>dernières commandes saisies</td>
+</tr>
+<tr>
+<td><code>show vlan brief</code></td>
+<td>VLAN et ports associés</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Lire <code>show ip interface brief</code></strong></p>
+<table>
+<thead>
+<tr>
+<th>Status</th>
+<th>Protocol</th>
+<th>Signification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>up</td>
+<td>up</td>
+<td>interface opérationnelle</td>
+</tr>
+<tr>
+<td>up</td>
+<td>down</td>
+<td>problème de couche 2 (encapsulation, <code>clock rate</code>, autre extrémité)</td>
+</tr>
+<tr>
+<td>down</td>
+<td>down</td>
+<td>problème de couche 1 (câble débranché, autre extrémité éteinte)</td>
+</tr>
+<tr>
+<td>administratively down</td>
+<td>down</td>
+<td>l'interface est en <code>shutdown</code> : taper <code>no shutdown</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Heure de l'équipement</strong></p>
+<div class="highlight"><pre><span></span><code>S1# clock set 14:32:00 9 November 2026
+S1# show clock
+</code></pre></div>
+<p><code>clock set</code> se tape en mode <strong>privilégié</strong>. <code>clock timezone</code> se tape en configuration globale. Un <code>*</code> devant l'heure signifie qu'elle n'est pas fiable (non synchronisée). Synchroniser l'heure par NTP (<code>ntp server &lt;IP&gt;</code>) est hors programme CCNA 1.</p>
+<h3 id="interfaces-et-nommage">Interfaces et nommage</h3>
+<p>Vocabulaire : un <strong>port</strong> est la connexion physique, une <strong>interface</strong> est un port spécialisé d'un équipement réseau relié à un réseau individuel, une <strong>NIC</strong> est la carte réseau d'un hôte.</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Débit</th>
+<th>Nom IOS</th>
+<th>Abréviation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FastEthernet</td>
+<td>100 Mb/s</td>
+<td><code>FastEthernet0/1</code></td>
+<td><code>fa0/1</code></td>
+</tr>
+<tr>
+<td>GigabitEthernet</td>
+<td>1 Gb/s</td>
+<td><code>GigabitEthernet0/1</code></td>
+<td><code>g0/1</code> ou <code>gi0/1</code></td>
+</tr>
+<tr>
+<td>Série (WAN)</td>
+<td>variable</td>
+<td><code>Serial0/0/0</code></td>
+<td><code>s0/0/0</code></td>
+</tr>
+<tr>
+<td>Interface virtuelle du switch (SVI)</td>
+<td>-</td>
+<td><code>Vlan1</code></td>
+<td><code>vlan 1</code></td>
+</tr>
+</tbody>
+</table>
+<p>Le format est <code>type module/port</code> (ou <code>type module/slot/port</code> sur certains routeurs). Sur un Catalyst 2960 type TP : 24 ports FastEthernet et 2 ports Gigabit.</p>
+<table>
+<thead>
+<tr>
+<th>Équipement</th>
+<th>Où se met l'adresse IP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Switch</td>
+<td><code>interface vlan 1</code> (SVI), pas sur les ports</td>
+</tr>
+<tr>
+<td>Routeur</td>
+<td>sur chaque interface physique</td>
+</tr>
+<tr>
+<td>PC</td>
+<td>carte réseau (NIC)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="séquence-type-dune-configuration-de-base">Séquence type d'une configuration de base</h3>
+<div class="highlight"><pre><span></span><code>enable
+conf t
+hostname S1
+enable secret class
+line console 0
+ password cisco
+ login
+ exit
+line vty 0 15
+ password cisco
+ login
+ exit
+service password-encryption
+banner motd #Acces reserve aux personnes autorisees#
+interface vlan 1
+ ip address 192.168.1.2 255.255.255.0
+ no shutdown
+ exit
+ip default-gateway 192.168.1.1
+end
+copy run start
+show run
+</code></pre></div>
+<blockquote>
+<p>[!IMPORTANT]
+<strong>À retenir</strong></p>
+<ul>
+<li><code>enable secret</code> (haché) protège le mode privilégié ; <code>login</code> active le mot de passe d'une ligne.</li>
+<li>Une interface de routeur est désactivée par défaut : <code>no shutdown</code>.</li>
+<li><code>copy run start</code> sauvegarde la configuration (RAM vers NVRAM).</li>
+</ul>
+</blockquote>
+<p><a href="#sommaire">Retour au sommaire</a></p>
+<hr />
+<h2 id="14-tests-et-dépannage">14. Tests et dépannage</h2>
+<p>On teste de proche en proche, de la couche 1 vers le haut : câble et voyants, adresse IP du poste, passerelle, puis destination distante.</p>
+<p><strong>Sur un PC Windows</strong></p>
+<table>
+<thead>
+<tr>
+<th>Commande</th>
+<th>Rôle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ipconfig</code></td>
+<td>adresse IP, masque, passerelle</td>
+</tr>
+<tr>
+<td><code>ipconfig /all</code></td>
+<td>ajoute la MAC, le DHCP, le DNS</td>
+</tr>
+<tr>
+<td><code>ping 127.0.0.1</code></td>
+<td>teste la pile TCP/IP locale</td>
+</tr>
+<tr>
+<td><code>ping &lt;passerelle&gt;</code></td>
+<td>teste la liaison avec le routeur local</td>
+</tr>
+<tr>
+<td><code>ping &lt;IP distante&gt;</code></td>
+<td>teste la connectivité de bout en bout</td>
+</tr>
+<tr>
+<td><code>ping &lt;nom&gt;</code></td>
+<td>teste en plus la résolution DNS</td>
+</tr>
+<tr>
+<td><code>tracert &lt;IP&gt;</code></td>
+<td>liste les routeurs traversés</td>
+</tr>
+<tr>
+<td><code>arp -a</code></td>
+<td>table ARP du PC</td>
+</tr>
+<tr>
+<td><code>nslookup nom</code></td>
+<td>interroge le DNS</td>
+</tr>
+<tr>
+<td><code>netstat</code></td>
+<td>connexions TCP/IP actives</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Sur un équipement Cisco</strong> : <code>ping &lt;IP&gt;</code>, <code>traceroute &lt;IP&gt;</code>, <code>show ip interface brief</code>, <code>show interfaces</code>, <code>show running-config</code>.</p>
+<p><strong>Résultats d'un ping Cisco</strong></p>
+<table>
+<thead>
+<tr>
+<th>Symbole</th>
+<th>Signification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>!</code></td>
+<td>réponse reçue</td>
+</tr>
+<tr>
+<td><code>.</code></td>
+<td>délai dépassé (pas de réponse)</td>
+</tr>
+<tr>
+<td><code>U</code></td>
+<td>destination inaccessible</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Méthode de dépannage, de bas en haut</strong></p>
+<ol>
+<li><strong>Couche 1</strong> : câble, bon type de câble, voyants du port, interface <code>up</code>.</li>
+<li><strong>Couche 2</strong> : duplex et vitesse cohérents des deux côtés, bonne adresse MAC.</li>
+<li><strong>Couche 3</strong> : IP et masque corrects, passerelle correcte, même sous-réseau.</li>
+<li><strong>Couches 4 à 7</strong> : DNS, application, pare-feu.</li>
+</ol>
+<p><strong>Causes fréquentes d'un ping qui échoue</strong></p>
+<ul>
+<li>Interface en <code>shutdown</code> (il manque <code>no shutdown</code>).</li>
+<li>Mauvais masque ou adresse dans un autre sous-réseau.</li>
+<li>Passerelle par défaut absente ou erronée sur le PC.</li>
+<li>Mauvais type de câble (droit au lieu de croisé, ou l'inverse) sur du matériel ancien.</li>
+<li>Pare-feu Windows qui bloque l'ICMP.</li>
+<li>Sur un switch, passerelle par défaut manquante : on ne peut pas le joindre depuis un autre réseau.</li>
+</ul>
+<p><strong>Bonnes pratiques</strong> : documenter le réseau (schémas, adresses), garder une <strong>configuration de référence</strong> (baseline), changer une seule chose à la fois, tester après chaque modification.</p>
+<blockquote>
+<p>[!TIP]
+<strong>Astuce</strong></p>
+<ul>
+<li>Teste de proche en proche : <code>ping 127.0.0.1</code>, puis la passerelle, puis une IP distante, puis un nom.</li>
+<li>L'endroit où le test échoue indique la couche en cause.</li>
+</ul>
+</blockquote>
+<p><a href="#sommaire">Retour au sommaire</a></p>
+<hr />
+<h2 id="15-tips-dexamen-et-pièges-fréquents">15. Tips d'examen et pièges fréquents</h2>
+<p>Les questions testent surtout le vocabulaire exact et la distinction entre deux notions proches. Lis chaque option en entier avant de répondre.</p>
+<p><strong>Paires de notions à ne pas confondre</strong></p>
+<table>
+<thead>
+<tr>
+<th>Notion A</th>
+<th>Notion B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Segment (couche 4)</td>
+<td>Paquet (couche 3), Trame (couche 2)</td>
+</tr>
+<tr>
+<td><code>enable secret</code> (haché)</td>
+<td><code>enable password</code> (en clair)</td>
+</tr>
+<tr>
+<td><code>service password-encryption</code> (chiffre les mots de passe de la config)</td>
+<td><code>enable secret</code> (protège l'accès au mode privilégié)</td>
+</tr>
+<tr>
+<td><code>login</code> (active l'authentification)</td>
+<td><code>password</code> (définit le mot de passe)</td>
+</tr>
+<tr>
+<td><code>exit</code> (un niveau)</td>
+<td><code>end</code> / Ctrl+Z (retour direct au mode privilégié)</td>
+</tr>
+<tr>
+<td><code>enable</code> (utilisateur vers privilégié)</td>
+<td><code>disable</code> (privilégié vers utilisateur)</td>
+</tr>
+<tr>
+<td><code>running-config</code> (RAM)</td>
+<td><code>startup-config</code> (NVRAM)</td>
+</tr>
+<tr>
+<td>Accès in-band (Telnet, SSH)</td>
+<td>Accès out-of-band (console, AUX)</td>
+</tr>
+<tr>
+<td>Topologie physique (équipements, médias, emplacements)</td>
+<td>Topologie logique (IP, interfaces, flux)</td>
+</tr>
+<tr>
+<td>Port (connexion physique)</td>
+<td>Interface (port spécialisé relié à un réseau)</td>
+</tr>
+<tr>
+<td>Adresse réseau (bits d'hôtes à 0)</td>
+<td>Adresse de diffusion (bits d'hôtes à 1)</td>
+</tr>
+<tr>
+<td>Switch : adresses <strong>MAC</strong></td>
+<td>Routeur : adresses <strong>IP</strong></td>
+</tr>
+<tr>
+<td>TCP : fiable, avec connexion</td>
+<td>UDP : rapide, sans connexion</td>
+</tr>
+<tr>
+<td>Bande passante (capacité)</td>
+<td>Débit (ce qui est réellement transféré)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Mémos rapides</strong></p>
+<ul>
+<li>Encapsulation : <strong>Données, Segment, Paquet, Trame, Bits</strong>. Décapsulation : l'inverse.</li>
+<li>Les IP restent les mêmes de bout en bout, les MAC changent à chaque saut.</li>
+<li>Pas de <code>no shutdown</code> sur un routeur = interface <code>administratively down</code>.</li>
+<li><code>clock set</code> : mode privilégié. <code>clock timezone</code> : configuration globale.</li>
+<li>Un switch de couche 2 a besoin d'une IP uniquement pour être administré.</li>
+<li>Un domaine de broadcast s'arrête au routeur.</li>
+<li>Extensible (scalable) : s'agrandit sans dégrader le service existant.</li>
+<li>Les modifications de configuration prennent effet <strong>immédiatement</strong>, la sauvegarde ne sert qu'à les conserver.</li>
+<li>La <strong>RAM</strong> perd tout au redémarrage, la <strong>NVRAM</strong> et la <strong>Flash</strong> non.</li>
+<li>Pour une question « version abrégée la plus courte » : l'abréviation non ambiguë la plus brève (<code>copy run start</code>).</li>
+</ul>
+<blockquote>
+<p>[!NOTE]
+<strong>Hors programme CCNA 1 (utile en pratique, pas à l'examen)</strong></p>
+<ul>
+<li>Synchronisation de l'heure par NTP : <code>ntp server &lt;IP&gt;</code>.</li>
+<li>Routes statiques, routage dynamique, VLAN, trunks, NAT en détail : CCNA 2.</li>
+</ul>
+</blockquote>
+<p><a href="#sommaire">Retour au sommaire</a></p>
+<hr />
+<h2 id="16-mémo-où-se-configure-quoi">16. Mémo, où se configure quoi</h2>
+<p>Version ultra courte à relire juste avant l'examen.</p>
+<p><strong>Mode privilégié <code>S1#</code></strong></p>
+<div class="highlight"><pre><span></span><code>copy run start          erase startup-config       reload
+clock set 14:32:00 9 November 2026
+ping &lt;IP&gt;               traceroute &lt;IP&gt;
+show run | show start | show version | show ip interface brief
+show interfaces | show mac address-table | show ip route | show arp
+</code></pre></div>
+<p><strong>Configuration globale <code>S1(config)#</code></strong></p>
+<div class="highlight"><pre><span></span><code>hostname S1
+enable secret class
+service password-encryption
+banner motd #Acces reserve#
+ip default-gateway 192.168.1.1        (switch)
+ip domain-name exemple.local          (SSH)
+crypto key generate rsa               (SSH)
+username admin secret motdepasse      (SSH)
+ipv6 unicast-routing                  (routeur)
+</code></pre></div>
+<p><strong>Configuration de ligne <code>S1(config-line)#</code></strong></p>
+<div class="highlight"><pre><span></span><code>line console 0   |   line vty 0 15
+ password cisco
+ login
+ transport input ssh                  (VTY, SSH seulement)
+</code></pre></div>
+<p><strong>Configuration d'interface <code>S1(config-if)#</code></strong></p>
+<div class="highlight"><pre><span></span><code>interface fa0/1   |   g0/1   |   s0/0/0   |   vlan 1
+ description texte
+ ip address 192.168.1.2 255.255.255.0
+ ipv6 address 2001:db8:acad:1::1/64
+ no shutdown | shutdown
+ speed 100 | duplex full             (port de switch)
+ clock rate 128000                   (série, côté DCE)
+</code></pre></div>
+<p><a href="#sommaire">Retour au sommaire</a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
+      
+    
+  </body>
+</html>
